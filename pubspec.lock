@@ -77,10 +77,10 @@ packages:
     dependency: "direct dev"
     description:
       name: build_runner
-      sha256: "22fdcc3cfeb9d974d7408718c4be15ec5e9b1b350088f3a6c88f154e74dd700d"
+      sha256: fae5c4fc1a73b7dee94b6c54e86101e5030a8e42112e61203f464495011a20a1
       url: "https://pub.dev"
     source: hosted
-    version: "2.14.1"
+    version: "2.12.1"
   built_collection:
     dependency: transitive
     description:
@@ -129,6 +129,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
+  code_builder:
+    dependency: transitive
+    description:
+      name: code_builder
+      sha256: "43743b95913fd28b95184eb1bed7e4bd85b802b8fad0a52522702dbeda4ee3d5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.2.0"
   collection:
     dependency: transitive
     description:

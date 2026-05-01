@@ -26,7 +26,7 @@ class SpendWiseApp extends StatelessWidget {
               border: OutlineInputBorder(),
             ),
           ),
-          initialRoute: RouteNames.expensePage,
+          initialRoute: RouteNames.categoryListPage,
           onGenerateRoute: appRouters.onGenerateRoute,
         )
     );
