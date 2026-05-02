@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../config/routes/route_names.dart';
+import '../../../../app/routes/route_names.dart';
 import '../../../../core/base/requests_status.dart';
 import '../cubit/expense_cubit.dart';
 import '../cubit/expense_state.dart';

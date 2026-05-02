@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../config/routes/route_names.dart';
+import '../../../../app/routes/route_names.dart';
 import '../../domain/entities/expense.dart';
 import '../cubit/expense_cubit.dart';
 
