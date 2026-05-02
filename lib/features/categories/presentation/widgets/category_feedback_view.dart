@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoryFeedbackView extends StatelessWidget {
   const CategoryFeedbackView({
@@ -20,18 +21,18 @@ class CategoryFeedbackView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(24),
+        padding: EdgeInsets.all(24.w),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon, size: 64, color: Colors.grey),
-            const SizedBox(height: 16),
+            Icon(icon, size: 64.r, color: Colors.grey),
+            SizedBox(height: 16.h),
             Text(
               title,
               style: Theme.of(context).textTheme.titleMedium,
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: 8.h),
             Text(
               description,
               style: Theme.of(
@@ -39,7 +40,7 @@ class CategoryFeedbackView extends StatelessWidget {
               ).textTheme.bodyMedium?.copyWith(color: Colors.grey),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16.h),
             ElevatedButton.icon(
               onPressed: onPressed,
               icon: const Icon(Icons.refresh),

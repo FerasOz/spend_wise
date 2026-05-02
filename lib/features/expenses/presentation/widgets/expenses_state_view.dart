@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../app/routes/route_names.dart';
 import '../../../../core/base/requests_status.dart';
@@ -9,18 +10,19 @@ import 'expenses_feedback_view.dart';
 import 'expenses_list_view.dart';
 
 class ExpensesStateView extends StatelessWidget {
-  const ExpensesStateView({
-    required this.state,
-    super.key,
-  });
+  const ExpensesStateView({required this.state, super.key});
 
   final ExpenseState state;
 
   @override
   Widget build(BuildContext context) {
     if (_isInitialLoading) {
-      return const Center(
-        child: CircularProgressIndicator(),
+      return Center(
+        child: SizedBox(
+          height: 72.h,
+          width: 72.h,
+          child: const CircularProgressIndicator(),
+        ),
       );
     }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/core/base/requests_status.dart';
 import 'package:spend_wise/core/widgets/responsive_page_content.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
@@ -24,7 +25,12 @@ class CategoryFormBody extends StatelessWidget {
           ),
           body: Stack(
             children: [
-              SafeArea(child: ResponsivePageContent(child: CategoryForm())),
+              SafeArea(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.h),
+                  child: ResponsivePageContent(child: CategoryForm()),
+                ),
+              ),
               if (state.submissionStatus == RequestsStatus.loading)
                 const CategoryLoadingOverlay(message: 'Saving category...'),
             ],

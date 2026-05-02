@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/app/shell/models/shell_destination.dart';
 
 class MainShellNavigationBar extends StatelessWidget {
@@ -23,7 +24,7 @@ class MainShellNavigationBar extends StatelessWidget {
           final isSelected = states.contains(WidgetState.selected);
 
           return TextStyle(
-            fontSize: 12,
+            fontSize: 12.sp,
             fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
             color: isSelected
                 ? colorScheme.primary
@@ -37,7 +38,7 @@ class MainShellNavigationBar extends StatelessWidget {
             color: isSelected
                 ? colorScheme.primary
                 : colorScheme.onSurfaceVariant,
-            size: 24,
+            size: 24.w,
           );
         }),
         indicatorColor: colorScheme.primaryContainer,

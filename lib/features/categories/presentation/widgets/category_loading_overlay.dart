@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoryLoadingOverlay extends StatelessWidget {
   const CategoryLoadingOverlay({super.key, this.message});
@@ -15,7 +16,7 @@ class CategoryLoadingOverlay extends StatelessWidget {
           children: [
             const CircularProgressIndicator(),
             if (message != null) ...[
-              const SizedBox(height: 12),
+              SizedBox(height: 12.h),
               Text(
                 message!,
                 style: Theme.of(

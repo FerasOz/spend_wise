@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/widgets/responsive_page_content.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
 import 'package:spend_wise/features/categories/presentation/widgets/category_form_body.dart';
@@ -26,7 +28,12 @@ class CategoryListPage extends StatelessWidget {
         tooltip: 'Add Category',
         child: const Icon(Icons.add),
       ),
-      body: content,
+      body: ResponsivePageContent(
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 8.h),
+          child: content,
+        ),
+      ),
     );
   }
 
