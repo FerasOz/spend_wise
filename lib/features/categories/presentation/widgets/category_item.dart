@@ -23,13 +23,13 @@ class CategoryItem extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
       decoration: BoxDecoration(
         color: isSelected
-            ? Theme.of(context).primaryColor.withOpacity(0.1)
+            ? Theme.of(context).primaryColor.withAlpha((0.1 * 255).round())
             : Colors.white,
         borderRadius: BorderRadius.circular(12.r),
         border: Border.all(
           color: isSelected
               ? Theme.of(context).primaryColor
-              : Colors.grey.withOpacity(0.2),
+              : Colors.grey.withAlpha((0.2 * 255).round()),
           width: isSelected ? 2.w : 1.w,
         ),
       ),
@@ -37,7 +37,6 @@ class CategoryItem extends StatelessWidget {
         padding: EdgeInsets.all(12.w),
         child: Row(
           children: [
-            // Icon
             Container(
               width: 50.w,
               height: 50.h,

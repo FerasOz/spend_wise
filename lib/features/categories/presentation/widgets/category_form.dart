@@ -3,9 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_state.dart';
-import 'package:spend_wise/features/categories/presentation/widgets/category_name_field.dart';
-import 'package:spend_wise/features/categories/presentation/widgets/category_preview_card.dart';
-import 'package:spend_wise/features/categories/presentation/widgets/category_submit_button.dart';
+import 'package:spend_wise/features/categories/presentation/widgets/category_form_fields.dart';
 import 'package:spend_wise/features/categories/presentation/widgets/color_picker.dart';
 import 'package:spend_wise/features/categories/presentation/widgets/icon_picker.dart';
 

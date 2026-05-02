@@ -19,9 +19,9 @@ class ColorPicker extends StatelessWidget {
       children: [
         Text(
           'Select Color',
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+          style: Theme.of(
+            context,
+          ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
         SizedBox(height: 12.h),
         GridView.builder(
@@ -47,18 +47,15 @@ class ColorPicker extends StatelessWidget {
                   color: color,
                   shape: BoxShape.circle,
                   border: isSelected
-                      ? Border.all(
-                          color: Colors.white,
-                          width: 3.w,
-                        )
+                      ? Border.all(color: Colors.white, width: 3.w)
                       : null,
                   boxShadow: isSelected
                       ? [
                           BoxShadow(
-                            color: color.withOpacity(0.5),
+                            color: color.withAlpha((0.5 * 255).round()),
                             blurRadius: 8,
                             spreadRadius: 2,
-                          )
+                          ),
                         ]
                       : null,
                 ),

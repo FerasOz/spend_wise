@@ -45,8 +45,10 @@ class IconPicker extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: isSelected
-                      ? Theme.of(context).primaryColor.withOpacity(0.2)
-                      : Colors.grey.withOpacity(0.1),
+                      ? Theme.of(
+                          context,
+                        ).primaryColor.withAlpha((0.2 * 255).round())
+                      : Colors.grey.withAlpha((0.1 * 255).round()),
                   border: isSelected
                       ? Border.all(
                           color: Theme.of(context).primaryColor,

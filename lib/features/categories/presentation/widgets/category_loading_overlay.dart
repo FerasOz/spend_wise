@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CategoryLoadingOverlay extends StatelessWidget {
-  const CategoryLoadingOverlay({
-    super.key,
-    this.message,
-  });
+  const CategoryLoadingOverlay({super.key, this.message});
 
   final String? message;
 
