@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:spend_wise/config/routes/app_router.dart';
+import 'package:spend_wise/app/routes/app_router.dart';
 import 'package:spend_wise/spend_wise_app.dart';
 
 void main() {

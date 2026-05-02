@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:spend_wise/config/routes/app_router.dart';
-import 'package:spend_wise/config/routes/route_names.dart';
+import 'package:spend_wise/app/routes/app_router.dart';
+import 'package:spend_wise/app/routes/route_names.dart';
 
 class SpendWiseApp extends StatelessWidget {
   final AppRouters appRouters;
@@ -26,7 +26,7 @@ class SpendWiseApp extends StatelessWidget {
               border: OutlineInputBorder(),
             ),
           ),
-          initialRoute: RouteNames.categoryListPage,
+          initialRoute: RouteNames.mainShellPage,
           onGenerateRoute: appRouters.onGenerateRoute,
         )
     );

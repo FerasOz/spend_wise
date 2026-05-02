@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import '../../app/shell/cubit/shell_cubit.dart';
 import '../../features/categories/data/datasources/category_local_data_source.dart';
 import '../../features/categories/data/repositories/category_repository_impl.dart';
 import '../../features/categories/domain/repositories/category_repository.dart';
@@ -23,6 +24,10 @@ final GetIt sl = GetIt.instance;
 
 Future<void> setupDependencies() async {
   await Hive.initFlutter();
+
+  if (!sl.isRegistered<ShellCubit>()) {
+    sl.registerFactory<ShellCubit>(() => ShellCubit());
+  }
 
   // ============================================================================
   // CATEGORY FEATURE
