@@ -1,115 +1,168 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../app/routes/route_names.dart';
+import '../../../../core/utils/category_resolver.dart';
+import '../../../../core/widgets/category_badge.dart';
+import '../../../../features/categories/domain/entities/category.dart';
 import '../../domain/entities/expense.dart';
 import '../cubit/expense_cubit.dart';
+import '../../../../features/categories/presentation/utils/category_presentation_data.dart';
 
 class ExpenseListItem extends StatelessWidget {
-  const ExpenseListItem({required this.expense, super.key});
+  const ExpenseListItem({
+    required this.expense,
+    required this.categories,
+    super.key,
+  });
 
   final Expense expense;
+  final List<Category> categories;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final category = CategoryResolver.resolveCategory(
+      expense.categoryId,
+      categories,
+    );
+    final categoryColor = Color(category.color);
+    final categoryIcon = CategoryPresentationData.iconFor(category.icon);
 
     return InkWell(
       onTap: () => Navigator.of(
         context,
       ).pushNamed(RouteNames.addExpensePage, arguments: expense),
-      borderRadius: BorderRadius.circular(20.r),
+      borderRadius: BorderRadius.circular(24.r),
       child: Card(
-        elevation: 0,
+        elevation: 2,
+        color: theme.colorScheme.surfaceVariant,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.r),
+          borderRadius: BorderRadius.circular(24.r),
         ),
         child: Padding(
-          padding: EdgeInsets.all(16.w),
+          padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                height: 48.w,
-                width: 48.w,
+                width: 6.w,
+                height: 80.h,
                 decoration: BoxDecoration(
-                  color: theme.colorScheme.primaryContainer,
-                  borderRadius: BorderRadius.circular(14.r),
-                ),
-                child: Icon(
-                  Icons.receipt_long_outlined,
-                  color: theme.colorScheme.onPrimaryContainer,
+                  color: categoryColor,
+                  borderRadius: BorderRadius.circular(4.r),
                 ),
               ),
-              SizedBox(width: 14.w),
+              SizedBox(width: 12.w),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      expense.title,
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        fontSize: 16.sp,
-                      ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            expense.title,
+                            style: theme.textTheme.titleMedium?.copyWith(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 16.sp,
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 10.w),
+                        Text(
+                          '\$${expense.amount.toStringAsFixed(2)}',
+                          style: theme.textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16.sp,
+                          ),
+                        ),
+                      ],
                     ),
-                    SizedBox(height: 4.h),
-                    Text(
-                      expense.categoryId,
-                      style: theme.textTheme.bodyMedium?.copyWith(
-                        color: theme.colorScheme.onSurfaceVariant,
-                        fontSize: 14.sp,
-                      ),
+                    SizedBox(height: 10.h),
+                    Row(
+                      children: [
+                        _buildCategoryIcon(categoryColor, categoryIcon),
+                        SizedBox(width: 10.w),
+                        Expanded(
+                          child: CategoryBadge(
+                            category: category,
+                            size: CategoryBadgeSize.small,
+                            showLabel: true,
+                            showIcon: true,
+                          ),
+                        ),
+                        PopupMenuButton<String>(
+                          onSelected: (value) => _handleAction(context, value),
+                          itemBuilder: (_) => [
+                            const PopupMenuItem(
+                              value: 'edit',
+                              child: Text('Edit'),
+                            ),
+                            const PopupMenuItem(
+                              value: 'delete',
+                              child: Text('Delete'),
+                            ),
+                          ],
+                          icon: Icon(
+                            Icons.more_vert,
+                            color: theme.colorScheme.onSurfaceVariant,
+                          ),
+                        ),
+                      ],
                     ),
-                    if (expense.note != null && expense.note!.isNotEmpty) ...[
-                      SizedBox(height: 8.h),
+                    if (expense.note != null &&
+                        expense.note!.trim().isNotEmpty) ...[
+                      SizedBox(height: 12.h),
                       Text(
-                        expense.note!,
+                        expense.note!.trim(),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.bodySmall?.copyWith(
-                          fontSize: 12.sp,
+                          fontSize: 13.sp,
+                          color: theme.colorScheme.onSurfaceVariant,
                         ),
                       ),
                     ],
+                    SizedBox(height: 12.h),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.calendar_today,
+                          size: 14.sp,
+                          color: theme.colorScheme.onSurfaceVariant,
+                        ),
+                        SizedBox(width: 6.w),
+                        Text(
+                          _formatDate(expense.date),
+                          style: theme.textTheme.bodySmall?.copyWith(
+                            color: theme.colorScheme.onSurfaceVariant,
+                            fontSize: 12.sp,
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
-                ),
-              ),
-              SizedBox(width: 12.w),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    '\$${expense.amount.toStringAsFixed(2)}',
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 16.sp,
-                    ),
-                  ),
-                  SizedBox(height: 4.h),
-                  Text(
-                    _formatDate(expense.date),
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      color: theme.colorScheme.onSurfaceVariant,
-                      fontSize: 12.sp,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(width: 8.w),
-              PopupMenuButton<String>(
-                onSelected: (value) => _handleAction(context, value),
-                itemBuilder: (_) => [
-                  const PopupMenuItem(value: 'edit', child: Text('Edit')),
-                  const PopupMenuItem(value: 'delete', child: Text('Delete')),
-                ],
-                icon: Icon(
-                  Icons.more_vert,
-                  color: theme.colorScheme.onSurfaceVariant,
                 ),
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildCategoryIcon(Color categoryColor, IconData categoryIcon) {
+    return Container(
+      width: 52.w,
+      height: 52.w,
+      decoration: BoxDecoration(
+        color: categoryColor.withOpacity(0.16),
+        borderRadius: BorderRadius.circular(16.r),
+      ),
+      child: Icon(categoryIcon, size: 26.sp, color: categoryColor),
     );
   }
 
@@ -124,17 +177,17 @@ class ExpenseListItem extends StatelessWidget {
     final cubit = context.read<ExpenseCubit>();
     final confirmed = await showDialog<bool>(
       context: context,
-      builder: (context) {
+      builder: (dialogContext) {
         return AlertDialog(
           title: const Text('Delete expense'),
           content: const Text('Are you sure you want to delete this expense?'),
           actions: [
             TextButton(
-              onPressed: () => Navigator.of(context).pop(false),
+              onPressed: () => Navigator.of(dialogContext).pop(false),
               child: const Text('Cancel'),
             ),
             TextButton(
-              onPressed: () => Navigator.of(context).pop(true),
+              onPressed: () => Navigator.of(dialogContext).pop(true),
               child: const Text('Delete'),
             ),
           ],

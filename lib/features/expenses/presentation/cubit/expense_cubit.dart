@@ -29,10 +29,16 @@ class ExpenseCubit extends Cubit<ExpenseState> {
     emit(state.copyWith(selectedDate: date));
   }
 
+  void setSelectedCategoryId(String? categoryId) {
+    if (state.selectedCategoryId == categoryId) return;
+    emit(state.copyWith(selectedCategoryId: categoryId));
+  }
+
   void resetExpenseForm() {
     emit(
       state.copyWith(
         selectedDate: DateTime.now(),
+        selectedCategoryId: null,
         submissionStatus: RequestsStatus.initial,
         clearSubmissionErrorMessage: true,
       ),
@@ -74,6 +80,7 @@ class ExpenseCubit extends Cubit<ExpenseState> {
             expensesStatus: RequestsStatus.success,
             submissionStatus: RequestsStatus.success,
             selectedDate: DateTime.now(),
+            selectedCategoryId: null,
             clearLoadErrorMessage: true,
             clearSubmissionErrorMessage: true,
           ),
@@ -93,6 +100,7 @@ class ExpenseCubit extends Cubit<ExpenseState> {
             expensesStatus: RequestsStatus.success,
             submissionStatus: RequestsStatus.success,
             selectedDate: DateTime.now(),
+            selectedCategoryId: null,
             clearLoadErrorMessage: true,
             clearSubmissionErrorMessage: true,
           ),
@@ -111,6 +119,7 @@ class ExpenseCubit extends Cubit<ExpenseState> {
             expenses: _removeExpense(id),
             expensesStatus: RequestsStatus.success,
             submissionStatus: RequestsStatus.success,
+            selectedCategoryId: null,
             clearLoadErrorMessage: true,
             clearSubmissionErrorMessage: true,
           ),
@@ -181,10 +190,7 @@ class ExpenseCubit extends Cubit<ExpenseState> {
     );
   }
 
-  String _mapErrorToMessage(
-    Object error, {
-    required String fallback,
-  }) {
+  String _mapErrorToMessage(Object error, {required String fallback}) {
     final message = error.toString().trim();
     if (message.isEmpty || message == 'Exception') {
       return fallback;

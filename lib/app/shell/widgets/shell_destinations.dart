@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spend_wise/app/shell/models/shell_destination.dart';
 import 'package:spend_wise/app/shell/widgets/shell_placeholder_page.dart';
-import 'package:spend_wise/features/categories/presentation/pages/category_form_page.dart';
 import 'package:spend_wise/features/categories/presentation/pages/category_list_page.dart';
 import 'package:spend_wise/features/expenses/presentation/pages/expenses_page.dart';
 

@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../app/routes/route_names.dart';
 import '../../../../core/base/requests_status.dart';
+import '../../../../features/categories/presentation/cubit/category_cubit.dart';
+import '../../../../features/categories/presentation/cubit/category_state.dart';
 import '../cubit/expense_cubit.dart';
 import '../cubit/expense_state.dart';
 import 'expenses_feedback_view.dart';
@@ -45,7 +47,17 @@ class ExpensesStateView extends StatelessWidget {
       );
     }
 
-    return ExpensesListView(expenses: state.expenses);
+    // Read categories from CategoryCubit to display with expenses
+    return BlocBuilder<CategoryCubit, CategoryState>(
+      buildWhen: (previous, current) =>
+          previous.categories != current.categories,
+      builder: (context, categoryState) {
+        return ExpensesListView(
+          expenses: state.expenses,
+          categories: categoryState.categories,
+        );
+      },
+    );
   }
 
   bool get _isInitialLoading {
