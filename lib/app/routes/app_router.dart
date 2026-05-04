@@ -38,8 +38,11 @@ class AppRouters {
         final expense = settings.arguments as Expense?;
 
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => sl<ExpenseCubit>(),
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => sl<ExpenseCubit>()),
+              BlocProvider(create: (context) => sl<CategoryCubit>()),
+            ],
             child: ExpenseFormPage(expense: expense),
           ),
         );
@@ -51,8 +54,11 @@ class AppRouters {
         final category = settings.arguments as Category?;
 
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => sl<CategoryCubit>()..initializeForm(category),
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => sl<CategoryCubit>()..initializeForm(category)),
+              BlocProvider(create: (context) => sl<ExpenseCubit>())
+            ],
             child: const CategoryFormPage(),
           ),
         );
