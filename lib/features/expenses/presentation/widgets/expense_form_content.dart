@@ -21,12 +21,11 @@ class ExpenseFormContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryCubit, CategoryState>(
-      buildWhen: (previous, current) =>
-          previous.categories != current.categories,
       builder: (context, categoryState) {
         return BlocBuilder<ExpenseCubit, ExpenseState>(
           buildWhen: (previous, current) =>
               previous.selectedDate != current.selectedDate ||
+              previous.selectedCategoryId != current.selectedCategoryId ||
               previous.submissionStatus != current.submissionStatus,
           builder: (context, expenseState) {
             return Column(
@@ -46,8 +45,11 @@ class ExpenseFormContent extends StatelessWidget {
                       .setSelectedCategoryId,
                   onSubmit: (expenseData) {
                     if (expense != null) {
+                      final updatedExpense = expenseData.copyWith(
+                        id: expense!.id,
+                      );
                       return context.read<ExpenseCubit>().updateExpense(
-                        expenseData,
+                        updatedExpense,
                       );
                     }
 

@@ -17,6 +17,13 @@ class ExpenseFormPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final isEditing = expense != null;
 
+    // إذا كانت إضافة جديدة، أعد تعيين الـ form
+    if (!isEditing) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        context.read<ExpenseCubit>().resetExpenseForm();
+      });
+    }
+
     return BlocListener<ExpenseCubit, ExpenseState>(
       listenWhen: (previous, current) =>
           previous.submissionStatus != current.submissionStatus,

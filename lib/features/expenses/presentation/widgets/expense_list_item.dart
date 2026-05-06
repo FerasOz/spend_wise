@@ -37,7 +37,7 @@ class ExpenseListItem extends StatelessWidget {
       borderRadius: BorderRadius.circular(24.r),
       child: Card(
         elevation: 2,
-        color: theme.colorScheme.surfaceVariant,
+        color: theme.colorScheme.surfaceContainerHighest,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24.r),
         ),

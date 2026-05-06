@@ -13,8 +13,8 @@ import 'expense_title_field.dart';
 
 typedef SubmitExpenseCallback = Future<void> Function(Expense expense);
 
-class ExpenseForm extends StatelessWidget {
-  ExpenseForm({
+class ExpenseForm extends StatefulWidget {
+  const ExpenseForm({
     required this.categories,
     required this.selectedDate,
     required this.selectedCategoryId,
@@ -26,8 +26,6 @@ class ExpenseForm extends StatelessWidget {
     super.key,
   });
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   final List<Category> categories;
   final DateTime selectedDate;
   final String? selectedCategoryId;
@@ -38,14 +36,61 @@ class ExpenseForm extends StatelessWidget {
   final Expense? initialExpense;
 
   @override
-  Widget build(BuildContext context) {
-    final isEditing = initialExpense != null;
-    String? currentCategoryId =
-        selectedCategoryId ?? initialExpense?.categoryId;
+  State<ExpenseForm> createState() => _ExpenseFormState();
+}
 
-    String? title;
-    String? amount;
-    String? note;
+class _ExpenseFormState extends State<ExpenseForm> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  String? _title;
+  String? _amount;
+  String? _categoryId;
+  String? _note;
+
+  Future<void> _handleSubmit() async {
+    final isValid = _formKey.currentState?.validate() ?? false;
+    if (!isValid) return;
+
+    _formKey.currentState?.save();
+
+    if ((_title?.trim().isEmpty ?? true) || (_amount?.trim().isEmpty ?? true)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please fill in title and amount.')),
+      );
+      return;
+    }
+
+    if ((_categoryId?.trim().isEmpty ?? true)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please select a category.')),
+      );
+      return;
+    }
+
+    final amountValue = double.tryParse(_amount!.trim());
+    if (amountValue == null || amountValue <= 0) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please enter a valid amount.')),
+      );
+      return;
+    }
+
+    final expense = Expense(
+      id: DateTime.now().microsecondsSinceEpoch.toString(),
+      title: _title!.trim(),
+      amount: amountValue,
+      categoryId: _categoryId!.trim(),
+      date: widget.selectedDate,
+      note: _note?.trim(),
+    );
+
+    await widget.onSubmit(expense);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final isEditing = widget.initialExpense != null;
+    final currentCategoryId =
+        widget.selectedCategoryId ?? widget.initialExpense?.categoryId;
 
     return Form(
       key: _formKey,
@@ -53,42 +98,36 @@ class ExpenseForm extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ExpenseTitleField(
-            initialValue: initialExpense?.title ?? '',
-            onSaved: (value) => title = value?.trim(),
+            initialValue: widget.initialExpense?.title ?? '',
+            onSaved: (value) => _title = value,
           ),
           SizedBox(height: 16.h),
           ExpenseAmountField(
-            initialValue: initialExpense?.amount.toString() ?? '',
-            onSaved: (value) => amount = value?.trim(),
+            initialValue: widget.initialExpense?.amount.toString() ?? '',
+            onSaved: (value) => _amount = value,
           ),
           SizedBox(height: 16.h),
           ExpenseCategoryField(
-            categories: categories,
+            categories: widget.categories,
             initialValue: currentCategoryId,
-            onSaved: (value) => currentCategoryId = value,
-            onCategorySelected: onCategorySelected,
+            onSaved: (value) => _categoryId = value,
+            onCategorySelected: widget.onCategorySelected,
           ),
           SizedBox(height: 16.h),
           ExpenseDatePicker(
-            selectedDate: selectedDate,
-            onDateSelected: onDateSelected,
+            selectedDate: widget.selectedDate,
+            onDateSelected: widget.onDateSelected,
           ),
           SizedBox(height: 16.h),
           ExpenseNoteField(
-            initialValue: initialExpense?.note,
-            onSaved: (value) => note = value?.trim(),
+            initialValue: widget.initialExpense?.note,
+            onSaved: (value) => _note = value,
           ),
           SizedBox(height: 28.h),
           ExpenseSubmitButton(
-            formKey: _formKey,
             isEditing: isEditing,
-            submissionStatus: submissionStatus,
-            onSubmit: onSubmit,
-            title: title ?? '',
-            amount: amount ?? '0',
-            categoryId: currentCategoryId ?? '',
-            date: selectedDate,
-            note: note,
+            submissionStatus: widget.submissionStatus,
+            onSubmit: _handleSubmit,
           ),
         ],
       ),
