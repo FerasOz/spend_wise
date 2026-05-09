@@ -4,9 +4,13 @@ import 'package:spend_wise/core/base/requests_status.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_state.dart';
 import 'package:spend_wise/features/categories/presentation/pages/category_list_page.dart';
+import 'package:spend_wise/features/categories/presentation/utils/category_expense_summary.dart';
 import 'package:spend_wise/features/categories/presentation/widgets/category_feedback_view.dart';
 import 'package:spend_wise/features/categories/presentation/widgets/category_item.dart';
 import 'package:spend_wise/features/categories/presentation/widgets/category_loading_overlay.dart';
+import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
+import 'package:spend_wise/features/expenses/presentation/cubit/expense_cubit.dart';
+import 'package:spend_wise/features/expenses/presentation/cubit/expense_state.dart';
 
 class CategoryListBody extends StatelessWidget {
   const CategoryListBody({super.key});
@@ -81,25 +85,40 @@ class CategoryListContent extends StatelessWidget {
       );
     }
 
-    return RefreshIndicator(
-      onRefresh: context.read<CategoryCubit>().loadCategories,
-      child: ListView.builder(
-        itemCount: state.sortedCategories.length,
-        itemBuilder: (context, index) {
-          final category = state.sortedCategories[index];
-          return CategoryItem(
-            category: category,
-            onEdit: () => CategoryListPage.openCategoryFormPage(
-              context,
-              category: category,
-            ),
-            onDelete: () => CategoryListPage.showCategoryDeleteConfirmation(
-              context,
-              category,
-            ),
-          );
-        },
-      ),
+    return BlocSelector<ExpenseCubit, ExpenseState, List<Expense>>(
+      selector: (expenseState) => expenseState.expenses,
+      builder: (context, expenses) {
+        final summaries = CategoryExpenseSummary.buildByCategoryId(expenses);
+
+        return RefreshIndicator(
+          onRefresh: context.read<CategoryCubit>().loadCategories,
+          child: ListView.builder(
+            itemCount: state.sortedCategories.length,
+            itemBuilder: (context, index) {
+              final category = state.sortedCategories[index];
+              return CategoryItem(
+                category: category,
+                summary:
+                    summaries[category.id] ?? CategoryExpenseSummary.empty,
+                onTap: () => CategoryListPage.openCategoryDetailsPage(
+                  context,
+                  category,
+                ),
+                onEdit: () => CategoryListPage.openCategoryFormPage(
+                  context,
+                  category: category,
+                ),
+                onDelete: category.isDefault
+                    ? null
+                    : () => CategoryListPage.showCategoryDeleteConfirmation(
+                        context,
+                        category,
+                      ),
+              );
+            },
+          ),
+        );
+      },
     );
   }
 }

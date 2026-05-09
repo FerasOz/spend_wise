@@ -1,38 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/base/requests_status.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
 import 'package:spend_wise/core/widgets/category_badge.dart';
 
 typedef CategoryPickerCallback = void Function(Category category);
 
-/// A reusable category picker widget that allows users to select a category
-/// from an available list. Displays categories in a grid with visual feedback.
-///
-/// Used in expense creation/editing forms to replace manual text input.
-class CategoryPicker extends StatelessWidget {
-  const CategoryPicker({
+class CategorySelector extends StatelessWidget {
+  const CategorySelector({
     required this.categories,
     required this.onCategorySelected,
     this.selectedCategoryId,
     this.emptyStateMessage = 'No categories available',
+    this.emptyStateActionLabel,
+    this.onEmptyStateActionPressed,
+    this.status = RequestsStatus.success,
     super.key,
   });
 
-  /// List of available categories to display
   final List<Category> categories;
-
-  /// Callback when a category is selected
   final CategoryPickerCallback onCategorySelected;
-
-  /// ID of the currently selected category
   final String? selectedCategoryId;
-
-  /// Message to show when no categories are available
   final String emptyStateMessage;
+  final String? emptyStateActionLabel;
+  final VoidCallback? onEmptyStateActionPressed;
+  final RequestsStatus status;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final sortedCategories = [...categories]
+      ..sort((first, second) => first.name.compareTo(second.name));
+
+    if (status == RequestsStatus.loading && categories.isEmpty) {
+      return Container(
+        padding: EdgeInsets.all(24.w),
+        decoration: BoxDecoration(
+          color: theme.colorScheme.surfaceContainerHighest.withAlpha(
+            (0.3 * 255).round(),
+          ),
+          borderRadius: BorderRadius.circular(12.r),
+          border: Border.all(color: theme.colorScheme.outlineVariant),
+        ),
+        child: const Center(child: CircularProgressIndicator()),
+      );
+    }
 
     if (categories.isEmpty) {
       return Container(
@@ -60,6 +72,15 @@ class CategoryPicker extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
+            if (emptyStateActionLabel != null &&
+                onEmptyStateActionPressed != null) ...[
+              SizedBox(height: 16.h),
+              OutlinedButton.icon(
+                onPressed: onEmptyStateActionPressed,
+                icon: const Icon(Icons.add_circle_outline),
+                label: Text(emptyStateActionLabel!),
+              ),
+            ],
           ],
         ),
       );
@@ -84,20 +105,49 @@ class CategoryPicker extends StatelessWidget {
             crossAxisSpacing: 12.w,
             childAspectRatio: 0.85,
           ),
-          itemCount: categories.length,
+          itemCount: sortedCategories.length,
           itemBuilder: (context, index) {
-            final category = categories[index];
+            final category = sortedCategories[index];
             final isSelected = selectedCategoryId == category.id;
 
-            return CategoryBadge(
-              category: category,
-              size: CategoryBadgeSize.large,
-              isSelected: isSelected,
-              onTap: () => onCategorySelected(category),
+            return AnimatedScale(
+              duration: const Duration(milliseconds: 180),
+              scale: isSelected ? 1.0 : 0.96,
+              child: CategoryChip(
+                category: category,
+                size: CategoryBadgeSize.large,
+                isSelected: isSelected,
+                onTap: () => onCategorySelected(category),
+              ),
             );
           },
         ),
       ],
+    );
+  }
+}
+
+class CategoryPicker extends StatelessWidget {
+  const CategoryPicker({
+    required this.categories,
+    required this.onCategorySelected,
+    this.selectedCategoryId,
+    this.emptyStateMessage = 'No categories available',
+    super.key,
+  });
+
+  final List<Category> categories;
+  final CategoryPickerCallback onCategorySelected;
+  final String? selectedCategoryId;
+  final String emptyStateMessage;
+
+  @override
+  Widget build(BuildContext context) {
+    return CategorySelector(
+      categories: categories,
+      onCategorySelected: onCategorySelected,
+      selectedCategoryId: selectedCategoryId,
+      emptyStateMessage: emptyStateMessage,
     );
   }
 }

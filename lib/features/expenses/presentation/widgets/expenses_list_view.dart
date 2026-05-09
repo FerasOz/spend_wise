@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/utils/category_resolver.dart';
 import '../../../../features/categories/domain/entities/category.dart';
 import '../../domain/entities/expense.dart';
 import '../cubit/expense_cubit.dart';
@@ -19,6 +20,11 @@ class ExpensesListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final categoryMap = CategoryResolver.resolveCategoriesBatch(
+      expenses.map((expense) => expense.categoryId).toList(),
+      categories,
+    );
+
     return RefreshIndicator(
       onRefresh: context.read<ExpenseCubit>().loadExpenses,
       child: ListView.separated(
@@ -26,9 +32,11 @@ class ExpensesListView extends StatelessWidget {
         itemCount: expenses.length,
         separatorBuilder: (context, index) => SizedBox(height: 12.h),
         itemBuilder: (context, index) {
-          return ExpenseListItem(
-            expense: expenses[index],
-            categories: categories,
+          final expense = expenses[index];
+
+          return ExpenseItem(
+            expense: expense,
+            category: categoryMap[expense.categoryId]!,
           );
         },
       ),

@@ -24,7 +24,7 @@ List<ShellDestination> buildShellDestinations() {
       icon: Icons.receipt_long_outlined,
       selectedIcon: Icons.receipt_long,
       page: const ExpensesPage(showScaffold: false),
-      fab: (context) => ExpensesPage.openAddExpensePage(context),
+      fab: (context) => ExpensesPage.openExpenseFormPage(context),
       fabIcon: Icons.add,
     ),
     const ShellDestination(

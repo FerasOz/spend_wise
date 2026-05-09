@@ -4,9 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/core/widgets/responsive_page_content.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
+import 'package:spend_wise/features/categories/presentation/pages/category_details_page.dart';
 import 'package:spend_wise/features/categories/presentation/widgets/category_form_body.dart';
 import 'package:spend_wise/features/categories/presentation/widgets/category_listeners.dart';
 import 'package:spend_wise/features/categories/presentation/widgets/category_list_views.dart';
+import 'package:spend_wise/features/expenses/presentation/cubit/expense_cubit.dart';
 
 class CategoryListPage extends StatelessWidget {
   const CategoryListPage({super.key, this.showScaffold = true});
@@ -48,6 +50,37 @@ class CategoryListPage extends StatelessWidget {
         builder: (_) => BlocProvider.value(
           value: context.read<CategoryCubit>(),
           child: const CategoryFormListener(child: CategoryFormBody()),
+        ),
+      ),
+    );
+  }
+
+  static Future<void> openCategoryManagementPage(BuildContext context) async {
+    await Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => MultiBlocProvider(
+          providers: [
+            BlocProvider.value(value: context.read<CategoryCubit>()),
+            BlocProvider.value(value: context.read<ExpenseCubit>()),
+          ],
+          child: const CategoryListPage(),
+        ),
+      ),
+    );
+  }
+
+  static Future<void> openCategoryDetailsPage(
+    BuildContext context,
+    Category category,
+  ) async {
+    await Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => MultiBlocProvider(
+          providers: [
+            BlocProvider.value(value: context.read<CategoryCubit>()),
+            BlocProvider.value(value: context.read<ExpenseCubit>()),
+          ],
+          child: CategoryDetailsPage(category: category),
         ),
       ),
     );

@@ -3,10 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
 import 'package:spend_wise/features/categories/presentation/utils/category_presentation_data.dart';
 
-/// A reusable widget that displays a category with its icon, color, and name.
-/// Used in expense lists and category selection contexts.
-class CategoryBadge extends StatelessWidget {
-  const CategoryBadge({
+class CategoryChip extends StatelessWidget {
+  const CategoryChip({
     required this.category,
     this.size = CategoryBadgeSize.medium,
     this.showLabel = true,
@@ -16,22 +14,11 @@ class CategoryBadge extends StatelessWidget {
     super.key,
   });
 
-  /// The category to display
   final Category category;
-
-  /// Size variant for the badge
   final CategoryBadgeSize size;
-
-  /// Whether to show the category name label
   final bool showLabel;
-
-  /// Whether to show the icon
   final bool showIcon;
-
-  /// Optional callback when badge is tapped
   final VoidCallback? onTap;
-
-  /// Whether this badge is currently selected (for category pickers)
   final bool isSelected;
 
   @override
@@ -178,5 +165,35 @@ class CategoryBadge extends StatelessWidget {
   }
 }
 
-/// Size variants for the CategoryBadge widget
+class CategoryBadge extends StatelessWidget {
+  const CategoryBadge({
+    required this.category,
+    this.size = CategoryBadgeSize.medium,
+    this.showLabel = true,
+    this.showIcon = true,
+    this.onTap,
+    this.isSelected = false,
+    super.key,
+  });
+
+  final Category category;
+  final CategoryBadgeSize size;
+  final bool showLabel;
+  final bool showIcon;
+  final VoidCallback? onTap;
+  final bool isSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    return CategoryChip(
+      category: category,
+      size: size,
+      showLabel: showLabel,
+      showIcon: showIcon,
+      onTap: onTap,
+      isSelected: isSelected,
+    );
+  }
+}
+
 enum CategoryBadgeSize { small, medium, large }

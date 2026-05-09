@@ -33,22 +33,50 @@ class AppRouters {
           ),
         );
       case RouteNames.expensePage:
-        return MaterialPageRoute(builder: (_) => const ExpensesPage());
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => sl<ExpenseCubit>()..loadExpenses(),
+              ),
+              BlocProvider(
+                create: (context) => sl<CategoryCubit>()..loadCategories(),
+              ),
+            ],
+            child: const ExpensesPage(),
+          ),
+        );
       case RouteNames.addExpensePage:
         final expense = settings.arguments as Expense?;
 
         return MaterialPageRoute(
           builder: (_) => MultiBlocProvider(
             providers: [
-              BlocProvider(create: (context) => sl<ExpenseCubit>()),
-              BlocProvider(create: (context) => sl<CategoryCubit>()),
+              BlocProvider(
+                create: (context) => sl<ExpenseCubit>()..initializeForm(expense),
+              ),
+              BlocProvider(
+                create: (context) => sl<CategoryCubit>()..loadCategories(),
+              ),
             ],
             child: ExpenseFormPage(expense: expense),
           ),
         );
 
       case RouteNames.categoryListPage:
-        return MaterialPageRoute(builder: (_) => const CategoryListPage());
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => sl<CategoryCubit>()..loadCategories(),
+              ),
+              BlocProvider(
+                create: (context) => sl<ExpenseCubit>()..loadExpenses(),
+              ),
+            ],
+            child: const CategoryListPage(),
+          ),
+        );
 
       case RouteNames.categoryFormPage:
         final category = settings.arguments as Category?;

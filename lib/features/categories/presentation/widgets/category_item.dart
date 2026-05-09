@@ -1,140 +1,195 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
+import 'package:spend_wise/features/categories/presentation/utils/category_expense_summary.dart';
 import 'package:spend_wise/features/categories/presentation/utils/category_presentation_data.dart';
 
 class CategoryItem extends StatelessWidget {
-  final Category category;
-  final VoidCallback onEdit;
-  final VoidCallback onDelete;
-  final bool isSelected;
-
   const CategoryItem({
-    super.key,
     required this.category,
+    required this.summary,
+    required this.onTap,
     required this.onEdit,
-    required this.onDelete,
-    this.isSelected = false,
+    this.onDelete,
+    super.key,
   });
+
+  final Category category;
+  final CategoryExpenseSummary summary;
+  final VoidCallback onTap;
+  final VoidCallback onEdit;
+  final VoidCallback? onDelete;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-      decoration: BoxDecoration(
-        color: isSelected
-            ? Theme.of(context).primaryColor.withAlpha((0.1 * 255).round())
-            : Colors.white,
-        borderRadius: BorderRadius.circular(12.r),
-        border: Border.all(
-          color: isSelected
-              ? Theme.of(context).primaryColor
-              : Colors.grey.withAlpha((0.2 * 255).round()),
-          width: isSelected ? 2.w : 1.w,
-        ),
-      ),
+    final theme = Theme.of(context);
+    final color = Color(category.color);
+
+    return TweenAnimationBuilder<double>(
+      tween: Tween(begin: 0.97, end: 1),
+      duration: const Duration(milliseconds: 220),
+      curve: Curves.easeOutCubic,
+      builder: (context, value, child) => Transform.scale(scale: value, child: child),
       child: Padding(
-        padding: EdgeInsets.all(12.w),
-        child: Row(
-          children: [
-            Container(
-              width: 50.w,
-              height: 50.h,
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+        child: Material(
+          color: theme.colorScheme.surface,
+          borderRadius: BorderRadius.circular(24.r),
+          child: InkWell(
+            onTap: onTap,
+            borderRadius: BorderRadius.circular(24.r),
+            child: Ink(
+              padding: EdgeInsets.all(16.w),
               decoration: BoxDecoration(
-                color: Color(category.color),
-                borderRadius: BorderRadius.circular(10.r),
-              ),
-              child: Icon(
-                CategoryPresentationData.iconFor(category.icon),
-                color: Colors.white,
-                size: 28.sp,
-              ),
-            ),
-            SizedBox(width: 12.w),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Flexible(
-                        child: Text(
-                          category.name,
-                          style: Theme.of(context).textTheme.bodyLarge
-                              ?.copyWith(fontWeight: FontWeight.w600),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      if (category.isDefault) ...[
-                        SizedBox(width: 8.w),
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 8.w,
-                            vertical: 2.h,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).primaryColor,
-                            borderRadius: BorderRadius.circular(4.r),
-                          ),
-                          child: Text(
-                            'Default',
-                            style: Theme.of(context).textTheme.labelSmall
-                                ?.copyWith(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                          ),
-                        ),
-                      ],
-                    ],
+                borderRadius: BorderRadius.circular(24.r),
+                border: Border.all(color: color.withAlpha(36)),
+                gradient: LinearGradient(
+                  colors: [color.withAlpha(18), theme.colorScheme.surface],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 18,
+                    offset: const Offset(0, 10),
+                    color: Colors.black.withAlpha(10),
                   ),
-                  SizedBox(height: 4.h),
-                  Text(
-                    'Created ${category.createdAt.toString().split(' ')[0]}',
-                    style: Theme.of(
-                      context,
-                    ).textTheme.labelSmall?.copyWith(color: Colors.grey),
+                ],
+              ),
+              child: Row(
+                children: [
+                  Hero(
+                    tag: 'category-icon-${category.id}',
+                    child: Container(
+                      width: 58.w,
+                      height: 58.w,
+                      decoration: BoxDecoration(
+                        color: color,
+                        borderRadius: BorderRadius.circular(18.r),
+                      ),
+                      child: Icon(
+                        CategoryPresentationData.iconFor(category.icon),
+                        color: Colors.white,
+                        size: 28.sp,
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 14.w),
+                  Expanded(child: _CategoryTextContent(category: category, summary: summary)),
+                  _CategoryActions(
+                    category: category,
+                    onEdit: onEdit,
+                    onDelete: onDelete,
                   ),
                 ],
               ),
             ),
-            PopupMenuButton<String>(
-              onSelected: (value) {
-                if (value == 'edit') {
-                  onEdit();
-                } else if (value == 'delete') {
-                  onDelete();
-                }
-              },
-              itemBuilder: (BuildContext context) => [
-                const PopupMenuItem(
-                  value: 'edit',
-                  child: Row(
-                    children: [
-                      Icon(Icons.edit, size: 20),
-                      SizedBox(width: 8),
-                      Text('Edit'),
-                    ],
-                  ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _CategoryTextContent extends StatelessWidget {
+  const _CategoryTextContent({required this.category, required this.summary});
+
+  final Category category;
+  final CategoryExpenseSummary summary;
+
+  @override
+  Widget build(BuildContext context) {
+    final spentLabel = '\$${summary.totalSpent.toStringAsFixed(2)} spent';
+    final countLabel = '${summary.expenseCount} expenses';
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Flexible(
+              child: Text(
+                category.name,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w700,
                 ),
-                if (!category.isDefault)
-                  const PopupMenuItem(
-                    value: 'delete',
-                    child: Row(
-                      children: [
-                        Icon(Icons.delete, size: 20, color: Colors.red),
-                        SizedBox(width: 8),
-                        Text('Delete', style: TextStyle(color: Colors.red)),
-                      ],
-                    ),
-                  ),
-              ],
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.r),
               ),
             ),
+            if (category.isDefault) ...[
+              SizedBox(width: 8.w),
+              const _CategoryDefaultBadge(),
+            ],
           ],
+        ),
+        SizedBox(height: 6.h),
+        Text(
+          spentLabel,
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        SizedBox(height: 6.h),
+        Text(
+          countLabel,
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+            color: Theme.of(context).colorScheme.onSurfaceVariant,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _CategoryActions extends StatelessWidget {
+  const _CategoryActions({
+    required this.category,
+    required this.onEdit,
+    required this.onDelete,
+  });
+
+  final Category category;
+  final VoidCallback onEdit;
+  final VoidCallback? onDelete;
+
+  @override
+  Widget build(BuildContext context) {
+    return PopupMenuButton<String>(
+      tooltip: 'Category actions',
+      onSelected: (value) {
+        if (value == 'edit') {
+          onEdit();
+        } else if (value == 'delete') {
+          onDelete?.call();
+        }
+      },
+      itemBuilder: (_) => [
+        const PopupMenuItem(value: 'edit', child: Text('Edit')),
+        if (!category.isDefault && onDelete != null)
+          const PopupMenuItem(value: 'delete', child: Text('Delete')),
+      ],
+      icon: const Icon(Icons.more_horiz),
+    );
+  }
+}
+
+class _CategoryDefaultBadge extends StatelessWidget {
+  const _CategoryDefaultBadge();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.primary,
+        borderRadius: BorderRadius.circular(999),
+      ),
+      child: Text(
+        'Default',
+        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+          color: Theme.of(context).colorScheme.onPrimary,
+          fontWeight: FontWeight.w700,
         ),
       ),
     );
