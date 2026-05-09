@@ -28,6 +28,7 @@ class ExpenseState {
     String? selectedCategoryId,
     String? loadErrorMessage,
     String? submissionErrorMessage,
+    bool clearSelectedCategoryId = false,
     bool clearLoadErrorMessage = false,
     bool clearSubmissionErrorMessage = false,
   }) {
@@ -36,7 +37,9 @@ class ExpenseState {
       submissionStatus: submissionStatus ?? this.submissionStatus,
       expenses: expenses ?? this.expenses,
       selectedDate: selectedDate ?? this.selectedDate,
-      selectedCategoryId: selectedCategoryId ?? this.selectedCategoryId,
+      selectedCategoryId: clearSelectedCategoryId
+          ? null
+          : (selectedCategoryId ?? this.selectedCategoryId),
       loadErrorMessage: clearLoadErrorMessage
           ? null
           : (loadErrorMessage ?? this.loadErrorMessage),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class ExpenseAmountField extends StatelessWidget {
   const ExpenseAmountField({
@@ -21,6 +22,9 @@ class ExpenseAmountField extends StatelessWidget {
         prefixText: '\$ ',
       ),
       keyboardType: const TextInputType.numberWithOptions(decimal: true),
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d{0,2}$')),
+      ],
       textInputAction: TextInputAction.next,
       validator: (value) {
         final parsed = double.tryParse(value?.trim() ?? '');

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
+import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
 import '../cubit/expense_cubit.dart';
 import '../cubit/expense_state.dart';
 import 'expense_form_page.dart';
@@ -26,14 +27,17 @@ class ExpensesPage extends StatelessWidget {
       ),
       body: const SafeArea(child: _ExpensesPageBody()),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => openAddExpensePage(context),
+        onPressed: () => openExpenseFormPage(context),
         child: const Icon(Icons.add),
       ),
     );
   }
 
-  static Future<void> openAddExpensePage(BuildContext context) async {
-    context.read<ExpenseCubit>().resetExpenseForm();
+  static Future<void> openExpenseFormPage(
+    BuildContext context, {
+    Expense? expense,
+  }) async {
+    context.read<ExpenseCubit>().initializeForm(expense);
     await Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (_) => MultiBlocProvider(
@@ -41,7 +45,7 @@ class ExpensesPage extends StatelessWidget {
             BlocProvider.value(value: context.read<ExpenseCubit>()),
             BlocProvider.value(value: context.read<CategoryCubit>()),
           ],
-          child: const ExpenseFormPage(),
+          child: ExpenseFormPage(expense: expense),
         ),
       ),
     );

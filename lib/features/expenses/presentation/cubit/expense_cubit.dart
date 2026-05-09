@@ -25,6 +25,18 @@ class ExpenseCubit extends Cubit<ExpenseState> {
   final UpdateExpense _updateExpense;
   final DeleteExpense _deleteExpense;
 
+  void initializeForm([Expense? expense]) {
+    emit(
+      state.copyWith(
+        selectedDate: expense?.date ?? DateTime.now(),
+        selectedCategoryId: expense?.categoryId,
+        clearSelectedCategoryId: expense == null,
+        submissionStatus: RequestsStatus.initial,
+        clearSubmissionErrorMessage: true,
+      ),
+    );
+  }
+
   void setSelectedDate(DateTime date) {
     emit(state.copyWith(selectedDate: date));
   }
@@ -35,14 +47,7 @@ class ExpenseCubit extends Cubit<ExpenseState> {
   }
 
   void resetExpenseForm() {
-    emit(
-      state.copyWith(
-        selectedDate: DateTime.now(),
-        selectedCategoryId: null,
-        submissionStatus: RequestsStatus.initial,
-        clearSubmissionErrorMessage: true,
-      ),
-    );
+    initializeForm();
   }
 
   Future<void> loadExpenses() async {
@@ -80,7 +85,7 @@ class ExpenseCubit extends Cubit<ExpenseState> {
             expensesStatus: RequestsStatus.success,
             submissionStatus: RequestsStatus.success,
             selectedDate: DateTime.now(),
-            selectedCategoryId: null,
+            clearSelectedCategoryId: true,
             clearLoadErrorMessage: true,
             clearSubmissionErrorMessage: true,
           ),
@@ -100,7 +105,7 @@ class ExpenseCubit extends Cubit<ExpenseState> {
             expensesStatus: RequestsStatus.success,
             submissionStatus: RequestsStatus.success,
             selectedDate: DateTime.now(),
-            selectedCategoryId: null,
+            clearSelectedCategoryId: true,
             clearLoadErrorMessage: true,
             clearSubmissionErrorMessage: true,
           ),
@@ -119,7 +124,7 @@ class ExpenseCubit extends Cubit<ExpenseState> {
             expenses: _removeExpense(id),
             expensesStatus: RequestsStatus.success,
             submissionStatus: RequestsStatus.success,
-            selectedCategoryId: null,
+            clearSelectedCategoryId: true,
             clearLoadErrorMessage: true,
             clearSubmissionErrorMessage: true,
           ),

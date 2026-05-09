@@ -22,7 +22,7 @@ class ExpenseFormIntro extends StatelessWidget {
         ),
         SizedBox(height: 8.h),
         Text(
-          'Keep it simple for now. We can replace the category field with a picker once categories are built.',
+          'Choose a category, capture the amount, and keep every expense tied to structured data you can trust later.',
           style: Theme.of(
             context,
           ).textTheme.bodyMedium?.copyWith(fontSize: 14.sp),
