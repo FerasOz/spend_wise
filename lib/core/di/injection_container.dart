@@ -11,6 +11,15 @@ import '../../features/categories/domain/usecases/delete_category.dart';
 import '../../features/categories/domain/usecases/get_categories.dart';
 import '../../features/categories/domain/usecases/update_category.dart';
 import '../../features/categories/presentation/cubit/category_cubit.dart';
+import '../../features/dashboard/data/repositories/dashboard_repository_impl.dart';
+import '../../features/dashboard/domain/repositories/dashboard_repository.dart';
+import '../../features/dashboard/domain/usecases/get_dashboard_insights.dart';
+import '../../features/dashboard/domain/usecases/get_dashboard_source_data.dart';
+import '../../features/dashboard/domain/usecases/get_dashboard_summary.dart';
+import '../../features/dashboard/domain/usecases/get_recent_expenses.dart';
+import '../../features/dashboard/domain/usecases/get_top_categories.dart';
+import '../../features/dashboard/domain/usecases/get_weekly_spending.dart';
+import '../../features/dashboard/presentation/cubit/dashboard_cubit.dart';
 import '../../features/expenses/data/datasources/expense_local_data_source.dart';
 import '../../features/expenses/data/repositories/expense_repository_impl.dart';
 import '../../features/expenses/domain/repositories/expense_repository.dart';
@@ -174,6 +183,66 @@ Future<void> setupDependencies() async {
         getExpenses: sl<GetExpenses>(),
         updateExpense: sl<UpdateExpense>(),
         deleteExpense: sl<DeleteExpense>(),
+      ),
+    );
+  }
+
+  // ============================================================================
+  // DASHBOARD FEATURE
+  // ============================================================================
+
+  if (!sl.isRegistered<DashboardRepository>()) {
+    sl.registerLazySingleton<DashboardRepository>(
+      () => DashboardRepositoryImpl(
+        expenseRepository: sl<ExpenseRepository>(),
+        categoryRepository: sl<CategoryRepository>(),
+      ),
+    );
+  }
+
+  if (!sl.isRegistered<GetDashboardSourceData>()) {
+    sl.registerLazySingleton<GetDashboardSourceData>(
+      () => GetDashboardSourceData(sl<DashboardRepository>()),
+    );
+  }
+
+  if (!sl.isRegistered<GetTopCategories>()) {
+    sl.registerLazySingleton<GetTopCategories>(() => const GetTopCategories());
+  }
+
+  if (!sl.isRegistered<GetDashboardSummary>()) {
+    sl.registerLazySingleton<GetDashboardSummary>(
+      () => GetDashboardSummary(sl<GetTopCategories>()),
+    );
+  }
+
+  if (!sl.isRegistered<GetDashboardInsights>()) {
+    sl.registerLazySingleton<GetDashboardInsights>(
+      () => GetDashboardInsights(sl<GetTopCategories>()),
+    );
+  }
+
+  if (!sl.isRegistered<GetWeeklySpending>()) {
+    sl.registerLazySingleton<GetWeeklySpending>(
+      () => const GetWeeklySpending(),
+    );
+  }
+
+  if (!sl.isRegistered<GetRecentExpenses>()) {
+    sl.registerLazySingleton<GetRecentExpenses>(
+      () => const GetRecentExpenses(),
+    );
+  }
+
+  if (!sl.isRegistered<DashboardCubit>()) {
+    sl.registerFactory<DashboardCubit>(
+      () => DashboardCubit(
+        getDashboardSourceData: sl<GetDashboardSourceData>(),
+        getDashboardInsights: sl<GetDashboardInsights>(),
+        getDashboardSummary: sl<GetDashboardSummary>(),
+        getWeeklySpending: sl<GetWeeklySpending>(),
+        getRecentExpenses: sl<GetRecentExpenses>(),
+        getTopCategories: sl<GetTopCategories>(),
       ),
     );
   }

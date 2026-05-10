@@ -8,6 +8,7 @@ import 'package:spend_wise/features/categories/domain/entities/category.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
 import 'package:spend_wise/features/categories/presentation/pages/category_form_page.dart';
 import 'package:spend_wise/features/categories/presentation/pages/category_list_page.dart';
+import 'package:spend_wise/features/dashboard/presentation/cubit/dashboard_cubit.dart';
 import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
 import 'package:spend_wise/features/expenses/presentation/cubit/expense_cubit.dart';
 import 'package:spend_wise/features/expenses/presentation/pages/expense_form_page.dart';
@@ -27,6 +28,9 @@ class AppRouters {
               ),
               BlocProvider(
                 create: (context) => sl<CategoryCubit>()..loadCategories(),
+              ),
+              BlocProvider(
+                create: (context) => sl<DashboardCubit>()..loadDashboard(),
               ),
             ],
             child: const MainShellPage(),

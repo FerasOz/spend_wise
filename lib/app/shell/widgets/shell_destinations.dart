@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spend_wise/app/shell/models/shell_destination.dart';
 import 'package:spend_wise/app/shell/widgets/shell_placeholder_page.dart';
 import 'package:spend_wise/features/categories/presentation/pages/category_list_page.dart';
+import 'package:spend_wise/features/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:spend_wise/features/expenses/presentation/pages/expenses_page.dart';
 
 List<ShellDestination> buildShellDestinations() {
@@ -11,12 +12,7 @@ List<ShellDestination> buildShellDestinations() {
       label: 'Dashboard',
       icon: Icons.space_dashboard_outlined,
       selectedIcon: Icons.space_dashboard,
-      page: ShellPlaceholderPage(
-        icon: Icons.insights_outlined,
-        title: 'Dashboard coming next',
-        description:
-            'This is a good place for monthly summaries, trends, and upcoming subscription renewals.',
-      ),
+      page: DashboardPage(showScaffold: false),
     ),
     ShellDestination(
       title: 'Expenses',
