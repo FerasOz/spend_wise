@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_colors.dart';
+import 'package:spend_wise/core/theme/app_radius.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
 import 'package:spend_wise/features/categories/presentation/utils/category_expense_summary.dart';
 import 'package:spend_wise/features/categories/presentation/utils/category_presentation_data.dart';
@@ -31,17 +34,20 @@ class CategoryItem extends StatelessWidget {
       curve: Curves.easeOutCubic,
       builder: (context, value, child) => Transform.scale(scale: value, child: child),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+        padding: EdgeInsets.symmetric(
+          horizontal: AppSpacing.lg.w,
+          vertical: AppSpacing.sm.h,
+        ),
         child: Material(
           color: theme.colorScheme.surface,
-          borderRadius: BorderRadius.circular(24.r),
+          borderRadius: BorderRadius.circular(AppRadius.xxl.r),
           child: InkWell(
             onTap: onTap,
-            borderRadius: BorderRadius.circular(24.r),
+            borderRadius: BorderRadius.circular(AppRadius.xxl.r),
             child: Ink(
-              padding: EdgeInsets.all(16.w),
+              padding: EdgeInsets.all(AppSpacing.lg.w),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24.r),
+                borderRadius: BorderRadius.circular(AppRadius.xxl.r),
                 border: Border.all(color: color.withAlpha(36)),
                 gradient: LinearGradient(
                   colors: [color.withAlpha(18), theme.colorScheme.surface],
@@ -52,7 +58,7 @@ class CategoryItem extends StatelessWidget {
                   BoxShadow(
                     blurRadius: 18,
                     offset: const Offset(0, 10),
-                    color: Colors.black.withAlpha(10),
+                    color: AppColors.shadow,
                   ),
                 ],
               ),
@@ -65,11 +71,11 @@ class CategoryItem extends StatelessWidget {
                       height: 58.w,
                       decoration: BoxDecoration(
                         color: color,
-                        borderRadius: BorderRadius.circular(18.r),
+                        borderRadius: BorderRadius.circular(AppRadius.xl.r),
                       ),
                       child: Icon(
                         CategoryPresentationData.iconFor(category.icon),
-                        color: Colors.white,
+                        color: theme.colorScheme.onPrimary,
                         size: 28.sp,
                       ),
                     ),
@@ -118,7 +124,7 @@ class _CategoryTextContent extends StatelessWidget {
               ),
             ),
             if (category.isDefault) ...[
-              SizedBox(width: 8.w),
+              SizedBox(width: AppSpacing.sm.w),
               const _CategoryDefaultBadge(),
             ],
           ],
@@ -183,7 +189,7 @@ class _CategoryDefaultBadge extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primary,
-        borderRadius: BorderRadius.circular(999),
+        borderRadius: BorderRadius.circular(AppRadius.pill),
       ),
       child: Text(
         'Default',

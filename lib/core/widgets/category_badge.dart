@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
 import 'package:spend_wise/features/categories/presentation/utils/category_presentation_data.dart';
+import 'package:spend_wise/core/theme/app_radius.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 
 class CategoryChip extends StatelessWidget {
   const CategoryChip({
@@ -44,10 +46,13 @@ class CategoryChip extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+        padding: EdgeInsets.symmetric(
+          horizontal: AppSpacing.sm.w,
+          vertical: AppSpacing.xs.h,
+        ),
         decoration: BoxDecoration(
           color: categoryColor.withAlpha((0.15 * 255).round()),
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(AppRadius.sm.r),
           border: isSelected
               ? Border.all(color: categoryColor, width: 1.5.w)
               : null,
@@ -61,7 +66,7 @@ class CategoryChip extends StatelessWidget {
                 size: 14.sp,
                 color: categoryColor,
               ),
-              SizedBox(width: 4.w),
+              SizedBox(width: AppSpacing.xs.w),
             ],
             if (showLabel)
               Text(
@@ -86,10 +91,13 @@ class CategoryChip extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+        padding: EdgeInsets.symmetric(
+          horizontal: AppSpacing.md.w,
+          vertical: AppSpacing.sm.h,
+        ),
         decoration: BoxDecoration(
           color: categoryColor.withAlpha((0.12 * 255).round()),
-          borderRadius: BorderRadius.circular(12.r),
+          borderRadius: BorderRadius.circular(AppRadius.md.r),
           border: isSelected
               ? Border.all(color: categoryColor, width: 2.w)
               : null,
@@ -147,7 +155,7 @@ class CategoryChip extends StatelessWidget {
             ),
           ),
           if (showLabel) ...[
-            SizedBox(height: 8.h),
+            SizedBox(height: AppSpacing.sm.h),
             Text(
               category.name,
               style: theme.textTheme.bodySmall?.copyWith(

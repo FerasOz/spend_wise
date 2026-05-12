@@ -115,15 +115,12 @@ class CategorySubmitButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      child: ElevatedButton(
+      child: FilledButton(
         onPressed: submissionStatus == RequestsStatus.loading
             ? null
             : onPressed,
-        style: ElevatedButton.styleFrom(
+        style: FilledButton.styleFrom(
           padding: EdgeInsets.symmetric(vertical: 12.h),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.r),
-          ),
         ),
         child: Text(
           submissionStatus == RequestsStatus.loading
