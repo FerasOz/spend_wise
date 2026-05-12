@@ -61,7 +61,6 @@ class ExpenseCategoryField extends StatelessWidget {
                   fieldState.errorText ?? '',
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     color: Theme.of(context).colorScheme.error,
-                    fontSize: 12.sp,
                   ),
                 ),
               ),

@@ -20,11 +20,14 @@ class ExpenseDatePicker extends StatelessWidget {
         decoration: InputDecoration(
           labelText: 'Date',
           suffixIcon: const Icon(Icons.calendar_today_outlined),
-          contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+          contentPadding: EdgeInsets.symmetric(
+            horizontal: 16.w,
+            vertical: 16.h,
+          ),
         ),
         child: Text(
           _formatDate(selectedDate),
-          style: TextStyle(fontSize: 14.sp),
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
       ),
     );

@@ -74,7 +74,6 @@ class CategoryChip extends StatelessWidget {
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: categoryColor,
                   fontWeight: FontWeight.w500,
-                  fontSize: 12.sp,
                 ),
               ),
           ],
@@ -119,7 +118,6 @@ class CategoryChip extends StatelessWidget {
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: categoryColor,
                   fontWeight: FontWeight.w600,
-                  fontSize: 14.sp,
                 ),
               ),
           ],
@@ -160,7 +158,6 @@ class CategoryChip extends StatelessWidget {
               category.name,
               style: theme.textTheme.bodySmall?.copyWith(
                 fontWeight: FontWeight.w500,
-                fontSize: 12.sp,
               ),
               textAlign: TextAlign.center,
               maxLines: 1,

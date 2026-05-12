@@ -28,10 +28,9 @@ class ExpenseHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme.titleMedium?.copyWith(
-      fontWeight: FontWeight.w700,
-      fontSize: 16.sp,
-    );
+    final textStyle = Theme.of(
+      context,
+    ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700);
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,7 +65,6 @@ class ExpenseDateLabel extends StatelessWidget {
           '$day/$month/${date.year}',
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
             color: Theme.of(context).colorScheme.onSurfaceVariant,
-            fontSize: 12.sp,
           ),
         ),
       ],

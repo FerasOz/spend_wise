@@ -35,7 +35,8 @@ class ExpenseTextField extends StatelessWidget {
       textInputAction: textInputAction,
       minLines: minLines,
       maxLines: maxLines,
-      style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 14.sp),
+      style: Theme.of(context).textTheme.bodyMedium,
+
       decoration: InputDecoration(
         labelText: labelText,
         hintText: hintText,

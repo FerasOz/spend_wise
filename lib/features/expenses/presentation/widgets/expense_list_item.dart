@@ -24,7 +24,9 @@ class ExpenseItem extends StatelessWidget {
       child: Card(
         elevation: 2,
         color: theme.colorScheme.surfaceContainerHighest,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.r)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24.r),
+        ),
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
           child: Row(
@@ -49,7 +51,6 @@ class ExpenseItem extends StatelessWidget {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.bodySmall?.copyWith(
-                          fontSize: 13.sp,
                           color: theme.colorScheme.onSurfaceVariant,
                         ),
                       ),

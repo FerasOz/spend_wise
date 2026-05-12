@@ -32,7 +32,8 @@ class CategoryItem extends StatelessWidget {
       tween: Tween(begin: 0.97, end: 1),
       duration: const Duration(milliseconds: 220),
       curve: Curves.easeOutCubic,
-      builder: (context, value, child) => Transform.scale(scale: value, child: child),
+      builder: (context, value, child) =>
+          Transform.scale(scale: value, child: child),
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: AppSpacing.lg.w,
@@ -81,7 +82,12 @@ class CategoryItem extends StatelessWidget {
                     ),
                   ),
                   SizedBox(width: 14.w),
-                  Expanded(child: _CategoryTextContent(category: category, summary: summary)),
+                  Expanded(
+                    child: _CategoryTextContent(
+                      category: category,
+                      summary: summary,
+                    ),
+                  ),
                   _CategoryActions(
                     category: category,
                     onEdit: onEdit,
@@ -118,9 +124,9 @@ class _CategoryTextContent extends StatelessWidget {
                 category.name,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.w700,
-                ),
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
               ),
             ),
             if (category.isDefault) ...[
@@ -132,9 +138,9 @@ class _CategoryTextContent extends StatelessWidget {
         SizedBox(height: 6.h),
         Text(
           spentLabel,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            fontWeight: FontWeight.w600,
-          ),
+          style: Theme.of(
+            context,
+          ).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
         ),
         SizedBox(height: 6.h),
         Text(
@@ -189,7 +195,7 @@ class _CategoryDefaultBadge extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primary,
-        borderRadius: BorderRadius.circular(AppRadius.pill),
+        borderRadius: BorderRadius.circular(AppRadius.pill.r),
       ),
       child: Text(
         'Default',
