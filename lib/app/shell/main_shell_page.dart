@@ -22,8 +22,6 @@ class MainShellPage extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text(currentDestination.title),
-            surfaceTintColor: Colors.transparent,
-            elevation: 0,
           ),
           drawer: const MainShellDrawer(),
           body: IndexedStack(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/app/routes/route_names.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 
 class MainShellDrawer extends StatelessWidget {
   const MainShellDrawer({super.key});
@@ -16,10 +17,7 @@ class MainShellDrawer extends StatelessWidget {
                 alignment: Alignment.bottomLeft,
                 child: Text(
                   'Spend Wise',
-                  style: TextStyle(
-                    fontSize: 24.sp,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  style: Theme.of(context).textTheme.headlineSmall,
                 ),
               ),
             ),
@@ -43,6 +41,10 @@ class MainShellDrawer extends StatelessWidget {
                   applicationLegalese: 'Smart Expense & Subscription Tracker',
                 );
               },
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg.w),
+              child: Divider(color: Theme.of(context).dividerColor),
             ),
           ],
         ),
