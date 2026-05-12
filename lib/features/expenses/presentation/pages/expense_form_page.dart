@@ -37,8 +37,6 @@ class ExpenseFormPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(isEditing ? 'Edit Expense' : 'Add Expense'),
-          surfaceTintColor: Colors.transparent,
-          elevation: 0,
         ),
         body: SafeArea(
           child: ResponsivePageContent(

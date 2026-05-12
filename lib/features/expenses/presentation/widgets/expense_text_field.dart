@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 
 class ExpenseTextField extends StatelessWidget {
   const ExpenseTextField({
@@ -34,12 +35,15 @@ class ExpenseTextField extends StatelessWidget {
       textInputAction: textInputAction,
       minLines: minLines,
       maxLines: maxLines,
-      style: TextStyle(fontSize: 14.sp),
+      style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 14.sp),
       decoration: InputDecoration(
         labelText: labelText,
         hintText: hintText,
         prefixText: prefixText,
-        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+        contentPadding: EdgeInsets.symmetric(
+          horizontal: AppSpacing.lg.w,
+          vertical: AppSpacing.lg.h,
+        ),
       ),
     );
   }

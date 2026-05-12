@@ -22,8 +22,6 @@ class ExpensesPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Expenses'),
-        surfaceTintColor: Colors.transparent,
-        elevation: 0,
       ),
       body: const SafeArea(child: _ExpensesPageBody()),
       floatingActionButton: FloatingActionButton(
