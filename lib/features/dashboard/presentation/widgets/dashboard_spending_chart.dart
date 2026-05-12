@@ -1,6 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_radius.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 
 import '../../domain/entities/spending_chart_point.dart';
 import 'dashboard_section_card.dart';
@@ -31,8 +33,8 @@ class DashboardSpendingChart extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Wrap(
-            spacing: 12.w,
-            runSpacing: 6.h,
+            spacing: AppSpacing.md.w,
+            runSpacing: AppSpacing.sm.h,
             children: [
               _ChartContextChip(
                 label: 'Total',
@@ -42,11 +44,11 @@ class DashboardSpendingChart extends StatelessWidget {
                 label: 'Highest day',
                 value: peakPoint == null
                     ? 'N/A'
-                    : '${peakPoint.label} • \$${peakPoint.total.toStringAsFixed(2)}',
+                    : '${peakPoint.label} - \$${peakPoint.total.toStringAsFixed(2)}',
               ),
             ],
           ),
-          SizedBox(height: 16.h),
+          SizedBox(height: AppSpacing.lg.h),
           if (totalSpending == 0)
             _ChartEmptyState(theme: theme)
           else
@@ -92,7 +94,7 @@ class DashboardSpendingChart extends StatelessWidget {
                           }
 
                           return Padding(
-                            padding: EdgeInsets.only(top: 8.h),
+                            padding: EdgeInsets.only(top: AppSpacing.sm.h),
                             child: Text(points[index].label),
                           );
                         },
@@ -110,10 +112,9 @@ class DashboardSpendingChart extends StatelessWidget {
                           final point = points[spot.x.toInt()];
                           return LineTooltipItem(
                             '${point.label}\n\$${point.total.toStringAsFixed(2)}',
-                            TextStyle(
+                            theme.textTheme.bodySmall!.copyWith(
                               color: theme.colorScheme.onInverseSurface,
                               fontWeight: FontWeight.w700,
-                              fontSize: 12.sp,
                             ),
                           );
                         }).toList(growable: false);
@@ -168,10 +169,13 @@ class _ChartContextChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSpacing.md.w,
+        vertical: AppSpacing.sm.h,
+      ),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primary.withAlpha(16),
-        borderRadius: BorderRadius.circular(999.r),
+        borderRadius: BorderRadius.circular(AppRadius.pill.r),
       ),
       child: RichText(
         text: TextSpan(
@@ -180,7 +184,9 @@ class _ChartContextChip extends StatelessWidget {
             TextSpan(text: '$label: '),
             TextSpan(
               text: value,
-              style: const TextStyle(fontWeight: FontWeight.w700),
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
             ),
           ],
         ),

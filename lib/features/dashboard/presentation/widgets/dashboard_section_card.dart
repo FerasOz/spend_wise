@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_colors.dart';
+import 'package:spend_wise/core/theme/app_radius.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 
 class DashboardSectionCard extends StatelessWidget {
   const DashboardSectionCard({
@@ -18,16 +21,16 @@ class DashboardSectionCard extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Container(
-      padding: EdgeInsets.all(18.w),
+      padding: EdgeInsets.all(AppSpacing.xl.w),
       decoration: BoxDecoration(
         color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(24.r),
+        borderRadius: BorderRadius.circular(AppRadius.xxl.r),
         border: Border.all(
           color: theme.colorScheme.outlineVariant.withAlpha(80),
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withAlpha(10),
+            color: AppColors.shadow,
             blurRadius: 24,
             offset: const Offset(0, 10),
           ),
@@ -43,7 +46,7 @@ class DashboardSectionCard extends StatelessWidget {
             ),
           ),
           if (subtitle != null) ...[
-            SizedBox(height: 4.h),
+            SizedBox(height: AppSpacing.xs.h),
             Text(
               subtitle!,
               style: theme.textTheme.bodySmall?.copyWith(
@@ -51,7 +54,7 @@ class DashboardSectionCard extends StatelessWidget {
               ),
             ),
           ],
-          SizedBox(height: 16.h),
+          SizedBox(height: AppSpacing.lg.h),
           child,
         ],
       ),

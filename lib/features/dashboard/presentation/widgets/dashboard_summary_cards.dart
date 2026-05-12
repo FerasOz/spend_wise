@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_radius.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 
 import '../../domain/entities/dashboard_summary.dart';
 import 'dashboard_section_card.dart';
@@ -51,8 +53,8 @@ class DashboardSummaryCards extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: crossAxisCount,
-              crossAxisSpacing: 12.w,
-              mainAxisSpacing: 12.h,
+              crossAxisSpacing: AppSpacing.md.w,
+              mainAxisSpacing: AppSpacing.md.h,
               mainAxisExtent: constraints.maxWidth > 720 ? 150.h : 164.h,
             ),
             itemBuilder: (context, index) =>
@@ -75,7 +77,7 @@ class _DashboardSummaryCard extends StatelessWidget {
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 220),
-      padding: EdgeInsets.all(18.w),
+      padding: EdgeInsets.all(AppSpacing.xl.w),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
@@ -85,8 +87,10 @@ class _DashboardSummaryCard extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(24.r),
-        border: Border.all(color: theme.colorScheme.outlineVariant.withAlpha(72)),
+        borderRadius: BorderRadius.circular(AppRadius.xxl.r),
+        border: Border.all(
+          color: theme.colorScheme.outlineVariant.withAlpha(72),
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -94,7 +98,7 @@ class _DashboardSummaryCard extends StatelessWidget {
           Icon(data.icon, color: theme.colorScheme.primary),
           const Spacer(),
           Text(data.title, style: theme.textTheme.bodyMedium),
-          SizedBox(height: 8.h),
+          SizedBox(height: AppSpacing.sm.h),
           Text(
             data.value,
             maxLines: 2,
@@ -104,7 +108,7 @@ class _DashboardSummaryCard extends StatelessWidget {
             ),
           ),
           if (data.subtitle != null) ...[
-            SizedBox(height: 4.h),
+            SizedBox(height: AppSpacing.xs.h),
             Text(
               data.subtitle!,
               style: theme.textTheme.bodySmall?.copyWith(
