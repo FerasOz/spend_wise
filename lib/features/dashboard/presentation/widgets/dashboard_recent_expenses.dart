@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 
 import '../../../../features/categories/domain/entities/category.dart';
 import '../../../../features/expenses/domain/entities/expense.dart';
@@ -33,7 +34,8 @@ class DashboardRecentExpenses extends StatelessWidget {
                 for (var index = 0; index < expenses.length; index++) ...[
                   ExpenseItem(
                     expense: expenses[index],
-                    category: categoriesById[expenses[index].categoryId] ??
+                    category:
+                        categoriesById[expenses[index].categoryId] ??
                         Category(
                           id: expenses[index].categoryId,
                           name: 'Unknown Category',
@@ -43,7 +45,8 @@ class DashboardRecentExpenses extends StatelessWidget {
                           createdAt: expenses[index].date,
                         ),
                   ),
-                  if (index != expenses.length - 1) SizedBox(height: 12.h),
+                  if (index != expenses.length - 1)
+                    SizedBox(height: AppSpacing.md.h),
                 ],
               ],
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 
 import '../../../categories/presentation/pages/category_list_page.dart';
 import '../cubit/dashboard_state.dart';
@@ -23,22 +24,22 @@ class DashboardOverview extends StatelessWidget {
       children: [
         Text(
           'Your money at a glance',
-          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-            fontWeight: FontWeight.w700,
-          ),
+          style: Theme.of(
+            context,
+          ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w700),
         ),
-        SizedBox(height: 8.h),
+        SizedBox(height: AppSpacing.sm.h),
         Text(
           'A clear look at your spending pace, category trends, and latest activity.',
           style: Theme.of(context).textTheme.bodyMedium,
         ),
-        SizedBox(height: 24.h),
+        SizedBox(height: AppSpacing.xxl.h),
         DashboardSummaryCards(summary: summary),
-        SizedBox(height: 24.h),
+        SizedBox(height: AppSpacing.xxl.h),
         DashboardInsights(insights: state.insights),
-        SizedBox(height: 24.h),
+        SizedBox(height: AppSpacing.xxl.h),
         DashboardSpendingChart(points: state.weeklySpending),
-        SizedBox(height: 24.h),
+        SizedBox(height: AppSpacing.xxl.h),
         LayoutBuilder(
           builder: (context, constraints) {
             if (constraints.maxWidth < 760) {
@@ -48,9 +49,9 @@ class DashboardOverview extends StatelessWidget {
                     categories: state.topCategories,
                     onCategoryTap: (spending) =>
                         CategoryListPage.openCategoryDetailsPage(
-                      context,
-                      spending.category,
-                    ),
+                          context,
+                          spending.category,
+                        ),
                   ),
                   SizedBox(height: 24.h),
                   DashboardRecentExpenses(
@@ -69,9 +70,9 @@ class DashboardOverview extends StatelessWidget {
                     categories: state.topCategories,
                     onCategoryTap: (spending) =>
                         CategoryListPage.openCategoryDetailsPage(
-                      context,
-                      spending.category,
-                    ),
+                          context,
+                          spending.category,
+                        ),
                   ),
                 ),
                 SizedBox(width: 24.w),

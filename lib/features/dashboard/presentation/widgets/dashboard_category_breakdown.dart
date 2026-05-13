@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 
 import '../../../../features/categories/presentation/utils/category_presentation_data.dart';
 import '../../domain/entities/category_spending.dart';
@@ -34,7 +35,8 @@ class DashboardCategoryBreakdown extends StatelessWidget {
                     spending: categories[index],
                     onTap: () => onCategoryTap(categories[index]),
                   ),
-                  if (index != categories.length - 1) SizedBox(height: 14.h),
+                  if (index != categories.length - 1)
+                    SizedBox(height: AppSpacing.spacing14.h),
                 ],
               ],
             ),
@@ -43,10 +45,7 @@ class DashboardCategoryBreakdown extends StatelessWidget {
 }
 
 class _CategoryBreakdownItem extends StatelessWidget {
-  const _CategoryBreakdownItem({
-    required this.spending,
-    required this.onTap,
-  });
+  const _CategoryBreakdownItem({required this.spending, required this.onTap});
 
   final CategorySpending spending;
   final VoidCallback onTap;
@@ -60,7 +59,7 @@ class _CategoryBreakdownItem extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(18.r),
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 4.h),
+        padding: EdgeInsets.symmetric(vertical: AppSpacing.xs.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -89,21 +88,21 @@ class _CategoryBreakdownItem extends StatelessWidget {
                 ),
                 Text(
                   percentageText,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    fontWeight: FontWeight.w700,
-                  ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w700),
                 ),
               ],
             ),
-            SizedBox(height: 10.h),
+            SizedBox(height: AppSpacing.spacing10.h),
             LinearProgressIndicator(
               value: spending.percentage.clamp(0, 1),
-              minHeight: 8.h,
+              minHeight: AppSpacing.sm.h,
               borderRadius: BorderRadius.circular(999),
               backgroundColor: categoryColor.withAlpha(24),
               valueColor: AlwaysStoppedAnimation<Color>(categoryColor),
             ),
-            SizedBox(height: 8.h),
+            SizedBox(height: AppSpacing.sm.h),
             Text(
               '\$${spending.amount.toStringAsFixed(2)} spent',
               style: Theme.of(context).textTheme.bodySmall,

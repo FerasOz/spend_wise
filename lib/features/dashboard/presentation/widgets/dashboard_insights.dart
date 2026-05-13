@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 
 import '../../domain/entities/dashboard_insight.dart';
 import 'dashboard_section_card.dart';
@@ -18,13 +19,15 @@ class DashboardInsights extends StatelessWidget {
       child: insights.isEmpty
           ? const DashboardSectionEmptyState(
               title: 'No insights yet',
-              message: 'Add a few more expenses to unlock smarter spending observations.',
+              message:
+                  'Add a few more expenses to unlock smarter spending observations.',
             )
           : Column(
               children: [
                 for (var index = 0; index < insights.length; index++) ...[
                   _InsightTile(insight: insights[index]),
-                  if (index != insights.length - 1) SizedBox(height: 12.h),
+                  if (index != insights.length - 1)
+                    SizedBox(height: AppSpacing.md.h),
                 ],
               ],
             ),
@@ -59,11 +62,11 @@ class _InsightTile extends StatelessWidget {
               children: [
                 Text(
                   insight.title,
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    fontWeight: FontWeight.w700,
-                  ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w700),
                 ),
-                SizedBox(height: 4.h),
+                SizedBox(height: AppSpacing.xs.h),
                 Text(insight.message),
               ],
             ),

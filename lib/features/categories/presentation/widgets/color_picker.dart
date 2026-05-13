@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_colors.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 import 'package:spend_wise/features/categories/presentation/utils/category_presentation_data.dart';
 
 class ColorPicker extends StatelessWidget {
@@ -23,14 +25,14 @@ class ColorPicker extends StatelessWidget {
             context,
           ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 12.h),
+        SizedBox(height: AppSpacing.md.h),
         GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 6,
-            mainAxisSpacing: 8.h,
-            crossAxisSpacing: 8.w,
+            mainAxisSpacing: AppSpacing.sm.h,
+            crossAxisSpacing: AppSpacing.sm.w,
           ),
           itemCount: CategoryPresentationData.colorPalette.length,
           itemBuilder: (context, index) {
@@ -47,7 +49,10 @@ class ColorPicker extends StatelessWidget {
                   color: color,
                   shape: BoxShape.circle,
                   border: isSelected
-                      ? Border.all(color: Colors.white, width: 3.w)
+                      ? Border.all(
+                          color: AppColors.white,
+                          width: AppSpacing.spacing3.w,
+                        )
                       : null,
                   boxShadow: isSelected
                       ? [

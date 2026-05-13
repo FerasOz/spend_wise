@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 
 class DashboardErrorState extends StatelessWidget {
   const DashboardErrorState({
@@ -20,17 +21,17 @@ class DashboardErrorState extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(Icons.error_outline, size: 44.sp),
-            SizedBox(height: 14.h),
+            SizedBox(height: AppSpacing.spacing14.h),
             Text(
               'Could not load your dashboard',
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.w700,
-              ),
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 8.h),
+            SizedBox(height: AppSpacing.sm.h),
             Text(message, textAlign: TextAlign.center),
-            SizedBox(height: 18.h),
+            SizedBox(height: AppSpacing.spacing18.h),
             FilledButton(onPressed: onRetry, child: const Text('Retry')),
           ],
         ),

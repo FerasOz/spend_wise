@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 import 'package:spend_wise/core/widgets/responsive_page_content.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -8,12 +9,10 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Settings'),
-      ),
+      appBar: AppBar(title: const Text('Settings')),
       body: ResponsivePageContent(
         child: ListView(
-          padding: EdgeInsets.symmetric(vertical: 8.h),
+          padding: EdgeInsets.symmetric(vertical: AppSpacing.sm.h),
           children: const [
             ListTile(
               leading: Icon(Icons.sync_outlined),

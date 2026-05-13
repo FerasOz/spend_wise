@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 import 'package:spend_wise/features/categories/presentation/utils/category_presentation_data.dart';
 
 class IconPicker extends StatelessWidget {
@@ -23,13 +24,13 @@ class IconPicker extends StatelessWidget {
             context,
           ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 12.h),
+        SizedBox(height: AppSpacing.md.h),
         GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 6,
-            mainAxisSpacing: 8.h,
+            mainAxisSpacing: AppSpacing.sm.h,
             crossAxisSpacing: 8.w,
           ),
           itemCount: CategoryPresentationData.iconNames.length,
