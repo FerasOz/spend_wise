@@ -11,6 +11,7 @@ import 'package:spend_wise/features/categories/presentation/pages/category_list_
 import 'package:spend_wise/features/dashboard/presentation/cubit/dashboard_cubit.dart';
 import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
 import 'package:spend_wise/features/expenses/presentation/cubit/expense_cubit.dart';
+import 'package:spend_wise/features/expenses/presentation/pages/expense_details_page.dart';
 import 'package:spend_wise/features/expenses/presentation/pages/expense_form_page.dart';
 import 'package:spend_wise/features/expenses/presentation/pages/expenses_page.dart';
 import 'package:spend_wise/features/settings/presentation/pages/settings_page.dart';
@@ -57,13 +58,30 @@ class AppRouters {
           builder: (_) => MultiBlocProvider(
             providers: [
               BlocProvider(
-                create: (context) => sl<ExpenseCubit>()..initializeForm(expense),
+                create: (context) =>
+                    sl<ExpenseCubit>()..initializeForm(expense),
               ),
               BlocProvider(
                 create: (context) => sl<CategoryCubit>()..loadCategories(),
               ),
             ],
             child: ExpenseFormPage(expense: expense),
+          ),
+        );
+
+      case RouteNames.expenseDetailsPage:
+        final args = settings.arguments as ExpenseDetailsRouteArgs;
+
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider.value(value: args.expenseCubit),
+              BlocProvider.value(value: args.categoryCubit),
+            ],
+            child: ExpenseDetailsPage(
+              expense: args.expense,
+              category: args.category,
+            ),
           ),
         );
 
@@ -88,8 +106,11 @@ class AppRouters {
         return MaterialPageRoute(
           builder: (_) => MultiBlocProvider(
             providers: [
-              BlocProvider(create: (context) => sl<CategoryCubit>()..initializeForm(category)),
-              BlocProvider(create: (context) => sl<ExpenseCubit>())
+              BlocProvider(
+                create: (context) =>
+                    sl<CategoryCubit>()..initializeForm(category),
+              ),
+              BlocProvider(create: (context) => sl<ExpenseCubit>()),
             ],
             child: const CategoryFormPage(),
           ),

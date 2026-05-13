@@ -7,11 +7,27 @@ import '../../domain/entities/expense.dart';
 import '../cubit/expense_cubit.dart';
 import '../cubit/expense_state.dart';
 import '../widgets/expense_form_content.dart';
+import '../../../categories/presentation/cubit/category_cubit.dart';
 
 class ExpenseFormPage extends StatelessWidget {
   const ExpenseFormPage({super.key, this.expense});
 
   final Expense? expense;
+
+  static Future<void> open(BuildContext context, {Expense? expense}) async {
+    context.read<ExpenseCubit>().initializeForm(expense);
+    await Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => MultiBlocProvider(
+          providers: [
+            BlocProvider.value(value: context.read<ExpenseCubit>()),
+            BlocProvider.value(value: context.read<CategoryCubit>()),
+          ],
+          child: ExpenseFormPage(expense: expense),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +51,7 @@ class ExpenseFormPage extends StatelessWidget {
         }
       },
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(isEditing ? 'Edit Expense' : 'Add Expense'),
-        ),
+        appBar: AppBar(title: Text(isEditing ? 'Edit Expense' : 'Add Expense')),
         body: SafeArea(
           child: ResponsivePageContent(
             child: SingleChildScrollView(

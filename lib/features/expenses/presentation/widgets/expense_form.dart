@@ -66,16 +66,20 @@ class ExpenseForm extends StatelessWidget {
         return;
       }
 
-      await onSubmit(
-        Expense(
-          id: DateTime.now().microsecondsSinceEpoch.toString(),
-          title: trimmedTitle,
-          amount: amountValue,
-          categoryId: trimmedCategoryId,
-          date: context.read<ExpenseCubit>().state.selectedDate,
-          note: note?.trim(),
-        ),
+      final savedExpense = Expense(
+        id: isEditing
+            ? initialExpense!.id
+            : DateTime.now().microsecondsSinceEpoch.toString(),
+        title: trimmedTitle,
+        amount: amountValue,
+        categoryId: trimmedCategoryId,
+        date: context.read<ExpenseCubit>().state.selectedDate,
+        note: note?.trim(),
+        createdAt: initialExpense?.createdAt ?? DateTime.now(),
+        updatedAt: DateTime.now(),
       );
+
+      await onSubmit(savedExpense);
     }
 
     return Form(
@@ -108,17 +112,16 @@ class ExpenseForm extends StatelessWidget {
             onSaved: (value) => note = value,
           ),
           SizedBox(height: 28.h),
-          _ExpenseSubmitSection(
-            isEditing: isEditing,
-            onSubmit: handleSubmit,
-          ),
+          _ExpenseSubmitSection(isEditing: isEditing, onSubmit: handleSubmit),
         ],
       ),
     );
   }
 
   void _showMessage(BuildContext context, String message) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
   }
 }
 

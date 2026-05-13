@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/base/requests_status.dart';
 import '../../domain/entities/expense.dart';
 import '../cubit/expense_cubit.dart';
 import '../pages/expenses_page.dart';
@@ -52,7 +53,19 @@ class ExpenseItemActions extends StatelessWidget {
     );
 
     if (confirmed == true && context.mounted) {
-      context.read<ExpenseCubit>().deleteExpense(expense.id);
+      await context.read<ExpenseCubit>().deleteExpense(expense.id);
+
+      if (!context.mounted) return;
+      final state = context.read<ExpenseCubit>().state;
+      if (state.submissionStatus == RequestsStatus.success) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Expense deleted successfully.')),
+        );
+      } else if (state.submissionErrorMessage != null) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(state.submissionErrorMessage!)));
+      }
     }
   }
 }
