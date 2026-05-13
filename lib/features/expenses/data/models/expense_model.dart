@@ -13,6 +13,8 @@ class ExpenseModel {
     required this.categoryId,
     required this.date,
     this.note,
+    this.createdAt,
+    this.updatedAt,
   });
 
   final String id;
@@ -21,6 +23,8 @@ class ExpenseModel {
   final String categoryId;
   final DateTime date;
   final String? note;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
 
   factory ExpenseModel.fromJson(Map<String, dynamic> json) =>
       _$ExpenseModelFromJson(json);
@@ -33,6 +37,8 @@ class ExpenseModel {
       categoryId: expense.categoryId,
       date: expense.date,
       note: expense.note,
+      createdAt: expense.createdAt,
+      updatedAt: expense.updatedAt,
     );
   }
 
@@ -46,6 +52,8 @@ class ExpenseModel {
       categoryId: categoryId,
       date: date,
       note: note,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
     );
   }
 }

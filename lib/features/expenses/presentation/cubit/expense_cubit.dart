@@ -46,6 +46,40 @@ class ExpenseCubit extends Cubit<ExpenseState> {
     emit(state.copyWith(selectedCategoryId: categoryId));
   }
 
+  void setSearchQuery(String query) {
+    emit(state.copyWith(searchQuery: query));
+  }
+
+  void setCategoryFilterId(String? categoryId) {
+    if (state.categoryFilterId == categoryId) return;
+    emit(state.copyWith(categoryFilterId: categoryId));
+  }
+
+  void setDateRange(DateTime? start, DateTime? end) {
+    emit(state.copyWith(filterStartDate: start, filterEndDate: end));
+  }
+
+  void clearDateFilters() {
+    emit(state.copyWith(clearDateFilters: true));
+  }
+
+  void setSortOption(ExpenseSortOption option) {
+    if (state.sortOption == option) return;
+    emit(state.copyWith(sortOption: option));
+  }
+
+  void clearAllFilters() {
+    emit(
+      state.copyWith(
+        searchQuery: '',
+        categoryFilterId: null,
+        filterStartDate: null,
+        filterEndDate: null,
+        sortOption: ExpenseSortOption.newest,
+      ),
+    );
+  }
+
   void resetExpenseForm() {
     initializeForm();
   }
@@ -116,22 +150,40 @@ class ExpenseCubit extends Cubit<ExpenseState> {
   }
 
   Future<void> deleteExpense(String id) async {
-    await _performSubmission(
-      action: () => _deleteExpense(id),
-      onSuccess: () {
-        emit(
-          state.copyWith(
-            expenses: _removeExpense(id),
-            expensesStatus: RequestsStatus.success,
-            submissionStatus: RequestsStatus.success,
-            clearSelectedCategoryId: true,
-            clearLoadErrorMessage: true,
-            clearSubmissionErrorMessage: true,
-          ),
-        );
-      },
-      fallbackErrorMessage: 'Failed to delete expense.',
+    final currentExpenses = state.expenses;
+    final updatedExpenses = _removeExpense(id);
+
+    emit(
+      state.copyWith(
+        expenses: updatedExpenses,
+        submissionStatus: RequestsStatus.loading,
+        clearSubmissionErrorMessage: true,
+      ),
     );
+
+    try {
+      await _deleteExpense(id);
+      emit(
+        state.copyWith(
+          expensesStatus: RequestsStatus.success,
+          submissionStatus: RequestsStatus.success,
+          clearLoadErrorMessage: true,
+          clearSubmissionErrorMessage: true,
+        ),
+      );
+    } catch (error, stackTrace) {
+      addError(error, stackTrace);
+      emit(
+        state.copyWith(
+          expenses: currentExpenses,
+          submissionStatus: RequestsStatus.error,
+          submissionErrorMessage: _mapErrorToMessage(
+            error,
+            fallback: 'Failed to delete expense.',
+          ),
+        ),
+      );
+    }
   }
 
   Future<List<Expense>> _fetchExpenses() {

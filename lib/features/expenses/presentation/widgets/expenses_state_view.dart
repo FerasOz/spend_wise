@@ -7,6 +7,7 @@ import '../../../../features/categories/domain/entities/category.dart';
 import '../../../../features/categories/presentation/cubit/category_cubit.dart';
 import '../../../../features/categories/presentation/cubit/category_state.dart';
 import '../../../../features/categories/presentation/pages/category_list_page.dart';
+import '../../domain/entities/expense.dart';
 import '../cubit/expense_cubit.dart';
 import '../cubit/expense_state.dart';
 import '../pages/expenses_page.dart';
@@ -30,6 +31,8 @@ class ExpensesStateView extends StatelessWidget {
         status: categoryState.categoriesStatus,
       ),
       builder: (context, categoryView) {
+        final filteredExpenses = _filterExpenses(state.expenses, state);
+
         if (_isInitialLoading) {
           return Center(
             child: SizedBox(
@@ -44,7 +47,8 @@ class ExpensesStateView extends StatelessWidget {
           return ExpensesFeedbackView(
             title: 'Could not load expenses',
             message:
-                state.loadErrorMessage ?? 'Something went wrong. Please try again.',
+                state.loadErrorMessage ??
+                'Something went wrong. Please try again.',
             actionLabel: 'Retry',
             onPressed: context.read<ExpenseCubit>().loadExpenses,
           );
@@ -54,12 +58,75 @@ class ExpensesStateView extends StatelessWidget {
           return _buildEmptyState(context, categoryView);
         }
 
-        return ExpensesListView(
-          expenses: state.expenses,
-          categories: categoryView.categories,
+        if (filteredExpenses.isEmpty) {
+          return ExpensesFeedbackView(
+            title: 'No matching expenses',
+            message:
+                'Try another search term or reset filters to find your expense.',
+            actionLabel: 'Clear filters',
+            onPressed: context.read<ExpenseCubit>().clearAllFilters,
+          );
+        }
+
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (_hasActiveFilters)
+              Padding(
+                padding: EdgeInsets.only(bottom: 12.h),
+                child: Text(
+                  '${filteredExpenses.length} expenses found',
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              ),
+            Expanded(
+              child: ExpensesListView(
+                expenses: filteredExpenses,
+                categories: categoryView.categories,
+              ),
+            ),
+          ],
         );
       },
     );
+  }
+
+  List<Expense> _filterExpenses(List<Expense> expenses, ExpenseState state) {
+    final loweredQuery = state.searchQuery.trim().toLowerCase();
+
+    return expenses
+        .where((expense) {
+          final matchesQuery =
+              loweredQuery.isEmpty ||
+              expense.title.toLowerCase().contains(loweredQuery);
+          final matchesCategory =
+              state.categoryFilterId == null ||
+              expense.categoryId == state.categoryFilterId;
+          final matchesStartDate =
+              state.filterStartDate == null ||
+              !expense.date.isBefore(state.filterStartDate!);
+          final matchesEndDate =
+              state.filterEndDate == null ||
+              !expense.date.isAfter(state.filterEndDate!);
+
+          return matchesQuery &&
+              matchesCategory &&
+              matchesStartDate &&
+              matchesEndDate;
+        })
+        .toList(growable: false)
+      ..sort((first, second) {
+        switch (state.sortOption) {
+          case ExpenseSortOption.newest:
+            return second.date.compareTo(first.date);
+          case ExpenseSortOption.oldest:
+            return first.date.compareTo(second.date);
+          case ExpenseSortOption.highestAmount:
+            return second.amount.compareTo(first.amount);
+          case ExpenseSortOption.lowestAmount:
+            return first.amount.compareTo(second.amount);
+        }
+      });
   }
 
   Widget _buildEmptyState(
@@ -103,6 +170,14 @@ class ExpensesStateView extends StatelessWidget {
   bool get _hasInitialLoadError {
     return state.expensesStatus == RequestsStatus.error &&
         state.expenses.isEmpty;
+  }
+
+  bool get _hasActiveFilters {
+    return state.searchQuery.isNotEmpty ||
+        state.categoryFilterId != null ||
+        state.filterStartDate != null ||
+        state.filterEndDate != null ||
+        state.sortOption != ExpenseSortOption.newest;
   }
 
   Future<void> _openAddExpensePage(BuildContext context) async {
