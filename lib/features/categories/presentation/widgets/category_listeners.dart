@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spend_wise/core/base/requests_status.dart';
+import 'package:spend_wise/core/theme/app_colors.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_state.dart';
 
@@ -23,7 +24,7 @@ class CategoryFormListener extends StatelessWidget {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.submissionErrorMessage!),
-              backgroundColor: Colors.red,
+              backgroundColor: AppColors.danger,
             ),
           );
           context.read<CategoryCubit>().clearMessages();
@@ -35,7 +36,7 @@ class CategoryFormListener extends StatelessWidget {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.userMessage!),
-              backgroundColor: Colors.green,
+              backgroundColor: AppColors.success,
             ),
           );
           context.read<CategoryCubit>().clearMessages();
@@ -75,7 +76,7 @@ class CategoryListListener extends StatelessWidget {
           messenger.showSnackBar(
             SnackBar(
               content: Text(state.deletionErrorMessage!),
-              backgroundColor: Colors.red,
+              backgroundColor: AppColors.danger,
             ),
           );
           context.read<CategoryCubit>().clearMessages();
@@ -87,7 +88,7 @@ class CategoryListListener extends StatelessWidget {
           messenger.showSnackBar(
             SnackBar(
               content: Text(state.userMessage!),
-              backgroundColor: Colors.green,
+              backgroundColor: AppColors.success,
             ),
           );
           context.read<CategoryCubit>().clearMessages();

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/core/base/requests_status.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
 import 'package:spend_wise/core/widgets/category_badge.dart';
 
@@ -34,7 +35,7 @@ class CategorySelector extends StatelessWidget {
 
     if (status == RequestsStatus.loading && categories.isEmpty) {
       return Container(
-        padding: EdgeInsets.all(24.w),
+        padding: EdgeInsets.all(AppSpacing.xxl.w),
         decoration: BoxDecoration(
           color: theme.colorScheme.surfaceContainerHighest.withAlpha(
             (0.3 * 255).round(),
@@ -55,7 +56,7 @@ class CategorySelector extends StatelessWidget {
           borderRadius: BorderRadius.circular(12.r),
           border: Border.all(color: theme.colorScheme.outlineVariant),
         ),
-        padding: EdgeInsets.all(24.w),
+        padding: EdgeInsets.all(AppSpacing.xxl.w),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -64,7 +65,7 @@ class CategorySelector extends StatelessWidget {
               size: 40.sp,
               color: theme.colorScheme.onSurfaceVariant,
             ),
-            SizedBox(height: 12.h),
+            SizedBox(height: AppSpacing.md.h),
             Text(
               emptyStateMessage,
               style: theme.textTheme.bodyMedium?.copyWith(
@@ -74,7 +75,7 @@ class CategorySelector extends StatelessWidget {
             ),
             if (emptyStateActionLabel != null &&
                 onEmptyStateActionPressed != null) ...[
-              SizedBox(height: 16.h),
+              SizedBox(height: AppSpacing.lg.h),
               OutlinedButton.icon(
                 onPressed: onEmptyStateActionPressed,
                 icon: const Icon(Icons.add_circle_outline),
@@ -95,14 +96,14 @@ class CategorySelector extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: 12.h),
+        SizedBox(height: AppSpacing.md.h),
         GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
-            mainAxisSpacing: 12.h,
-            crossAxisSpacing: 12.w,
+            mainAxisSpacing: AppSpacing.md.h,
+            crossAxisSpacing: AppSpacing.md.w,
             childAspectRatio: 0.85,
           ),
           itemCount: sortedCategories.length,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 import 'package:spend_wise/core/widgets/responsive_page_content.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
@@ -32,7 +33,7 @@ class CategoryListPage extends StatelessWidget {
       ),
       body: ResponsivePageContent(
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 8.h),
+          padding: EdgeInsets.symmetric(vertical: AppSpacing.sm.h),
           child: content,
         ),
       ),

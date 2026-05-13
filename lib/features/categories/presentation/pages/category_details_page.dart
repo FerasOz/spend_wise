@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 
 import '../../../../core/base/requests_status.dart';
 import '../../../../features/categories/domain/entities/category.dart';
@@ -22,16 +23,19 @@ class CategoryDetailsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Category Details')),
       body: BlocSelector<ExpenseCubit, ExpenseState, _CategoryDetailsData>(
-        selector: (state) => _CategoryDetailsData.fromState(
-          state: state,
-          category: category,
-        ),
+        selector: (state) =>
+            _CategoryDetailsData.fromState(state: state, category: category),
         builder: (context, data) {
           return CustomScrollView(
             slivers: [
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(20.w, 16.h, 20.w, 8.h),
+                  padding: EdgeInsets.fromLTRB(
+                    AppSpacing.spacing20.w,
+                    AppSpacing.lg.h,
+                    AppSpacing.spacing20.w,
+                    AppSpacing.sm.h,
+                  ),
                   child: CategoryDetailsHeader(
                     category: category,
                     color: data.color,
@@ -40,7 +44,10 @@ class CategoryDetailsPage extends StatelessWidget {
               ),
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: AppSpacing.spacing20.w,
+                    vertical: AppSpacing.sm.h,
+                  ),
                   child: CategoryDetailsStats(
                     summary: data.summary,
                     color: data.color,
@@ -78,7 +85,8 @@ class _CategoryDetailsData {
 
     return _CategoryDetailsData(
       color: Color(category.color),
-      summary: CategoryExpenseSummary.buildByCategoryId(expenses)[category.id] ??
+      summary:
+          CategoryExpenseSummary.buildByCategoryId(expenses)[category.id] ??
           CategoryExpenseSummary.empty,
       expensesStatus: state.expensesStatus,
       expenses: expenses,

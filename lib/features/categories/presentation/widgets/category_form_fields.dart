@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/core/base/requests_status.dart';
+import 'package:spend_wise/core/theme/app_colors.dart';
+import 'package:spend_wise/core/theme/app_radius.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_state.dart';
 import 'package:spend_wise/features/categories/presentation/utils/category_presentation_data.dart';
@@ -27,7 +30,7 @@ class CategoryNameField extends StatelessWidget {
             context,
           ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 8.h),
+        SizedBox(height: AppSpacing.sm.h),
         TextFormField(
           key: ValueKey('category-name-$formVersion'),
           initialValue: initialValue,
@@ -36,7 +39,7 @@ class CategoryNameField extends StatelessWidget {
           decoration: InputDecoration(
             hintText: 'Enter category name',
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8.r),
+              borderRadius: BorderRadius.circular(AppRadius.sm.r),
             ),
             prefixIcon: const Icon(Icons.label),
           ),
@@ -75,15 +78,15 @@ class CategoryPreviewCard extends StatelessWidget {
             height: 80.w,
             decoration: BoxDecoration(
               color: Color(state.selectedColor),
-              borderRadius: BorderRadius.circular(16.r),
+              borderRadius: BorderRadius.circular(AppRadius.lg.r),
             ),
             child: Icon(
               CategoryPresentationData.iconFor(state.selectedIcon),
-              color: Colors.white,
+              color: AppColors.white,
               size: 40.sp,
             ),
           ),
-          SizedBox(height: 12.h),
+          SizedBox(height: AppSpacing.md.h),
           AnimatedSwitcher(
             duration: const Duration(milliseconds: 180),
             child: Text(
@@ -120,7 +123,7 @@ class CategorySubmitButton extends StatelessWidget {
             ? null
             : onPressed,
         style: FilledButton.styleFrom(
-          padding: EdgeInsets.symmetric(vertical: 12.h),
+          padding: EdgeInsets.symmetric(vertical: AppSpacing.md.h),
         ),
         child: Text(
           submissionStatus == RequestsStatus.loading
@@ -129,7 +132,7 @@ class CategorySubmitButton extends StatelessWidget {
               ? 'Update Category'
               : 'Add Category',
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
-            color: Colors.white,
+            color: AppColors.white,
             fontWeight: FontWeight.bold,
           ),
         ),
