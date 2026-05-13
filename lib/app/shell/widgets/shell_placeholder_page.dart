@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 
 class ShellPlaceholderPage extends StatelessWidget {
   const ShellPlaceholderPage({
@@ -26,13 +27,13 @@ class ShellPlaceholderPage extends StatelessWidget {
               size: 56.r,
               color: Theme.of(context).colorScheme.primary,
             ),
-            SizedBox(height: 16.h),
+            SizedBox(height: AppSpacing.lg.h),
             Text(
               title,
               style: Theme.of(context).textTheme.headlineSmall,
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 8.h),
+            SizedBox(height: AppSpacing.sm.h),
             Text(
               description,
               style: Theme.of(context).textTheme.bodyMedium,

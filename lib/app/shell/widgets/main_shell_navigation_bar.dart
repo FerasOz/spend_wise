@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/app/shell/models/shell_destination.dart';
+import 'package:spend_wise/core/theme/app_colors.dart';
 import 'package:spend_wise/core/theme/app_spacing.dart';
 
 class MainShellNavigationBar extends StatelessWidget {
@@ -44,10 +45,10 @@ class MainShellNavigationBar extends StatelessWidget {
         indicatorColor: colorScheme.primaryContainer,
       ),
       child: NavigationBar(
-        height: 76.h,
+        height: AppSpacing.spacing76.h,
         selectedIndex: currentIndex,
         labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
-        surfaceTintColor: Colors.transparent,
+        surfaceTintColor: AppColors.transparent,
         animationDuration: const Duration(milliseconds: 260),
         onDestinationSelected: onDestinationSelected,
         destinations: destinations
