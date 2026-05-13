@@ -16,4 +16,9 @@ class AppColors {
   static const Color success = Color(0xFF1F9D63);
   static const Color danger = Color(0xFFD64545);
   static const Color shadow = Color(0x1A000000);
+
+  static const Color white = Colors.white;
+  static const Color grey = Colors.grey;
+  static const Color black38 = Colors.black38;
+  static const Color transparent = Colors.transparent;
 }
