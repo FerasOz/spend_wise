@@ -55,19 +55,25 @@ class _ExpensesPageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ExpenseCubit, ExpenseState>(
-      builder: (context, state) {
-        return ResponsivePageContent(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const ExpenseFilterBar(),
-              SizedBox(height: 16.h),
-              Expanded(child: ExpensesStateView(state: state)),
-            ],
+    return ResponsivePageContent(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const ExpenseFilterBar(),
+          SizedBox(height: 16.h),
+          Expanded(
+            child: BlocBuilder<ExpenseCubit, ExpenseState>(
+              buildWhen: (previous, current) =>
+                  previous.expensesStatus != current.expensesStatus ||
+                  previous.expenses != current.expenses ||
+                  previous.visibleExpenses != current.visibleExpenses ||
+                  previous.filter != current.filter ||
+                  previous.loadErrorMessage != current.loadErrorMessage,
+              builder: (context, state) => ExpensesStateView(state: state),
+            ),
           ),
-        );
-      },
+        ],
+      ),
     );
   }
 }

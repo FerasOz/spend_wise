@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/base/requests_status.dart';
 import '../../domain/entities/expense.dart';
-import '../cubit/expense_cubit.dart';
 import '../pages/expenses_page.dart';
+import '../utils/expense_management_flow.dart';
 
 class ExpenseItemActions extends StatelessWidget {
   const ExpenseItemActions({required this.expense, super.key});
@@ -28,44 +26,10 @@ class ExpenseItemActions extends StatelessWidget {
 
   Future<void> _handleAction(BuildContext context, String action) async {
     if (action == 'edit') {
-      ExpensesPage.openExpenseFormPage(context, expense: expense);
+      await ExpensesPage.openExpenseFormPage(context, expense: expense);
       return;
     }
 
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (dialogContext) {
-        return AlertDialog(
-          title: const Text('Delete expense'),
-          content: const Text('Are you sure you want to delete this expense?'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(dialogContext).pop(false),
-              child: const Text('Cancel'),
-            ),
-            TextButton(
-              onPressed: () => Navigator.of(dialogContext).pop(true),
-              child: const Text('Delete'),
-            ),
-          ],
-        );
-      },
-    );
-
-    if (confirmed == true && context.mounted) {
-      await context.read<ExpenseCubit>().deleteExpense(expense.id);
-
-      if (!context.mounted) return;
-      final state = context.read<ExpenseCubit>().state;
-      if (state.submissionStatus == RequestsStatus.success) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Expense deleted successfully.')),
-        );
-      } else if (state.submissionErrorMessage != null) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text(state.submissionErrorMessage!)));
-      }
-    }
+    await ExpenseManagementFlow.deleteExpense(context, expenseId: expense.id);
   }
 }

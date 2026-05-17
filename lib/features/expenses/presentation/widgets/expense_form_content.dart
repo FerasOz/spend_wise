@@ -37,6 +37,7 @@ class ExpenseFormContent extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ExpenseFormIntro(isEditing: isEditing),
+            SizedBox(height: 24),
             ExpenseForm(
               categories: sortedCategories,
               categoriesStatus: categoryView.status,

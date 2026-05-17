@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../app/routes/route_names.dart';
 import '../../../../features/categories/domain/entities/category.dart';
-import '../../../../features/categories/presentation/cubit/category_cubit.dart';
 import '../../domain/entities/expense.dart';
 import '../pages/expense_details_page.dart';
-import '../cubit/expense_cubit.dart';
 import 'expense_item_actions.dart';
 import 'expense_item_category_row.dart';
 import 'expense_item_supporting.dart';
@@ -23,15 +19,7 @@ class ExpenseItem extends StatelessWidget {
     final theme = Theme.of(context);
 
     return InkWell(
-      onTap: () => Navigator.of(context).pushNamed(
-        RouteNames.expenseDetailsPage,
-        arguments: ExpenseDetailsRouteArgs(
-          expense: expense,
-          category: category,
-          expenseCubit: context.read<ExpenseCubit>(),
-          categoryCubit: context.read<CategoryCubit>(),
-        ),
-      ),
+      onTap: () => ExpenseDetailsPage.open(context, expenseId: expense.id),
       borderRadius: BorderRadius.circular(24.r),
       child: Card(
         elevation: 2,

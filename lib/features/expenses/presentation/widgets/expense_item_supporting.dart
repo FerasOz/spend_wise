@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/utils/app_formatters.dart';
 import '../../domain/entities/expense.dart';
 
 class ExpenseLeadingAccent extends StatelessWidget {
@@ -37,7 +38,7 @@ class ExpenseHeader extends StatelessWidget {
       children: [
         Expanded(child: Text(expense.title, style: textStyle)),
         SizedBox(width: 10.w),
-        Text('\$${expense.amount.toStringAsFixed(2)}', style: textStyle),
+        Text(AppFormatters.currency(expense.amount), style: textStyle),
       ],
     );
   }
@@ -50,9 +51,6 @@ class ExpenseDateLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final month = date.month.toString().padLeft(2, '0');
-    final day = date.day.toString().padLeft(2, '0');
-
     return Row(
       children: [
         Icon(
@@ -62,7 +60,7 @@ class ExpenseDateLabel extends StatelessWidget {
         ),
         SizedBox(width: 6.w),
         Text(
-          '$day/$month/${date.year}',
+          AppFormatters.shortDate(date),
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
             color: Theme.of(context).colorScheme.onSurfaceVariant,
           ),

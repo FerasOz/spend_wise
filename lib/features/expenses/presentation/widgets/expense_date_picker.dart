@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/utils/app_formatters.dart';
+
 class ExpenseDatePicker extends StatelessWidget {
   const ExpenseDatePicker({
     required this.selectedDate,
@@ -26,7 +28,7 @@ class ExpenseDatePicker extends StatelessWidget {
           ),
         ),
         child: Text(
-          _formatDate(selectedDate),
+          AppFormatters.shortDate(selectedDate),
           style: Theme.of(context).textTheme.bodyMedium,
         ),
       ),
@@ -44,11 +46,5 @@ class ExpenseDatePicker extends StatelessWidget {
     if (pickedDate != null) {
       onDateSelected(pickedDate);
     }
-  }
-
-  String _formatDate(DateTime date) {
-    final month = date.month.toString().padLeft(2, '0');
-    final day = date.day.toString().padLeft(2, '0');
-    return '${date.year}-$month-$day';
   }
 }
