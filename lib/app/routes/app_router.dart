@@ -78,10 +78,7 @@ class AppRouters {
               BlocProvider.value(value: args.expenseCubit),
               BlocProvider.value(value: args.categoryCubit),
             ],
-            child: ExpenseDetailsPage(
-              expense: args.expense,
-              category: args.category,
-            ),
+            child: ExpenseDetailsPage(expenseId: args.expenseId),
           ),
         );
 

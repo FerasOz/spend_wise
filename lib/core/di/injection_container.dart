@@ -26,6 +26,7 @@ import '../../features/expenses/domain/repositories/expense_repository.dart';
 import '../../features/expenses/domain/usecases/add_expense.dart';
 import '../../features/expenses/domain/usecases/delete_expense.dart';
 import '../../features/expenses/domain/usecases/get_expenses.dart';
+import '../../features/expenses/domain/usecases/get_visible_expenses.dart';
 import '../../features/expenses/domain/usecases/update_expense.dart';
 import '../../features/expenses/presentation/cubit/expense_cubit.dart';
 
@@ -176,6 +177,10 @@ Future<void> setupDependencies() async {
     );
   }
 
+  if (!sl.isRegistered<GetVisibleExpenses>()) {
+    sl.registerLazySingleton<GetVisibleExpenses>(() => const GetVisibleExpenses());
+  }
+
   if (!sl.isRegistered<ExpenseCubit>()) {
     sl.registerFactory<ExpenseCubit>(
       () => ExpenseCubit(
@@ -183,6 +188,7 @@ Future<void> setupDependencies() async {
         getExpenses: sl<GetExpenses>(),
         updateExpense: sl<UpdateExpense>(),
         deleteExpense: sl<DeleteExpense>(),
+        getVisibleExpenses: sl<GetVisibleExpenses>(),
       ),
     );
   }
