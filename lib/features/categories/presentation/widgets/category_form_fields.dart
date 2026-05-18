@@ -122,19 +122,12 @@ class CategorySubmitButton extends StatelessWidget {
         onPressed: submissionStatus == RequestsStatus.loading
             ? null
             : onPressed,
-        style: FilledButton.styleFrom(
-          padding: EdgeInsets.symmetric(vertical: AppSpacing.md.h),
-        ),
         child: Text(
           submissionStatus == RequestsStatus.loading
               ? 'Saving...'
               : isEditing
               ? 'Update Category'
               : 'Add Category',
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-            color: AppColors.white,
-            fontWeight: FontWeight.bold,
-          ),
         ),
       ),
     );

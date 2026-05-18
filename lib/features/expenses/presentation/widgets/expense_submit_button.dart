@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/base/requests_status.dart';
 
@@ -23,18 +22,12 @@ class ExpenseSubmitButton extends StatelessWidget {
       width: double.infinity,
       child: FilledButton(
         onPressed: submissionStatus == RequestsStatus.loading ? null : onSubmit,
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 14.h),
-          child: Text(
-            submissionStatus == RequestsStatus.loading
-                ? 'Saving...'
-                : isEditing
-                ? 'Update expense'
-                : 'Save expense',
-            style: Theme.of(
-              context,
-            ).textTheme.bodyLarge?.copyWith(color: Colors.white),
-          ),
+        child: Text(
+          submissionStatus == RequestsStatus.loading
+              ? 'Saving...'
+              : isEditing
+              ? 'Update expense'
+              : 'Save expense',
         ),
       ),
     );
