@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
-import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
+
+import '../../../../core/widgets/responsive_page_content.dart';
+import '../../../categories/presentation/cubit/category_cubit.dart';
+import '../../domain/entities/expense.dart';
 import '../cubit/expense_cubit.dart';
+import '../cubit/expense_filter_cubit.dart';
+import '../cubit/expense_filter_state.dart';
 import '../cubit/expense_state.dart';
 import 'expense_form_page.dart';
-import '../../../../core/widgets/responsive_page_content.dart';
 import '../widgets/expense_filter_bar.dart';
 import '../widgets/expenses_state_view.dart';
 
@@ -17,13 +20,24 @@ class ExpensesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final body = MultiBlocListener(
+      listeners: [
+        BlocListener<ExpenseCubit, ExpenseState>(
+          listenWhen: (previous, current) => previous.expenses != current.expenses,
+          listener: (context, state) =>
+              context.read<ExpenseFilterCubit>().syncExpenses(state.expenses),
+        ),
+      ],
+      child: const SafeArea(child: _ExpensesPageBody()),
+    );
+
     if (!showScaffold) {
-      return const SafeArea(child: _ExpensesPageBody());
+      return body;
     }
 
     return Scaffold(
       appBar: AppBar(title: const Text('Expenses')),
-      body: const SafeArea(child: _ExpensesPageBody()),
+      body: body,
       floatingActionButton: FloatingActionButton(
         onPressed: () => openExpenseFormPage(context),
         child: const Icon(Icons.add),
@@ -62,14 +76,24 @@ class _ExpensesPageBody extends StatelessWidget {
           const ExpenseFilterBar(),
           SizedBox(height: 16.h),
           Expanded(
-            child: BlocBuilder<ExpenseCubit, ExpenseState>(
+            child: BlocBuilder<ExpenseFilterCubit, ExpenseFilterState>(
               buildWhen: (previous, current) =>
-                  previous.expensesStatus != current.expensesStatus ||
-                  previous.expenses != current.expenses ||
                   previous.visibleExpenses != current.visibleExpenses ||
-                  previous.filter != current.filter ||
-                  previous.loadErrorMessage != current.loadErrorMessage,
-              builder: (context, state) => ExpensesStateView(state: state),
+                  previous.filter != current.filter,
+              builder: (context, filterState) {
+                return BlocBuilder<ExpenseCubit, ExpenseState>(
+                  buildWhen: (previous, current) =>
+                      previous.expensesStatus != current.expensesStatus ||
+                      previous.expenses != current.expenses ||
+                      previous.loadErrorMessage != current.loadErrorMessage,
+                  builder: (context, expenseState) {
+                    return ExpensesStateView(
+                      expenseState: expenseState,
+                      filterState: filterState,
+                    );
+                  },
+                );
+              },
             ),
           ),
         ],

@@ -8,15 +8,22 @@ import '../../../../features/categories/presentation/cubit/category_cubit.dart';
 import '../../../../features/categories/presentation/cubit/category_state.dart';
 import '../../../../features/categories/presentation/pages/category_list_page.dart';
 import '../cubit/expense_cubit.dart';
+import '../cubit/expense_filter_cubit.dart';
+import '../cubit/expense_filter_state.dart';
 import '../cubit/expense_state.dart';
 import '../pages/expenses_page.dart';
 import 'expenses_feedback_view.dart';
 import 'expenses_list_view.dart';
 
 class ExpensesStateView extends StatelessWidget {
-  const ExpensesStateView({required this.state, super.key});
+  const ExpensesStateView({
+    required this.expenseState,
+    required this.filterState,
+    super.key,
+  });
 
-  final ExpenseState state;
+  final ExpenseState expenseState;
+  final ExpenseFilterState filterState;
 
   @override
   Widget build(BuildContext context) {
@@ -29,40 +36,43 @@ class ExpensesStateView extends StatelessWidget {
         if (_hasInitialError) {
           return ExpensesFeedbackView(
             title: 'Could not load expenses',
-            message: state.loadErrorMessage ?? 'Something went wrong. Please try again.',
+            message:
+                expenseState.loadErrorMessage ??
+                'Something went wrong. Please try again.',
             actionLabel: 'Retry',
             onPressed: context.read<ExpenseCubit>().loadExpenses,
           );
         }
-        if (state.expenses.isEmpty) {
+        if (expenseState.expenses.isEmpty) {
           return _ExpensesEmptyState(
             categoriesStatus: categoryState.categoriesStatus,
             hasCategories: categoryState.categories.isNotEmpty,
           );
         }
-        if (state.visibleExpenses.isEmpty) {
+        if (filterState.visibleExpenses.isEmpty) {
           return ExpensesFeedbackView(
             title: 'No matching expenses',
-            message: 'Try another search term or reset filters to find your expense.',
+            message:
+                'Try another search term or update your filters to find expenses.',
             actionLabel: 'Clear filters',
-            onPressed: context.read<ExpenseCubit>().clearAllFilters,
+            onPressed: context.read<ExpenseFilterCubit>().clearAll,
           );
         }
 
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (state.hasActiveFilters)
+            if (filterState.hasActiveFilters)
               Padding(
                 padding: EdgeInsets.only(bottom: AppSpacing.md.h),
                 child: Text(
-                  '${state.visibleExpenses.length} expenses found',
+                  '${filterState.visibleExpenses.length} expenses found',
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ),
             Expanded(
               child: ExpensesListView(
-                expenses: state.visibleExpenses,
+                expenses: filterState.visibleExpenses,
                 categories: categoryState.categories,
               ),
             ),
@@ -73,11 +83,13 @@ class ExpensesStateView extends StatelessWidget {
   }
 
   bool get _isInitialLoading {
-    return state.expensesStatus == RequestsStatus.loading && state.expenses.isEmpty;
+    return expenseState.expensesStatus == RequestsStatus.loading &&
+        expenseState.expenses.isEmpty;
   }
 
   bool get _hasInitialError {
-    return state.expensesStatus == RequestsStatus.error && state.expenses.isEmpty;
+    return expenseState.expensesStatus == RequestsStatus.error &&
+        expenseState.expenses.isEmpty;
   }
 }
 
