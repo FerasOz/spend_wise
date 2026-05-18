@@ -35,6 +35,9 @@ class AppTheme {
       surface: surface,
     );
     final textTheme = AppTextStyles.buildTextTheme(colorScheme);
+    final buttonShape = RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(AppRadius.lg.r),
+    );
     final outlineBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(AppRadius.lg.r),
       borderSide: BorderSide(color: colorScheme.outlineVariant),
@@ -82,6 +85,53 @@ class AppTheme {
         ),
         focusedErrorBorder: outlineBorder.copyWith(
           borderSide: BorderSide(color: colorScheme.error, width: 1.5),
+        ),
+      ),
+      filledButtonTheme: FilledButtonThemeData(
+        style: FilledButton.styleFrom(
+          minimumSize: Size(0, 54.h),
+          padding: EdgeInsets.symmetric(
+            horizontal: AppSpacing.xxl.w,
+            vertical: AppSpacing.md.h,
+          ),
+          shape: buttonShape,
+          textStyle: textTheme.titleMedium?.copyWith(
+            color: colorScheme.onPrimary,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+      ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          minimumSize: Size(0, 54.h),
+          padding: EdgeInsets.symmetric(
+            horizontal: AppSpacing.xxl.w,
+            vertical: AppSpacing.md.h,
+          ),
+          shape: buttonShape,
+          textStyle: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
+          side: BorderSide(color: colorScheme.outlineVariant),
+        ),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          minimumSize: Size(0, 54.h),
+          padding: EdgeInsets.symmetric(
+            horizontal: AppSpacing.xxl.w,
+            vertical: AppSpacing.md.h,
+          ),
+          shape: buttonShape,
+          textStyle: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
+        ),
+      ),
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          padding: EdgeInsets.symmetric(
+            horizontal: AppSpacing.lg.w,
+            vertical: AppSpacing.sm.h,
+          ),
+          shape: buttonShape,
+          textStyle: textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
         ),
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
