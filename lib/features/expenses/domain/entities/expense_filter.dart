@@ -6,6 +6,8 @@ class ExpenseFilter {
     this.categoryId,
     this.startDate,
     this.endDate,
+    this.minAmount,
+    this.maxAmount,
     this.sortOption = ExpenseSortOption.newest,
   });
 
@@ -13,6 +15,8 @@ class ExpenseFilter {
   final String? categoryId;
   final DateTime? startDate;
   final DateTime? endDate;
+  final double? minAmount;
+  final double? maxAmount;
   final ExpenseSortOption sortOption;
 
   ExpenseFilter copyWith({
@@ -20,15 +24,20 @@ class ExpenseFilter {
     String? categoryId,
     DateTime? startDate,
     DateTime? endDate,
+    double? minAmount,
+    double? maxAmount,
     ExpenseSortOption? sortOption,
     bool clearCategoryId = false,
     bool clearDateRange = false,
+    bool clearAmountRange = false,
   }) {
     return ExpenseFilter(
       searchQuery: searchQuery ?? this.searchQuery,
       categoryId: clearCategoryId ? null : (categoryId ?? this.categoryId),
       startDate: clearDateRange ? null : (startDate ?? this.startDate),
       endDate: clearDateRange ? null : (endDate ?? this.endDate),
+      minAmount: clearAmountRange ? null : (minAmount ?? this.minAmount),
+      maxAmount: clearAmountRange ? null : (maxAmount ?? this.maxAmount),
       sortOption: sortOption ?? this.sortOption,
     );
   }
@@ -38,6 +47,8 @@ class ExpenseFilter {
         categoryId != null ||
         startDate != null ||
         endDate != null ||
+        minAmount != null ||
+        maxAmount != null ||
         sortOption != ExpenseSortOption.newest;
   }
 
@@ -52,6 +63,8 @@ class ExpenseFilter {
         other.categoryId == categoryId &&
         other.startDate == startDate &&
         other.endDate == endDate &&
+        other.minAmount == minAmount &&
+        other.maxAmount == maxAmount &&
         other.sortOption == sortOption;
   }
 
@@ -61,6 +74,8 @@ class ExpenseFilter {
     categoryId,
     startDate,
     endDate,
+    minAmount,
+    maxAmount,
     sortOption,
   );
 }

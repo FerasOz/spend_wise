@@ -21,11 +21,17 @@ class GetVisibleExpenses {
               filter.startDate == null || !expense.date.isBefore(filter.startDate!);
           final matchesEndDate =
               filter.endDate == null || !expense.date.isAfter(filter.endDate!);
+          final matchesMinAmount =
+              filter.minAmount == null || expense.amount >= filter.minAmount!;
+          final matchesMaxAmount =
+              filter.maxAmount == null || expense.amount <= filter.maxAmount!;
 
           return matchesQuery &&
               matchesCategory &&
               matchesStartDate &&
-              matchesEndDate;
+              matchesEndDate &&
+              matchesMinAmount &&
+              matchesMaxAmount;
         })
         .toList(growable: false)
       ..sort((first, second) {
