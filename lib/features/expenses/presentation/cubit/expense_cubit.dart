@@ -2,11 +2,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/base/requests_status.dart';
 import '../../domain/entities/expense.dart';
-import '../../domain/entities/expense_filter.dart';
 import '../../domain/usecases/add_expense.dart';
 import '../../domain/usecases/delete_expense.dart';
 import '../../domain/usecases/get_expenses.dart';
-import '../../domain/usecases/get_visible_expenses.dart';
 import '../../domain/usecases/update_expense.dart';
 import 'expense_state.dart';
 
@@ -16,19 +14,16 @@ class ExpenseCubit extends Cubit<ExpenseState> {
     required GetExpenses getExpenses,
     required UpdateExpense updateExpense,
     required DeleteExpense deleteExpense,
-    required GetVisibleExpenses getVisibleExpenses,
   }) : _addExpense = addExpense,
        _getExpenses = getExpenses,
        _updateExpense = updateExpense,
        _deleteExpense = deleteExpense,
-       _getVisibleExpenses = getVisibleExpenses,
        super(ExpenseState());
 
   final AddExpense _addExpense;
   final GetExpenses _getExpenses;
   final UpdateExpense _updateExpense;
   final DeleteExpense _deleteExpense;
-  final GetVisibleExpenses _getVisibleExpenses;
 
   void initializeForm([Expense? expense]) {
     emit(
@@ -51,39 +46,6 @@ class ExpenseCubit extends Cubit<ExpenseState> {
     emit(state.copyWith(selectedCategoryId: categoryId));
   }
 
-  void setSearchQuery(String query) {
-    _emitWithVisibleExpenses(filter: state.filter.copyWith(searchQuery: query));
-  }
-
-  void setCategoryFilterId(String? categoryId) {
-    if (state.categoryFilterId == categoryId) return;
-    _emitWithVisibleExpenses(
-      filter: state.filter.copyWith(
-        categoryId: categoryId,
-        clearCategoryId: categoryId == null,
-      ),
-    );
-  }
-
-  void setDateRange(DateTime? start, DateTime? end) {
-    _emitWithVisibleExpenses(
-      filter: state.filter.copyWith(startDate: start, endDate: end),
-    );
-  }
-
-  void clearDateFilters() {
-    _emitWithVisibleExpenses(filter: state.filter.copyWith(clearDateRange: true));
-  }
-
-  void setSortOption(ExpenseSortOption option) {
-    if (state.sortOption == option) return;
-    _emitWithVisibleExpenses(filter: state.filter.copyWith(sortOption: option));
-  }
-
-  void clearAllFilters() {
-    _emitWithVisibleExpenses(filter: const ExpenseFilter());
-  }
-
   void resetExpenseForm() {
     initializeForm();
   }
@@ -98,10 +60,10 @@ class ExpenseCubit extends Cubit<ExpenseState> {
 
     try {
       final expenses = await _getExpenses();
-      _emitWithVisibleExpenses(
-        expenses: List<Expense>.unmodifiable(expenses),
-        state: state.copyWith(
+      emit(
+        state.copyWith(
           expensesStatus: RequestsStatus.success,
+          expenses: List<Expense>.unmodifiable(expenses),
           clearLoadErrorMessage: true,
         ),
       );
@@ -123,11 +85,11 @@ class ExpenseCubit extends Cubit<ExpenseState> {
     await _performSubmission(
       action: () => _addExpense(expense),
       onSuccess: () {
-        _emitWithVisibleExpenses(
-          expenses: List<Expense>.unmodifiable([...state.expenses, expense]),
-          state: state.copyWith(
+        emit(
+          state.copyWith(
             expensesStatus: RequestsStatus.success,
             submissionStatus: RequestsStatus.success,
+            expenses: List<Expense>.unmodifiable([...state.expenses, expense]),
             selectedDate: DateTime.now(),
             clearSelectedCategoryId: true,
             clearLoadErrorMessage: true,
@@ -143,11 +105,11 @@ class ExpenseCubit extends Cubit<ExpenseState> {
     await _performSubmission(
       action: () => _updateExpense(expense),
       onSuccess: () {
-        _emitWithVisibleExpenses(
-          expenses: _replaceExpense(expense),
-          state: state.copyWith(
+        emit(
+          state.copyWith(
             expensesStatus: RequestsStatus.success,
             submissionStatus: RequestsStatus.success,
+            expenses: _replaceExpense(expense),
             selectedDate: DateTime.now(),
             clearSelectedCategoryId: true,
             clearLoadErrorMessage: true,
@@ -162,9 +124,9 @@ class ExpenseCubit extends Cubit<ExpenseState> {
   Future<void> deleteExpense(String id) async {
     final currentExpenses = state.expenses;
 
-    _emitWithVisibleExpenses(
-      expenses: _removeExpense(id),
-      state: state.copyWith(
+    emit(
+      state.copyWith(
+        expenses: _removeExpense(id),
         submissionStatus: RequestsStatus.loading,
         clearSubmissionErrorMessage: true,
       ),
@@ -182,9 +144,9 @@ class ExpenseCubit extends Cubit<ExpenseState> {
       );
     } catch (error, stackTrace) {
       addError(error, stackTrace);
-      _emitWithVisibleExpenses(
-        expenses: currentExpenses,
-        state: state.copyWith(
+      emit(
+        state.copyWith(
+          expenses: currentExpenses,
           submissionStatus: RequestsStatus.error,
           submissionErrorMessage: _mapErrorToMessage(
             error,
@@ -222,26 +184,6 @@ class ExpenseCubit extends Cubit<ExpenseState> {
         ),
       );
     }
-  }
-
-  void _emitWithVisibleExpenses({
-    ExpenseState? state,
-    List<Expense>? expenses,
-    ExpenseFilter? filter,
-  }) {
-    final nextState = state ?? this.state;
-    final nextExpenses = expenses ?? nextState.expenses;
-    final nextFilter = filter ?? nextState.filter;
-
-    emit(
-      nextState.copyWith(
-        expenses: nextExpenses,
-        filter: nextFilter,
-        visibleExpenses: List<Expense>.unmodifiable(
-          _getVisibleExpenses(expenses: nextExpenses, filter: nextFilter),
-        ),
-      ),
-    );
   }
 
   List<Expense> _replaceExpense(Expense updatedExpense) {
