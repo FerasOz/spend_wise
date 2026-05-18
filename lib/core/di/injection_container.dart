@@ -2,6 +2,16 @@ import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../app/shell/cubit/shell_cubit.dart';
+import '../../features/budgets/data/datasources/budget_local_data_source.dart';
+import '../../features/budgets/data/repositories/budget_repository_impl.dart';
+import '../../features/budgets/domain/repositories/budget_repository.dart';
+import '../../features/budgets/domain/usecases/calculate_budget_progress.dart';
+import '../../features/budgets/domain/usecases/create_budget.dart';
+import '../../features/budgets/domain/usecases/delete_budget.dart';
+import '../../features/budgets/domain/usecases/get_budget_by_category.dart';
+import '../../features/budgets/domain/usecases/get_budgets.dart';
+import '../../features/budgets/domain/usecases/update_budget.dart';
+import '../../features/budgets/presentation/cubit/budget_cubit.dart';
 import '../../features/categories/data/datasources/category_local_data_source.dart';
 import '../../features/categories/data/repositories/category_repository_impl.dart';
 import '../../features/categories/domain/repositories/category_repository.dart';
@@ -29,6 +39,16 @@ import '../../features/expenses/domain/usecases/get_expenses.dart';
 import '../../features/expenses/domain/usecases/get_visible_expenses.dart';
 import '../../features/expenses/domain/usecases/update_expense.dart';
 import '../../features/expenses/presentation/cubit/expense_cubit.dart';
+import '../../features/expenses/presentation/cubit/expense_filter_cubit.dart';
+import '../../features/recurring/data/datasources/recurring_expense_local_data_source.dart';
+import '../../features/recurring/data/repositories/recurring_expense_repository_impl.dart';
+import '../../features/recurring/domain/repositories/recurring_expense_repository.dart';
+import '../../features/recurring/domain/usecases/create_recurring_expense.dart';
+import '../../features/recurring/domain/usecases/delete_recurring_expense.dart';
+import '../../features/recurring/domain/usecases/generate_due_expenses.dart';
+import '../../features/recurring/domain/usecases/get_recurring_expenses.dart';
+import '../../features/recurring/domain/usecases/update_recurring_expense.dart';
+import '../../features/recurring/presentation/cubit/recurring_expense_cubit.dart';
 
 final GetIt sl = GetIt.instance;
 
@@ -188,8 +208,164 @@ Future<void> setupDependencies() async {
         getExpenses: sl<GetExpenses>(),
         updateExpense: sl<UpdateExpense>(),
         deleteExpense: sl<DeleteExpense>(),
-        getVisibleExpenses: sl<GetVisibleExpenses>(),
       ),
+    );
+  }
+
+  if (!sl.isRegistered<ExpenseFilterCubit>()) {
+    sl.registerFactory<ExpenseFilterCubit>(
+      () => ExpenseFilterCubit(getVisibleExpenses: sl<GetVisibleExpenses>()),
+    );
+  }
+
+  // ============================================================================
+  // BUDGET FEATURE
+  // ============================================================================
+
+  if (!sl.isRegistered<Box<Map>>(
+    instanceName: HiveBudgetLocalDataSource.boxName,
+  )) {
+    final budgetsBox = await Hive.openBox<Map>(HiveBudgetLocalDataSource.boxName);
+    sl.registerSingleton<Box<Map>>(
+      budgetsBox,
+      instanceName: HiveBudgetLocalDataSource.boxName,
+    );
+  }
+
+  if (!sl.isRegistered<BudgetLocalDataSource>()) {
+    sl.registerLazySingleton<BudgetLocalDataSource>(
+      () => HiveBudgetLocalDataSource(
+        sl<Box<Map>>(instanceName: HiveBudgetLocalDataSource.boxName),
+      ),
+    );
+  }
+
+  if (!sl.isRegistered<BudgetRepository>()) {
+    sl.registerLazySingleton<BudgetRepository>(
+      () => BudgetRepositoryImpl(sl<BudgetLocalDataSource>()),
+    );
+  }
+
+  if (!sl.isRegistered<CreateBudget>()) {
+    sl.registerLazySingleton<CreateBudget>(
+      () => CreateBudget(sl<BudgetRepository>()),
+    );
+  }
+
+  if (!sl.isRegistered<GetBudgets>()) {
+    sl.registerLazySingleton<GetBudgets>(
+      () => GetBudgets(sl<BudgetRepository>(), sl<ExpenseRepository>()),
+    );
+  }
+
+  if (!sl.isRegistered<UpdateBudget>()) {
+    sl.registerLazySingleton<UpdateBudget>(
+      () => UpdateBudget(sl<BudgetRepository>()),
+    );
+  }
+
+  if (!sl.isRegistered<DeleteBudget>()) {
+    sl.registerLazySingleton<DeleteBudget>(
+      () => DeleteBudget(sl<BudgetRepository>()),
+    );
+  }
+
+  if (!sl.isRegistered<GetBudgetByCategory>()) {
+    sl.registerLazySingleton<GetBudgetByCategory>(
+      () => GetBudgetByCategory(sl<GetBudgets>()),
+    );
+  }
+
+  if (!sl.isRegistered<CalculateBudgetProgress>()) {
+    sl.registerLazySingleton<CalculateBudgetProgress>(
+      () => const CalculateBudgetProgress(),
+    );
+  }
+
+  if (!sl.isRegistered<BudgetCubit>()) {
+    sl.registerFactory<BudgetCubit>(
+      () => BudgetCubit(
+        createBudget: sl<CreateBudget>(),
+        getBudgets: sl<GetBudgets>(),
+        updateBudget: sl<UpdateBudget>(),
+        deleteBudget: sl<DeleteBudget>(),
+        calculateBudgetProgress: sl<CalculateBudgetProgress>(),
+      )..loadBudgets(),
+    );
+  }
+
+  // ============================================================================
+  // RECURRING FEATURE
+  // ============================================================================
+
+  if (!sl.isRegistered<Box<Map>>(
+    instanceName: HiveRecurringExpenseLocalDataSource.boxName,
+  )) {
+    final recurringBox = await Hive.openBox<Map>(
+      HiveRecurringExpenseLocalDataSource.boxName,
+    );
+    sl.registerSingleton<Box<Map>>(
+      recurringBox,
+      instanceName: HiveRecurringExpenseLocalDataSource.boxName,
+    );
+  }
+
+  if (!sl.isRegistered<RecurringExpenseLocalDataSource>()) {
+    sl.registerLazySingleton<RecurringExpenseLocalDataSource>(
+      () => HiveRecurringExpenseLocalDataSource(
+        sl<Box<Map>>(instanceName: HiveRecurringExpenseLocalDataSource.boxName),
+      ),
+    );
+  }
+
+  if (!sl.isRegistered<RecurringExpenseRepository>()) {
+    sl.registerLazySingleton<RecurringExpenseRepository>(
+      () => RecurringExpenseRepositoryImpl(sl<RecurringExpenseLocalDataSource>()),
+    );
+  }
+
+  if (!sl.isRegistered<CreateRecurringExpense>()) {
+    sl.registerLazySingleton<CreateRecurringExpense>(
+      () => CreateRecurringExpense(sl<RecurringExpenseRepository>()),
+    );
+  }
+
+  if (!sl.isRegistered<GetRecurringExpenses>()) {
+    sl.registerLazySingleton<GetRecurringExpenses>(
+      () => GetRecurringExpenses(sl<RecurringExpenseRepository>()),
+    );
+  }
+
+  if (!sl.isRegistered<UpdateRecurringExpense>()) {
+    sl.registerLazySingleton<UpdateRecurringExpense>(
+      () => UpdateRecurringExpense(sl<RecurringExpenseRepository>()),
+    );
+  }
+
+  if (!sl.isRegistered<DeleteRecurringExpense>()) {
+    sl.registerLazySingleton<DeleteRecurringExpense>(
+      () => DeleteRecurringExpense(sl<RecurringExpenseRepository>()),
+    );
+  }
+
+  if (!sl.isRegistered<GenerateDueExpenses>()) {
+    sl.registerLazySingleton<GenerateDueExpenses>(
+      () => GenerateDueExpenses(
+        sl<RecurringExpenseRepository>(),
+        sl<ExpenseRepository>(),
+      ),
+    );
+  }
+
+  if (!sl.isRegistered<RecurringExpenseCubit>()) {
+    sl.registerFactory<RecurringExpenseCubit>(
+      () => RecurringExpenseCubit(
+        createRecurringExpense: sl<CreateRecurringExpense>(),
+        getRecurringExpenses: sl<GetRecurringExpenses>(),
+        updateRecurringExpense: sl<UpdateRecurringExpense>(),
+        deleteRecurringExpense: sl<DeleteRecurringExpense>(),
+        generateDueExpenses: sl<GenerateDueExpenses>(),
+      )..initialize(),
     );
   }
 

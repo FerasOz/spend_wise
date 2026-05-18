@@ -22,6 +22,14 @@ class MainShellDrawer extends StatelessWidget {
               ),
             ),
             ListTile(
+              leading: const Icon(Icons.savings_outlined),
+              title: const Text('Budgets'),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pushNamed(RouteNames.budgetPage);
+              },
+            ),
+            ListTile(
               leading: const Icon(Icons.settings_outlined),
               title: const Text('Settings'),
               onTap: () {

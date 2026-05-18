@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:spend_wise/app/shell/models/shell_destination.dart';
-import 'package:spend_wise/app/shell/widgets/shell_placeholder_page.dart';
 import 'package:spend_wise/features/categories/presentation/pages/category_list_page.dart';
 import 'package:spend_wise/features/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:spend_wise/features/expenses/presentation/pages/expenses_page.dart';
+import 'package:spend_wise/features/recurring/presentation/pages/recurring_expenses_page.dart';
+import 'package:spend_wise/features/recurring/presentation/widgets/recurring_expense_form_page.dart';
 
 List<ShellDestination> buildShellDestinations() {
   return [
@@ -23,17 +24,14 @@ List<ShellDestination> buildShellDestinations() {
       fab: (context) => ExpensesPage.openExpenseFormPage(context),
       fabIcon: Icons.add,
     ),
-    const ShellDestination(
-      title: 'Subscriptions',
-      label: 'Subscriptions',
-      icon: Icons.subscriptions_outlined,
-      selectedIcon: Icons.subscriptions,
-      page: ShellPlaceholderPage(
-        icon: Icons.notifications_active_outlined,
-        title: 'Subscriptions coming next',
-        description:
-            'We will surface recurring payments, reminders, and renewal insights here.',
-      ),
+    ShellDestination(
+      title: 'Recurring',
+      label: 'Recurring',
+      icon: Icons.repeat_outlined,
+      selectedIcon: Icons.repeat,
+      page: RecurringExpensesPage(showScaffold: false),
+      fab: (context) => RecurringExpenseFormPage.open(context),
+      fabIcon: Icons.add,
     ),
     ShellDestination(
       title: 'Categories',
