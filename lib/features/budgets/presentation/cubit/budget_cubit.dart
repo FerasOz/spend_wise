@@ -37,7 +37,7 @@ class BudgetCubit extends Cubit<BudgetState> {
       emit(
         state.copyWith(
           status: RequestsStatus.success,
-          budgets: budgets.map(_calculateBudgetProgress).toList(growable: false),
+          budgets: budgets.map(_calculateBudgetProgress.call).toList(growable: false),
           clearErrorMessage: true,
         ),
       );
