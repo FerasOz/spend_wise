@@ -13,6 +13,12 @@ ExpenseModel _$ExpenseModelFromJson(Map<String, dynamic> json) => ExpenseModel(
   categoryId: json['categoryId'] as String,
   date: DateTime.parse(json['date'] as String),
   note: json['note'] as String?,
+  createdAt: json['createdAt'] == null
+      ? null
+      : DateTime.parse(json['createdAt'] as String),
+  updatedAt: json['updatedAt'] == null
+      ? null
+      : DateTime.parse(json['updatedAt'] as String),
 );
 
 Map<String, dynamic> _$ExpenseModelToJson(ExpenseModel instance) =>
@@ -23,4 +29,6 @@ Map<String, dynamic> _$ExpenseModelToJson(ExpenseModel instance) =>
       'categoryId': instance.categoryId,
       'date': instance.date.toIso8601String(),
       'note': instance.note,
+      'createdAt': instance.createdAt?.toIso8601String(),
+      'updatedAt': instance.updatedAt?.toIso8601String(),
     };

@@ -20,19 +20,19 @@ class HiveBudgetLocalDataSource implements BudgetLocalDataSource {
 
   @override
   Future<void> createBudget(BudgetModel budget) async {
-    await _box.put(budget.id, budget.toMap());
+    await _box.put(budget.id, budget.toJson());
   }
 
   @override
   Future<List<BudgetModel>> getBudgets() async {
     return _box.values
-        .map((value) => BudgetModel.fromMap(Map<String, dynamic>.from(value)))
+        .map((value) => BudgetModel.fromJson(Map<String, dynamic>.from(value)))
         .toList(growable: false);
   }
 
   @override
   Future<void> updateBudget(BudgetModel budget) async {
-    await _box.put(budget.id, budget.toMap());
+    await _box.put(budget.id, budget.toJson());
   }
 
   @override

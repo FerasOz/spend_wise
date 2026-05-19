@@ -1,5 +1,10 @@
+import 'package:json_annotation/json_annotation.dart';
+
 import '../../domain/entities/recurring_expense.dart';
 
+part 'recurring_expense_model.g.dart';
+
+@JsonSerializable()
 class RecurringExpenseModel {
   const RecurringExpenseModel({
     required this.id,
@@ -21,6 +26,9 @@ class RecurringExpenseModel {
   final bool isActive;
   final DateTime createdAt;
 
+  factory RecurringExpenseModel.fromJson(Map<String, dynamic> json) =>
+      _$RecurringExpenseModelFromJson(json);
+
   factory RecurringExpenseModel.fromEntity(RecurringExpense recurringExpense) {
     return RecurringExpenseModel(
       id: recurringExpense.id,
@@ -34,31 +42,7 @@ class RecurringExpenseModel {
     );
   }
 
-  factory RecurringExpenseModel.fromMap(Map<String, dynamic> map) {
-    return RecurringExpenseModel(
-      id: map['id'] as String,
-      title: map['title'] as String,
-      amount: (map['amount'] as num).toDouble(),
-      categoryId: map['categoryId'] as String,
-      repeatType: map['repeatType'] as String,
-      nextDueDate: DateTime.parse(map['nextDueDate'] as String),
-      isActive: map['isActive'] as bool,
-      createdAt: DateTime.parse(map['createdAt'] as String),
-    );
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'title': title,
-      'amount': amount,
-      'categoryId': categoryId,
-      'repeatType': repeatType,
-      'nextDueDate': nextDueDate.toIso8601String(),
-      'isActive': isActive,
-      'createdAt': createdAt.toIso8601String(),
-    };
-  }
+  Map<String, dynamic> toJson() => _$RecurringExpenseModelToJson(this);
 
   RecurringExpense toEntity() {
     return RecurringExpense(

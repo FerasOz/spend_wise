@@ -1,5 +1,10 @@
+import 'package:json_annotation/json_annotation.dart';
+
 import '../../domain/entities/budget.dart';
 
+part 'budget_model.g.dart';
+
+@JsonSerializable()
 class BudgetModel {
   const BudgetModel({
     required this.id,
@@ -15,6 +20,9 @@ class BudgetModel {
   final String period;
   final DateTime createdAt;
 
+  factory BudgetModel.fromJson(Map<String, dynamic> json) =>
+      _$BudgetModelFromJson(json);
+
   factory BudgetModel.fromEntity(Budget budget) {
     return BudgetModel(
       id: budget.id,
@@ -25,25 +33,7 @@ class BudgetModel {
     );
   }
 
-  factory BudgetModel.fromMap(Map<String, dynamic> map) {
-    return BudgetModel(
-      id: map['id'] as String,
-      categoryId: map['categoryId'] as String,
-      limitAmount: (map['limitAmount'] as num).toDouble(),
-      period: map['period'] as String,
-      createdAt: DateTime.parse(map['createdAt'] as String),
-    );
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'categoryId': categoryId,
-      'limitAmount': limitAmount,
-      'period': period,
-      'createdAt': createdAt.toIso8601String(),
-    };
-  }
+  Map<String, dynamic> toJson() => _$BudgetModelToJson(this);
 
   Budget toEntity() {
     return Budget(

@@ -22,21 +22,23 @@ class HiveRecurringExpenseLocalDataSource
 
   @override
   Future<void> createRecurringExpense(RecurringExpenseModel recurringExpense) {
-    return _box.put(recurringExpense.id, recurringExpense.toMap());
+    return _box.put(recurringExpense.id, recurringExpense.toJson());
   }
 
   @override
   Future<List<RecurringExpenseModel>> getRecurringExpenses() async {
     return _box.values
         .map((value) {
-          return RecurringExpenseModel.fromMap(Map<String, dynamic>.from(value));
+          return RecurringExpenseModel.fromJson(
+            Map<String, dynamic>.from(value),
+          );
         })
         .toList(growable: false);
   }
 
   @override
   Future<void> updateRecurringExpense(RecurringExpenseModel recurringExpense) {
-    return _box.put(recurringExpense.id, recurringExpense.toMap());
+    return _box.put(recurringExpense.id, recurringExpense.toJson());
   }
 
   @override
