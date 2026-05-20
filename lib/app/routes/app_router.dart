@@ -18,6 +18,7 @@ import 'package:spend_wise/features/expenses/presentation/pages/expense_details_
 import 'package:spend_wise/features/expenses/presentation/pages/expense_form_page.dart';
 import 'package:spend_wise/features/expenses/presentation/pages/expenses_page.dart';
 import 'package:spend_wise/features/recurring/presentation/cubit/recurring_expense_cubit.dart';
+import 'package:spend_wise/features/settings/presentation/cubit/settings_cubit.dart';
 import 'package:spend_wise/features/settings/presentation/pages/settings_page.dart';
 
 class AppRouters {
@@ -135,7 +136,12 @@ class AppRouters {
           ),
         );
       case RouteNames.settingsPage:
-        return MaterialPageRoute(builder: (_) => const SettingsPage());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => sl<SettingsCubit>()..loadSettings(),
+            child: const SettingsPage(),
+          ),
+        );
 
       default:
         return null;
