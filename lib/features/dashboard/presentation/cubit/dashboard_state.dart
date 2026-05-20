@@ -1,10 +1,10 @@
 import 'package:spend_wise/core/base/requests_status.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
 import 'package:spend_wise/features/dashboard/domain/entities/category_spending.dart';
-import 'package:spend_wise/features/dashboard/domain/entities/dashboard_insight.dart';
 import 'package:spend_wise/features/dashboard/domain/entities/dashboard_summary.dart';
 import 'package:spend_wise/features/dashboard/domain/entities/spending_chart_point.dart';
 import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
+import 'package:spend_wise/features/insights/domain/entities/insight_card.dart';
 
 class DashboardState {
   const DashboardState({
@@ -23,7 +23,7 @@ class DashboardState {
   final List<SpendingChartPoint> weeklySpending;
   final List<Expense> recentExpenses;
   final List<CategorySpending> topCategories;
-  final List<DashboardInsight> insights;
+  final List<InsightCard> insights;
   final Map<String, Category> categoriesById;
   final String? errorMessage;
 
@@ -33,7 +33,7 @@ class DashboardState {
     List<SpendingChartPoint>? weeklySpending,
     List<Expense>? recentExpenses,
     List<CategorySpending>? topCategories,
-    List<DashboardInsight>? insights,
+    List<InsightCard>? insights,
     Map<String, Category>? categoriesById,
     String? errorMessage,
     bool clearErrorMessage = false,

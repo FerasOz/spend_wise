@@ -1,47 +1,52 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/features/categories/domain/entities/category.dart';
 
 import '../../../../core/base/requests_status.dart';
 import '../../domain/usecases/get_dashboard_source_data.dart';
-import '../../domain/usecases/get_dashboard_insights.dart';
 import '../../domain/usecases/get_dashboard_summary.dart';
 import '../../domain/usecases/get_recent_expenses.dart';
 import '../../domain/usecases/get_top_categories.dart';
 import '../../domain/usecases/get_weekly_spending.dart';
 import 'dashboard_state.dart';
+import 'package:spend_wise/features/insights/domain/usecases/generate_insights.dart';
 
 class DashboardCubit extends Cubit<DashboardState> {
   DashboardCubit({
     required GetDashboardSourceData getDashboardSourceData,
-    required GetDashboardInsights getDashboardInsights,
     required GetDashboardSummary getDashboardSummary,
     required GetWeeklySpending getWeeklySpending,
     required GetRecentExpenses getRecentExpenses,
     required GetTopCategories getTopCategories,
+    required GenerateInsights generateInsights,
   }) : _getDashboardSourceData = getDashboardSourceData,
-       _getDashboardInsights = getDashboardInsights,
        _getDashboardSummary = getDashboardSummary,
        _getWeeklySpending = getWeeklySpending,
        _getRecentExpenses = getRecentExpenses,
        _getTopCategories = getTopCategories,
+       _generateInsights = generateInsights,
        super(const DashboardState());
 
   final GetDashboardSourceData _getDashboardSourceData;
-  final GetDashboardInsights _getDashboardInsights;
   final GetDashboardSummary _getDashboardSummary;
   final GetWeeklySpending _getWeeklySpending;
   final GetRecentExpenses _getRecentExpenses;
   final GetTopCategories _getTopCategories;
+  final GenerateInsights _generateInsights;
 
   Future<void> loadDashboard() async {
     emit(state.copyWith(status: RequestsStatus.loading, clearErrorMessage: true));
 
     try {
       final sourceData = await _getDashboardSourceData();
+      final categoriesMap = <String, Category>{};
+      for (final category in sourceData.categories) {
+        categoriesMap[category.id] = category;
+      }
       emit(
         state.copyWith(
           status: RequestsStatus.success,
           summary: _getDashboardSummary(sourceData),
-          insights: _getDashboardInsights(sourceData),
+          insights: _generateInsights(sourceData.expenses, categoriesMap),
           weeklySpending: _getWeeklySpending(sourceData),
           recentExpenses: _getRecentExpenses(sourceData),
           topCategories: _getTopCategories(sourceData),
