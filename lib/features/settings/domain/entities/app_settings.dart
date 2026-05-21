@@ -77,4 +77,23 @@ class AppSettings {
   bool get isDarkMode => themeMode == AppThemeMode.dark;
 
   bool get isSystemMode => themeMode == AppThemeMode.system;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AppSettings &&
+          themeMode == other.themeMode &&
+          currency == other.currency &&
+          language == other.language &&
+          notificationsEnabled == other.notificationsEnabled &&
+          autoBackupEnabled == other.autoBackupEnabled;
+
+  @override
+  int get hashCode => Object.hash(
+    themeMode,
+    currency,
+    language,
+    notificationsEnabled,
+    autoBackupEnabled,
+  );
 }

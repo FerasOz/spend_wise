@@ -16,24 +16,27 @@ class SettingsSection extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
+      padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            title,
-            style: theme.textTheme.titleSmall?.copyWith(
-              fontWeight: FontWeight.w600,
+            title.toUpperCase(),
+            style: theme.textTheme.labelSmall?.copyWith(
+              letterSpacing: 1.1,
               color: theme.colorScheme.onSurfaceVariant,
             ),
           ),
-          SizedBox(height: 8.h),
-          Container(
-            decoration: BoxDecoration(
-              color: theme.colorScheme.surfaceContainerHighest,
-              borderRadius: BorderRadius.circular(12.r),
-            ),
-            child: Column(children: children),
+          SizedBox(height: 12.h),
+          Column(
+            children: children
+                .map(
+                  (child) => Padding(
+                    padding: EdgeInsets.only(bottom: 12.h),
+                    child: child,
+                  ),
+                )
+                .toList(),
           ),
         ],
       ),
