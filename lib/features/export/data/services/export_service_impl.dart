@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
+import 'package:path_provider/path_provider.dart';
 import '../../domain/services/export_service.dart';
 import '../../../expenses/domain/entities/expense.dart';
 import '../../../categories/domain/entities/category.dart';
@@ -29,11 +30,9 @@ class ExportServiceImpl implements ExportService {
     }
 
     // Save to file
-    final now = DateTime.now();
-    final fileName =
-        'expenses_${now.year}${now.month.toString().padLeft(2, '0')}${now.day.toString().padLeft(2, '0')}_${now.hour.toString().padLeft(2, '0')}${now.minute.toString().padLeft(2, '0')}${now.second.toString().padLeft(2, '0')}.csv';
-    final directory = Directory((await _getExportDirectory()).path);
-    final file = File('${directory.path}/$fileName');
+    final timestamp = DateTime.now().toIso8601String().replaceAll(':', '-');
+    final directory = await _getExportDirectory();
+    final file = File('${directory.path}/expenses_$timestamp.csv');
 
     await file.create(recursive: true);
     await file.writeAsString(buffer.toString());
@@ -57,22 +56,25 @@ class ExportServiceImpl implements ExportService {
           children: [
             pw.Text(
               'Spend Wise - Spending Summary',
-              style: pw.TextStyle(
-                fontSize: 24,
-                fontWeight: pw.FontWeight.bold,
-              ),
+              style: pw.TextStyle(fontSize: 24, fontWeight: pw.FontWeight.bold),
             ),
             pw.SizedBox(height: 20),
-            pw.Text('Total Spending: \$${totalSpending.toStringAsFixed(2)}',
-                style: pw.TextStyle(fontSize: 16)),
+            pw.Text(
+              'Total Spending: \$${totalSpending.toStringAsFixed(2)}',
+              style: pw.TextStyle(fontSize: 16),
+            ),
             pw.SizedBox(height: 20),
-            pw.Text('By Category:',
-                style: pw.TextStyle(fontSize: 16, fontWeight: pw.FontWeight.bold)),
+            pw.Text(
+              'By Category:',
+              style: pw.TextStyle(fontSize: 16, fontWeight: pw.FontWeight.bold),
+            ),
             pw.SizedBox(height: 10),
             ..._buildCategoryRows(categoriesMap, expenses, totalSpending),
             pw.SizedBox(height: 20),
-            pw.Text('Generated on: ${DateTime.now().toString()}',
-                style: pw.TextStyle(fontSize: 10)),
+            pw.Text(
+              'Generated on: ${DateTime.now().toString()}',
+              style: pw.TextStyle(fontSize: 10),
+            ),
           ],
         ),
       ),
@@ -109,7 +111,13 @@ class ExportServiceImpl implements ExportService {
   }
 
   Future<Directory> _getExportDirectory() async {
-    final directory = Directory('/storage/emulated/0/Documents/SpendWise');
+    Directory? directory;
+    if (Platform.isAndroid) {
+      directory = Directory('/storage/emulated/0/Documents/SpendWise');
+    } else {
+      directory = await getApplicationDocumentsDirectory();
+    }
+
     if (!await directory.exists()) {
       await directory.create(recursive: true);
     }
@@ -124,7 +132,10 @@ class ExportServiceImpl implements ExportService {
   }
 
   List<pw.Widget> _buildCategoryRows(
-      Map<String, Category> categoriesMap, List<Expense> expenses, double totalSpending) {
+    Map<String, Category> categoriesMap,
+    List<Expense> expenses,
+    double totalSpending,
+  ) {
     final categoryTotals = <String, double>{};
     for (final expense in expenses) {
       categoryTotals[expense.categoryId] =
@@ -134,12 +145,13 @@ class ExportServiceImpl implements ExportService {
     final rows = <pw.Widget>[];
     for (final entry in categoryTotals.entries) {
       final category = categoriesMap[entry.key]?.name ?? 'Unknown';
-      final percentage =
-          (entry.value / totalSpending * 100).toStringAsFixed(1);
-      rows.add(pw.Text(
-        '\$${entry.value.toStringAsFixed(2)} - $category ($percentage%)',
-        style: pw.TextStyle(fontSize: 12),
-      ));
+      final percentage = (entry.value / totalSpending * 100).toStringAsFixed(1);
+      rows.add(
+        pw.Text(
+          '\$${entry.value.toStringAsFixed(2)} - $category ($percentage%)',
+          style: pw.TextStyle(fontSize: 12),
+        ),
+      );
       rows.add(pw.SizedBox(height: 5));
     }
 
