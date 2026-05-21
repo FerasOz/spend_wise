@@ -1,5 +1,10 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:spend_wise/features/insights/data/repositories/get_average_daily_insight.dart';
+import 'package:spend_wise/features/insights/data/repositories/get_highest_spending_day_insight.dart';
+import 'package:spend_wise/features/insights/data/repositories/get_smart_recommendation_insight.dart';
+import 'package:spend_wise/features/insights/data/repositories/get_spending_streak_insight.dart';
+import 'package:spend_wise/features/insights/data/repositories/get_spending_trend_insight.dart';
 import 'package:spend_wise/features/settings/domain/usecases/get_settings.dart';
 import 'package:spend_wise/features/settings/domain/usecases/reset_all_settings.dart';
 import 'package:spend_wise/features/settings/domain/usecases/toggle_auto_backup.dart';
@@ -57,6 +62,7 @@ import '../../features/recurring/domain/usecases/get_recurring_expenses.dart';
 import '../../features/recurring/domain/usecases/update_recurring_expense.dart';
 import '../../features/insights/domain/repositories/insight_repository.dart';
 import '../../features/insights/data/repositories/insight_repository_impl.dart';
+import '../../features/insights/domain/usecases/get_top_category_insight.dart';
 import '../../features/insights/domain/usecases/generate_insights.dart';
 import '../../features/insights/presentation/cubit/insight_cubit.dart';
 import '../../features/settings/domain/repositories/settings_repository.dart';
@@ -457,8 +463,36 @@ Future<void> setupDependencies() async {
   // INSIGHTS FEATURE
   // ============================================================================
 
+  sl.registerLazySingleton<GetTopCategoryInsight>(
+    () => GetTopCategoryInsight(),
+  );
+  sl.registerLazySingleton<GetSpendingTrendInsight>(
+    () => GetSpendingTrendInsight(),
+  );
+  sl.registerLazySingleton<GetAverageDailyInsight>(
+    () => GetAverageDailyInsight(),
+  );
+  sl.registerLazySingleton<GetHighestSpendingDayInsight>(
+    () => GetHighestSpendingDayInsight(),
+  );
+  sl.registerLazySingleton<GetSpendingStreakInsight>(
+    () => GetSpendingStreakInsight(),
+  );
+  sl.registerLazySingleton<GetSmartRecommendationInsight>(
+    () => GetSmartRecommendationInsight(),
+  );
+
   if (!sl.isRegistered<InsightRepository>()) {
-    sl.registerLazySingleton<InsightRepository>(() => InsightRepositoryImpl());
+    sl.registerLazySingleton<InsightRepository>(
+      () => InsightRepositoryImpl(
+        getTopCategory: sl<GetTopCategoryInsight>(),
+        getTrend: sl<GetSpendingTrendInsight>(),
+        getAvg: sl<GetAverageDailyInsight>(),
+        getHighestDay: sl<GetHighestSpendingDayInsight>(),
+        getStreak: sl<GetSpendingStreakInsight>(),
+        getRecommendation: sl<GetSmartRecommendationInsight>(),
+      ),
+    );
   }
 
   if (!sl.isRegistered<GenerateInsights>()) {
