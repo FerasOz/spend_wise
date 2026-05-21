@@ -9,12 +9,6 @@ class GetAverageDailyInsight {
     }
 
     final now = DateTime.now();
-    final monthStart = DateTime(now.year, now.month, 1);
-    final daysInMonth = DateTime(
-      now.year,
-      now.month + 1,
-      0,
-    ).day; // Get last day of current month
 
     final totalThisMonth = expenses
         .where((e) => e.date.year == now.year && e.date.month == now.month)
