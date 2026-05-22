@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/services/currency_converter.dart';
+import '../../../../core/utils/currency_formatter.dart';
 import '../../../../core/utils/app_formatters.dart';
 import '../../domain/entities/expense.dart';
+import '../../../../features/settings/presentation/cubit/settings_cubit.dart';
 
 class ExpenseLeadingAccent extends StatelessWidget {
   const ExpenseLeadingAccent({required this.color, super.key});
@@ -33,12 +37,29 @@ class ExpenseHeader extends StatelessWidget {
       context,
     ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700);
 
+    final displayCurrency = context.select(
+      (SettingsCubit cubit) =>
+          cubit.state.settings?.currency ??
+          (throw StateError('Settings not loaded')),
+    );
+
+    final converted = CurrencyConverter.convert(
+      amount: expense.amount,
+      from: 'USD',
+      to: displayCurrency.code,
+    );
+
+    final formatted = CurrencyFormatter.format(
+      converted,
+      symbol: displayCurrency.symbol,
+    );
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(child: Text(expense.title, style: textStyle)),
         SizedBox(width: 10.w),
-        Text(AppFormatters.currency(expense.amount), style: textStyle),
+        Text(formatted, style: textStyle),
       ],
     );
   }

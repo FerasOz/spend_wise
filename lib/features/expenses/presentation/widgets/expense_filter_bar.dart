@@ -4,6 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/app_formatters.dart';
+import '../../../../core/services/currency_converter.dart';
+import '../../../../core/utils/currency_formatter.dart';
+import '../../../../features/settings/presentation/cubit/settings_cubit.dart';
 import '../../../../features/categories/presentation/cubit/category_cubit.dart';
 import '../../domain/entities/expense_filter.dart';
 import '../cubit/expense_filter_cubit.dart';
@@ -64,17 +67,19 @@ class ExpenseFilterBar extends StatelessWidget {
             ),
             InputChip(
               avatar: const Icon(Icons.attach_money_outlined),
-              label: Text(_amountLabel(state)),
+              label: Text(_amountLabel(context, state)),
               onPressed: () => _pickAmountRange(context, state),
             ),
             PopupMenuButton<ExpenseSortOption>(
               initialValue: state.sortOption,
               onSelected: context.read<ExpenseFilterCubit>().setSortOption,
               itemBuilder: (_) => ExpenseSortOption.values
-                  .map((option) => PopupMenuItem(
-                        value: option,
-                        child: Text(_sortLabel(option)),
-                      ))
+                  .map(
+                    (option) => PopupMenuItem(
+                      value: option,
+                      child: Text(_sortLabel(option)),
+                    ),
+                  )
                   .toList(),
               child: InputChip(
                 avatar: const Icon(Icons.sort),
@@ -104,7 +109,10 @@ class ExpenseFilterBar extends StatelessWidget {
       initialDateRange:
           state.filterStartDate == null || state.filterEndDate == null
           ? null
-          : DateTimeRange(start: state.filterStartDate!, end: state.filterEndDate!),
+          : DateTimeRange(
+              start: state.filterStartDate!,
+              end: state.filterEndDate!,
+            ),
     );
     if (range == null || !context.mounted) return;
     context.read<ExpenseFilterCubit>().setDateRange(range.start, range.end);
@@ -127,14 +135,18 @@ class ExpenseFilterBar extends StatelessWidget {
             children: [
               TextFormField(
                 initialValue: minValue,
-                keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                keyboardType: const TextInputType.numberWithOptions(
+                  decimal: true,
+                ),
                 decoration: const InputDecoration(labelText: 'Minimum amount'),
                 onChanged: (value) => minValue = value,
               ),
               SizedBox(height: AppSpacing.md.h),
               TextFormField(
                 initialValue: maxValue,
-                keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                keyboardType: const TextInputType.numberWithOptions(
+                  decimal: true,
+                ),
                 decoration: const InputDecoration(labelText: 'Maximum amount'),
                 onChanged: (value) => maxValue = value,
               ),
@@ -169,13 +181,39 @@ class ExpenseFilterBar extends StatelessWidget {
     return '${AppFormatters.shortDate(state.filterStartDate!)} - ${AppFormatters.shortDate(state.filterEndDate!)}';
   }
 
-  String _amountLabel(ExpenseFilterState state) {
+  String _amountLabel(BuildContext context, ExpenseFilterState state) {
     if (state.minAmount == null && state.maxAmount == null) {
       return 'Amount range';
     }
 
-    final min = state.minAmount == null ? 'Any' : AppFormatters.currency(state.minAmount!);
-    final max = state.maxAmount == null ? 'Any' : AppFormatters.currency(state.maxAmount!);
+    // context provided by caller
+    final displayCurrency = context.select(
+      (SettingsCubit cubit) =>
+          cubit.state.settings?.currency ??
+          (throw StateError('Settings not loaded')),
+    );
+
+    final min = state.minAmount == null
+        ? 'Any'
+        : CurrencyFormatter.format(
+            CurrencyConverter.convert(
+              amount: state.minAmount!,
+              from: 'USD',
+              to: displayCurrency.code,
+            ),
+            symbol: displayCurrency.symbol,
+          );
+
+    final max = state.maxAmount == null
+        ? 'Any'
+        : CurrencyFormatter.format(
+            CurrencyConverter.convert(
+              amount: state.maxAmount!,
+              from: 'USD',
+              to: displayCurrency.code,
+            ),
+            symbol: displayCurrency.symbol,
+          );
     return '$min - $max';
   }
 

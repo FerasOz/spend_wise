@@ -4,6 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/theme/app_radius.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/app_formatters.dart';
+import '../../../../core/services/currency_converter.dart';
+import '../../../../core/utils/currency_formatter.dart';
+import '../../../../features/settings/presentation/cubit/settings_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/widgets/category_badge.dart';
 import '../../../../features/categories/domain/entities/category.dart';
 import '../../domain/entities/expense.dart';
@@ -46,12 +50,31 @@ class ExpenseDetailsHeader extends StatelessWidget {
             ),
           ),
           SizedBox(height: AppSpacing.sm.h),
-          Text(
-            AppFormatters.currency(expense.amount),
-            style: theme.textTheme.headlineMedium?.copyWith(
-              color: theme.colorScheme.onPrimaryContainer,
-              fontWeight: FontWeight.w800,
-            ),
+          Builder(
+            builder: (ctx) {
+              final displayCurrency = ctx.select(
+                (SettingsCubit cubit) =>
+                    cubit.state.settings?.currency ??
+                    (throw StateError('Settings not loaded')),
+              );
+
+              final converted = CurrencyConverter.convert(
+                amount: expense.amount,
+                from: 'USD',
+                to: displayCurrency.code,
+              );
+
+              return Text(
+                CurrencyFormatter.format(
+                  converted,
+                  symbol: displayCurrency.symbol,
+                ),
+                style: theme.textTheme.headlineMedium?.copyWith(
+                  color: theme.colorScheme.onPrimaryContainer,
+                  fontWeight: FontWeight.w800,
+                ),
+              );
+            },
           ),
           SizedBox(height: AppSpacing.lg.h),
           Wrap(

@@ -4,6 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/app_formatters.dart';
+import '../../../../core/services/currency_converter.dart';
+import '../../../../core/utils/currency_formatter.dart';
+import '../../../../features/settings/presentation/cubit/settings_cubit.dart';
 import '../../../../core/widgets/category_badge.dart';
 import '../../../../features/categories/domain/entities/category.dart';
 import '../../domain/entities/recurring_expense.dart';
@@ -60,9 +63,25 @@ class _RecurringExpenseContent extends StatelessWidget {
         SizedBox(height: AppSpacing.sm.h),
         CategoryBadge(category: category, size: CategoryBadgeSize.small),
         SizedBox(height: AppSpacing.sm.h),
-        Text(
-          '${AppFormatters.currency(item.amount)} | ${item.repeatType.name}',
-          style: theme.textTheme.bodyMedium,
+        Builder(
+          builder: (ctx) {
+            final displayCurrency = ctx.select(
+              (SettingsCubit cubit) =>
+                  cubit.state.settings?.currency ??
+                  (throw StateError('Settings not loaded')),
+            );
+
+            final converted = CurrencyConverter.convert(
+              amount: item.amount,
+              from: 'USD',
+              to: displayCurrency.code,
+            );
+
+            return Text(
+              '${CurrencyFormatter.format(converted, symbol: displayCurrency.symbol)} | ${item.repeatType.name}',
+              style: theme.textTheme.bodyMedium,
+            );
+          },
         ),
         SizedBox(height: AppSpacing.xs.h),
         Text(
@@ -99,7 +118,9 @@ class _RecurringExpenseActions extends StatelessWidget {
               return;
             }
 
-            context.read<RecurringExpenseCubit>().deleteRecurringExpense(item.id);
+            context.read<RecurringExpenseCubit>().deleteRecurringExpense(
+              item.id,
+            );
           },
           itemBuilder: (_) => const [
             PopupMenuItem(value: 'edit', child: Text('Edit')),
