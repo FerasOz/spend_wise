@@ -32,7 +32,7 @@ void showLanguageBottomSheet(BuildContext context) {
             ...languages.map((language) => _BuildLanguageTile(
                   language: language,
                   context: context,
-                )).toList(),
+                )),
           ],
         ),
       ),

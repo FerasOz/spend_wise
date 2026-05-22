@@ -4,7 +4,7 @@ import 'package:spend_wise/features/settings/domain/entities/app_currency.dart';
 import 'package:spend_wise/features/settings/domain/entities/app_settings.dart';
 
 class AppInfoSliver extends StatelessWidget {
-  const AppInfoSliver({required this.settings});
+  const AppInfoSliver({super.key, required this.settings});
 
   final AppSettings settings;
 
@@ -99,7 +99,7 @@ class _BuildChip extends StatelessWidget {
     final theme = Theme.of(context);
     return Chip(
       label: Text(label, style: theme.textTheme.labelSmall),
-      backgroundColor: theme.colorScheme.surfaceVariant,
+      backgroundColor: theme.colorScheme.surfaceContainerHighest,
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
     );
   }

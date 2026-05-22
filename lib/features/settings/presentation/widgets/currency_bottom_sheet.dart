@@ -36,7 +36,7 @@ void showCurrencyBottomSheet(BuildContext context) {
             ...currencies.map((currency) => _BuildCurrencyTile(
                   currency: currency,
                   context: context,
-                )).toList(),
+                )),
           ],
         ),
       ),

@@ -13,15 +13,12 @@ void showThemeBottomSheet(BuildContext context) {
     ),
     builder: (context) => SafeArea(
       child: Container(
-        padding: EdgeInsets.all(24.w),
+        padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 16.h),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            _BuildBottomSheetHeader(
-              title: 'Theme Mode',
-              context: context,
-            ),
-            SizedBox(height: 24.h),
+            _BuildBottomSheetHeader(title: 'Theme Mode', context: context),
+            SizedBox(height: 18.h),
             ..._BuildThemeOptions(context),
           ],
         ),
@@ -38,9 +35,9 @@ Widget _BuildBottomSheetHeader({
     children: [
       Text(
         title,
-        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.w600,
-            ),
+        style: Theme.of(
+          context,
+        ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
       ),
       const Spacer(),
       IconButton(
@@ -61,7 +58,7 @@ List<Widget> _BuildThemeOptions(BuildContext context) {
     ),
     _BuildOptionTile(
       title: 'Dark',
-      icon: Icons.brightness_low,
+      icon: Icons.dark_mode,
       value: AppThemeMode.dark,
       context: context,
     ),
@@ -81,24 +78,27 @@ Widget _BuildOptionTile({
   required BuildContext context,
 }) {
   final theme = Theme.of(context);
-  return ListTile(
-    leading: Container(
-      width: 48.w,
-      height: 48.h,
-      decoration: BoxDecoration(
-        color: theme.colorScheme.primaryContainer,
-        borderRadius: BorderRadius.circular(16.r),
+  return Padding(
+    padding: const EdgeInsets.all(12.0),
+    child: ListTile(
+      leading: Container(
+        width: 48.w,
+        height: 48.h,
+        decoration: BoxDecoration(
+          color: theme.colorScheme.primaryContainer,
+          borderRadius: BorderRadius.circular(16.r),
+        ),
+        child: Icon(
+          icon,
+          color: theme.colorScheme.onPrimaryContainer,
+          size: 24.sp,
+        ),
       ),
-      child: Icon(
-        icon,
-        color: theme.colorScheme.onPrimaryContainer,
-        size: 24.sp,
-      ),
+      title: Text(title, style: theme.textTheme.bodyLarge),
+      onTap: () {
+        context.read<SettingsCubit>().updateThemeMode(value);
+        Navigator.pop(context);
+      },
     ),
-    title: Text(title, style: theme.textTheme.bodyLarge),
-    onTap: () {
-      context.read<SettingsCubit>().updateThemeMode(value);
-      Navigator.pop(context);
-    },
   );
 }
