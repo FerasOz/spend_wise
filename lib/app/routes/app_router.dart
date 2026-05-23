@@ -137,8 +137,8 @@ class AppRouters {
         );
       case RouteNames.settingsPage:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => sl<SettingsCubit>()..loadSettings(),
+          builder: (context) => BlocProvider.value(
+            value: context.read<SettingsCubit>(),
             child: const SettingsPage(),
           ),
         );

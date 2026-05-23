@@ -1,3 +1,4 @@
+import '../../../../core/constants/currencies.dart';
 import 'package:spend_wise/features/settings/domain/entities/app_currency.dart';
 
 enum AppThemeMode { light, dark, system }
@@ -38,7 +39,7 @@ class AppSettings {
   Map<String, dynamic> toJson() {
     return {
       'themeMode': themeMode.name,
-      'currency': {'code': currency.code, 'symbol': currency.symbol},
+      'currencyCode': currency.code,
       'language': language.name,
       'notificationsEnabled': notificationsEnabled,
       'autoBackupEnabled': autoBackupEnabled,
@@ -51,9 +52,8 @@ class AppSettings {
         (e) => e.name == json['themeMode'],
         orElse: () => AppThemeMode.system,
       ),
-      currency: AppCurrency(
-        code: json['currency']?['code'] ?? 'USD',
-        symbol: json['currency']?['symbol'] ?? '\$',
+      currency: currencyByCode(
+        json['currencyCode'] ?? json['currency']?['code'] ?? 'USD',
       ),
       language: AppLanguage.values.firstWhere(
         (e) => e.name == json['language'],
@@ -65,9 +65,9 @@ class AppSettings {
   }
 
   factory AppSettings.defaults() {
-    return const AppSettings(
+    return AppSettings(
       themeMode: AppThemeMode.system,
-      currency: AppCurrency(code: 'USD', symbol: '\$'),
+      currency: currencyByCode('USD'),
       language: AppLanguage.english,
       notificationsEnabled: true,
       autoBackupEnabled: false,

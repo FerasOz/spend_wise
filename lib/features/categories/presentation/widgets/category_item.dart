@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/widgets/currency_text.dart';
 import 'package:spend_wise/core/theme/app_colors.dart';
 import 'package:spend_wise/core/theme/app_radius.dart';
 import 'package:spend_wise/core/theme/app_spacing.dart';
@@ -111,8 +112,12 @@ class _CategoryTextContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final spentLabel = '\$${summary.totalSpent.toStringAsFixed(2)} spent';
-    final countLabel = '${summary.expenseCount} expenses';
+    final spentStyle = Theme.of(
+      context,
+    ).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600);
+    final countStyle = Theme.of(context).textTheme.bodySmall?.copyWith(
+      color: Theme.of(context).colorScheme.onSurfaceVariant,
+    );
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -136,19 +141,13 @@ class _CategoryTextContent extends StatelessWidget {
           ],
         ),
         SizedBox(height: 6.h),
-        Text(
-          spentLabel,
-          style: Theme.of(
-            context,
-          ).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
+        CurrencyText(
+          amount: summary.totalSpent,
+          style: spentStyle,
+          suffix: ' spent',
         ),
         SizedBox(height: 6.h),
-        Text(
-          countLabel,
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-            color: Theme.of(context).colorScheme.onSurfaceVariant,
-          ),
-        ),
+        Text('${summary.expenseCount} expenses', style: countStyle),
       ],
     );
   }

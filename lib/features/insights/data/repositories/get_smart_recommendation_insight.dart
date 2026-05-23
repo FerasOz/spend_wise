@@ -41,7 +41,7 @@ class GetSmartRecommendationInsight {
       color = Colors.red.value;
     } else if (sevenDayAvg < dailyAvg * 0.8) {
       message =
-          'Great job! You\'re spending less this week. Keep up the good work! 🎉';
+          'Great job! You\'re spending less this week. Keep up the good work!';
       color = Colors.green.value;
     } else {
       message = 'Your spending is on track with your average. Stay consistent!';

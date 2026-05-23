@@ -35,7 +35,6 @@ import '../../features/categories/domain/usecases/update_category.dart';
 import '../../features/categories/presentation/cubit/category_cubit.dart';
 import '../../features/dashboard/data/repositories/dashboard_repository_impl.dart';
 import '../../features/dashboard/domain/repositories/dashboard_repository.dart';
-import '../../features/dashboard/domain/usecases/get_dashboard_insights.dart';
 import '../../features/dashboard/domain/usecases/get_dashboard_source_data.dart';
 import '../../features/dashboard/domain/usecases/get_dashboard_summary.dart';
 import '../../features/dashboard/domain/usecases/get_recent_expenses.dart';
@@ -425,12 +424,6 @@ Future<void> setupDependencies() async {
   if (!sl.isRegistered<GetDashboardSummary>()) {
     sl.registerLazySingleton<GetDashboardSummary>(
       () => GetDashboardSummary(sl<GetTopCategories>()),
-    );
-  }
-
-  if (!sl.isRegistered<GetDashboardInsights>()) {
-    sl.registerLazySingleton<GetDashboardInsights>(
-      () => GetDashboardInsights(sl<GetTopCategories>()),
     );
   }
 

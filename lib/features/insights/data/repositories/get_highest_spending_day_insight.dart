@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:spend_wise/features/insights/domain/entities/insight_card.dart';
-import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
+
+import '../../../expenses/domain/entities/expense.dart';
+import '../../domain/entities/insight_card.dart';
 
 class GetHighestSpendingDayInsight {
   InsightCard call(List<Expense> expenses) {
@@ -18,21 +19,18 @@ class GetHighestSpendingDayInsight {
       dailyTotals[dayStart] = (dailyTotals[dayStart] ?? 0) + expense.amount;
     }
 
-    final highestDay = dailyTotals.entries.reduce(
-      (a, b) => a.value > b.value ? a : b,
-    );
-    final dayName = _getDayName(highestDay.key);
-    final amount = highestDay.value;
+    final highestDay = dailyTotals.entries.reduce((a, b) {
+      return a.value > b.value ? a : b;
+    });
 
     return InsightCard(
       id: 'highest_spending_day',
       title: 'Highest spending day',
-      message:
-          'Your highest spending was $dayName with \$${amount.toStringAsFixed(2)}.',
+      message: 'Your highest spending happened on ${_dayName(highestDay.key)}.',
       type: InsightType.highest_spending_day,
-      icon: '🔥',
-      value: '\$${amount.toStringAsFixed(2)}',
+      icon: 'DAY',
       color: Colors.red.value,
+      amount: highestDay.value,
     );
   }
 
@@ -41,16 +39,12 @@ class GetHighestSpendingDayInsight {
     title: 'Highest spending day',
     message: '',
     type: InsightType.highest_spending_day,
-    icon: '🔥',
+    icon: 'DAY',
     color: Colors.red.value,
   );
 
-  String _getDayName(DateTime date) {
-    final days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-    return '${days[date.weekday - 1]}, ${date.day} ${_getMonthName(date.month)}';
-  }
-
-  String _getMonthName(int month) {
+  String _dayName(DateTime date) {
+    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     const months = [
       'Jan',
       'Feb',
@@ -65,6 +59,6 @@ class GetHighestSpendingDayInsight {
       'Nov',
       'Dec',
     ];
-    return months[month - 1];
+    return '${days[date.weekday - 1]}, ${date.day} ${months[date.month - 1]}';
   }
 }

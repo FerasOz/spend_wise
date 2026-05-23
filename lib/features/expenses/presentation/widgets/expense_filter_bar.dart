@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import '../../../../core/services/currency_display_service.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/app_formatters.dart';
-import '../../../../core/services/currency_converter.dart';
-import '../../../../core/utils/currency_formatter.dart';
+import '../../../../features/settings/domain/entities/app_currency.dart';
 import '../../../../features/settings/presentation/cubit/settings_cubit.dart';
 import '../../../../features/categories/presentation/cubit/category_cubit.dart';
 import '../../domain/entities/expense_filter.dart';
@@ -20,6 +19,10 @@ class ExpenseFilterBar extends StatelessWidget {
     final state = context.select((ExpenseFilterCubit cubit) => cubit.state);
     final categories = context.select(
       (CategoryCubit cubit) => cubit.state.sortedCategories,
+    );
+    final displayCurrency = context.select(
+      (SettingsCubit cubit) =>
+          cubit.state.settings?.currency ?? (throw StateError('Settings not loaded')),
     );
 
     return Column(
@@ -67,7 +70,7 @@ class ExpenseFilterBar extends StatelessWidget {
             ),
             InputChip(
               avatar: const Icon(Icons.attach_money_outlined),
-              label: Text(_amountLabel(context, state)),
+              label: Text(_amountLabel(state, displayCurrency)),
               onPressed: () => _pickAmountRange(context, state),
             ),
             PopupMenuButton<ExpenseSortOption>(
@@ -181,39 +184,18 @@ class ExpenseFilterBar extends StatelessWidget {
     return '${AppFormatters.shortDate(state.filterStartDate!)} - ${AppFormatters.shortDate(state.filterEndDate!)}';
   }
 
-  String _amountLabel(BuildContext context, ExpenseFilterState state) {
+  String _amountLabel(ExpenseFilterState state, AppCurrency displayCurrency) {
     if (state.minAmount == null && state.maxAmount == null) {
       return 'Amount range';
     }
 
-    // context provided by caller
-    final displayCurrency = context.select(
-      (SettingsCubit cubit) =>
-          cubit.state.settings?.currency ??
-          (throw StateError('Settings not loaded')),
-    );
-
     final min = state.minAmount == null
         ? 'Any'
-        : CurrencyFormatter.format(
-            CurrencyConverter.convert(
-              amount: state.minAmount!,
-              from: 'USD',
-              to: displayCurrency.code,
-            ),
-            symbol: displayCurrency.symbol,
-          );
+        : CurrencyDisplayService.formatFromUsd(state.minAmount!, displayCurrency);
 
     final max = state.maxAmount == null
         ? 'Any'
-        : CurrencyFormatter.format(
-            CurrencyConverter.convert(
-              amount: state.maxAmount!,
-              from: 'USD',
-              to: displayCurrency.code,
-            ),
-            symbol: displayCurrency.symbol,
-          );
+        : CurrencyDisplayService.formatFromUsd(state.maxAmount!, displayCurrency);
     return '$min - $max';
   }
 

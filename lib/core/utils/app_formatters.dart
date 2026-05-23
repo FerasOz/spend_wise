@@ -1,10 +1,6 @@
 class AppFormatters {
   const AppFormatters._();
 
-  static String currency(double value) {
-    return '\$${value.toStringAsFixed(2)}';
-  }
-
   static String shortDate(DateTime date) {
     final month = date.month.toString().padLeft(2, '0');
     final day = date.day.toString().padLeft(2, '0');
@@ -14,10 +10,13 @@ class AppFormatters {
   static String dateTime(DateTime date) {
     final hour = date.hour.toString().padLeft(2, '0');
     final minute = date.minute.toString().padLeft(2, '0');
-    return '${shortDate(date)} • $hour:$minute';
+    return '${shortDate(date)} | $hour:$minute';
   }
 
-  static String dateTimeOrFallback(DateTime? date, {String fallback = 'Unavailable'}) {
+  static String dateTimeOrFallback(
+    DateTime? date, {
+    String fallback = 'Unavailable',
+  }) {
     if (date == null) {
       return fallback;
     }

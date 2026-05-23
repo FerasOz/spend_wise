@@ -19,7 +19,6 @@ class ExpenseAmountField extends StatelessWidget {
       decoration: const InputDecoration(
         labelText: 'Amount',
         hintText: '24.99',
-        prefixText: '\$ ',
       ),
       keyboardType: const TextInputType.numberWithOptions(decimal: true),
       inputFormatters: [

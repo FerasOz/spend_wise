@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/widgets/currency_text.dart';
 import '../../../../features/categories/presentation/utils/category_expense_summary.dart';
 
 class CategoryDetailsStats extends StatelessWidget {
@@ -18,7 +19,7 @@ class CategoryDetailsStats extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: _CategoryStatCard(
+          child: _CategoryStatCard.expenseCount(
             label: 'Expenses',
             value: '${summary.expenseCount}',
             color: color,
@@ -26,9 +27,9 @@ class CategoryDetailsStats extends StatelessWidget {
         ),
         SizedBox(width: 12.w),
         Expanded(
-          child: _CategoryStatCard(
+          child: _CategoryStatCard.totalSpent(
             label: 'Total spent',
-            value: '\$${summary.totalSpent.toStringAsFixed(2)}',
+            summary: summary,
             color: color,
           ),
         ),
@@ -38,14 +39,27 @@ class CategoryDetailsStats extends StatelessWidget {
 }
 
 class _CategoryStatCard extends StatelessWidget {
-  const _CategoryStatCard({
-    required this.label,
-    required this.value,
-    required this.color,
-  });
+  const _CategoryStatCard.expenseCount({
+    required String label,
+    required String value,
+    required Color color,
+  }) : label = label,
+       value = value,
+       summary = null,
+       color = color;
+
+  const _CategoryStatCard.totalSpent({
+    required String label,
+    required CategoryExpenseSummary summary,
+    required Color color,
+  }) : label = label,
+       value = null,
+       summary = summary,
+       color = color;
 
   final String label;
-  final String value;
+  final String? value;
+  final CategoryExpenseSummary? summary;
   final Color color;
 
   @override
@@ -61,12 +75,20 @@ class _CategoryStatCard extends StatelessWidget {
         children: [
           Text(label, style: Theme.of(context).textTheme.bodySmall),
           SizedBox(height: 6.h),
-          Text(
-            value,
-            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-              fontWeight: FontWeight.w700,
+          if (value != null)
+            Text(
+              value!,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
+            )
+          else if (summary != null)
+            CurrencyText(
+              amount: summary!.totalSpent,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
             ),
-          ),
         ],
       ),
     );

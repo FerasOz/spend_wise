@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/services/currency_display_service.dart';
 import '../../../../core/theme/app_spacing.dart';
-import '../../../../core/services/currency_converter.dart';
-import '../../../../core/utils/currency_formatter.dart';
-import '../../../../features/settings/presentation/cubit/settings_cubit.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/widgets/category_badge.dart';
 import '../../../../features/categories/domain/entities/category.dart';
+import '../../../../features/settings/domain/entities/app_currency.dart';
+import '../../../../features/settings/presentation/cubit/settings_cubit.dart';
 import '../../domain/entities/budget_progress.dart';
 import 'budget_form_page.dart';
 import 'budget_progress_bar.dart';
@@ -27,6 +27,10 @@ class BudgetCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final displayCurrency = context.select(
+      (SettingsCubit cubit) =>
+          cubit.state.settings?.currency ?? (throw StateError('Settings not loaded')),
+    );
     final ratio =
         (budget.budget.limitAmount == 0
                 ? 0
@@ -59,30 +63,9 @@ class BudgetCard extends StatelessWidget {
               ],
             ),
             SizedBox(height: AppSpacing.lg.h),
-            Builder(
-              builder: (ctx) {
-                final displayCurrency = ctx.select(
-                  (SettingsCubit cubit) =>
-                      cubit.state.settings?.currency ??
-                      (throw StateError('Settings not loaded')),
-                );
-
-                final spent = CurrencyConverter.convert(
-                  amount: budget.budget.spentAmount,
-                  from: 'USD',
-                  to: displayCurrency.code,
-                );
-                final limit = CurrencyConverter.convert(
-                  amount: budget.budget.limitAmount,
-                  from: 'USD',
-                  to: displayCurrency.code,
-                );
-
-                return Text(
-                  '${CurrencyFormatter.format(spent, symbol: displayCurrency.symbol)} of ${CurrencyFormatter.format(limit, symbol: displayCurrency.symbol)}',
-                  style: theme.textTheme.titleMedium,
-                );
-              },
+            Text(
+              _rangeLabel(displayCurrency),
+              style: theme.textTheme.titleMedium,
             ),
             SizedBox(height: AppSpacing.spacing10.h),
             BudgetProgressBar(progress: budget.progress, status: budget.status),
@@ -90,27 +73,11 @@ class BudgetCard extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: Builder(
-                    builder: (ctx) {
-                      final displayCurrency = ctx.select(
-                        (SettingsCubit cubit) =>
-                            cubit.state.settings?.currency ??
-                            (throw StateError('Settings not loaded')),
-                      );
-
-                      final remaining = CurrencyConverter.convert(
-                        amount: budget.budget.remainingAmount,
-                        from: 'USD',
-                        to: displayCurrency.code,
-                      );
-
-                      return Text(
-                        '${CurrencyFormatter.format(remaining, symbol: displayCurrency.symbol)} remaining',
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.colorScheme.onSurfaceVariant,
-                        ),
-                      );
-                    },
+                  child: Text(
+                    '${CurrencyDisplayService.formatFromUsd(budget.budget.remainingAmount, displayCurrency)} remaining',
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: theme.colorScheme.onSurfaceVariant,
+                    ),
                   ),
                 ),
                 Text(
@@ -125,5 +92,17 @@ class BudgetCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String _rangeLabel(AppCurrency currency) {
+    final spent = CurrencyDisplayService.formatFromUsd(
+      budget.budget.spentAmount,
+      currency,
+    );
+    final limit = CurrencyDisplayService.formatFromUsd(
+      budget.budget.limitAmount,
+      currency,
+    );
+    return '$spent of $limit';
   }
 }

@@ -5,6 +5,7 @@ import 'package:spend_wise/core/theme/app_spacing.dart';
 
 import '../../domain/entities/dashboard_summary.dart';
 import 'dashboard_section_card.dart';
+import '../../../../core/widgets/currency_text.dart';
 
 class DashboardSummaryCards extends StatelessWidget {
   const DashboardSummaryCards({required this.summary, super.key});
@@ -16,25 +17,25 @@ class DashboardSummaryCards extends StatelessWidget {
     final cards = [
       _SummaryCardData(
         title: 'Total spending',
-        value: '\$${summary.totalSpending.toStringAsFixed(2)}',
+        amount: summary.totalSpending,
         subtitle: 'Lifetime',
         icon: Icons.account_balance_wallet_outlined,
       ),
       _SummaryCardData(
         title: 'This month',
-        value: '\$${summary.monthlySpending.toStringAsFixed(2)}',
+        amount: summary.monthlySpending,
         subtitle: 'Current month',
         icon: Icons.calendar_month_outlined,
       ),
       _SummaryCardData(
         title: 'This week',
-        value: '\$${summary.weeklySpending.toStringAsFixed(2)}',
+        amount: summary.weeklySpending,
         subtitle: 'Current week',
         icon: Icons.date_range_outlined,
       ),
       _SummaryCardData(
         title: 'Average daily',
-        value: '\$${summary.averageDailySpending.toStringAsFixed(2)}',
+        amount: summary.averageDailySpending,
         subtitle: '${summary.transactionCount} transactions tracked',
         icon: Icons.trending_up_outlined,
       ),
@@ -99,10 +100,8 @@ class _DashboardSummaryCard extends StatelessWidget {
           const Spacer(),
           Text(data.title, style: theme.textTheme.bodyMedium),
           SizedBox(height: AppSpacing.sm.h),
-          Text(
-            data.value,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
+          CurrencyText(
+            amount: data.amount,
             style: theme.textTheme.titleLarge?.copyWith(
               fontWeight: FontWeight.w700,
             ),
@@ -125,13 +124,13 @@ class _DashboardSummaryCard extends StatelessWidget {
 class _SummaryCardData {
   const _SummaryCardData({
     required this.title,
-    required this.value,
+    required this.amount,
     required this.icon,
     this.subtitle,
   });
 
   final String title;
-  final String value;
+  final double amount;
   final String? subtitle;
   final IconData icon;
 }

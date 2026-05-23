@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/widgets/currency_text.dart';
 import '../../domain/entities/insight_card.dart';
 
 class InsightCardWidget extends StatelessWidget {
@@ -35,7 +36,14 @@ class InsightCardWidget extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      if (insight.value != null)
+                      if (insight.amount != null)
+                        CurrencyText(
+                          amount: insight.amount!,
+                          style: theme.textTheme.bodySmall?.copyWith(
+                            color: theme.colorScheme.onSurfaceVariant,
+                          ),
+                        )
+                      else if (insight.value != null)
                         Text(
                           insight.value!,
                           style: theme.textTheme.bodySmall?.copyWith(

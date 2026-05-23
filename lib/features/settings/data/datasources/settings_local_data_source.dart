@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:spend_wise/features/settings/domain/entities/app_currency.dart';
+import '../../../../core/constants/currencies.dart';
 import '../../domain/entities/app_settings.dart';
 
 abstract class SettingsLocalDataSource {
@@ -49,7 +50,7 @@ class HiveSettingsLocalDataSource implements SettingsLocalDataSource {
     if (data == null) {
       final defaultSettings = AppSettings(
         themeMode: AppThemeMode.system,
-        currency: const AppCurrency(code: 'USD', symbol: '\$'),
+        currency: currencyByCode('USD'),
         language: AppLanguage.english,
         notificationsEnabled: true,
         autoBackupEnabled: false,
@@ -103,7 +104,7 @@ class HiveSettingsLocalDataSource implements SettingsLocalDataSource {
   Future<void> resetAllSettings() async {
     final defaultSettings = AppSettings(
       themeMode: AppThemeMode.system,
-      currency: const AppCurrency(code: 'USD', symbol: '\$'),
+      currency: currencyByCode('USD'),
       language: AppLanguage.english,
       notificationsEnabled: true,
       autoBackupEnabled: false,

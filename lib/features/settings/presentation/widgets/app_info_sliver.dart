@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/constants/currencies.dart';
 import 'package:spend_wise/features/settings/domain/entities/app_currency.dart';
 import 'package:spend_wise/features/settings/domain/entities/app_settings.dart';
 
 class AppInfoSliver extends StatelessWidget {
-  const AppInfoSliver({super.key, required this.settings});
+  const AppInfoSliver({required this.settings, super.key});
 
   final AppSettings settings;
 
@@ -30,15 +31,15 @@ class AppInfoSliver extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildHeader(context),
+              _InfoHeader(),
               SizedBox(height: 20.h),
               Wrap(
                 spacing: 12.w,
                 runSpacing: 12.h,
                 children: [
-                  _BuildChip(label: _themeModeLabel(settings.themeMode), context: context),
-                  _BuildChip(label: _currencyLabel(settings.currency), context: context),
-                  _BuildChip(label: _languageLabel(settings.language), context: context),
+                  _InfoChip(label: _themeModeLabel(settings.themeMode)),
+                  _InfoChip(label: _currencyLabel(settings.currency)),
+                  _InfoChip(label: _languageLabel(settings.language)),
                 ],
               ),
             ],
@@ -47,8 +48,11 @@ class AppInfoSliver extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget _buildHeader(BuildContext context) {
+class _InfoHeader extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Row(
       children: [
@@ -88,18 +92,16 @@ class AppInfoSliver extends StatelessWidget {
   }
 }
 
-class _BuildChip extends StatelessWidget {
-  const _BuildChip({required this.label, required this.context});
+class _InfoChip extends StatelessWidget {
+  const _InfoChip({required this.label});
 
   final String label;
-  final BuildContext context;
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Chip(
-      label: Text(label, style: theme.textTheme.labelSmall),
-      backgroundColor: theme.colorScheme.surfaceContainerHighest,
+      label: Text(label, style: Theme.of(context).textTheme.labelSmall),
+      backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
     );
   }
@@ -117,14 +119,7 @@ String _themeModeLabel(AppThemeMode themeMode) {
 }
 
 String _languageLabel(AppLanguage language) {
-  switch (language) {
-    case AppLanguage.english:
-      return 'English';
-    case AppLanguage.arabic:
-      return 'العربية';
-  }
+  return language == AppLanguage.english ? 'English' : 'Arabic';
 }
 
-String _currencyLabel(AppCurrency currency) {
-  return '${currency.symbol} ${currency.code}';
-}
+String _currencyLabel(AppCurrency currency) => currencyLabel(currency);

@@ -1,125 +1,127 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:spend_wise/features/settings/domain/entities/app_currency.dart';
-import 'package:spend_wise/features/settings/presentation/cubit/settings_cubit.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/constants/currencies.dart';
+import '../../../../core/theme/app_radius.dart';
+import '../../../../core/theme/app_spacing.dart';
+import '../cubit/settings_cubit.dart';
 
 void showCurrencyBottomSheet(BuildContext context) {
-  const currencies = [
-    AppCurrency(code: 'USD', symbol: '\$'),
-    AppCurrency(code: 'EUR', symbol: '€'),
-    AppCurrency(code: 'GBP', symbol: '£'),
-    AppCurrency(code: 'JPY', symbol: '¥'),
-    AppCurrency(code: 'INR', symbol: '₹'),
-    AppCurrency(code: 'AED', symbol: 'د.إ'),
-    AppCurrency(code: 'CAD', symbol: 'C\$'),
-    AppCurrency(code: 'AUD', symbol: 'A\$'),
-  ];
-
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(28.r)),
-    ),
-    builder: (context) => SafeArea(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 20.h),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _BuildBottomSheetHeader(title: 'Select Currency', context: context),
-            SizedBox(height: 18.h),
-            BlocBuilder<SettingsCubit, SettingsState>(
-              builder: (context, state) {
-                final selectedCode = state.settings?.currency.code;
-                return ListView.separated(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  separatorBuilder: (_, __) => Divider(
-                    color: Theme.of(context).colorScheme.outlineVariant,
-                    height: 0,
-                  ),
-                  itemCount: currencies.length,
-                  itemBuilder: (context, index) {
-                    final currency = currencies[index];
-                    final isSelected = selectedCode == currency.code;
-                    return _BuildCurrencyTile(
-                      currency: currency,
-                      selected: isSelected,
-                      context: context,
-                    );
-                  },
-                );
-              },
-            ),
-          ],
-        ),
-      ),
-    ),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(AppRadius.xxl.r))),
+    builder: (_) => const _CurrencyBottomSheet(),
   );
 }
 
-Widget _BuildCurrencyTile({
-  required AppCurrency currency,
-  required bool selected,
-  required BuildContext context,
-}) {
-  final theme = Theme.of(context);
-  return Padding(
-    padding: EdgeInsets.symmetric(vertical: 8.h),
-    child: ListTile(
-      contentPadding: EdgeInsets.zero,
-      horizontalTitleGap: 16.w,
-      leading: Container(
-        width: 48.w,
-        height: 48.w,
-        decoration: BoxDecoration(
-          color: theme.colorScheme.primaryContainer,
-          borderRadius: BorderRadius.circular(16.r),
-        ),
-        alignment: Alignment.center,
-        child: Text(
-          currency.symbol,
-          style: theme.textTheme.titleMedium?.copyWith(
-            color: theme.colorScheme.onPrimaryContainer,
-            fontWeight: FontWeight.w700,
+class _CurrencyBottomSheet extends StatelessWidget {
+  const _CurrencyBottomSheet();
+
+  @override
+  Widget build(BuildContext context) {
+    return FractionallySizedBox(
+      heightFactor: 0.72,
+      child: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(AppSpacing.xxl.w, AppSpacing.lg.h, AppSpacing.xxl.w, AppSpacing.xxl.h),
+          child: Column(
+            children: [
+              const _SheetHeader(),
+              SizedBox(height: AppSpacing.lg.h),
+              Expanded(
+                child: BlocSelector<SettingsCubit, SettingsState, String>(
+                  selector: (state) => state.settings?.currency.code ?? 'USD',
+                  builder: (context, selectedCode) {
+                    return ListView.separated(
+                      itemCount: supportedCurrencies.length,
+                      separatorBuilder: (_, _) => SizedBox(height: AppSpacing.sm.h),
+                      itemBuilder: (context, index) {
+                        final option = supportedCurrencies[index];
+                        return _CurrencyTile(
+                          option: option,
+                          isSelected: selectedCode == option.currency.code,
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
         ),
       ),
-      title: Text(currency.code, style: theme.textTheme.bodyLarge),
-      trailing: selected
-          ? Icon(
-              Icons.check_circle,
-              color: theme.colorScheme.primary,
-              size: 22.sp,
-            )
-          : null,
-      onTap: () {
-        context.read<SettingsCubit>().updateCurrency(currency);
-        Navigator.pop(context);
-      },
-    ),
-  );
+    );
+  }
 }
 
-Widget _BuildBottomSheetHeader({
-  required String title,
-  required BuildContext context,
-}) {
-  return Row(
-    children: [
-      Text(
-        title,
-        style: Theme.of(
-          context,
-        ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+class _SheetHeader extends StatelessWidget {
+  const _SheetHeader();
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Select currency', style: Theme.of(context).textTheme.titleMedium),
+              SizedBox(height: AppSpacing.xs.h),
+              Text(
+                'Amounts stay stored in USD and are converted only for display.',
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+            ],
+          ),
+        ),
+        IconButton(onPressed: () => Navigator.of(context).pop(), icon: const Icon(Icons.close)),
+      ],
+    );
+  }
+}
+
+class _CurrencyTile extends StatelessWidget {
+  const _CurrencyTile({required this.option, required this.isSelected});
+
+  final SupportedCurrencyOption option;
+  final bool isSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return InkWell(
+      borderRadius: BorderRadius.circular(AppRadius.lg.r),
+      onTap: () async {
+        await context.read<SettingsCubit>().updateCurrency(option.currency);
+        if (context.mounted) Navigator.of(context).pop();
+      },
+      child: Container(
+        padding: EdgeInsets.all(AppSpacing.lg.w),
+        decoration: BoxDecoration(
+          color: isSelected ? theme.colorScheme.primaryContainer : theme.colorScheme.surface,
+          borderRadius: BorderRadius.circular(AppRadius.lg.r),
+          border: Border.all(color: isSelected ? theme.colorScheme.primary : theme.colorScheme.outlineVariant),
+        ),
+        child: Row(
+          children: [
+            Text(option.currency.code, style: theme.textTheme.titleSmall),
+            SizedBox(width: AppSpacing.md.w),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(option.name, style: theme.textTheme.bodyLarge),
+                  Text(option.currency.symbol, style: theme.textTheme.bodySmall),
+                ],
+              ),
+            ),
+            if (isSelected) Icon(Icons.check_circle, color: theme.colorScheme.primary),
+          ],
+        ),
       ),
-      const Spacer(),
-      IconButton(
-        icon: const Icon(Icons.close),
-        onPressed: () => Navigator.pop(context),
-      ),
-    ],
-  );
+    );
+  }
 }

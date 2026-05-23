@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/core/theme/app_spacing.dart';
-
+import '../../../../core/widgets/currency_text.dart';
 import '../../../../features/categories/presentation/utils/category_presentation_data.dart';
 import '../../domain/entities/category_spending.dart';
 import 'dashboard_section_card.dart';
@@ -103,9 +103,10 @@ class _CategoryBreakdownItem extends StatelessWidget {
               valueColor: AlwaysStoppedAnimation<Color>(categoryColor),
             ),
             SizedBox(height: AppSpacing.sm.h),
-            Text(
-              '\$${spending.amount.toStringAsFixed(2)} spent',
+            CurrencyText(
+              amount: spending.amount,
               style: Theme.of(context).textTheme.bodySmall,
+              suffix: ' spent',
             ),
           ],
         ),
