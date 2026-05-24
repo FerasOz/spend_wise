@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../core/services/currency_display_service.dart';
 import '../../../../core/theme/app_spacing.dart';
@@ -29,7 +31,7 @@ class BudgetCard extends StatelessWidget {
     final theme = Theme.of(context);
     final displayCurrency = context.select(
       (SettingsCubit cubit) =>
-          cubit.state.settings?.currency ?? (throw StateError('Settings not loaded')),
+          cubit.state.settings?.currency ?? const AppCurrency(code: 'USD', symbol: '\$'),
     );
     final ratio =
         (budget.budget.limitAmount == 0
@@ -55,9 +57,9 @@ class BudgetCard extends StatelessWidget {
                     }
                     onDelete();
                   },
-                  itemBuilder: (_) => const [
-                    PopupMenuItem(value: 'edit', child: Text('Edit')),
-                    PopupMenuItem(value: 'delete', child: Text('Delete')),
+                  itemBuilder: (_) => [
+                    PopupMenuItem(value: 'edit', child: Text(LocaleKeys.budgets_card_edit.tr())),
+                    PopupMenuItem(value: 'delete', child: Text(LocaleKeys.budgets_card_delete.tr())),
                   ],
                 ),
               ],
@@ -74,7 +76,7 @@ class BudgetCard extends StatelessWidget {
               children: [
                 Expanded(
                   child: Text(
-                    '${CurrencyDisplayService.formatFromUsd(budget.budget.remainingAmount, displayCurrency)} remaining',
+                    '${CurrencyDisplayService.formatFromUsd(budget.budget.remainingAmount, displayCurrency)} ${LocaleKeys.budgets_remaining.tr()}',
                     style: theme.textTheme.bodyMedium?.copyWith(
                       color: theme.colorScheme.onSurfaceVariant,
                     ),
@@ -103,6 +105,6 @@ class BudgetCard extends StatelessWidget {
       budget.budget.limitAmount,
       currency,
     );
-    return '$spent of $limit';
+    return '$spent ${LocaleKeys.budgets_card_of.tr()} $limit';
   }
 }

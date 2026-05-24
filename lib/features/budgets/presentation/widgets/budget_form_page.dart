@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../core/base/requests_status.dart';
 import '../../../../core/widgets/category_picker.dart';
@@ -58,7 +60,13 @@ class BudgetFormPage extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(title: Text(isEditing ? 'Edit budget' : 'Create budget')),
+      appBar: AppBar(
+        title: Text(
+          isEditing
+              ? LocaleKeys.budgets_form_title_edit.tr()
+              : LocaleKeys.budgets_form_title_create.tr(),
+        ),
+      ),
       body: SafeArea(
         child: BlocBuilder<BudgetCubit, BudgetState>(
           buildWhen: (previous, current) =>
@@ -91,11 +99,11 @@ class BudgetFormPage extends StatelessWidget {
                     TextFormField(
                       initialValue: limitValue,
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                      decoration: const InputDecoration(labelText: 'Budget limit'),
+                      decoration: InputDecoration(labelText: LocaleKeys.budgets_form_fields_limit.tr()),
                       validator: (value) {
                         final amount = double.tryParse((value ?? '').trim());
                         return amount == null || amount <= 0
-                            ? 'Enter a valid budget limit'
+                            ? LocaleKeys.budgets_form_validation_limitValid.tr()
                             : null;
                       },
                       onSaved: (value) => limitValue = value?.trim(),
@@ -114,7 +122,7 @@ class BudgetFormPage extends StatelessWidget {
                                 child: CircularProgressIndicator(strokeWidth: 2),
                               )
                             : const Icon(Icons.check),
-                        label: Text(isEditing ? 'Save changes' : 'Create budget'),
+                        label: Text(isEditing ? LocaleKeys.budgets_card_saveChanges.tr() : LocaleKeys.budgets_card_createBudget.tr()),
                       ),
                     ),
                   ],

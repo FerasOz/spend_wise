@@ -1,4 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../core/base/requests_status.dart';
 import '../../domain/entities/budget.dart';
@@ -46,7 +48,7 @@ class BudgetCubit extends Cubit<BudgetState> {
       emit(
         state.copyWith(
           status: RequestsStatus.error,
-          errorMessage: _mapError(error, 'Failed to load budgets.'),
+          errorMessage: _mapError(error, LocaleKeys.common_errors_loadBudgets.tr()),
         ),
       );
     }
@@ -55,21 +57,21 @@ class BudgetCubit extends Cubit<BudgetState> {
   Future<void> createBudget(Budget budget) {
     return _submit(
       action: () => _createBudget(budget),
-      successMessage: 'Budget created successfully.',
+      successMessage: LocaleKeys.budgets_success_created.tr(),
     );
   }
 
   Future<void> updateBudget(Budget budget) {
     return _submit(
       action: () => _updateBudget(budget),
-      successMessage: 'Budget updated successfully.',
+      successMessage: LocaleKeys.budgets_success_updated.tr(),
     );
   }
 
   Future<void> deleteBudget(String id) {
     return _submit(
       action: () => _deleteBudget(id),
-      successMessage: 'Budget deleted successfully.',
+      successMessage: LocaleKeys.budgets_success_deleted.tr(),
     );
   }
 
@@ -98,7 +100,7 @@ class BudgetCubit extends Cubit<BudgetState> {
       emit(
         state.copyWith(
           submissionStatus: RequestsStatus.error,
-          submissionMessage: _mapError(error, 'Budget action failed.'),
+          submissionMessage: _mapError(error, LocaleKeys.common_errors_budgetActionFailed.tr()),
         ),
       );
     }

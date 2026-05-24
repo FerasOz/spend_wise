@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../core/base/requests_status.dart';
 import '../../../../core/widgets/responsive_page_content.dart';
@@ -40,7 +42,7 @@ class BudgetPage extends StatelessWidget {
         ),
       ],
       child: Scaffold(
-        appBar: AppBar(title: const Text('Budgets')),
+        appBar: AppBar(title: Text(LocaleKeys.budgets_title.tr())),
         floatingActionButton: FloatingActionButton(
           onPressed: () => BudgetFormPage.open(context),
           child: const Icon(Icons.add),
@@ -74,7 +76,7 @@ class _BudgetBody extends StatelessWidget {
       return const Center(child: CircularProgressIndicator());
     }
     if (state.status == RequestsStatus.error && state.budgets.isEmpty) {
-      return Center(child: Text(state.errorMessage ?? 'Failed to load budgets.'));
+      return Center(child: Text(state.errorMessage ?? LocaleKeys.common_error.tr()));
     }
     if (state.budgets.isEmpty) {
       return BudgetEmptyState(onAddBudget: () => BudgetFormPage.open(context));
