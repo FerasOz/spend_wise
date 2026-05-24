@@ -1,0 +1,350 @@
+{
+  "app": {
+    "title": "سبند وايز",
+    "about": "حول",
+    "settings": "الإعدادات"
+  },
+  "navigation": {
+    "dashboard": "الرئيسية",
+    "expenses": "المصاريف",
+    "recurring": "المتكررة",
+    "categories": "الفئات",
+    "budgets": "الميزانيات",
+    "insights": "الرؤى",
+    "export": "تصدير"
+  },
+  "common": {
+    "loading": "جارٍ التحميل...",
+    "error": "حدث خطأ ما",
+    "success": "تم بنجاح",
+    "confirmation": "هل أنت متأكد؟",
+    "actions": {
+      "save": "حفظ",
+      "cancel": "إلغاء",
+      "delete": "حذف",
+      "edit": "تعديل",
+      "close": "إغلاق",
+      "apply": "تطبيق",
+      "reset": "إعادة ضبط",
+      "tryAgain": "حاول مرة أخرى",
+      "share": "مشاركة"
+    },
+    "validation": {
+      "required": "هذا الحقل مطلوب",
+      "invalid": "يرجى إدخال قيمة صحيحة",
+      "minLength": "يجب أن يكون على الأقل {min} أحرف",
+      "maxLength": "يجب ألا يتجاوز {max} أحرف"
+    },
+    "errors": {
+      "loadBudgets": "تعذر تحميل الميزانيات.",
+      "loadRecurringExpenses": "تعذر تحميل المصاريف المتكررة.",
+      "budgetActionFailed": "فشلت عملية الميزانية."
+    }
+  },
+  "currency": {
+    "selection": "اختر العملة",
+    "names": {
+      "USD": "الدولار الأمريكي",
+      "EUR": "اليورو",
+      "ILS": "الشيكل الإسرائيلي",
+      "JOD": "الدينار الأردني",
+      "SAR": "الريال السعودي",
+      "GBP": "الجنيه الإسترليني"
+    }
+  },
+  "settings": {
+    "hero": {
+      "title": "خصص Spend Wise",
+      "subtitle": "حدّث تفضيلاتك من مكان واحد"
+    },
+    "appearance": {
+      "title": "المظهر",
+      "themeMode": {
+        "title": "وضع المظهر",
+        "subtitle": "اختر بين الوضع الفاتح أو الداكن أو وضع النظام",
+        "light": "فاتح",
+        "dark": "داكن",
+        "system": "النظام"
+      }
+    },
+    "preferences": {
+      "title": "التفضيلات",
+      "currency": {
+        "title": "العملة",
+        "subtitle": "حدد العملة الافتراضية لعرض المبالغ",
+        "displayHint": "تُحفَظ المبالغ بالدولار الأمريكي وتُحوَّل للعرض فقط."
+      },
+      "language": {
+        "title": "اللغة",
+        "subtitle": "غيّر لغة التطبيق"
+      }
+    },
+    "notifications": {
+      "title": "الإشعارات",
+      "push": {
+        "title": "الإشعارات",
+        "subtitle": "استقبل التنبيهات والتذكيرات"
+      },
+      "backup": {
+        "title": "النسخ الاحتياطي التلقائي",
+        "subtitle": "أنشئ نسخة احتياطية لبياناتك تلقائيًا"
+      }
+    },
+    "data": {
+      "title": "البيانات والخصوصية",
+      "reset": {
+        "title": "إعادة ضبط جميع الإعدادات",
+        "subtitle": "استعادة جميع الإعدادات إلى قيمها الافتراضية",
+        "dialogTitle": "إعادة ضبط جميع الإعدادات؟",
+        "dialogMessage": "سيؤدي هذا إلى إعادة جميع الإعدادات إلى قيمها الافتراضية."
+      }
+    },
+    "languages": {
+      "english": "الإنجليزية",
+      "arabic": "العربية",
+      "englishNative": "English",
+      "arabicNative": "العربية"
+    }
+  },
+  "budgets": {
+    "title": "الميزانيات",
+    "empty": {
+      "title": "لا توجد ميزانيات بعد",
+      "subtitle": "أنشئ ميزانية لفئة حتى تتابع إنفاقك الشهري بشكل أفضل.",
+      "button": "إنشاء ميزانية"
+    },
+    "card": {
+      "edit": "تعديل",
+      "delete": "حذف",
+      "saveChanges": "حفظ التعديلات",
+      "createBudget": "إنشاء ميزانية",
+      "of": "من"
+    },
+    "remaining": "متبقي",
+    "success": {
+      "created": "تم إنشاء الميزانية بنجاح.",
+      "updated": "تم تحديث الميزانية بنجاح.",
+      "deleted": "تم حذف الميزانية بنجاح."
+    },
+    "form": {
+      "title": {
+        "create": "إنشاء ميزانية",
+        "edit": "تعديل الميزانية"
+      },
+      "fields": {
+        "name": "الاسم",
+        "amount": "المبلغ",
+        "period": "الفترة",
+        "startDate": "تاريخ البداية",
+        "endDate": "تاريخ النهاية",
+        "category": "الفئة",
+        "limit": "حد الميزانية"
+      },
+      "validation": {
+        "limitValid": "أدخل حد ميزانية صحيحًا"
+      }
+    }
+  },
+  "expenses": {
+    "title": "المصاريف",
+    "empty": {
+      "title": "أضف أول مصروف",
+      "button": "إضافة مصروف"
+    },
+    "details": {
+      "title": "تفاصيل المصروف",
+      "fields": {
+        "title": "العنوان",
+        "category": "الفئة",
+        "amount": "المبلغ",
+        "date": "التاريخ",
+        "note": "ملاحظة",
+        "timeline": "الجدول الزمني"
+      }
+    },
+    "form": {
+      "title": {
+        "add": "إضافة مصروف",
+        "addButton": "إضافة مصروف",
+        "edit": "تعديل مصروف",
+        "editButton": "تعديل مصروف"
+      },
+      "fields": {
+        "title": "العنوان",
+        "titlePlaceholder": "البقالة",
+        "amount": "المبلغ",
+        "amountPlaceholder": "24.99",
+        "date": "التاريخ",
+        "category": "الفئة",
+        "note": "ملاحظة",
+        "notePlaceholder": "تفاصيل اختيارية",
+        "currency": "العملة"
+      },
+      "validation": {
+        "titleRequired": "العنوان مطلوب",
+        "amountRequired": "المبلغ مطلوب",
+        "amountValid": "يرجى إدخال مبلغ صحيح",
+        "dateRequired": "التاريخ مطلوب",
+        "categoryRequired": "يرجى اختيار فئة"
+      }
+    },
+    "filters": {
+      "title": "الفلاتر",
+      "categories": {
+        "all": "جميع الفئات"
+      },
+      "amountRange": "نطاق المبلغ",
+      "searchHint": "ابحث عن المصاريف بالعنوان",
+      "minimumAmount": "الحد الأدنى للمبلغ",
+      "maximumAmount": "الحد الأعلى للمبلغ",
+      "actions": {
+        "apply": "تطبيق",
+        "clear": "مسح الفلاتر",
+        "cancel": "إلغاء"
+      }
+    },
+    "item": {
+      "actions": {
+        "edit": "تعديل",
+        "delete": "حذف"
+      }
+    },
+    "management": {
+      "delete": {
+        "title": "حذف المصروف",
+        "cancel": "إلغاء",
+        "confirm": "حذف"
+      }
+    }
+  },
+  "categories": {
+    "title": "الفئات",
+    "details": {
+      "title": "تفاصيل الفئة"
+    },
+    "list": {
+      "delete": {
+        "title": "حذف الفئة",
+        "cancel": "إلغاء",
+        "confirm": "حذف"
+      },
+      "tooltips": {
+        "add": "إضافة فئة"
+      }
+    },
+    "form": {
+      "title": {
+        "add": "إضافة فئة",
+        "addButton": "إضافة فئة",
+        "edit": "تعديل فئة",
+        "editButton": "تعديل فئة"
+      },
+      "fields": {
+        "name": "أدخل اسم الفئة"
+      }
+    },
+    "item": {
+      "stats": "{count} مصروفات",
+      "actions": {
+        "edit": "تعديل",
+        "delete": "حذف"
+      },
+      "tooltips": {
+        "actions": "إجراءات الفئة"
+      }
+    }
+  },
+  "dashboard": {
+    "title": "الرئيسية",
+    "empty": {
+      "title": "أضف أول مصروف"
+    },
+    "error": {
+      "retry": "إعادة المحاولة"
+    },
+    "chart": {
+      "labelFormat": "{label}: ",
+      "section": {
+        "weeklySpending": "الإنفاق الأسبوعي",
+        "weeklySubtitle": "وتيرة إنفاقك خلال هذا الأسبوع",
+        "noData": {
+          "title": "لا توجد بيانات أسبوعية",
+          "message": "سيظهر مخطط الإنفاق الأسبوعي عند وجود نشاط هذا الأسبوع."
+        }
+      }
+    }
+  },
+  "recurring": {
+    "title": "المتكررة",
+    "empty": {
+      "title": "أضف مصروفًا متكررًا"
+    },
+    "details": {
+      "nextDueDate": "تاريخ الاستحقاق التالي"
+    },
+    "item": {
+      "actions": {
+        "edit": "تعديل",
+        "delete": "حذف"
+      }
+    },
+    "form": {
+      "title": {
+        "add": "إضافة مصروف متكرر",
+        "edit": "تعديل مصروف متكرر"
+      },
+      "fields": {
+        "title": "العنوان",
+        "amount": "المبلغ",
+        "frequency": "التكرار",
+        "startDate": "تاريخ البداية",
+        "endDate": "تاريخ النهاية",
+        "category": "الفئة"
+      },
+      "frequencies": {
+        "daily": "يومي",
+        "weekly": "أسبوعي",
+        "biweekly": "كل أسبوعين",
+        "monthly": "شهري",
+        "quarterly": "ربع سنوي",
+        "yearly": "سنوي"
+      },
+      "repeat": "التكرار"
+    },
+    "management": {
+      "delete": {
+        "title": "حذف المصروف المتكرر",
+        "cancel": "إلغاء",
+        "confirm": "حذف"
+      }
+    }
+  },
+  "export": {
+    "title": "تصدير",
+    "dialog": {
+      "title": "تصدير البيانات",
+      "exporting": "جارٍ التصدير...",
+      "fileNotFound": "تعذر العثور على الملف: {filePath}",
+      "message": "اطّلع على هذا الملف المصدّر من Spend Wise!",
+      "options": {
+        "csv": {
+          "title": "تصدير CSV",
+          "subtitle": "تصدير المصاريف كملف CSV"
+        },
+        "summary": {
+          "title": "تصدير الملخص",
+          "subtitle": "تصدير ملخص لوحة التحكم"
+        },
+        "backup": {
+          "title": "إنشاء نسخة احتياطية",
+          "subtitle": "نسخ احتياطي لجميع بيانات التطبيق"
+        }
+      },
+      "actions": {
+        "close": "إغلاق",
+        "share": "مشاركة",
+        "tryAgain": "حاول مرة أخرى"
+      }
+    }
+  }
+}

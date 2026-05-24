@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,29 +22,26 @@ class SpendWiseApp extends StatelessWidget {
       builder: (context, child) {
         return BlocProvider<SettingsCubit>(
           create: (_) => sl<SettingsCubit>(),
-          child: BlocBuilder<SettingsCubit, SettingsState>(
-            builder: (context, state) {
-              ThemeMode activeMode = ThemeMode.system;
-              if (state.isInitialized) {
-                switch (state.settings!.themeMode) {
-                  case AppThemeMode.light:
-                    activeMode = ThemeMode.light;
-                    break;
-                  case AppThemeMode.dark:
-                    activeMode = ThemeMode.dark;
-                    break;
-                  case AppThemeMode.system:
-                    activeMode = ThemeMode.system;
-                    break;
-                }
+          child: BlocConsumer<SettingsCubit, SettingsState>(
+            listenWhen: (previous, current) =>
+                current.isInitialized &&
+                previous.settings?.language != current.settings?.language,
+            listener: (context, state) {
+              final locale = _localeFor(state.settings?.language);
+              if (context.locale != locale) {
+                context.setLocale(locale);
               }
-
+            },
+            builder: (context, state) {
               return MaterialApp(
+                localizationsDelegates: context.localizationDelegates,
+                supportedLocales: context.supportedLocales,
+                locale: context.locale,
                 title: 'Spend Wise',
                 debugShowCheckedModeBanner: false,
                 theme: AppTheme.light,
                 darkTheme: AppTheme.dark,
-                themeMode: activeMode,
+                themeMode: _themeModeFor(state.settings?.themeMode),
                 initialRoute: RouteNames.mainShellPage,
                 onGenerateRoute: appRouters.onGenerateRoute,
               );
@@ -52,5 +50,27 @@ class SpendWiseApp extends StatelessWidget {
         );
       },
     );
+  }
+
+  ThemeMode _themeModeFor(AppThemeMode? mode) {
+    switch (mode) {
+      case AppThemeMode.light:
+        return ThemeMode.light;
+      case AppThemeMode.dark:
+        return ThemeMode.dark;
+      case AppThemeMode.system:
+      case null:
+        return ThemeMode.system;
+    }
+  }
+
+  Locale _localeFor(AppLanguage? language) {
+    switch (language) {
+      case AppLanguage.arabic:
+        return const Locale('ar');
+      case AppLanguage.english:
+      case null:
+        return const Locale('en');
+    }
   }
 }
