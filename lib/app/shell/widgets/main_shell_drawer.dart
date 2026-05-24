@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/app/routes/route_names.dart';
 import 'package:spend_wise/core/theme/app_spacing.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 class MainShellDrawer extends StatelessWidget {
   const MainShellDrawer({super.key});
@@ -16,14 +18,14 @@ class MainShellDrawer extends StatelessWidget {
               child: Align(
                 alignment: Alignment.bottomLeft,
                 child: Text(
-                  'Spend Wise',
+                  LocaleKeys.app_title.tr(),
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
               ),
             ),
             ListTile(
               leading: const Icon(Icons.savings_outlined),
-              title: const Text('Budgets'),
+              title: Text(LocaleKeys.budgets_title.tr()),
               onTap: () {
                 Navigator.of(context).pop();
                 Navigator.of(context).pushNamed(RouteNames.budgetPage);
@@ -31,7 +33,7 @@ class MainShellDrawer extends StatelessWidget {
             ),
             ListTile(
               leading: const Icon(Icons.settings_outlined),
-              title: const Text('Settings'),
+              title: Text(LocaleKeys.app_settings.tr()),
               onTap: () {
                 Navigator.of(context).pop();
                 Navigator.of(context).pushNamed(RouteNames.settingsPage);
@@ -39,12 +41,12 @@ class MainShellDrawer extends StatelessWidget {
             ),
             ListTile(
               leading: const Icon(Icons.info_outline),
-              title: const Text('About'),
+              title: Text(LocaleKeys.app_about.tr()),
               onTap: () {
                 Navigator.of(context).pop();
                 showAboutDialog(
                   context: context,
-                  applicationName: 'Spend Wise',
+                  applicationName: LocaleKeys.app_title.tr(),
                   applicationVersion: '1.0.0',
                   applicationLegalese: 'Smart Expense & Subscription Tracker',
                 );

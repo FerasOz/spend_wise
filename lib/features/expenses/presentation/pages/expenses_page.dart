@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../core/widgets/responsive_page_content.dart';
 import '../../../categories/presentation/cubit/category_cubit.dart';
@@ -36,7 +38,7 @@ class ExpensesPage extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Expenses')),
+      appBar: AppBar(title: Text(LocaleKeys.expenses_title.tr())),
       body: body,
       floatingActionButton: FloatingActionButton(
         onPressed: () => openExpenseFormPage(context),
