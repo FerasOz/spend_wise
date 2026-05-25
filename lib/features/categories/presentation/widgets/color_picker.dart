@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/core/theme/app_colors.dart';
 import 'package:spend_wise/core/theme/app_spacing.dart';
 import 'package:spend_wise/features/categories/presentation/utils/category_presentation_data.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 class ColorPicker extends StatelessWidget {
   final int selectedColor;
@@ -20,7 +22,7 @@ class ColorPicker extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Select Color',
+          LocaleKeys.categories_form_fields_selectColor.tr(),
           style: Theme.of(
             context,
           ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),

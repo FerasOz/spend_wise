@@ -45,7 +45,7 @@ class CategoryDetailsHeader extends StatelessWidget {
           SizedBox(width: AppSpacing.lg.w),
           Expanded(
             child: Text(
-              category.name,
+              category.displayName,
               style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                 color: Theme.of(context).colorScheme.onPrimary,
                 fontWeight: FontWeight.w700,

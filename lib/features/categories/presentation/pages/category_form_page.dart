@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,6 +8,7 @@ import 'package:spend_wise/features/categories/presentation/cubit/category_cubit
 import 'package:spend_wise/features/categories/presentation/cubit/category_state.dart';
 import 'package:spend_wise/features/categories/presentation/widgets/category_form.dart';
 import 'package:spend_wise/features/categories/presentation/widgets/category_loading_overlay.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 class CategoryFormPage extends StatelessWidget {
   const CategoryFormPage({super.key});
@@ -51,7 +53,11 @@ class CategoryFormPage extends StatelessWidget {
         builder: (context, state) {
           return Scaffold(
             appBar: AppBar(
-              title: Text(state.isEditing ? 'Edit Category' : 'Add Category'),
+              title: Text(
+                state.isEditing
+                    ? LocaleKeys.categories_form_title_edit.tr()
+                    : LocaleKeys.categories_form_title_add.tr(),
+              ),
               elevation: 0,
             ),
             body: Stack(
@@ -66,7 +72,9 @@ class CategoryFormPage extends StatelessWidget {
                   ),
                 ),
                 if (state.submissionStatus == RequestsStatus.loading)
-                  const CategoryLoadingOverlay(message: 'Saving category...'),
+                  CategoryLoadingOverlay(
+                    message: LocaleKeys.categories_form_fields_saving.tr(),
+                  ),
               ],
             ),
           );

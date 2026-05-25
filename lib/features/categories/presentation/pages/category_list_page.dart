@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,6 +11,7 @@ import 'package:spend_wise/features/categories/presentation/widgets/category_for
 import 'package:spend_wise/features/categories/presentation/widgets/category_listeners.dart';
 import 'package:spend_wise/features/categories/presentation/widgets/category_list_views.dart';
 import 'package:spend_wise/features/expenses/presentation/cubit/expense_cubit.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 class CategoryListPage extends StatelessWidget {
   const CategoryListPage({super.key, this.showScaffold = true});
@@ -25,10 +27,9 @@ class CategoryListPage extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Categories'), elevation: 0),
       floatingActionButton: FloatingActionButton(
         onPressed: () => openCategoryFormPage(context),
-        tooltip: 'Add Category',
+        tooltip: LocaleKeys.categories_form_title_add.tr(),
         child: const Icon(Icons.add),
       ),
       body: ResponsivePageContent(
@@ -95,18 +96,21 @@ class CategoryListPage extends StatelessWidget {
       context: context,
       builder: (dialogContext) {
         return AlertDialog(
-          title: const Text('Delete Category'),
+          title: Text(LocaleKeys.categories_list_delete_title.tr()),
           content: Text(
-            'Are you sure you want to delete "${category.name}"? This action cannot be undone.',
+            '${LocaleKeys.categories_list_delete_subtitle.tr()} "${category.name}"?',
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(dialogContext).pop(false),
-              child: const Text('Cancel'),
+              child: Text(LocaleKeys.common_actions_cancel.tr()),
             ),
             TextButton(
               onPressed: () => Navigator.of(dialogContext).pop(true),
-              child: const Text('Delete', style: TextStyle(color: Colors.red)),
+              child: Text(
+                LocaleKeys.common_actions_delete.tr(),
+                style: const TextStyle(color: Colors.red),
+              ),
             ),
           ],
         );

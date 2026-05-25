@@ -1,3 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
+import '../../../../generated/locale_keys.g.dart';
+
 class Category {
   final String id;
   final String name;
@@ -14,6 +17,26 @@ class Category {
     required this.isDefault,
     required this.createdAt,
   });
+
+  String get displayName {
+    if (isDefault) {
+      switch (id) {
+        case 'cat_shopping':
+          return LocaleKeys.categories_defaultCategories_shopping.tr();
+        case 'cat_food':
+          return LocaleKeys.categories_defaultCategories_food.tr();
+        case 'cat_transport':
+          return LocaleKeys.categories_defaultCategories_transportation.tr();
+        case 'cat_entertainment':
+          return LocaleKeys.categories_defaultCategories_entertainment.tr();
+        case 'cat_utilities':
+          return LocaleKeys.categories_defaultCategories_utilities.tr();
+        case 'cat_health':
+          return LocaleKeys.categories_defaultCategories_health.tr();
+      }
+    }
+    return name;
+  }
 
   Category copyWith({
     String? id,

@@ -57,7 +57,7 @@ class ExpenseFilterBar extends StatelessWidget {
             ),
             for (final category in categories)
               ChoiceChip(
-                label: Text(category.name),
+                label: Text(category.displayName),
                 selected: state.categoryFilterId == category.id,
                 onSelected: (_) => context
                     .read<ExpenseFilterCubit>()

@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../core/widgets/currency_text.dart';
 import '../../../../features/categories/presentation/utils/category_expense_summary.dart';
@@ -20,7 +22,7 @@ class CategoryDetailsStats extends StatelessWidget {
       children: [
         Expanded(
           child: _CategoryStatCard.expenseCount(
-            label: 'Expenses',
+            label: LocaleKeys.expenses_title.tr(),
             value: '${summary.expenseCount}',
             color: color,
           ),
@@ -28,7 +30,7 @@ class CategoryDetailsStats extends StatelessWidget {
         SizedBox(width: 12.w),
         Expanded(
           child: _CategoryStatCard.totalSpent(
-            label: 'Total spent',
+            label: LocaleKeys.categories_details_totalSpent.tr(),
             summary: summary,
             color: color,
           ),
@@ -78,16 +80,16 @@ class _CategoryStatCard extends StatelessWidget {
           if (value != null)
             Text(
               value!,
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.w700,
-              ),
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
             )
           else if (summary != null)
             CurrencyText(
               amount: summary!.totalSpent,
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.w700,
-              ),
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
             ),
         ],
       ),

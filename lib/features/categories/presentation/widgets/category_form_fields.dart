@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +9,7 @@ import 'package:spend_wise/core/theme/app_spacing.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_state.dart';
 import 'package:spend_wise/features/categories/presentation/utils/category_presentation_data.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 class CategoryNameField extends StatelessWidget {
   const CategoryNameField({
@@ -25,7 +27,7 @@ class CategoryNameField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Category Name',
+          LocaleKeys.categories_form_fields_categoryName.tr(),
           style: Theme.of(
             context,
           ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
@@ -37,7 +39,7 @@ class CategoryNameField extends StatelessWidget {
           maxLength: 30,
           onChanged: context.read<CategoryCubit>().updateCategoryName,
           decoration: InputDecoration(
-            hintText: 'Enter category name',
+            hintText: tr(LocaleKeys.categories_form_fields_name.tr()),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(AppRadius.sm.r),
             ),
@@ -45,10 +47,10 @@ class CategoryNameField extends StatelessWidget {
           ),
           validator: (value) {
             if (value == null || value.trim().isEmpty) {
-              return 'Category name cannot be empty';
+              return LocaleKeys.categories_form_fields_emptyName.tr();
             }
             if (value.trim().length > 30) {
-              return 'Category name cannot be longer than 30 characters';
+              return LocaleKeys.categories_form_fields_nameLength.tr();
             }
             return null;
           },
@@ -66,7 +68,7 @@ class CategoryPreviewCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final displayName = state.categoryName.trim().isEmpty
-        ? 'New Category'
+        ? LocaleKeys.categories_form_newCategory.tr()
         : state.categoryName.trim();
 
     return Center(
@@ -124,10 +126,10 @@ class CategorySubmitButton extends StatelessWidget {
             : onPressed,
         child: Text(
           submissionStatus == RequestsStatus.loading
-              ? 'Saving...'
+              ? LocaleKeys.categories_form_fields_saving.tr()
               : isEditing
-              ? 'Update Category'
-              : 'Add Category',
+              ? LocaleKeys.categories_form_title_edit.tr()
+              : LocaleKeys.categories_form_title_add.tr(),
         ),
       ),
     );

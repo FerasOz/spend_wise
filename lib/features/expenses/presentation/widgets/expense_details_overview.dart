@@ -32,7 +32,7 @@ class ExpenseDetailsOverview extends StatelessWidget {
         Text('Category', style: Theme.of(context).textTheme.titleMedium),
         SizedBox(height: AppSpacing.sm.h),
         Text(
-          category.name,
+          category.displayName,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             fontWeight: FontWeight.w600,
           ),

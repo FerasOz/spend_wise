@@ -80,7 +80,7 @@ class _CategoryBreakdownItem extends StatelessWidget {
                 SizedBox(width: 12.w),
                 Expanded(
                   child: Text(
-                    spending.category.name,
+                    spending.category.displayName,
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       fontWeight: FontWeight.w600,
                     ),

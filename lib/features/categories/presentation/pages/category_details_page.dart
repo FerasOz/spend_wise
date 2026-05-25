@@ -1,8 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/core/theme/app_spacing.dart';
-
+import 'package:spend_wise/generated/locale_keys.g.dart';
 import '../../../../core/base/requests_status.dart';
 import '../../../../features/categories/domain/entities/category.dart';
 import '../../../../features/categories/presentation/utils/category_expense_summary.dart';
@@ -21,7 +22,7 @@ class CategoryDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Category Details')),
+      appBar: AppBar(title: Text(LocaleKeys.categories_details_title.tr())),
       body: BlocSelector<ExpenseCubit, ExpenseState, _CategoryDetailsData>(
         selector: (state) =>
             _CategoryDetailsData.fromState(state: state, category: category),

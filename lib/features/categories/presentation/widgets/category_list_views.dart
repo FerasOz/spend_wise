@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spend_wise/core/base/requests_status.dart';
@@ -12,6 +13,7 @@ import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
 import 'package:spend_wise/features/expenses/presentation/cubit/expense_cubit.dart';
 import 'package:spend_wise/features/expenses/presentation/cubit/expense_state.dart';
 import 'package:spend_wise/features/settings/presentation/cubit/settings_cubit.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 class CategoryListBody extends StatelessWidget {
   const CategoryListBody({super.key});
@@ -42,8 +44,8 @@ class CategoryListBody extends StatelessWidget {
                 return const SizedBox.shrink();
               }
 
-              return const CategoryLoadingOverlay(
-                message: 'Deleting category...',
+              return CategoryLoadingOverlay(
+                message: LocaleKeys.categories_deleting.tr(),
               );
             },
           ),
@@ -69,9 +71,9 @@ class CategoryListContent extends StatelessWidget {
         state.categories.isEmpty) {
       return CategoryFeedbackView(
         icon: Icons.error_outline,
-        title: 'Failed to load categories',
-        description: 'Please try loading your categories again.',
-        actionLabel: 'Retry',
+        title: LocaleKeys.categories_errors_noCategory.tr(),
+        description: LocaleKeys.categories_errors_noCategoryDescription.tr(),
+        actionLabel: LocaleKeys.categories_errors_actionLabel.tr(),
         onPressed: context.read<CategoryCubit>().loadCategories,
       );
     }
@@ -79,9 +81,9 @@ class CategoryListContent extends StatelessWidget {
     if (state.categories.isEmpty) {
       return CategoryFeedbackView(
         icon: Icons.category_outlined,
-        title: 'No categories yet',
-        description: 'Tap the + button to create your first category.',
-        actionLabel: 'Create category',
+        title: LocaleKeys.categories_errors_empty.tr(),
+        description: LocaleKeys.categories_errors_emptyDescription.tr(),
+        actionLabel: LocaleKeys.categories_errors_emptyActionLabel.tr(),
         onPressed: () => CategoryListPage.openCategoryFormPage(context),
       );
     }
@@ -90,9 +92,12 @@ class CategoryListContent extends StatelessWidget {
       selector: (expenseState) => expenseState.expenses,
       builder: (context, expenses) {
         return BlocSelector<SettingsCubit, SettingsState, String>(
-          selector: (settingsState) => settingsState.settings?.currency.code ?? 'USD',
+          selector: (settingsState) =>
+              settingsState.settings?.currency.code ?? 'USD',
           builder: (context, _) {
-            final summaries = CategoryExpenseSummary.buildByCategoryId(expenses);
+            final summaries = CategoryExpenseSummary.buildByCategoryId(
+              expenses,
+            );
 
             return RefreshIndicator(
               onRefresh: context.read<CategoryCubit>().loadCategories,
@@ -102,8 +107,12 @@ class CategoryListContent extends StatelessWidget {
                   final category = state.sortedCategories[index];
                   return CategoryItem(
                     category: category,
-                    summary: summaries[category.id] ?? CategoryExpenseSummary.empty,
-                    onTap: () => CategoryListPage.openCategoryDetailsPage(context, category),
+                    summary:
+                        summaries[category.id] ?? CategoryExpenseSummary.empty,
+                    onTap: () => CategoryListPage.openCategoryDetailsPage(
+                      context,
+                      category,
+                    ),
                     onEdit: () => CategoryListPage.openCategoryFormPage(
                       context,
                       category: category,

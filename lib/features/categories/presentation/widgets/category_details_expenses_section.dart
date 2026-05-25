@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../core/base/requests_status.dart';
 import '../../../../features/categories/domain/entities/category.dart';
@@ -28,23 +30,22 @@ class CategoryDetailsExpensesSection extends StatelessWidget {
     }
 
     if (expensesStatus == RequestsStatus.error && expenses.isEmpty) {
-      return const SliverFillRemaining(
+      return SliverFillRemaining(
         hasScrollBody: false,
         child: _CategoryExpensesMessage(
           icon: Icons.error_outline,
-          title: 'Could not load category expenses',
+          title: LocaleKeys.categories_details_error.tr(),
         ),
       );
     }
 
     if (expenses.isEmpty) {
-      return const SliverFillRemaining(
+      return SliverFillRemaining(
         hasScrollBody: false,
         child: _CategoryExpensesMessage(
           icon: Icons.receipt_long_outlined,
-          title: 'No expenses in this category yet',
-          message:
-              'Once you assign expenses to this category, they will appear here.',
+          title: LocaleKeys.categories_details_titleEmpty.tr(),
+          message: LocaleKeys.categories_details_subtitleEmpty.tr(),
         ),
       );
     }

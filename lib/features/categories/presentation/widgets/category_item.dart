@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 import '../../../../core/widgets/currency_text.dart';
 import 'package:spend_wise/core/theme/app_colors.dart';
 import 'package:spend_wise/core/theme/app_radius.dart';
@@ -126,7 +128,7 @@ class _CategoryTextContent extends StatelessWidget {
           children: [
             Flexible(
               child: Text(
-                category.name,
+                category.displayName,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(
@@ -144,10 +146,13 @@ class _CategoryTextContent extends StatelessWidget {
         CurrencyText(
           amount: summary.totalSpent,
           style: spentStyle,
-          suffix: ' spent',
+          suffix: LocaleKeys.categories_list_spent.tr(),
         ),
         SizedBox(height: 6.h),
-        Text('${summary.expenseCount} expenses', style: countStyle),
+        Text(
+          '${summary.expenseCount} ${LocaleKeys.expenses_title.tr()}',
+          style: countStyle,
+        ),
       ],
     );
   }
@@ -176,9 +181,15 @@ class _CategoryActions extends StatelessWidget {
         }
       },
       itemBuilder: (_) => [
-        const PopupMenuItem(value: 'edit', child: Text('Edit')),
+        PopupMenuItem(
+          value: 'edit',
+          child: Text(LocaleKeys.common_actions_edit.tr()),
+        ),
         if (!category.isDefault && onDelete != null)
-          const PopupMenuItem(value: 'delete', child: Text('Delete')),
+          PopupMenuItem(
+            value: 'delete',
+            child: Text(LocaleKeys.common_actions_delete.tr()),
+          ),
       ],
       icon: const Icon(Icons.more_horiz),
     );
@@ -197,7 +208,7 @@ class _CategoryDefaultBadge extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppRadius.pill.r),
       ),
       child: Text(
-        'Default',
+        LocaleKeys.categories_default.tr(),
         style: Theme.of(context).textTheme.labelSmall?.copyWith(
           color: Theme.of(context).colorScheme.onPrimary,
           fontWeight: FontWeight.w700,

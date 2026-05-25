@@ -17,7 +17,8 @@ class CodegenLoader extends AssetLoader{
   static const Map<String,dynamic> _ar = {
   "app": {
     "about": "حول",
-    "settings": "الإعدادات"
+    "settings": "الإعدادات",
+    "subTitle": "متتبع ذكي للمصروفات والاشتراكات"
   },
   "navigation": {
     "dashboard": "الرئيسية",
@@ -181,9 +182,7 @@ class CodegenLoader extends AssetLoader{
     "form": {
       "title": {
         "add": "إضافة مصروف",
-        "addButton": "إضافة مصروف",
-        "edit": "تعديل مصروف",
-        "editButton": "تعديل مصروف"
+        "edit": "تعديل مصروف"
       },
       "fields": {
         "title": "العنوان",
@@ -235,15 +234,28 @@ class CodegenLoader extends AssetLoader{
   },
   "categories": {
     "title": "الفئات",
-    "empty": {
-      "title": "لا توجد فئات متاحة"
+    "errors": {
+      "noCategory": "لا توجد فئات متاحة",
+      "noCategoryDescription": "يرجى محاولة تحميل الفئات مرة أخرى.",
+      "actionLabel": "اعادة المحاولة",
+      "load": "فشل تحميل الفئات.",
+      "create": "إنشاء فئة",
+      "empty": "لا توجد فئات بعد.",
+      "emptyDescription": "اضغط على زر + لإنشاء أول فئة لك.",
+      "emptyActionLabel": "إنشاء فئة"
     },
     "details": {
-      "title": "تفاصيل الفئة"
+      "title": "تفاصيل الفئة",
+      "totalSpent": "إجمالي المصروفات",
+      "error": "فشل تحميل مصروفات الفئة",
+      "titleEmpty": "لا توجد مصروفات في هذه الفئة حتى الآن",
+      "subtitleEmpty": "بمجرد تعيين مصروفات لهذه الفئة، ستظهر هنا."
     },
     "list": {
+      "spent": "أنفقت",
       "delete": {
         "title": "حذف الفئة",
+        "subtitle": "هل أنت متأكد من رغبتك في حذف",
         "cancel": "إلغاء",
         "confirm": "حذف"
       },
@@ -254,12 +266,17 @@ class CodegenLoader extends AssetLoader{
     "form": {
       "title": {
         "add": "إضافة فئة",
-        "addButton": "إضافة فئة",
-        "edit": "تعديل فئة",
-        "editButton": "تعديل فئة"
+        "edit": "تعديل فئة"
       },
+      "newCategory": "فئة جديدة",
       "fields": {
-        "name": "أدخل اسم الفئة"
+        "categoryName": "اسم الفئة",
+        "name": "أدخل اسم الفئة",
+        "emptyName": "اسم الفئة مطلوب",
+        "nameLength": "يجب أن لا يتجاوز اسم الفئة 30 حرف",
+        "selectColor": "اختر اللون",
+        "selectIcon": "اختر الأيقونة",
+        "saving": "جار الحفظ ..."
       }
     },
     "item": {
@@ -271,6 +288,16 @@ class CodegenLoader extends AssetLoader{
       "tooltips": {
         "actions": "إجراءات الفئة"
       }
+    },
+    "deleting": "جار حذف الفئة...",
+    "default": "افتراضي",
+    "defaultCategories": {
+      "food": "طعام ومأكولات",
+      "transportation": "المواصلات",
+      "utilities": "الفواتير",
+      "entertainment": "الترفيه",
+      "health": "الصحة واللياقة",
+      "shopping": "التسوق"
     }
   },
   "dashboard": {
@@ -370,7 +397,8 @@ class CodegenLoader extends AssetLoader{
 static const Map<String,dynamic> _en = {
   "app": {
     "about": "About",
-    "settings": "Settings"
+    "settings": "Settings",
+    "subTitle": "Smart Expense & Subscription Tracker"
   },
   "navigation": {
     "dashboard": "Dashboard",
@@ -588,15 +616,28 @@ static const Map<String,dynamic> _en = {
   },
   "categories": {
     "title": "Categories",
-    "empty": {
-      "title": "No categories available"
+    "errors": {
+      "noCategory": "No categories available",
+      "noCategoryDescription": "Please try loading your categories again.",
+      "actionLabel": "Retry",
+      "load": "Failed to load categories.",
+      "create": "Create category",
+      "empty": "No categories yet.",
+      "emptyDescription": "Tap the + button to create your first category.",
+      "emptyActionLabel": "Create category"
     },
     "details": {
-      "title": "Category details"
+      "title": "Category details",
+      "totalSpent": "Total Spent",
+      "error": "Could not load category expenses",
+      "titleEmpty": "No expenses in this category yet",
+      "subtitleEmpty": "Once you assign expenses to this category, they will appear here."
     },
     "list": {
+      "spent": "Spent",
       "delete": {
         "title": "Delete category",
+        "subtitle": "Are you sure you want to delete",
         "cancel": "Cancel",
         "confirm": "Delete"
       },
@@ -606,13 +647,18 @@ static const Map<String,dynamic> _en = {
     },
     "form": {
       "title": {
-        "add": "Add category",
-        "addButton": "Add Category",
-        "edit": "Edit category",
-        "editButton": "Edit Category"
+        "add": "Add Category",
+        "edit": "Edit Category"
       },
+      "newCategory": "New Category",
       "fields": {
-        "name": "Enter category name"
+        "categoryName": "Category Name",
+        "name": "Enter category name",
+        "emptyName": "Category name is required",
+        "nameLength": "Category name cannot be longer than 30 characters",
+        "selectColor": "Select Color",
+        "selectIcon": "Select Icon",
+        "saving": "Saving ..."
       }
     },
     "item": {
@@ -624,6 +670,16 @@ static const Map<String,dynamic> _en = {
       "tooltips": {
         "actions": "Category actions"
       }
+    },
+    "deleting": "Deleting category...",
+    "default": "Default",
+    "defaultCategories": {
+      "food": "Food & Dining",
+      "transportation": "Transportation",
+      "utilities": "Utilities",
+      "entertainment": "Entertainment",
+      "health": "Health & Fitness",
+      "shopping": "Shopping"
     }
   },
   "dashboard": {

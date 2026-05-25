@@ -70,7 +70,7 @@ class CategoryChip extends StatelessWidget {
             ],
             if (showLabel)
               Text(
-                category.name,
+                category.displayName,
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: categoryColor,
                   fontWeight: FontWeight.w500,
@@ -114,7 +114,7 @@ class CategoryChip extends StatelessWidget {
             ],
             if (showLabel)
               Text(
-                category.name,
+                category.displayName,
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: categoryColor,
                   fontWeight: FontWeight.w600,
@@ -155,7 +155,7 @@ class CategoryChip extends StatelessWidget {
           if (showLabel) ...[
             SizedBox(height: AppSpacing.sm.h),
             Text(
-              category.name,
+              category.displayName,
               style: theme.textTheme.bodySmall?.copyWith(
                 fontWeight: FontWeight.w500,
               ),

@@ -42,7 +42,7 @@ class CategoryCubit extends Cubit<CategoryState> {
             clearUserMessage: true,
           )
         : state.copyWith(
-            categoryName: category.name,
+            categoryName: category.displayName,
             selectedIcon: category.icon,
             selectedColor: category.color,
             editingCategory: category,

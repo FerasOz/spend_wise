@@ -1,7 +1,8 @@
 {
   "app": {
     "about": "حول",
-    "settings": "الإعدادات"
+    "settings": "الإعدادات",
+    "subTitle":"متتبع ذكي للمصروفات والاشتراكات"
   },
   "navigation": {
     "dashboard": "الرئيسية",
@@ -165,9 +166,7 @@
     "form": {
       "title": {
         "add": "إضافة مصروف",
-        "addButton": "إضافة مصروف",
-        "edit": "تعديل مصروف",
-        "editButton": "تعديل مصروف"
+        "edit": "تعديل مصروف"
       },
       "fields": {
         "title": "العنوان",
@@ -219,15 +218,28 @@
   },
   "categories": {
     "title": "الفئات",
-    "empty": {
-      "title": "لا توجد فئات متاحة"
+   "errors":{
+      "noCategory":"لا توجد فئات متاحة",
+      "noCategoryDescription":"يرجى محاولة تحميل الفئات مرة أخرى.",
+      "actionLabel":"اعادة المحاولة",
+      "load":"فشل تحميل الفئات.",
+      "create":"إنشاء فئة",
+      "empty":"لا توجد فئات بعد.",
+      "emptyDescription":"اضغط على زر + لإنشاء أول فئة لك.",
+      "emptyActionLabel":"إنشاء فئة"
     },
     "details": {
-      "title": "تفاصيل الفئة"
+      "title": "تفاصيل الفئة",
+      "totalSpent":"إجمالي المصروفات",
+      "error":"فشل تحميل مصروفات الفئة",
+      "titleEmpty":"لا توجد مصروفات في هذه الفئة حتى الآن",
+      "subtitleEmpty":"بمجرد تعيين مصروفات لهذه الفئة، ستظهر هنا."
     },
     "list": {
+      "spent": "أنفقت",
       "delete": {
         "title": "حذف الفئة",
+        "subtitle": "هل أنت متأكد من رغبتك في حذف",
         "cancel": "إلغاء",
         "confirm": "حذف"
       },
@@ -238,12 +250,17 @@
     "form": {
       "title": {
         "add": "إضافة فئة",
-        "addButton": "إضافة فئة",
-        "edit": "تعديل فئة",
-        "editButton": "تعديل فئة"
+        "edit": "تعديل فئة"
       },
+      "newCategory":"فئة جديدة",
       "fields": {
-        "name": "أدخل اسم الفئة"
+        "categoryName":"اسم الفئة",
+        "name": "أدخل اسم الفئة",
+        "emptyName":"اسم الفئة مطلوب",
+        "nameLength":"يجب أن لا يتجاوز اسم الفئة 30 حرف",
+        "selectColor":"اختر اللون",
+        "selectIcon":"اختر الأيقونة",
+        "saving":"جار الحفظ ..."
       }
     },
     "item": {
@@ -255,6 +272,16 @@
       "tooltips": {
         "actions": "إجراءات الفئة"
       }
+    },
+    "deleting":"جار حذف الفئة...",
+    "default":"افتراضي",
+    "defaultCategories":{
+      "food":"طعام ومأكولات",
+      "transportation":"المواصلات",
+      "utilities":"الفواتير",
+      "entertainment":"الترفيه",
+      "health":"الصحة واللياقة",
+      "shopping":"التسوق"
     }
   },
   "dashboard": {

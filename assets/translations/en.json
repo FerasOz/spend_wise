@@ -1,7 +1,8 @@
 {
   "app": {
     "about": "About",
-    "settings": "Settings"
+    "settings": "Settings",
+    "subTitle":"Smart Expense & Subscription Tracker"
   },
   "navigation": {
     "dashboard": "Dashboard",
@@ -219,15 +220,28 @@
   },
   "categories": {
     "title": "Categories",
-    "empty":{
-      "title":"No categories available"
+    "errors":{
+      "noCategory":"No categories available",
+      "noCategoryDescription":"Please try loading your categories again.",
+      "actionLabel":"Retry",
+      "load":"Failed to load categories.",
+      "create":"Create category",
+      "empty":"No categories yet.",
+      "emptyDescription":"Tap the + button to create your first category.",
+      "emptyActionLabel":"Create category"
     },
     "details": {
-      "title": "Category details"
+      "title": "Category details",
+      "totalSpent":"Total Spent",
+      "error":"Could not load category expenses",
+      "titleEmpty":"No expenses in this category yet",
+      "subtitleEmpty":"Once you assign expenses to this category, they will appear here."
     },
     "list": {
+      "spent":"Spent",
       "delete": {
         "title": "Delete category",
+        "subtitle":"Are you sure you want to delete",
         "cancel": "Cancel",
         "confirm": "Delete"
       },
@@ -237,13 +251,18 @@
     },
     "form": {
       "title": {
-        "add": "Add category",
-        "addButton": "Add Category",
-        "edit": "Edit category",
-        "editButton": "Edit Category"
+        "add": "Add Category",
+        "edit": "Edit Category"
       },
+      "newCategory":"New Category",
       "fields": {
-        "name": "Enter category name"
+        "categoryName":"Category Name",
+        "name": "Enter category name",
+        "emptyName":"Category name is required",
+        "nameLength":"Category name cannot be longer than 30 characters",
+        "selectColor":"Select Color",
+        "selectIcon":"Select Icon",
+        "saving":"Saving ..."
       }
     },
     "item": {
@@ -255,6 +274,16 @@
       "tooltips": {
         "actions": "Category actions"
       }
+    },
+    "deleting":"Deleting category...",
+    "default":"Default",
+    "defaultCategories":{
+      "food":"Food & Dining",
+      "transportation":"Transportation",
+      "utilities":"Utilities",
+      "entertainment":"Entertainment",
+      "health":"Health & Fitness",
+      "shopping":"Shopping"
     }
   },
   "dashboard": {
