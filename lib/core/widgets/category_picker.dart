@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/core/base/requests_status.dart';
 import 'package:spend_wise/core/theme/app_spacing.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
 import 'package:spend_wise/core/widgets/category_badge.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 typedef CategoryPickerCallback = void Function(Category category);
 
@@ -91,7 +93,7 @@ class CategorySelector extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Select Category',
+          LocaleKeys.budgets_form_title_selectCategory.tr(),
           style: theme.textTheme.titleMedium?.copyWith(
             fontWeight: FontWeight.bold,
           ),

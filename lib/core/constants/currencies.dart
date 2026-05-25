@@ -1,3 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
 import '../../features/settings/domain/entities/app_currency.dart';
 
 class SupportedCurrencyOption {
@@ -12,35 +15,35 @@ class SupportedCurrencyOption {
   final double ratePerUsd;
 }
 
-const supportedCurrencies = [
+final supportedCurrencies = [
   SupportedCurrencyOption(
     currency: AppCurrency(code: 'USD', symbol: '\$'),
-    name: 'US Dollar',
+    name: LocaleKeys.currency_names_USD.tr(),
     ratePerUsd: 1,
   ),
   SupportedCurrencyOption(
     currency: AppCurrency(code: 'EUR', symbol: '€'),
-    name: 'Euro',
+    name: LocaleKeys.currency_names_EUR.tr(),
     ratePerUsd: 0.92,
   ),
   SupportedCurrencyOption(
     currency: AppCurrency(code: 'ILS', symbol: '₪'),
-    name: 'Israeli Shekel',
+    name: LocaleKeys.currency_names_ILS.tr(),
     ratePerUsd: 3.70,
   ),
   SupportedCurrencyOption(
     currency: AppCurrency(code: 'JOD', symbol: 'JD '),
-    name: 'Jordanian Dinar',
+    name: LocaleKeys.currency_names_JOD.tr(),
     ratePerUsd: 0.71,
   ),
   SupportedCurrencyOption(
     currency: AppCurrency(code: 'SAR', symbol: 'SAR '),
-    name: 'Saudi Riyal',
+    name: LocaleKeys.currency_names_SAR.tr(),
     ratePerUsd: 3.75,
   ),
   SupportedCurrencyOption(
     currency: AppCurrency(code: 'GBP', symbol: '£'),
-    name: 'British Pound',
+    name: LocaleKeys.currency_names_GBP.tr(),
     ratePerUsd: 0.78,
   ),
 ];
@@ -55,7 +58,8 @@ final kExchangeRatesPerUsd = {
     option.currency.code: option.ratePerUsd,
 };
 
-bool isSupportedCurrency(String code) => currencySymbols.containsKey(code.toUpperCase());
+bool isSupportedCurrency(String code) =>
+    currencySymbols.containsKey(code.toUpperCase());
 
 SupportedCurrencyOption currencyOptionByCode(String code) {
   final normalizedCode = code.toUpperCase();

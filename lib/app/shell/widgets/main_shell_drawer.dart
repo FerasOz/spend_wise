@@ -18,7 +18,7 @@ class MainShellDrawer extends StatelessWidget {
               child: Align(
                 alignment: Alignment.bottomLeft,
                 child: Text(
-                  LocaleKeys.app_title.tr(),
+                  "Spend Wise",
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
               ),
@@ -46,7 +46,7 @@ class MainShellDrawer extends StatelessWidget {
                 Navigator.of(context).pop();
                 showAboutDialog(
                   context: context,
-                  applicationName: LocaleKeys.app_title.tr(),
+                  applicationName: "Spend Wise",
                   applicationVersion: '1.0.0',
                   applicationLegalese: 'Smart Expense & Subscription Tracker',
                 );

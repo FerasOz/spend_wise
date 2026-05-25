@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spend_wise/features/settings/domain/entities/app_settings.dart';
 import 'package:spend_wise/features/settings/presentation/cubit/settings_cubit.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 void showThemeBottomSheet(BuildContext context) {
   showModalBottomSheet(
@@ -17,7 +19,10 @@ void showThemeBottomSheet(BuildContext context) {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            _BuildBottomSheetHeader(title: 'Theme Mode', context: context),
+            _BuildBottomSheetHeader(
+              title: LocaleKeys.settings_appearance_themeMode_title.tr(),
+              context: context,
+            ),
             SizedBox(height: 18.h),
             BlocBuilder<SettingsCubit, SettingsState>(
               builder: (context, state) {
@@ -107,14 +112,11 @@ Widget _BuildOptionTile({
 }
 
 String _themeLabel(AppThemeMode themeMode) {
-  switch (themeMode) {
-    case AppThemeMode.light:
-      return 'Light';
-    case AppThemeMode.dark:
-      return 'Dark';
-    case AppThemeMode.system:
-      return 'System';
-  }
+  return switch (themeMode) {
+    AppThemeMode.light => LocaleKeys.settings_appearance_themeMode_light.tr(),
+    AppThemeMode.dark => LocaleKeys.settings_appearance_themeMode_dark.tr(),
+    AppThemeMode.system => LocaleKeys.settings_appearance_themeMode_system.tr(),
+  };
 }
 
 IconData _themeIcon(AppThemeMode themeMode) {

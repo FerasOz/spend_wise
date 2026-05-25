@@ -1,6 +1,5 @@
 {
   "app": {
-    "title": "Spend Wise",
     "about": "About",
     "settings": "Settings"
   },
@@ -43,6 +42,7 @@
   },
   "currency": {
     "selection": "Select currency",
+    "displayHint": "Amounts stay stored in USD and are converted only for display.",
     "names": {
       "USD": "US Dollar",
       "EUR": "Euro",
@@ -54,14 +54,14 @@
   },
   "settings": {
     "hero": {
-      "title": "Personalize Spend Wise",
+      "title": "Personalize The App",
       "subtitle": "Update your preferences in one place"
     },
     "appearance": {
       "title": "Appearance",
       "themeMode": {
         "title": "Theme mode",
-        "subtitle": "Choose between light, dark, or system theme",
+        "subtitle": "Choose Your Theme",
         "light": "Light",
         "dark": "Dark",
         "system": "System"
@@ -82,7 +82,6 @@
     "notifications": {
       "title": "Notifications",
       "push": {
-        "title": "Notifications",
         "subtitle": "Receive alerts and reminders"
       },
       "backup": {
@@ -129,6 +128,7 @@
     "form": {
       "title": {
         "create": "Create budget",
+        "selectCategory":"Select Category",
         "edit": "Edit budget"
       },
       "fields": {
@@ -219,6 +219,9 @@
   },
   "categories": {
     "title": "Categories",
+    "empty":{
+      "title":"No categories available"
+    },
     "details": {
       "title": "Category details"
     },

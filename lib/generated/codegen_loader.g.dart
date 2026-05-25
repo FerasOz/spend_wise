@@ -16,7 +16,6 @@ class CodegenLoader extends AssetLoader{
 
   static const Map<String,dynamic> _ar = {
   "app": {
-    "title": "سبند وايز",
     "about": "حول",
     "settings": "الإعدادات"
   },
@@ -59,6 +58,7 @@ class CodegenLoader extends AssetLoader{
   },
   "currency": {
     "selection": "اختر العملة",
+    "displayHint": "تُحفَظ المبالغ بالدولار الأمريكي وتُحوَّل للعرض فقط.",
     "names": {
       "USD": "الدولار الأمريكي",
       "EUR": "اليورو",
@@ -69,15 +69,49 @@ class CodegenLoader extends AssetLoader{
     }
   },
   "settings": {
+    "hero": {
+      "title": "خصص التطبيق",
+      "subtitle": "حدّث تفضيلاتك من مكان واحد"
+    },
+    "appearance": {
+      "title": "المظهر",
+      "themeMode": {
+        "title": "وضع المظهر",
+        "subtitle": "اختر وضع المظهر المفضل لديك",
+        "light": "فاتح",
+        "dark": "داكن",
+        "system": "النظام"
+      }
+    },
     "preferences": {
       "title": "التفضيلات",
       "currency": {
         "title": "العملة",
-        "subtitle": "حدد العملة الافتراضية لعرض المبالغ"
+        "subtitle": "حدد العملة الافتراضية لعرض المبالغ",
+        "displayHint": "تُحفَظ المبالغ بالدولار الأمريكي وتُحوَّل للعرض فقط."
       },
       "language": {
         "title": "اللغة",
         "subtitle": "غيّر لغة التطبيق"
+      }
+    },
+    "notifications": {
+      "title": "الإشعارات",
+      "push": {
+        "subtitle": "استقبل التنبيهات والتذكيرات"
+      },
+      "backup": {
+        "title": "النسخ الاحتياطي التلقائي",
+        "subtitle": "أنشئ نسخة احتياطية لبياناتك تلقائيًا"
+      }
+    },
+    "data": {
+      "title": "البيانات والخصوصية",
+      "reset": {
+        "title": "إعادة ضبط جميع الإعدادات",
+        "subtitle": "استعادة جميع الإعدادات إلى قيمها الافتراضية",
+        "dialogTitle": "إعادة ضبط جميع الإعدادات؟",
+        "dialogMessage": "سيؤدي هذا إلى إعادة جميع الإعدادات إلى قيمها الافتراضية."
       }
     },
     "languages": {
@@ -110,6 +144,7 @@ class CodegenLoader extends AssetLoader{
     "form": {
       "title": {
         "create": "إنشاء ميزانية",
+        "selectCategory": "اختر الفئة",
         "edit": "تعديل الميزانية"
       },
       "fields": {
@@ -200,6 +235,9 @@ class CodegenLoader extends AssetLoader{
   },
   "categories": {
     "title": "الفئات",
+    "empty": {
+      "title": "لا توجد فئات متاحة"
+    },
     "details": {
       "title": "تفاصيل الفئة"
     },
@@ -331,7 +369,6 @@ class CodegenLoader extends AssetLoader{
 };
 static const Map<String,dynamic> _en = {
   "app": {
-    "title": "Spend Wise",
     "about": "About",
     "settings": "Settings"
   },
@@ -374,6 +411,7 @@ static const Map<String,dynamic> _en = {
   },
   "currency": {
     "selection": "Select currency",
+    "displayHint": "Amounts stay stored in USD and are converted only for display.",
     "names": {
       "USD": "US Dollar",
       "EUR": "Euro",
@@ -384,15 +422,49 @@ static const Map<String,dynamic> _en = {
     }
   },
   "settings": {
+    "hero": {
+      "title": "Personalize The App",
+      "subtitle": "Update your preferences in one place"
+    },
+    "appearance": {
+      "title": "Appearance",
+      "themeMode": {
+        "title": "Theme mode",
+        "subtitle": "Choose Your Theme",
+        "light": "Light",
+        "dark": "Dark",
+        "system": "System"
+      }
+    },
     "preferences": {
       "title": "Preferences",
       "currency": {
         "title": "Currency",
-        "subtitle": "Set your default currency for transactions"
+        "subtitle": "Set your default currency for transactions",
+        "displayHint": "Amounts stay stored in USD and are converted only for display."
       },
       "language": {
         "title": "Language",
         "subtitle": "Change the app language"
+      }
+    },
+    "notifications": {
+      "title": "Notifications",
+      "push": {
+        "subtitle": "Receive alerts and reminders"
+      },
+      "backup": {
+        "title": "Auto backup",
+        "subtitle": "Automatically back up your data"
+      }
+    },
+    "data": {
+      "title": "Data & privacy",
+      "reset": {
+        "title": "Reset all settings",
+        "subtitle": "Restore all settings to default values",
+        "dialogTitle": "Reset all settings?",
+        "dialogMessage": "This will reset all settings to their default values."
       }
     },
     "languages": {
@@ -425,6 +497,7 @@ static const Map<String,dynamic> _en = {
     "form": {
       "title": {
         "create": "Create budget",
+        "selectCategory": "Select Category",
         "edit": "Edit budget"
       },
       "fields": {
@@ -515,6 +588,9 @@ static const Map<String,dynamic> _en = {
   },
   "categories": {
     "title": "Categories",
+    "empty": {
+      "title": "No categories available"
+    },
     "details": {
       "title": "Category details"
     },

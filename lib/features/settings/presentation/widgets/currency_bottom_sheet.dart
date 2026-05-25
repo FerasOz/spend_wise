@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../core/constants/currencies.dart';
 import '../../../../core/theme/app_radius.dart';
@@ -11,7 +13,11 @@ void showCurrencyBottomSheet(BuildContext context) {
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(AppRadius.xxl.r))),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(
+        top: Radius.circular(AppRadius.xxl.r),
+      ),
+    ),
     builder: (_) => const _CurrencyBottomSheet(),
   );
 }
@@ -25,7 +31,12 @@ class _CurrencyBottomSheet extends StatelessWidget {
       heightFactor: 0.72,
       child: SafeArea(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(AppSpacing.xxl.w, AppSpacing.lg.h, AppSpacing.xxl.w, AppSpacing.xxl.h),
+          padding: EdgeInsets.fromLTRB(
+            AppSpacing.xxl.w,
+            AppSpacing.lg.h,
+            AppSpacing.xxl.w,
+            AppSpacing.xxl.h,
+          ),
           child: Column(
             children: [
               const _SheetHeader(),
@@ -36,7 +47,8 @@ class _CurrencyBottomSheet extends StatelessWidget {
                   builder: (context, selectedCode) {
                     return ListView.separated(
                       itemCount: supportedCurrencies.length,
-                      separatorBuilder: (_, _) => SizedBox(height: AppSpacing.sm.h),
+                      separatorBuilder: (_, _) =>
+                          SizedBox(height: AppSpacing.sm.h),
                       itemBuilder: (context, index) {
                         final option = supportedCurrencies[index];
                         return _CurrencyTile(
@@ -67,16 +79,22 @@ class _SheetHeader extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Select currency', style: Theme.of(context).textTheme.titleMedium),
+              Text(
+                LocaleKeys.currency_selection.tr(),
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
               SizedBox(height: AppSpacing.xs.h),
               Text(
-                'Amounts stay stored in USD and are converted only for display.',
+                LocaleKeys.currency_displayHint.tr(),
                 style: Theme.of(context).textTheme.bodySmall,
               ),
             ],
           ),
         ),
-        IconButton(onPressed: () => Navigator.of(context).pop(), icon: const Icon(Icons.close)),
+        IconButton(
+          onPressed: () => Navigator.of(context).pop(),
+          icon: const Icon(Icons.close),
+        ),
       ],
     );
   }
@@ -101,9 +119,15 @@ class _CurrencyTile extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(AppSpacing.lg.w),
         decoration: BoxDecoration(
-          color: isSelected ? theme.colorScheme.primaryContainer : theme.colorScheme.surface,
+          color: isSelected
+              ? theme.colorScheme.primaryContainer
+              : theme.colorScheme.surface,
           borderRadius: BorderRadius.circular(AppRadius.lg.r),
-          border: Border.all(color: isSelected ? theme.colorScheme.primary : theme.colorScheme.outlineVariant),
+          border: Border.all(
+            color: isSelected
+                ? theme.colorScheme.primary
+                : theme.colorScheme.outlineVariant,
+          ),
         ),
         child: Row(
           children: [
@@ -114,11 +138,15 @@ class _CurrencyTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(option.name, style: theme.textTheme.bodyLarge),
-                  Text(option.currency.symbol, style: theme.textTheme.bodySmall),
+                  Text(
+                    option.currency.symbol,
+                    style: theme.textTheme.bodySmall,
+                  ),
                 ],
               ),
             ),
-            if (isSelected) Icon(Icons.check_circle, color: theme.colorScheme.primary),
+            if (isSelected)
+              Icon(Icons.check_circle, color: theme.colorScheme.primary),
           ],
         ),
       ),

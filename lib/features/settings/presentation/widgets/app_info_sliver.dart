@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/core/constants/currencies.dart';
 import 'package:spend_wise/features/settings/domain/entities/app_currency.dart';
 import 'package:spend_wise/features/settings/domain/entities/app_settings.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 class AppInfoSliver extends StatelessWidget {
   const AppInfoSliver({required this.settings, super.key});
@@ -63,7 +65,11 @@ class _InfoHeader extends StatelessWidget {
             color: theme.colorScheme.onPrimary.withValues(alpha: 0.2),
             borderRadius: BorderRadius.circular(20.r),
           ),
-          child: Icon(Icons.settings, color: theme.colorScheme.onPrimary, size: 28.sp),
+          child: Icon(
+            Icons.settings,
+            color: theme.colorScheme.onPrimary,
+            size: 28.sp,
+          ),
         ),
         SizedBox(width: 16.w),
         Expanded(
@@ -71,7 +77,7 @@ class _InfoHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Personalize Spend Wise',
+                LocaleKeys.settings_hero_title.tr(),
                 style: theme.textTheme.titleMedium?.copyWith(
                   color: theme.colorScheme.onPrimary,
                   fontWeight: FontWeight.w600,
@@ -79,7 +85,7 @@ class _InfoHeader extends StatelessWidget {
               ),
               SizedBox(height: 8.h),
               Text(
-                'Update your preferences in one place',
+                LocaleKeys.settings_hero_subtitle.tr(),
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: theme.colorScheme.onPrimary.withValues(alpha: 0.9),
                 ),
@@ -110,16 +116,28 @@ class _InfoChip extends StatelessWidget {
 String _themeModeLabel(AppThemeMode themeMode) {
   switch (themeMode) {
     case AppThemeMode.light:
-      return 'Light';
+      return LocaleKeys.settings_appearance_themeMode_light.tr();
     case AppThemeMode.dark:
-      return 'Dark';
+      return LocaleKeys.settings_appearance_themeMode_dark.tr();
     case AppThemeMode.system:
-      return 'System';
+      return LocaleKeys.settings_appearance_themeMode_system.tr();
   }
 }
 
 String _languageLabel(AppLanguage language) {
-  return language == AppLanguage.english ? 'English' : 'Arabic';
+  return language == AppLanguage.english
+      ? LocaleKeys.settings_languages_englishNative.tr()
+      : LocaleKeys.settings_languages_arabicNative.tr();
 }
 
-String _currencyLabel(AppCurrency currency) => currencyLabel(currency);
+String _currencyLabel(AppCurrency currency) {
+  return switch (currency.code.toUpperCase()) {
+    'USD' => LocaleKeys.currency_names_USD.tr(),
+    'EUR' => LocaleKeys.currency_names_EUR.tr(),
+    'ILS' => LocaleKeys.currency_names_ILS.tr(),
+    'JOD' => LocaleKeys.currency_names_JOD.tr(),
+    'SAR' => LocaleKeys.currency_names_SAR.tr(),
+    'GBP' => LocaleKeys.currency_names_GBP.tr(),
+    _ => currencyLabel(currency),
+  };
+}

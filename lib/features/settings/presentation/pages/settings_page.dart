@@ -6,7 +6,6 @@ import 'package:spend_wise/generated/locale_keys.g.dart';
 import '../cubit/settings_cubit.dart';
 import '../widgets/app_info_sliver.dart';
 import '../widgets/appearance_section.dart';
-import '../widgets/about_section.dart';
 import '../widgets/data_section.dart';
 import '../widgets/notifications_section.dart';
 import '../widgets/preferences_section.dart';
@@ -43,7 +42,6 @@ class SettingsPage extends StatelessWidget {
                       PreferencesSection(settings: settings),
                       NotificationsSection(settings: settings),
                       DataSection(settings: settings),
-                      const AboutSection(),
                     ],
                   ),
                 ),

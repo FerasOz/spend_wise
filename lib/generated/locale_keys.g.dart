@@ -3,7 +3,6 @@
 // ignore_for_file: constant_identifier_names
 
 abstract class  LocaleKeys {
-  static const app_title = 'app.title';
   static const app_about = 'app.about';
   static const app_settings = 'app.settings';
   static const app = 'app';
@@ -40,6 +39,7 @@ abstract class  LocaleKeys {
   static const common_errors = 'common.errors';
   static const common = 'common';
   static const currency_selection = 'currency.selection';
+  static const currency_displayHint = 'currency.displayHint';
   static const currency_names_USD = 'currency.names.USD';
   static const currency_names_EUR = 'currency.names.EUR';
   static const currency_names_ILS = 'currency.names.ILS';
@@ -48,14 +48,40 @@ abstract class  LocaleKeys {
   static const currency_names_GBP = 'currency.names.GBP';
   static const currency_names = 'currency.names';
   static const currency = 'currency';
+  static const settings_hero_title = 'settings.hero.title';
+  static const settings_hero_subtitle = 'settings.hero.subtitle';
+  static const settings_hero = 'settings.hero';
+  static const settings_appearance_title = 'settings.appearance.title';
+  static const settings_appearance_themeMode_title = 'settings.appearance.themeMode.title';
+  static const settings_appearance_themeMode_subtitle = 'settings.appearance.themeMode.subtitle';
+  static const settings_appearance_themeMode_light = 'settings.appearance.themeMode.light';
+  static const settings_appearance_themeMode_dark = 'settings.appearance.themeMode.dark';
+  static const settings_appearance_themeMode_system = 'settings.appearance.themeMode.system';
+  static const settings_appearance_themeMode = 'settings.appearance.themeMode';
+  static const settings_appearance = 'settings.appearance';
   static const settings_preferences_title = 'settings.preferences.title';
   static const settings_preferences_currency_title = 'settings.preferences.currency.title';
   static const settings_preferences_currency_subtitle = 'settings.preferences.currency.subtitle';
+  static const settings_preferences_currency_displayHint = 'settings.preferences.currency.displayHint';
   static const settings_preferences_currency = 'settings.preferences.currency';
   static const settings_preferences_language_title = 'settings.preferences.language.title';
   static const settings_preferences_language_subtitle = 'settings.preferences.language.subtitle';
   static const settings_preferences_language = 'settings.preferences.language';
   static const settings_preferences = 'settings.preferences';
+  static const settings_notifications_title = 'settings.notifications.title';
+  static const settings_notifications_push_subtitle = 'settings.notifications.push.subtitle';
+  static const settings_notifications_push = 'settings.notifications.push';
+  static const settings_notifications_backup_title = 'settings.notifications.backup.title';
+  static const settings_notifications_backup_subtitle = 'settings.notifications.backup.subtitle';
+  static const settings_notifications_backup = 'settings.notifications.backup';
+  static const settings_notifications = 'settings.notifications';
+  static const settings_data_title = 'settings.data.title';
+  static const settings_data_reset_title = 'settings.data.reset.title';
+  static const settings_data_reset_subtitle = 'settings.data.reset.subtitle';
+  static const settings_data_reset_dialogTitle = 'settings.data.reset.dialogTitle';
+  static const settings_data_reset_dialogMessage = 'settings.data.reset.dialogMessage';
+  static const settings_data_reset = 'settings.data.reset';
+  static const settings_data = 'settings.data';
   static const settings_languages_english = 'settings.languages.english';
   static const settings_languages_arabic = 'settings.languages.arabic';
   static const settings_languages_englishNative = 'settings.languages.englishNative';
@@ -79,6 +105,7 @@ abstract class  LocaleKeys {
   static const budgets_success_deleted = 'budgets.success.deleted';
   static const budgets_success = 'budgets.success';
   static const budgets_form_title_create = 'budgets.form.title.create';
+  static const budgets_form_title_selectCategory = 'budgets.form.title.selectCategory';
   static const budgets_form_title_edit = 'budgets.form.title.edit';
   static const budgets_form_title = 'budgets.form.title';
   static const budgets_form_fields_name = 'budgets.form.fields.name';
@@ -151,6 +178,8 @@ abstract class  LocaleKeys {
   static const expenses_management = 'expenses.management';
   static const expenses = 'expenses';
   static const categories_title = 'categories.title';
+  static const categories_empty_title = 'categories.empty.title';
+  static const categories_empty = 'categories.empty';
   static const categories_details_title = 'categories.details.title';
   static const categories_details = 'categories.details';
   static const categories_list_delete_title = 'categories.list.delete.title';
