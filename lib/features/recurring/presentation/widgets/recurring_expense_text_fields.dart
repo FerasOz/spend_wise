@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../core/theme/app_spacing.dart';
 
@@ -23,18 +25,26 @@ class RecurringExpenseTextFields extends StatelessWidget {
       children: [
         TextFormField(
           initialValue: title,
-          decoration: const InputDecoration(labelText: 'Title'),
-          validator: (value) => (value ?? '').trim().isEmpty ? 'Enter a title' : null,
+          decoration: InputDecoration(
+            labelText: LocaleKeys.recurring_form_fields_title.tr(),
+          ),
+          validator: (value) => (value ?? '').trim().isEmpty
+              ? LocaleKeys.recurring_form_validation_enterTitle.tr()
+              : null,
           onSaved: onTitleSaved,
         ),
         SizedBox(height: AppSpacing.lg.h),
         TextFormField(
           initialValue: amountValue,
           keyboardType: const TextInputType.numberWithOptions(decimal: true),
-          decoration: const InputDecoration(labelText: 'Amount'),
+          decoration: InputDecoration(
+            labelText: LocaleKeys.recurring_form_fields_amount.tr(),
+          ),
           validator: (value) {
             final amount = double.tryParse((value ?? '').trim());
-            return amount == null || amount <= 0 ? 'Enter a valid amount' : null;
+            return amount == null || amount <= 0
+                ? LocaleKeys.recurring_form_validation_enterAmount.tr()
+                : null;
           },
           onSaved: onAmountSaved,
         ),

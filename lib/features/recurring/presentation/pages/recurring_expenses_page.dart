@@ -33,7 +33,6 @@ class RecurringExpensesPage extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Recurring')),
       floatingActionButton: FloatingActionButton(
         onPressed: () => RecurringExpenseFormPage.open(context),
         child: const Icon(Icons.add),
@@ -65,7 +64,8 @@ class _RecurringBody extends StatelessWidget {
         state.recurringExpenses.isEmpty) {
       return const Center(child: CircularProgressIndicator());
     }
-    if (state.status == RequestsStatus.error && state.recurringExpenses.isEmpty) {
+    if (state.status == RequestsStatus.error &&
+        state.recurringExpenses.isEmpty) {
       return Center(
         child: Text(state.errorMessage ?? 'Failed to load recurring expenses.'),
       );
@@ -76,6 +76,8 @@ class _RecurringBody extends StatelessWidget {
       );
     }
 
-    return RecurringExpensesListView(recurringExpenses: state.recurringExpenses);
+    return RecurringExpensesListView(
+      recurringExpenses: state.recurringExpenses,
+    );
   }
 }

@@ -323,21 +323,21 @@ class CodegenLoader extends AssetLoader{
   "recurring": {
     "title": "المتكررة",
     "empty": {
-      "title": "أضف مصروفًا متكررًا"
+      "title": "لا توجد مصاريف متكررة",
+      "description": "تتبع الاشتراكات والفواتير المتكررة بحيث يتم إنشاء المصاريف المستحقة تلقائيًا.",
+      "addBtn": "أضف مصروفًا متكررًا"
     },
     "details": {
       "nextDueDate": "تاريخ الاستحقاق التالي"
-    },
-    "item": {
-      "actions": {
-        "edit": "تعديل",
-        "delete": "حذف"
-      }
     },
     "form": {
       "title": {
         "add": "إضافة مصروف متكرر",
         "edit": "تعديل مصروف متكرر"
+      },
+      "validation": {
+        "enterTitle": "أدخل عنوان",
+        "enterAmount": "أدخل مبلغ صحيح"
       },
       "fields": {
         "title": "العنوان",
@@ -350,12 +350,21 @@ class CodegenLoader extends AssetLoader{
       "frequencies": {
         "daily": "يومي",
         "weekly": "أسبوعي",
-        "biweekly": "كل أسبوعين",
         "monthly": "شهري",
-        "quarterly": "ربع سنوي",
         "yearly": "سنوي"
       },
+      "save": "حفظ المصروف المتكرر",
+      "create": "إنشاء مصروف متكرر",
       "repeat": "التكرار"
+    },
+    "successMessage": {
+      "create": "تم إنشاء مصروف متكرر بنجاح.",
+      "update": "تم تحديث المصروف المتكرر بنجاح.",
+      "delete": "تم حذف المصروف المتكرر بنجاح."
+    },
+    "errorMessage": {
+      "failedAction": "فشل إجراء المصروف المتكرر.",
+      "failedLoad": "فشل تحميل المصروفات المتكررة."
     },
     "management": {
       "delete": {
@@ -705,21 +714,21 @@ static const Map<String,dynamic> _en = {
   "recurring": {
     "title": "Recurring",
     "empty": {
-      "title": "Add recurring expense"
+      "title": "No recurring expenses",
+      "description": "Track subscriptions and repeating bills so due expenses are generated automatically.",
+      "addBtn": "Add recurring expense"
     },
     "details": {
       "nextDueDate": "Next due date"
-    },
-    "item": {
-      "actions": {
-        "edit": "Edit",
-        "delete": "Delete"
-      }
     },
     "form": {
       "title": {
         "add": "Add recurring expense",
         "edit": "Edit recurring expense"
+      },
+      "validation": {
+        "enterTitle": "Enter a title",
+        "enterAmount": "Enter a valid amount"
       },
       "fields": {
         "title": "Title",
@@ -732,12 +741,21 @@ static const Map<String,dynamic> _en = {
       "frequencies": {
         "daily": "Daily",
         "weekly": "Weekly",
-        "biweekly": "Bi-weekly",
         "monthly": "Monthly",
-        "quarterly": "Quarterly",
         "yearly": "Yearly"
       },
+      "save": "Save recurring expense",
+      "create": "Create recurring expense",
       "repeat": "Repeat"
+    },
+    "successMessage": {
+      "create": "Recurring expense created successfully.",
+      "update": "Recurring expense updated successfully.",
+      "delete": "Recurring expense deleted successfully."
+    },
+    "errorMessage": {
+      "failedAction": "Recurring action failed.",
+      "failedLoad": "Failed to load recurring expenses."
     },
     "management": {
       "delete": {

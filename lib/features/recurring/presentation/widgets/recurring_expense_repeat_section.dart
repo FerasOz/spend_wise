@@ -1,4 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:spend_wise/features/recurring/presentation/extensions/recurring_repeat_type_extension.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../domain/entities/recurring_expense.dart';
 
@@ -19,17 +22,21 @@ class RecurringExpenseRepeatSection extends StatelessWidget {
       builder: (context, currentRepeatType, _) {
         return DropdownButtonFormField<RecurringRepeatType>(
           initialValue: currentRepeatType,
-          decoration: const InputDecoration(labelText: 'Repeat'),
+          decoration: InputDecoration(
+            labelText: LocaleKeys.recurring_form_repeat.tr(),
+          ),
           items: RecurringRepeatType.values
               .map(
                 (item) => DropdownMenuItem(
                   value: item,
-                  child: Text(item.name),
+                  child: Text(item.localizedName),
                 ),
               )
               .toList(growable: false),
           onChanged: (value) {
-            if (value != null) onRepeatTypeChanged(value);
+            if (value != null) {
+              onRepeatTypeChanged(value);
+            }
           },
         );
       },

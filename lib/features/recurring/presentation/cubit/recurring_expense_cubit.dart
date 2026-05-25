@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../core/base/requests_status.dart';
 import '../../domain/entities/recurring_expense.dart';
@@ -35,7 +37,9 @@ class RecurringExpenseCubit extends Cubit<RecurringExpenseState> {
   }
 
   Future<void> loadRecurringExpenses() async {
-    emit(state.copyWith(status: RequestsStatus.loading, clearErrorMessage: true));
+    emit(
+      state.copyWith(status: RequestsStatus.loading, clearErrorMessage: true),
+    );
 
     try {
       final recurringExpenses = await _getRecurringExpenses();
@@ -51,7 +55,10 @@ class RecurringExpenseCubit extends Cubit<RecurringExpenseState> {
       emit(
         state.copyWith(
           status: RequestsStatus.error,
-          errorMessage: _mapError(error, 'Failed to load recurring expenses.'),
+          errorMessage: _mapError(
+            error,
+            LocaleKeys.recurring_errorMessage_failedLoad.tr(),
+          ),
         ),
       );
     }
@@ -60,26 +67,28 @@ class RecurringExpenseCubit extends Cubit<RecurringExpenseState> {
   Future<void> createRecurringExpense(RecurringExpense recurringExpense) {
     return _submit(
       action: () => _createRecurringExpense(recurringExpense),
-      successMessage: 'Recurring expense created successfully.',
+      successMessage: LocaleKeys.recurring_successMessage_create.tr(),
     );
   }
 
   Future<void> updateRecurringExpense(RecurringExpense recurringExpense) {
     return _submit(
       action: () => _updateRecurringExpense(recurringExpense),
-      successMessage: 'Recurring expense updated successfully.',
+      successMessage: LocaleKeys.recurring_successMessage_update.tr(),
     );
   }
 
   Future<void> deleteRecurringExpense(String id) {
     return _submit(
       action: () => _deleteRecurringExpense(id),
-      successMessage: 'Recurring expense deleted successfully.',
+      successMessage: LocaleKeys.recurring_successMessage_delete.tr(),
     );
   }
 
   Future<void> toggleActive(RecurringExpense recurringExpense, bool isActive) {
-    return updateRecurringExpense(recurringExpense.copyWith(isActive: isActive));
+    return updateRecurringExpense(
+      recurringExpense.copyWith(isActive: isActive),
+    );
   }
 
   Future<void> _submit({
@@ -108,7 +117,10 @@ class RecurringExpenseCubit extends Cubit<RecurringExpenseState> {
       emit(
         state.copyWith(
           submissionStatus: RequestsStatus.error,
-          submissionMessage: _mapError(error, 'Recurring action failed.'),
+          submissionMessage: _mapError(
+            error,
+            LocaleKeys.recurring_errorMessage_failedAction.tr(),
+          ),
         ),
       );
     }
@@ -130,7 +142,8 @@ class RecurringExpenseCubit extends Cubit<RecurringExpenseState> {
 
     emit(
       state.copyWith(
-        generatedExpenseCount: state.generatedExpenseCount + generatedExpenseCount,
+        generatedExpenseCount:
+            state.generatedExpenseCount + generatedExpenseCount,
       ),
     );
   }

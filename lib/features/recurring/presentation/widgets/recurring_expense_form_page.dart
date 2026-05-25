@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../categories/presentation/cubit/category_cubit.dart';
 import '../../domain/entities/recurring_expense.dart';
@@ -35,7 +37,9 @@ class RecurringExpenseFormPage extends StatelessWidget {
     final isEditing = recurringExpense != null;
     String? title = recurringExpense?.title;
     String? amountValue = recurringExpense?.amount.toString();
-    final selectedCategoryId = ValueNotifier<String?>(recurringExpense?.categoryId);
+    final selectedCategoryId = ValueNotifier<String?>(
+      recurringExpense?.categoryId,
+    );
     final repeatType = ValueNotifier<RecurringRepeatType>(
       recurringExpense?.repeatType ?? RecurringRepeatType.monthly,
     );
@@ -48,7 +52,9 @@ class RecurringExpenseFormPage extends StatelessWidget {
       formKey.currentState?.save();
 
       final nextRecurringExpense = RecurringExpense(
-        id: recurringExpense?.id ?? DateTime.now().microsecondsSinceEpoch.toString(),
+        id:
+            recurringExpense?.id ??
+            DateTime.now().microsecondsSinceEpoch.toString(),
         title: (title ?? '').trim(),
         amount: double.parse((amountValue ?? '').trim()),
         categoryId: selectedCategoryId.value!,
@@ -72,7 +78,11 @@ class RecurringExpenseFormPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(isEditing ? 'Edit recurring expense' : 'Add recurring expense'),
+        title: Text(
+          isEditing
+              ? LocaleKeys.recurring_form_title_edit.tr()
+              : LocaleKeys.recurring_form_title_add.tr(),
+        ),
       ),
       body: SafeArea(
         child: BlocBuilder<RecurringExpenseCubit, RecurringExpenseState>(

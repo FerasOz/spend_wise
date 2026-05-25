@@ -1,6 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/features/recurring/presentation/extensions/recurring_repeat_type_extension.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/app_formatters.dart';
 import '../../../../core/widgets/currency_text.dart';
@@ -69,14 +72,14 @@ class _RecurringExpenseContent extends StatelessWidget {
             ),
             const SizedBox(width: 4),
             Text(
-              ' | ${item.repeatType.name}',
+              ' | ${item.repeatType.localizedName}',
               style: theme.textTheme.bodyMedium,
             ),
           ],
         ),
         SizedBox(height: AppSpacing.xs.h),
         Text(
-          'Next due: ${AppFormatters.shortDate(item.nextDueDate)}',
+          '${LocaleKeys.recurring_details_nextDueDate.tr()}: ${AppFormatters.shortDate(item.nextDueDate)}',
           style: theme.textTheme.bodyMedium?.copyWith(
             color: theme.colorScheme.onSurfaceVariant,
           ),
@@ -113,9 +116,15 @@ class _RecurringExpenseActions extends StatelessWidget {
               item.id,
             );
           },
-          itemBuilder: (_) => const [
-            PopupMenuItem(value: 'edit', child: Text('Edit')),
-            PopupMenuItem(value: 'delete', child: Text('Delete')),
+          itemBuilder: (_) => [
+            PopupMenuItem(
+              value: 'edit',
+              child: Text(LocaleKeys.common_actions_edit.tr()),
+            ),
+            PopupMenuItem(
+              value: 'delete',
+              child: Text(LocaleKeys.common_actions_delete.tr()),
+            ),
           ],
         ),
       ],

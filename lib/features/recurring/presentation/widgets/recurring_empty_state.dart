@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../core/theme/app_spacing.dart';
 
@@ -23,12 +25,12 @@ class RecurringEmptyState extends StatelessWidget {
             ),
             SizedBox(height: AppSpacing.lg.h),
             Text(
-              'No recurring expenses',
+              LocaleKeys.recurring_empty_title.tr(),
               style: Theme.of(context).textTheme.titleLarge,
             ),
             SizedBox(height: AppSpacing.sm.h),
             Text(
-              'Track subscriptions and repeating bills so due expenses are generated automatically.',
+              LocaleKeys.recurring_empty_description.tr(),
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
@@ -36,7 +38,7 @@ class RecurringEmptyState extends StatelessWidget {
             FilledButton.icon(
               onPressed: onAddRecurring,
               icon: const Icon(Icons.add),
-              label: const Text('Add recurring expense'),
+              label: Text(LocaleKeys.recurring_empty_addBtn.tr()),
             ),
           ],
         ),
