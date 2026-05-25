@@ -59,7 +59,10 @@ class MainShellNavigationBar extends StatelessWidget {
                   child: Icon(item.icon),
                 ),
                 selectedIcon: Padding(
-                  padding: EdgeInsets.only(top: AppSpacing.xs.h),
+                  padding: EdgeInsets.only(
+                    top: AppSpacing.xs.h,
+                    bottom: AppSpacing.xs.h,
+                  ),
                   child: Icon(item.selectedIcon),
                 ),
                 label: item.label,

@@ -48,7 +48,7 @@ class MainShellDrawer extends StatelessWidget {
                   context: context,
                   applicationName: "Spend Wise",
                   applicationVersion: '1.0.0',
-                  applicationLegalese: 'Smart Expense & Subscription Tracker',
+                  applicationLegalese: LocaleKeys.app_subTitle.tr(),
                 );
               },
             ),
