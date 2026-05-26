@@ -148,19 +148,53 @@
   },
   "expenses": {
     "title": "Expenses",
-    "empty": {
-      "title": "Add your first expense",
+    "buttons":{
+      "update":"Update expense",
+      "save":"Save expense"
+    },
+    "messages":{
+      "successDelete":"Expense deleted successfully.",
+      "failedDelete":"Failed to delete expense.",
+      "failedLoad":"Failed to load expenses.",
+      "failedUpdate":"Failed to update expense.",
+      "failedAdd":"Failed to add expense."
+    },
+    "emptyExpneses": {
+      "title":"No expenses yet",
+      "subTitle": "Start tracking your spending by adding your first expense.",
       "button": "Add expense"
     },
+    "emptyCategory": {
+      "title":"Create a category first",
+      "subTitle": "Expenses are organized by category. Add at least one category to start tracking spending.",
+      "button": "Manage categories",
+      "createCategoryTxt":"No categories yet. Create one so every expense stays organized."
+    },
+    "noMatchExpenses":{
+      "title":"No matching expenses",
+      "subTitle": "Try another search term or update your filters to find expenses.",
+      "button": "Clear filters"
+    },
+    "errorExpenses":{
+      "title":"Could not load expenses",
+      "subTitle": "Something went wrong. Please try again.",
+      "button": "Try again"
+    },
+    "expensesFound":"expenses found",
     "details": {
       "title": "Expense details",
+      "notFound":"Expense not found",
+      "subTitleNotFound":"This expense may have been deleted or is no longer available.",
       "fields": {
+        "amountSpent":"Amount spent",
         "title": "Title",
         "category": "Category",
         "amount": "Amount",
         "date": "Date",
         "note": "Note",
-        "timeline": "Timeline"
+        "timeline": "Timeline",
+        "created":"Created",
+        "updated":"Updated"
       }
     },
     "form": {
@@ -170,13 +204,24 @@
         "edit": "Edit expense",
         "editButton": "Edit Expense"
       },
+      "intro": {
+        "addTitle": "Track a new expense",
+        "description": "Choose a category, capture the amount, and keep every expense tied to structured data you can trust later.",
+        "editTitle": "Edit expense"
+      },
+      "formErrors": {
+        "titleAndAmountRequired": "Please fill in title and amount.",
+        "categoryRequired": "Please select a category.",
+        "amountValid": "Please enter a valid amount."
+      },
       "fields": {
         "title": "Title",
         "titlePlaceholder": "Groceries",
+        "titleRequired":"Title is required.",
         "amount": "Amount",
-        "amountPlaceholder": "24.99",
+        "validAmount":"Enter a valid amount.",
         "date": "Date",
-        "category": "Category",
+        "requiredCategory": "Category is required.",
         "note": "Note",
         "notePlaceholder": "Optional details",
         "currency": "Currency"
@@ -194,10 +239,15 @@
       "categories": {
         "all": "All categories"
       },
+      "dateRange": "Date range",
       "amountRange": "Amount range",
       "searchHint": "Search expenses by title",
       "minimumAmount": "Minimum amount",
       "maximumAmount": "Maximum amount",
+      "newest":"Newest",
+      "oldest":"Oldest",
+      "highestAmount":"Highest amount",
+      "lowestAmount":"Lowest amount",
       "actions": {
         "apply": "Apply",
         "clear": "Clear filters",
@@ -213,6 +263,7 @@
     "management": {
       "delete": {
         "title": "Delete expense",
+        "subTitle":"This expense will be removed from your history. Continue?",
         "cancel": "Cancel",
         "confirm": "Delete"
       }

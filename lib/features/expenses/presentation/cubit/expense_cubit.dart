@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../core/base/requests_status.dart';
 import '../../domain/entities/expense.dart';
@@ -74,7 +76,7 @@ class ExpenseCubit extends Cubit<ExpenseState> {
           expensesStatus: RequestsStatus.error,
           loadErrorMessage: _mapErrorToMessage(
             error,
-            fallback: 'Failed to load expenses.',
+            fallback: LocaleKeys.expenses_messages_failedLoad.tr(),
           ),
         ),
       );
@@ -97,7 +99,7 @@ class ExpenseCubit extends Cubit<ExpenseState> {
           ),
         );
       },
-      fallbackErrorMessage: 'Failed to add expense.',
+      fallbackErrorMessage: LocaleKeys.expenses_messages_failedAdd.tr(),
     );
   }
 
@@ -117,7 +119,7 @@ class ExpenseCubit extends Cubit<ExpenseState> {
           ),
         );
       },
-      fallbackErrorMessage: 'Failed to update expense.',
+      fallbackErrorMessage: LocaleKeys.expenses_messages_failedUpdate.tr(),
     );
   }
 
@@ -150,7 +152,7 @@ class ExpenseCubit extends Cubit<ExpenseState> {
           submissionStatus: RequestsStatus.error,
           submissionErrorMessage: _mapErrorToMessage(
             error,
-            fallback: 'Failed to delete expense.',
+            fallback: LocaleKeys.expenses_messages_failedDelete.tr(),
           ),
         ),
       );

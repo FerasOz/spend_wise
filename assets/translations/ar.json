@@ -148,19 +148,53 @@
   },
   "expenses": {
     "title": "المصاريف",
-    "empty": {
-      "title": "أضف أول مصروف",
+    "buttons":{
+      "update":"تحديث المصاريف",
+      "save":"حفظ المصاريف"
+    },
+    "messages":{
+      "successDelete":"تم حذف المصروف بنجاح.",
+      "failedDelete":"فشل حذف المصروف.",
+      "failedLoad":"فشل تحميل المصروفات.",
+      "failedUpdate":"فشل تحديث المصروف.",
+      "failedAdd":"فشل إضافة المصروف."
+    },
+    "emptyExpenses": {
+      "title": "لا توجد مصروفات بعد",
+      "subTitle": "ابدأ بتتبع نفقاتك بإضافة أول مصروف لك.",
       "button": "إضافة مصروف"
     },
+    "emptyCategory": {
+      "title":"أنشئ فئة أولاً",
+      "subTitle": "المصروفات منظمة حسب الفئة. أضف فئة واحدة على الأقل لبدء تتبع الإنفاق.",
+      "button": "إدارة الفئات",
+      "createCategoryTxt":"لا توجد تصنيفات حتى الآن. أنشئ تصنيفًا حتى تبقى جميع النفقات منظمة."
+    },
+    "noMatchExpenses":{
+      "title":"لا توجد مصروفات مطابقة",
+      "subTitle": "حاول استخدام مصطلح بحث مختلف أو قم بتحديث الفلاتر للعثور على المصروفات.",
+      "button": "مسح الفلاتر"
+    },
+    "errorExpenses":{
+      "title":"تعذر تحميل المصروفات",
+      "subTitle": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+      "button": "حاول مرة أخرى"
+    },
+    "expensesFound":"تم العثور على",
     "details": {
       "title": "تفاصيل المصروف",
+      "notFound":"المصروف غير موجود",
+      "subTitleNotFound":"قد يكون هذا المصروف قد تم حذفه أو لم يعد متاحاً.",
       "fields": {
+        "amountSpent":"المبلغ المصروف",
         "title": "العنوان",
         "category": "الفئة",
         "amount": "المبلغ",
         "date": "التاريخ",
         "note": "ملاحظة",
-        "timeline": "الجدول الزمني"
+        "timeline": "الجدول الزمني",
+        "created":"تم الإنشاء",
+        "updated":"تم التحديث"
       }
     },
     "form": {
@@ -168,13 +202,24 @@
         "add": "إضافة مصروف",
         "edit": "تعديل مصروف"
       },
+      "intro": {
+        "addTitle": "تتبع مصروفات جديدة",
+        "description": "اختر فئة، سجل المبلغ، واجعل كل مصروف مرتبطًا ببيانات منظمة يمكنك الوثوق بها لاحقاً.",
+        "editTitle": "تعديل المصروف"
+      },
+      "formErrors": {
+        "titleAndAmountRequired": "يرجى إدخال العنوان والمبلغ.",
+        "categoryRequired": "يرجى اختيار فئة.",
+        "amountValid": "يرجى إدخال مبلغ صحيح."
+      },
       "fields": {
         "title": "العنوان",
         "titlePlaceholder": "البقالة",
+        "titleRequired":"العنوان مطلوب.",
         "amount": "المبلغ",
-        "amountPlaceholder": "24.99",
+        "validAmount":"يرجى إدخال مبلغ صحيح.",
         "date": "التاريخ",
-        "category": "الفئة",
+        "requiredCategory": "الفئة مطلوبة.",
         "note": "ملاحظة",
         "notePlaceholder": "تفاصيل اختيارية",
         "currency": "العملة"
@@ -192,10 +237,15 @@
       "categories": {
         "all": "جميع الفئات"
       },
+      "dateRange": "نطاق التاريخ",
       "amountRange": "نطاق المبلغ",
       "searchHint": "ابحث عن المصاريف بالعنوان",
       "minimumAmount": "الحد الأدنى للمبلغ",
       "maximumAmount": "الحد الأعلى للمبلغ",
+      "newest":"الأحدث",
+      "oldest":"الأقدم",
+      "highestAmount":"الأعلى مبلغ",
+      "lowestAmount":"الأقل مبلغ",
       "actions": {
         "apply": "تطبيق",
         "clear": "مسح الفلاتر",
@@ -211,6 +261,7 @@
     "management": {
       "delete": {
         "title": "حذف المصروف",
+        "subTitle":"سيتم حذف هذا المصروف من سجلّك. هل تريد المتابعة؟",
         "cancel": "إلغاء",
         "confirm": "حذف"
       }

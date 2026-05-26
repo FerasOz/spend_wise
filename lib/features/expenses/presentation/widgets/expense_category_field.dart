@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../core/base/requests_status.dart';
 import '../../../../core/utils/category_resolver.dart';
@@ -31,7 +33,7 @@ class ExpenseCategoryField extends StatelessWidget {
       initialValue: initialValue,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'Category is required.';
+          return LocaleKeys.expenses_form_fields_requiredCategory.tr();
         }
         return null;
       },
@@ -48,9 +50,11 @@ class ExpenseCategoryField extends StatelessWidget {
                 fieldState.didChange(category.id);
                 onCategorySelected(category.id);
               },
-              emptyStateMessage:
-                  'No categories yet. Create one so every expense stays organized.',
-              emptyStateActionLabel: 'Manage categories',
+              emptyStateMessage: LocaleKeys
+                  .expenses_emptyCategory_createCategoryTxt
+                  .tr(),
+              emptyStateActionLabel: LocaleKeys.expenses_emptyCategory_button
+                  .tr(),
               onEmptyStateActionPressed: () =>
                   CategoryListPage.openCategoryManagementPage(context),
             ),

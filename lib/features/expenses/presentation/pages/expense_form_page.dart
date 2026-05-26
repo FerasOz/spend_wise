@@ -1,6 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:spend_wise/generated/locale_keys.g.dart';
 import '../../../../core/base/requests_status.dart';
 import '../../../../core/widgets/responsive_page_content.dart';
 import '../../domain/entities/expense.dart';
@@ -51,7 +52,13 @@ class ExpenseFormPage extends StatelessWidget {
         }
       },
       child: Scaffold(
-        appBar: AppBar(title: Text(isEditing ? 'Edit Expense' : 'Add Expense')),
+        appBar: AppBar(
+          title: Text(
+            isEditing
+                ? LocaleKeys.expenses_form_title_edit.tr()
+                : LocaleKeys.expenses_form_title_add.tr(),
+          ),
+        ),
         body: SafeArea(
           child: ResponsivePageContent(
             child: SingleChildScrollView(

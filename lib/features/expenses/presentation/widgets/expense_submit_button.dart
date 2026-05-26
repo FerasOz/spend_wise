@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../core/base/requests_status.dart';
 
@@ -24,10 +26,10 @@ class ExpenseSubmitButton extends StatelessWidget {
         onPressed: submissionStatus == RequestsStatus.loading ? null : onSubmit,
         child: Text(
           submissionStatus == RequestsStatus.loading
-              ? 'Saving...'
+              ? LocaleKeys.categories_form_fields_saving.tr()
               : isEditing
-              ? 'Update expense'
-              : 'Save expense',
+              ? LocaleKeys.expenses_buttons_update.tr()
+              : LocaleKeys.expenses_buttons_save.tr(),
         ),
       ),
     );

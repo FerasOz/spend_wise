@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../domain/entities/expense.dart';
 import '../pages/expenses_page.dart';
@@ -13,9 +15,15 @@ class ExpenseItemActions extends StatelessWidget {
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
       onSelected: (value) => _handleAction(context, value),
-      itemBuilder: (_) => const [
-        PopupMenuItem(value: 'edit', child: Text('Edit')),
-        PopupMenuItem(value: 'delete', child: Text('Delete')),
+      itemBuilder: (_) => [
+        PopupMenuItem(
+          value: 'edit',
+          child: Text(LocaleKeys.common_actions_edit.tr()),
+        ),
+        PopupMenuItem(
+          value: 'delete',
+          child: Text(LocaleKeys.common_actions_delete.tr()),
+        ),
       ],
       icon: Icon(
         Icons.more_vert,

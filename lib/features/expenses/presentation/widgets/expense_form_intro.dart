@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 class ExpenseFormIntro extends StatelessWidget {
   const ExpenseFormIntro({required this.isEditing, super.key});
@@ -12,12 +14,14 @@ class ExpenseFormIntro extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          isEditing ? 'Update your expense' : 'Track a new expense',
+          isEditing
+              ? LocaleKeys.expenses_form_intro_editTitle.tr()
+              : LocaleKeys.expenses_form_intro_addTitle.tr(),
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         SizedBox(height: 8.h),
         Text(
-          'Choose a category, capture the amount, and keep every expense tied to structured data you can trust later.',
+          LocaleKeys.expenses_form_intro_description.tr(),
           style: Theme.of(context).textTheme.bodyMedium,
         ),
       ],

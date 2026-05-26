@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../core/base/requests_status.dart';
 import '../cubit/expense_cubit.dart';
@@ -25,10 +27,13 @@ class ExpenseManagementFlow {
     final state = context.read<ExpenseCubit>().state;
     final success = state.submissionStatus == RequestsStatus.success;
     final message = success
-        ? 'Expense deleted successfully.'
-        : (state.submissionErrorMessage ?? 'Failed to delete expense.');
+        ? LocaleKeys.expenses_messages_successDelete.tr()
+        : (state.submissionErrorMessage ??
+              LocaleKeys.expenses_messages_failedDelete.tr());
 
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
 
     if (success) {
       onDeleted?.call();
@@ -42,18 +47,16 @@ class ExpenseManagementFlow {
       context: context,
       builder: (dialogContext) {
         return AlertDialog(
-          title: const Text('Delete expense'),
-          content: const Text(
-            'This expense will be removed from your history. Continue?',
-          ),
+          title: Text(LocaleKeys.expenses_management_delete_title.tr()),
+          content: Text(LocaleKeys.expenses_management_delete_subTitle.tr()),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(dialogContext).pop(false),
-              child: const Text('Cancel'),
+              child: Text(LocaleKeys.expenses_management_delete_cancel.tr()),
             ),
             FilledButton(
               onPressed: () => Navigator.of(dialogContext).pop(true),
-              child: const Text('Delete'),
+              child: Text(LocaleKeys.expenses_management_delete_confirm.tr()),
             ),
           ],
         );

@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../app/routes/route_names.dart';
 import '../../../../core/utils/category_resolver.dart';
@@ -51,7 +53,7 @@ class ExpenseDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Expense details')),
+      appBar: AppBar(title: Text(LocaleKeys.expenses_details_title.tr())),
       body: BlocSelector<ExpenseCubit, ExpenseState, Expense?>(
         selector: (state) => _findExpense(state.expenses),
         builder: (context, expense) {
@@ -59,7 +61,11 @@ class ExpenseDetailsPage extends StatelessWidget {
             return const ExpenseDetailsMissingState();
           }
 
-          return BlocSelector<CategoryCubit, CategoryState, ExpenseDetailsViewData>(
+          return BlocSelector<
+            CategoryCubit,
+            CategoryState,
+            ExpenseDetailsViewData
+          >(
             selector: (state) => ExpenseDetailsViewData(
               expense: expense,
               category: CategoryResolver.resolveCategory(
@@ -67,7 +73,8 @@ class ExpenseDetailsPage extends StatelessWidget {
                 state.categories,
               ),
             ),
-            builder: (context, viewData) => _ExpenseDetailsView(viewData: viewData),
+            builder: (context, viewData) =>
+                _ExpenseDetailsView(viewData: viewData),
           );
         },
       ),

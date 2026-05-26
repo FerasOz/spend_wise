@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 class ExpenseTitleField extends StatelessWidget {
   const ExpenseTitleField({
@@ -15,14 +17,14 @@ class ExpenseTitleField extends StatelessWidget {
     return TextFormField(
       key: ValueKey(initialValue.isEmpty ? 'title' : 'title_$initialValue'),
       initialValue: initialValue,
-      decoration: const InputDecoration(
-        labelText: 'Title',
-        hintText: 'Groceries',
+      decoration: InputDecoration(
+        labelText: LocaleKeys.expenses_form_fields_title.tr(),
+        hintText: LocaleKeys.expenses_form_fields_titlePlaceholder.tr(),
       ),
       textInputAction: TextInputAction.next,
       validator: (value) {
         if (value == null || value.trim().isEmpty) {
-          return 'Title is required.';
+          return LocaleKeys.expenses_form_fields_titleRequired.tr();
         }
         return null;
       },

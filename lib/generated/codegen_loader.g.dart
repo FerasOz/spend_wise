@@ -164,19 +164,53 @@ class CodegenLoader extends AssetLoader{
   },
   "expenses": {
     "title": "المصاريف",
-    "empty": {
-      "title": "أضف أول مصروف",
+    "buttons": {
+      "update": "تحديث المصاريف",
+      "save": "حفظ المصاريف"
+    },
+    "messages": {
+      "successDelete": "تم حذف المصروف بنجاح.",
+      "failedDelete": "فشل حذف المصروف.",
+      "failedLoad": "فشل تحميل المصروفات.",
+      "failedUpdate": "فشل تحديث المصروف.",
+      "failedAdd": "فشل إضافة المصروف."
+    },
+    "emptyExpenses": {
+      "title": "لا توجد مصروفات بعد",
+      "subTitle": "ابدأ بتتبع نفقاتك بإضافة أول مصروف لك.",
       "button": "إضافة مصروف"
     },
+    "emptyCategory": {
+      "title": "أنشئ فئة أولاً",
+      "subTitle": "المصروفات منظمة حسب الفئة. أضف فئة واحدة على الأقل لبدء تتبع الإنفاق.",
+      "button": "إدارة الفئات",
+      "createCategoryTxt": "لا توجد تصنيفات حتى الآن. أنشئ تصنيفًا حتى تبقى جميع النفقات منظمة."
+    },
+    "noMatchExpenses": {
+      "title": "لا توجد مصروفات مطابقة",
+      "subTitle": "حاول استخدام مصطلح بحث مختلف أو قم بتحديث الفلاتر للعثور على المصروفات.",
+      "button": "مسح الفلاتر"
+    },
+    "errorExpenses": {
+      "title": "تعذر تحميل المصروفات",
+      "subTitle": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+      "button": "حاول مرة أخرى"
+    },
+    "expensesFound": "تم العثور على",
     "details": {
       "title": "تفاصيل المصروف",
+      "notFound": "المصروف غير موجود",
+      "subTitleNotFound": "قد يكون هذا المصروف قد تم حذفه أو لم يعد متاحاً.",
       "fields": {
+        "amountSpent": "المبلغ المصروف",
         "title": "العنوان",
         "category": "الفئة",
         "amount": "المبلغ",
         "date": "التاريخ",
         "note": "ملاحظة",
-        "timeline": "الجدول الزمني"
+        "timeline": "الجدول الزمني",
+        "created": "تم الإنشاء",
+        "updated": "تم التحديث"
       }
     },
     "form": {
@@ -184,13 +218,24 @@ class CodegenLoader extends AssetLoader{
         "add": "إضافة مصروف",
         "edit": "تعديل مصروف"
       },
+      "intro": {
+        "addTitle": "تتبع مصروفات جديدة",
+        "description": "اختر فئة، سجل المبلغ، واجعل كل مصروف مرتبطًا ببيانات منظمة يمكنك الوثوق بها لاحقاً.",
+        "editTitle": "تعديل المصروف"
+      },
+      "formErrors": {
+        "titleAndAmountRequired": "يرجى إدخال العنوان والمبلغ.",
+        "categoryRequired": "يرجى اختيار فئة.",
+        "amountValid": "يرجى إدخال مبلغ صحيح."
+      },
       "fields": {
         "title": "العنوان",
         "titlePlaceholder": "البقالة",
+        "titleRequired": "العنوان مطلوب.",
         "amount": "المبلغ",
-        "amountPlaceholder": "24.99",
+        "validAmount": "يرجى إدخال مبلغ صحيح.",
         "date": "التاريخ",
-        "category": "الفئة",
+        "requiredCategory": "الفئة مطلوبة.",
         "note": "ملاحظة",
         "notePlaceholder": "تفاصيل اختيارية",
         "currency": "العملة"
@@ -208,10 +253,15 @@ class CodegenLoader extends AssetLoader{
       "categories": {
         "all": "جميع الفئات"
       },
+      "dateRange": "نطاق التاريخ",
       "amountRange": "نطاق المبلغ",
       "searchHint": "ابحث عن المصاريف بالعنوان",
       "minimumAmount": "الحد الأدنى للمبلغ",
       "maximumAmount": "الحد الأعلى للمبلغ",
+      "newest": "الأحدث",
+      "oldest": "الأقدم",
+      "highestAmount": "الأعلى مبلغ",
+      "lowestAmount": "الأقل مبلغ",
       "actions": {
         "apply": "تطبيق",
         "clear": "مسح الفلاتر",
@@ -227,6 +277,7 @@ class CodegenLoader extends AssetLoader{
     "management": {
       "delete": {
         "title": "حذف المصروف",
+        "subTitle": "سيتم حذف هذا المصروف من سجلّك. هل تريد المتابعة؟",
         "cancel": "إلغاء",
         "confirm": "حذف"
       }
@@ -553,19 +604,53 @@ static const Map<String,dynamic> _en = {
   },
   "expenses": {
     "title": "Expenses",
-    "empty": {
-      "title": "Add your first expense",
+    "buttons": {
+      "update": "Update expense",
+      "save": "Save expense"
+    },
+    "messages": {
+      "successDelete": "Expense deleted successfully.",
+      "failedDelete": "Failed to delete expense.",
+      "failedLoad": "Failed to load expenses.",
+      "failedUpdate": "Failed to update expense.",
+      "failedAdd": "Failed to add expense."
+    },
+    "emptyExpneses": {
+      "title": "No expenses yet",
+      "subTitle": "Start tracking your spending by adding your first expense.",
       "button": "Add expense"
     },
+    "emptyCategory": {
+      "title": "Create a category first",
+      "subTitle": "Expenses are organized by category. Add at least one category to start tracking spending.",
+      "button": "Manage categories",
+      "createCategoryTxt": "No categories yet. Create one so every expense stays organized."
+    },
+    "noMatchExpenses": {
+      "title": "No matching expenses",
+      "subTitle": "Try another search term or update your filters to find expenses.",
+      "button": "Clear filters"
+    },
+    "errorExpenses": {
+      "title": "Could not load expenses",
+      "subTitle": "Something went wrong. Please try again.",
+      "button": "Try again"
+    },
+    "expensesFound": "expenses found",
     "details": {
       "title": "Expense details",
+      "notFound": "Expense not found",
+      "subTitleNotFound": "This expense may have been deleted or is no longer available.",
       "fields": {
+        "amountSpent": "Amount spent",
         "title": "Title",
         "category": "Category",
         "amount": "Amount",
         "date": "Date",
         "note": "Note",
-        "timeline": "Timeline"
+        "timeline": "Timeline",
+        "created": "Created",
+        "updated": "Updated"
       }
     },
     "form": {
@@ -575,13 +660,24 @@ static const Map<String,dynamic> _en = {
         "edit": "Edit expense",
         "editButton": "Edit Expense"
       },
+      "intro": {
+        "addTitle": "Track a new expense",
+        "description": "Choose a category, capture the amount, and keep every expense tied to structured data you can trust later.",
+        "editTitle": "Edit expense"
+      },
+      "formErrors": {
+        "titleAndAmountRequired": "Please fill in title and amount.",
+        "categoryRequired": "Please select a category.",
+        "amountValid": "Please enter a valid amount."
+      },
       "fields": {
         "title": "Title",
         "titlePlaceholder": "Groceries",
+        "titleRequired": "Title is required.",
         "amount": "Amount",
-        "amountPlaceholder": "24.99",
+        "validAmount": "Enter a valid amount.",
         "date": "Date",
-        "category": "Category",
+        "requiredCategory": "Category is required.",
         "note": "Note",
         "notePlaceholder": "Optional details",
         "currency": "Currency"
@@ -599,10 +695,15 @@ static const Map<String,dynamic> _en = {
       "categories": {
         "all": "All categories"
       },
+      "dateRange": "Date range",
       "amountRange": "Amount range",
       "searchHint": "Search expenses by title",
       "minimumAmount": "Minimum amount",
       "maximumAmount": "Maximum amount",
+      "newest": "Newest",
+      "oldest": "Oldest",
+      "highestAmount": "Highest amount",
+      "lowestAmount": "Lowest amount",
       "actions": {
         "apply": "Apply",
         "clear": "Clear filters",
@@ -618,6 +719,7 @@ static const Map<String,dynamic> _en = {
     "management": {
       "delete": {
         "title": "Delete expense",
+        "subTitle": "This expense will be removed from your history. Continue?",
         "cancel": "Cancel",
         "confirm": "Delete"
       }

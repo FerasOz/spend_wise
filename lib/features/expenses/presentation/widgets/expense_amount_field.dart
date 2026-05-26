@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 class ExpenseAmountField extends StatelessWidget {
   const ExpenseAmountField({
@@ -16,8 +18,8 @@ class ExpenseAmountField extends StatelessWidget {
     return TextFormField(
       key: ValueKey(initialValue.isEmpty ? 'amount' : 'amount_$initialValue'),
       initialValue: initialValue,
-      decoration: const InputDecoration(
-        labelText: 'Amount',
+      decoration: InputDecoration(
+        labelText: LocaleKeys.expenses_form_fields_amount.tr(),
         hintText: '24.99',
       ),
       keyboardType: const TextInputType.numberWithOptions(decimal: true),
@@ -28,7 +30,7 @@ class ExpenseAmountField extends StatelessWidget {
       validator: (value) {
         final parsed = double.tryParse(value?.trim() ?? '');
         if (parsed == null || parsed <= 0) {
-          return 'Enter a valid amount.';
+          return LocaleKeys.expenses_form_fields_validAmount.tr();
         }
         return null;
       },

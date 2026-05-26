@@ -25,7 +25,8 @@ class ExpensesPage extends StatelessWidget {
     final body = MultiBlocListener(
       listeners: [
         BlocListener<ExpenseCubit, ExpenseState>(
-          listenWhen: (previous, current) => previous.expenses != current.expenses,
+          listenWhen: (previous, current) =>
+              previous.expenses != current.expenses,
           listener: (context, state) =>
               context.read<ExpenseFilterCubit>().syncExpenses(state.expenses),
         ),

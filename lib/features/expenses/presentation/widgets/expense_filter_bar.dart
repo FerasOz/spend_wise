@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 import '../../../../core/services/currency_display_service.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/app_formatters.dart';
@@ -22,7 +24,8 @@ class ExpenseFilterBar extends StatelessWidget {
     );
     final displayCurrency = context.select(
       (SettingsCubit cubit) =>
-          cubit.state.settings?.currency ?? (throw StateError('Settings not loaded')),
+          cubit.state.settings?.currency ??
+          (throw StateError('Settings not loaded')),
     );
 
     return Column(
@@ -33,7 +36,7 @@ class ExpenseFilterBar extends StatelessWidget {
           initialValue: state.searchQuery,
           onChanged: context.read<ExpenseFilterCubit>().setSearchQuery,
           decoration: InputDecoration(
-            hintText: 'Search expenses by title',
+            hintText: LocaleKeys.expenses_filters_searchHint.tr(),
             prefixIcon: const Icon(Icons.search),
             suffixIcon: state.searchQuery.isEmpty
                 ? null
@@ -50,7 +53,7 @@ class ExpenseFilterBar extends StatelessWidget {
           runSpacing: AppSpacing.sm.h,
           children: [
             ChoiceChip(
-              label: const Text('All categories'),
+              label: Text(LocaleKeys.expenses_filters_categories_all.tr()),
               selected: state.categoryFilterId == null,
               onSelected: (_) =>
                   context.read<ExpenseFilterCubit>().setCategoryFilterId(null),
@@ -92,7 +95,7 @@ class ExpenseFilterBar extends StatelessWidget {
             if (state.hasActiveFilters)
               InputChip(
                 avatar: const Icon(Icons.filter_alt_off),
-                label: const Text('Clear filters'),
+                label: Text(LocaleKeys.expenses_filters_actions_clear.tr()),
                 onPressed: context.read<ExpenseFilterCubit>().clearAll,
               ),
           ],
@@ -132,7 +135,7 @@ class ExpenseFilterBar extends StatelessWidget {
       context: context,
       builder: (dialogContext) {
         return AlertDialog(
-          title: const Text('Amount range'),
+          title: Text(LocaleKeys.expenses_filters_amountRange.tr()),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -141,7 +144,9 @@ class ExpenseFilterBar extends StatelessWidget {
                 keyboardType: const TextInputType.numberWithOptions(
                   decimal: true,
                 ),
-                decoration: const InputDecoration(labelText: 'Minimum amount'),
+                decoration: InputDecoration(
+                  labelText: LocaleKeys.expenses_filters_minimumAmount.tr(),
+                ),
                 onChanged: (value) => minValue = value,
               ),
               SizedBox(height: AppSpacing.md.h),
@@ -150,7 +155,9 @@ class ExpenseFilterBar extends StatelessWidget {
                 keyboardType: const TextInputType.numberWithOptions(
                   decimal: true,
                 ),
-                decoration: const InputDecoration(labelText: 'Maximum amount'),
+                decoration: InputDecoration(
+                  labelText: LocaleKeys.expenses_filters_maximumAmount.tr(),
+                ),
                 onChanged: (value) => maxValue = value,
               ),
             ],
@@ -158,11 +165,11 @@ class ExpenseFilterBar extends StatelessWidget {
           actions: [
             TextButton(
               onPressed: () => Navigator.of(dialogContext).pop(false),
-              child: const Text('Cancel'),
+              child: Text(LocaleKeys.expenses_filters_actions_cancel.tr()),
             ),
             TextButton(
               onPressed: () => Navigator.of(dialogContext).pop(true),
-              child: const Text('Apply'),
+              child: Text(LocaleKeys.expenses_filters_actions_apply.tr()),
             ),
           ],
         );
@@ -178,7 +185,7 @@ class ExpenseFilterBar extends StatelessWidget {
 
   String _rangeLabel(ExpenseFilterState state) {
     if (state.filterStartDate == null || state.filterEndDate == null) {
-      return 'Date range';
+      return LocaleKeys.expenses_filters_dateRange.tr();
     }
 
     return '${AppFormatters.shortDate(state.filterStartDate!)} - ${AppFormatters.shortDate(state.filterEndDate!)}';
@@ -186,29 +193,35 @@ class ExpenseFilterBar extends StatelessWidget {
 
   String _amountLabel(ExpenseFilterState state, AppCurrency displayCurrency) {
     if (state.minAmount == null && state.maxAmount == null) {
-      return 'Amount range';
+      return LocaleKeys.expenses_filters_amountRange.tr();
     }
 
     final min = state.minAmount == null
         ? 'Any'
-        : CurrencyDisplayService.formatFromUsd(state.minAmount!, displayCurrency);
+        : CurrencyDisplayService.formatFromUsd(
+            state.minAmount!,
+            displayCurrency,
+          );
 
     final max = state.maxAmount == null
         ? 'Any'
-        : CurrencyDisplayService.formatFromUsd(state.maxAmount!, displayCurrency);
+        : CurrencyDisplayService.formatFromUsd(
+            state.maxAmount!,
+            displayCurrency,
+          );
     return '$min - $max';
   }
 
   String _sortLabel(ExpenseSortOption option) {
     switch (option) {
       case ExpenseSortOption.newest:
-        return 'Newest';
+        return LocaleKeys.expenses_filters_newest.tr();
       case ExpenseSortOption.oldest:
-        return 'Oldest';
+        return LocaleKeys.expenses_filters_oldest.tr();
       case ExpenseSortOption.highestAmount:
-        return 'Highest amount';
+        return LocaleKeys.expenses_filters_highestAmount.tr();
       case ExpenseSortOption.lowestAmount:
-        return 'Lowest amount';
+        return LocaleKeys.expenses_filters_lowestAmount.tr();
     }
   }
 }

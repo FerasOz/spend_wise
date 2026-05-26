@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../core/theme/app_spacing.dart';
 
@@ -21,7 +23,7 @@ class ExpenseDetailsActions extends StatelessWidget {
           child: OutlinedButton.icon(
             onPressed: onEdit,
             icon: const Icon(Icons.edit_outlined),
-            label: const Text('Edit'),
+            label: Text(LocaleKeys.common_actions_edit.tr()),
           ),
         ),
         SizedBox(width: AppSpacing.md.w),
@@ -33,7 +35,7 @@ class ExpenseDetailsActions extends StatelessWidget {
               foregroundColor: Theme.of(context).colorScheme.onError,
             ),
             icon: const Icon(Icons.delete_outline),
-            label: const Text('Delete'),
+            label: Text(LocaleKeys.common_actions_delete.tr()),
           ),
         ),
       ],

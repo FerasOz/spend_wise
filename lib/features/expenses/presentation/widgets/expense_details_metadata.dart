@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/app_formatters.dart';
@@ -18,15 +20,18 @@ class ExpenseDetailsMetadata extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Timeline', style: Theme.of(context).textTheme.titleMedium),
+            Text(
+              LocaleKeys.expenses_details_fields_timeline.tr(),
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
             SizedBox(height: AppSpacing.md.h),
             _MetadataRow(
-              label: 'Created',
+              label: LocaleKeys.expenses_details_fields_created.tr(),
               value: AppFormatters.dateTimeOrFallback(expense.createdAt),
             ),
             SizedBox(height: AppSpacing.sm.h),
             _MetadataRow(
-              label: 'Updated',
+              label: LocaleKeys.expenses_details_fields_updated.tr(),
               value: AppFormatters.dateTimeOrFallback(expense.updatedAt),
             ),
           ],
@@ -48,9 +53,7 @@ class _MetadataRow extends StatelessWidget {
 
     return Row(
       children: [
-        Expanded(
-          child: Text(label, style: theme.textTheme.bodyMedium),
-        ),
+        Expanded(child: Text(label, style: theme.textTheme.bodyMedium)),
         Text(
           value,
           style: theme.textTheme.bodyMedium?.copyWith(

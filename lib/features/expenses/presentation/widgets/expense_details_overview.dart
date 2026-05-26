@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../features/categories/domain/entities/category.dart';
@@ -20,22 +22,28 @@ class ExpenseDetailsOverview extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Title', style: Theme.of(context).textTheme.titleMedium),
+        Text(
+          LocaleKeys.expenses_details_fields_title.tr(),
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
         SizedBox(height: AppSpacing.sm.h),
         Text(
           expense.title,
-          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-            fontWeight: FontWeight.w700,
-          ),
+          style: Theme.of(
+            context,
+          ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w700),
         ),
         SizedBox(height: AppSpacing.xxl.h),
-        Text('Category', style: Theme.of(context).textTheme.titleMedium),
+        Text(
+          LocaleKeys.expenses_details_fields_category.tr(),
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
         SizedBox(height: AppSpacing.sm.h),
         Text(
           category.displayName,
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-            fontWeight: FontWeight.w600,
-          ),
+          style: Theme.of(
+            context,
+          ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
         ),
       ],
     );

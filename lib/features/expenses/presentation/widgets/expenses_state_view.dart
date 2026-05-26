@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../core/base/requests_status.dart';
 import '../../../../core/theme/app_spacing.dart';
@@ -35,11 +37,9 @@ class ExpensesStateView extends StatelessWidget {
         }
         if (_hasInitialError) {
           return ExpensesFeedbackView(
-            title: 'Could not load expenses',
-            message:
-                expenseState.loadErrorMessage ??
-                'Something went wrong. Please try again.',
-            actionLabel: 'Retry',
+            title: LocaleKeys.expenses_errorExpenses_title.tr(),
+            message: LocaleKeys.expenses_errorExpenses_subTitle.tr(),
+            actionLabel: LocaleKeys.expenses_errorExpenses_button.tr(),
             onPressed: context.read<ExpenseCubit>().loadExpenses,
           );
         }
@@ -51,10 +51,9 @@ class ExpensesStateView extends StatelessWidget {
         }
         if (filterState.visibleExpenses.isEmpty) {
           return ExpensesFeedbackView(
-            title: 'No matching expenses',
-            message:
-                'Try another search term or update your filters to find expenses.',
-            actionLabel: 'Clear filters',
+            title: LocaleKeys.expenses_noMatchExpenses_title.tr(),
+            message: LocaleKeys.expenses_noMatchExpenses_subTitle.tr(),
+            actionLabel: LocaleKeys.expenses_noMatchExpenses_button.tr(),
             onPressed: context.read<ExpenseFilterCubit>().clearAll,
           );
         }
@@ -66,7 +65,7 @@ class ExpensesStateView extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(bottom: AppSpacing.md.h),
                 child: Text(
-                  '${filterState.visibleExpenses.length} expenses found',
+                  '${filterState.visibleExpenses.length} ${LocaleKeys.expenses_expensesFound.tr()}',
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ),
@@ -109,18 +108,17 @@ class _ExpensesEmptyState extends StatelessWidget {
     }
     if (!hasCategories) {
       return ExpensesFeedbackView(
-        title: 'Create a category first',
-        message:
-            'Expenses are organized by category. Add at least one category to start tracking spending.',
-        actionLabel: 'Manage categories',
+        title: LocaleKeys.expenses_emptyCategory_title.tr(),
+        message: LocaleKeys.expenses_emptyCategory_subTitle.tr(),
+        actionLabel: LocaleKeys.expenses_emptyCategory_button.tr(),
         onPressed: () => CategoryListPage.openCategoryManagementPage(context),
       );
     }
 
     return ExpensesFeedbackView(
-      title: 'No expenses yet',
-      message: 'Start tracking your spending by adding your first expense.',
-      actionLabel: 'Add expense',
+      title: LocaleKeys.expenses_emptyExpenses_title.tr(),
+      message: LocaleKeys.expenses_emptyExpenses_subTitle.tr(),
+      actionLabel: LocaleKeys.expenses_emptyExpenses_button.tr(),
       onPressed: () => ExpensesPage.openExpenseFormPage(context),
     );
   }

@@ -1,7 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:spend_wise/generated/locale_keys.g.dart';
 import '../../../../core/base/requests_status.dart';
 import '../../../../features/categories/domain/entities/category.dart';
 import '../../domain/entities/expense.dart';
@@ -54,15 +55,24 @@ class ExpenseForm extends StatelessWidget {
       final amountValue = double.tryParse(trimmedAmount);
 
       if (trimmedTitle.isEmpty || trimmedAmount.isEmpty) {
-        _showMessage(context, 'Please fill in title and amount.');
+        _showMessage(
+          context,
+          LocaleKeys.expenses_form_formErrors_titleAndAmountRequired.tr(),
+        );
         return;
       }
       if (trimmedCategoryId.isEmpty) {
-        _showMessage(context, 'Please select a category.');
+        _showMessage(
+          context,
+          LocaleKeys.expenses_form_formErrors_categoryRequired.tr(),
+        );
         return;
       }
       if (amountValue == null || amountValue <= 0) {
-        _showMessage(context, 'Please enter a valid amount.');
+        _showMessage(
+          context,
+          LocaleKeys.expenses_form_formErrors_amountValid.tr(),
+        );
         return;
       }
 

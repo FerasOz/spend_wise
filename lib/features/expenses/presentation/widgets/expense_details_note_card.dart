@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../core/theme/app_spacing.dart';
 
@@ -16,7 +18,10 @@ class ExpenseDetailsNoteCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Note', style: Theme.of(context).textTheme.titleMedium),
+            Text(
+              LocaleKeys.expenses_details_fields_note.tr(),
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
             SizedBox(height: AppSpacing.sm.h),
             Text(note, style: Theme.of(context).textTheme.bodyLarge),
           ],
