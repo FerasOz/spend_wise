@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../core/base/requests_status.dart';
 import '../../../../core/widgets/responsive_page_content.dart';
 import '../../../categories/presentation/cubit/category_cubit.dart';

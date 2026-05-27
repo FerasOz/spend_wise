@@ -1,9 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/core/theme/app_spacing.dart';
-
 import 'package:spend_wise/features/insights/domain/entities/insight_card.dart';
 import 'package:spend_wise/features/insights/presentation/widgets/insight_card_widget.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 import 'dashboard_section_card.dart';
 import 'dashboard_section_empty_state.dart';
 
@@ -15,13 +16,12 @@ class DashboardInsights extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DashboardSectionCard(
-      title: 'Insights',
-      subtitle: 'Quick patterns from your latest activity',
+      title: LocaleKeys.dashboard_insights_title.tr(),
+      subtitle: LocaleKeys.dashboard_insights_subTitle.tr(),
       child: insights.isEmpty
-          ? const DashboardSectionEmptyState(
-              title: 'No insights yet',
-              message:
-                  'Add a few more expenses to unlock smarter spending observations.',
+          ? DashboardSectionEmptyState(
+              title: LocaleKeys.dashboard_insights_emptyTitle.tr(),
+              message: LocaleKeys.dashboard_insights_emptyDescription.tr(),
             )
           : Column(
               children: [

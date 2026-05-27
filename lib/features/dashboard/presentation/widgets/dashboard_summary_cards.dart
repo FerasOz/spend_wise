@@ -1,8 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/core/theme/app_radius.dart';
 import 'package:spend_wise/core/theme/app_spacing.dart';
-
+import 'package:spend_wise/generated/locale_keys.g.dart';
 import '../../domain/entities/dashboard_summary.dart';
 import 'dashboard_section_card.dart';
 import '../../../../core/widgets/currency_text.dart';
@@ -16,34 +17,35 @@ class DashboardSummaryCards extends StatelessWidget {
   Widget build(BuildContext context) {
     final cards = [
       _SummaryCardData(
-        title: 'Total spending',
+        title: LocaleKeys.dashboard_overview_totalSpending.tr(),
         amount: summary.totalSpending,
-        subtitle: 'Lifetime',
+        subtitle: LocaleKeys.dashboard_overview_lifetime.tr(),
         icon: Icons.account_balance_wallet_outlined,
       ),
       _SummaryCardData(
-        title: 'This month',
+        title: LocaleKeys.dashboard_overview_spentThisMonth.tr(),
         amount: summary.monthlySpending,
-        subtitle: 'Current month',
+        subtitle: LocaleKeys.dashboard_overview_monthLabel.tr(),
         icon: Icons.calendar_month_outlined,
       ),
       _SummaryCardData(
-        title: 'This week',
+        title: LocaleKeys.dashboard_overview_thisWeek.tr(),
         amount: summary.weeklySpending,
-        subtitle: 'Current week',
+        subtitle: LocaleKeys.dashboard_overview_CurrentWeek.tr(),
         icon: Icons.date_range_outlined,
       ),
       _SummaryCardData(
-        title: 'Average daily',
+        title: LocaleKeys.dashboard_overview_averageDaily.tr(),
         amount: summary.averageDailySpending,
-        subtitle: '${summary.transactionCount} transactions tracked',
+        subtitle:
+            '${summary.transactionCount} ${LocaleKeys.dashboard_overview_transactionsTracked.tr()}',
         icon: Icons.trending_up_outlined,
       ),
     ];
 
     return DashboardSectionCard(
-      title: 'Overview',
-      subtitle: 'A fast read on your spending rhythm',
+      title: LocaleKeys.dashboard_overview_title.tr(),
+      subtitle: LocaleKeys.dashboard_overview_subTitle.tr(),
       child: LayoutBuilder(
         builder: (context, constraints) {
           final crossAxisCount = constraints.maxWidth > 720 ? 4 : 2;

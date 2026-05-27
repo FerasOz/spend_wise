@@ -1,7 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/core/theme/app_spacing.dart';
-
+import 'package:spend_wise/generated/locale_keys.g.dart';
 import '../../../categories/presentation/pages/category_list_page.dart';
 import '../cubit/dashboard_state.dart';
 import 'dashboard_category_breakdown.dart';
@@ -23,14 +24,14 @@ class DashboardOverview extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       children: [
         Text(
-          'Your money at a glance',
+          LocaleKeys.dashboard_title.tr(),
           style: Theme.of(
             context,
           ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w700),
         ),
         SizedBox(height: AppSpacing.sm.h),
         Text(
-          'A clear look at your spending pace, category trends, and latest activity.',
+          LocaleKeys.dashboard_subTitle.tr(),
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         SizedBox(height: AppSpacing.xxl.h),

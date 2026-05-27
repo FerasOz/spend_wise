@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/core/theme/app_spacing.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 import '../../../../core/widgets/currency_text.dart';
 import '../../../../features/categories/presentation/utils/category_presentation_data.dart';
 import '../../domain/entities/category_spending.dart';
@@ -20,13 +22,13 @@ class DashboardCategoryBreakdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DashboardSectionCard(
-      title: 'Category breakdown',
-      subtitle: 'Where most of your money goes',
+      title: LocaleKeys.dashboard_categoryBreakdown_title.tr(),
+      subtitle: LocaleKeys.dashboard_categoryBreakdown_subTitle.tr(),
       child: categories.isEmpty
-          ? const DashboardSectionEmptyState(
-              title: 'No category activity',
-              message:
-                  'Category spending distribution will appear once you log expenses.',
+          ? DashboardSectionEmptyState(
+              title: LocaleKeys.dashboard_categoryBreakdown_emptyTitle.tr(),
+              message: LocaleKeys.dashboard_categoryBreakdown_emptyDescription
+                  .tr(),
             )
           : Column(
               children: [
@@ -106,7 +108,7 @@ class _CategoryBreakdownItem extends StatelessWidget {
             CurrencyText(
               amount: spending.amount,
               style: Theme.of(context).textTheme.bodySmall,
-              suffix: ' spent',
+              suffix: ' ${LocaleKeys.dashboard_categoryBreakdown_spent.tr()}',
             ),
           ],
         ),

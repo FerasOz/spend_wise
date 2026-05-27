@@ -1,7 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/core/theme/app_spacing.dart';
-
+import 'package:spend_wise/generated/locale_keys.g.dart';
 import '../../../../features/categories/domain/entities/category.dart';
 import '../../../../features/expenses/domain/entities/expense.dart';
 import '../../../../features/expenses/presentation/widgets/expense_list_item.dart';
@@ -21,13 +22,13 @@ class DashboardRecentExpenses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DashboardSectionCard(
-      title: 'Recent expenses',
-      subtitle: 'Your latest transactions',
+      title: LocaleKeys.dashboard_recentExpenses_title.tr(),
+      subtitle: LocaleKeys.dashboard_recentExpenses_subTitle.tr(),
       child: expenses.isEmpty
-          ? const DashboardSectionEmptyState(
-              title: 'No recent expenses',
-              message:
-                  'Your latest expenses will appear here once you start tracking them.',
+          ? DashboardSectionEmptyState(
+              title: LocaleKeys.dashboard_recentExpenses_emptyTitle.tr(),
+              message: LocaleKeys.dashboard_recentExpenses_emptyDescription
+                  .tr(),
             )
           : Column(
               children: [

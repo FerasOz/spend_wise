@@ -1,6 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:spend_wise/generated/locale_keys.g.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/widgets/currency_text.dart';
 import '../../domain/entities/spending_chart_point.dart';
@@ -21,12 +22,12 @@ class DashboardSpendingChart extends StatelessWidget {
         : points.reduce((a, b) => a.total >= b.total ? a : b);
 
     return DashboardSectionCard(
-      title: 'Weekly spending',
-      subtitle: 'Your spending pace across this week',
+      title: LocaleKeys.dashboard_chart_section_weeklySpending.tr(),
+      subtitle: LocaleKeys.dashboard_chart_section_weeklySubtitle.tr(),
       child: total == 0
-          ? const DashboardSectionEmptyState(
-              title: 'No weekly data',
-              message: 'Your weekly spending chart will appear once this week has activity.',
+          ? DashboardSectionEmptyState(
+              title: LocaleKeys.dashboard_chart_section_noData_title.tr(),
+              message: LocaleKeys.dashboard_chart_section_noData_message.tr(),
             )
           : Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,15 +36,25 @@ class DashboardSpendingChart extends StatelessWidget {
                   spacing: AppSpacing.sm.w,
                   runSpacing: AppSpacing.sm.h,
                   children: [
-                    _ChartChip(label: 'Total', child: CurrencyText(amount: total)),
                     _ChartChip(
-                      label: 'Highest day',
-                      child: CurrencyText(amount: highest.total, suffix: ' on ${highest.label}'),
+                      label: LocaleKeys.dashboard_chart_total.tr(),
+                      child: CurrencyText(amount: total),
+                    ),
+                    _ChartChip(
+                      label: LocaleKeys.dashboard_chart_highestDay.tr(),
+                      child: CurrencyText(
+                        amount: highest.total,
+                        suffix:
+                            ' ${LocaleKeys.dashboard_chart_on.tr()} ${highest.label}',
+                      ),
                     ),
                   ],
                 ),
                 SizedBox(height: AppSpacing.lg.h),
-                SizedBox(height: 220.h, child: DashboardSpendingChartBody(points: points)),
+                SizedBox(
+                  height: 220.h,
+                  child: DashboardSpendingChartBody(points: points),
+                ),
               ],
             ),
     );
@@ -59,7 +70,10 @@ class _ChartChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Chip(
-      label: Row(mainAxisSize: MainAxisSize.min, children: [Text('$label: '), child]),
+      label: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [Text('$label: '), child],
+      ),
       backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
     );
   }

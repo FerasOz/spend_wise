@@ -352,12 +352,30 @@ class CodegenLoader extends AssetLoader{
     }
   },
   "dashboard": {
-    "title": "الرئيسية",
+    "title": "أموالك في لمحة",
+    "subTitle": "نظرة واضحة على وتيرة إنفاقك واتجاهات الفئات وأحدث نشاط.",
     "empty": {
-      "title": "أضف أول مصروف"
+      "title": "لوحة التحكم تبدأ بمصروف واحد",
+      "subTitle": "أضف أول مصروف لك لفتح ملخصات الإنفاق واتجاهات الأسبوع ومخططات الفئات.",
+      "button": "أضف أول مصروف لك"
     },
-    "error": {
-      "retry": "إعادة المحاولة"
+    "overview": {
+      "title": "نظرة عامة",
+      "subTitle": "قراءة سريعة على وتيرة إنفاقك",
+      "spentThisMonth": "هذا الشهر",
+      "monthLabel": "الشهر الحالي",
+      "totalSpending": "إجمالي الإنفاق",
+      "lifetime": "اجمالا",
+      "averageDaily": "متوسط الإنفاق اليومي",
+      "transactionsTracked": "المصروفات المسجلة",
+      "thisWeek": "هذا الأسبوع",
+      "CurrentWeek": "الأسبوع الحالي"
+    },
+    "insights": {
+      "title": "التحليلات",
+      "subTitle": "أنماط سريعة من أحدث نشاط لك",
+      "emptyTitle": "لا توجد تحليلات بعد",
+      "emptyDescription": "أضف عددًا قليلًا من المصاريف الإضافية لفتح رؤى أكثر ذكاءً للإنفاق."
     },
     "chart": {
       "labelFormat": "{label}: ",
@@ -368,7 +386,27 @@ class CodegenLoader extends AssetLoader{
           "title": "لا توجد بيانات أسبوعية",
           "message": "سيظهر مخطط الإنفاق الأسبوعي عند وجود نشاط هذا الأسبوع."
         }
-      }
+      },
+      "total": "الاجمالي",
+      "highestDay": "أعلى يوم",
+      "on": "في"
+    },
+    "categoryBreakdown": {
+      "title": "تفاصيل المصروفات حسب الفئات",
+      "subTitle": "أين يذهب معظم مالك",
+      "emptyTitle": "لا توجد مصروفات مسجلة",
+      "emptyDescription": "سيظهر توزيع إنفاق الفئات بمجرد تسجيل المصروفات.",
+      "spent": "أنفقت"
+    },
+    "recentExpenses": {
+      "title": "المصروفات الأخيرة",
+      "subTitle": "أحدث المصروفات",
+      "emptyTitle": "لا توجد مصروفات حديثة",
+      "emptyDescription": "ستظهر مصروفاتك الأخيرة هنا بمجرد تسجيلها."
+    },
+    "errors": {
+      "errorLoad": "فشل تحميل لوحة التحكم الخاصة بك",
+      "retryBtn": "حاول مرة أخرى"
     }
   },
   "recurring": {
@@ -615,7 +653,7 @@ static const Map<String,dynamic> _en = {
       "failedUpdate": "Failed to update expense.",
       "failedAdd": "Failed to add expense."
     },
-    "emptyExpneses": {
+    "emptyExpenses": {
       "title": "No expenses yet",
       "subTitle": "Start tracking your spending by adding your first expense.",
       "button": "Add expense"
@@ -794,12 +832,30 @@ static const Map<String,dynamic> _en = {
     }
   },
   "dashboard": {
-    "title": "Dashboard",
+    "title": "Your money at a glance",
+    "subTitle": "A clear look at your spending pace, category trends, and latest activity.",
     "empty": {
-      "title": "Add your first expense"
+      "title": "Your dashboard starts with one expense",
+      "subTitle": "Add your first expense to unlock spending summaries, weekly trends, and category insights.",
+      "button": "Add your first expense"
     },
-    "error": {
-      "retry": "Retry"
+    "overview": {
+      "title": "Overview",
+      "subTitle": "A fast read on your spending rhythm",
+      "spentThisMonth": "this month",
+      "monthLabel": "Current Month",
+      "totalSpending": "Total spending",
+      "lifetime": "Lifetime",
+      "averageDaily": "Average daily",
+      "transactionsTracked": "transactions tracked",
+      "thisWeek": "This week",
+      "CurrentWeek": "Current Week"
+    },
+    "insights": {
+      "title": "Insights",
+      "subTitle": "Quick patterns from your latest activity",
+      "emptyTitle": "No insights yet",
+      "emptyDescription": "Add a few more expenses to unlock smarter spending observations."
     },
     "chart": {
       "labelFormat": "{label}: ",
@@ -810,7 +866,27 @@ static const Map<String,dynamic> _en = {
           "title": "No weekly data",
           "message": "Your weekly spending chart will appear once this week has activity."
         }
-      }
+      },
+      "total": "Total",
+      "highestDay": "Highest Day",
+      "on": "on"
+    },
+    "categoryBreakdown": {
+      "title": "Category Breakdown",
+      "subTitle": "Where most of your money goes",
+      "emptyTitle": "No category activity",
+      "emptyDescription": "Category spending distribution will appear once you log expenses.",
+      "spent": "spent"
+    },
+    "recentExpenses": {
+      "title": "Recent expenses",
+      "subTitle": "Your latest transactions",
+      "emptyTitle": "No recent expenses",
+      "emptyDescription": "Your latest expenses will appear here once you start tracking them."
+    },
+    "errors": {
+      "errorLoad": "Could not load your dashboard",
+      "retryBtn": "Retry"
     }
   },
   "recurring": {

@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/core/theme/app_spacing.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
 
 class DashboardEmptyState extends StatelessWidget {
   const DashboardEmptyState({required this.onAddExpense, super.key});
@@ -29,7 +31,7 @@ class DashboardEmptyState extends StatelessWidget {
             ),
             SizedBox(height: AppSpacing.xl.h),
             Text(
-              'Your dashboard starts with one expense',
+              LocaleKeys.dashboard_empty_title.tr(),
               style: Theme.of(
                 context,
               ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w700),
@@ -37,7 +39,7 @@ class DashboardEmptyState extends StatelessWidget {
             ),
             SizedBox(height: AppSpacing.spacing10.h),
             Text(
-              'Add your first expense to unlock spending summaries, weekly trends, and category insights.',
+              LocaleKeys.dashboard_empty_subTitle.tr(),
               style: Theme.of(context).textTheme.bodyMedium,
               textAlign: TextAlign.center,
             ),
@@ -45,7 +47,7 @@ class DashboardEmptyState extends StatelessWidget {
             FilledButton.icon(
               onPressed: onAddExpense,
               icon: const Icon(Icons.add),
-              label: const Text('Add your first expense'),
+              label: Text(LocaleKeys.dashboard_empty_button.tr()),
             ),
           ],
         ),

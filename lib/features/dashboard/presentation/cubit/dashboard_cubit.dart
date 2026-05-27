@@ -1,6 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
-
+import 'package:spend_wise/generated/locale_keys.g.dart';
 import '../../../../core/base/requests_status.dart';
 import '../../domain/usecases/get_dashboard_source_data.dart';
 import '../../domain/usecases/get_dashboard_summary.dart';
@@ -34,7 +35,9 @@ class DashboardCubit extends Cubit<DashboardState> {
   final GenerateInsights _generateInsights;
 
   Future<void> loadDashboard() async {
-    emit(state.copyWith(status: RequestsStatus.loading, clearErrorMessage: true));
+    emit(
+      state.copyWith(status: RequestsStatus.loading, clearErrorMessage: true),
+    );
 
     try {
       final sourceData = await _getDashboardSourceData();
@@ -70,7 +73,7 @@ class DashboardCubit extends Cubit<DashboardState> {
   String _mapErrorToMessage(Object error) {
     final message = error.toString().trim();
     if (message.isEmpty || message == 'Exception') {
-      return 'Failed to load dashboard.';
+      return LocaleKeys.dashboard_errors_errorLoad.tr();
     }
     return message.startsWith('Exception: ')
         ? message.substring('Exception: '.length)
