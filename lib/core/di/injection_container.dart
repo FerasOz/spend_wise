@@ -69,8 +69,22 @@ import '../../features/settings/data/repositories/settings_repository_impl.dart'
 import '../../features/settings/data/datasources/settings_local_data_source.dart';
 import '../../features/settings/domain/usecases/watch_settings.dart';
 import '../../features/settings/presentation/cubit/settings_cubit.dart';
-import '../../features/export/domain/services/export_service.dart';
-import '../../features/export/data/services/export_service_impl.dart';
+import '../../features/export/data/builders/backup_payload_builder.dart';
+import '../../features/export/data/builders/expenses_export_payload_builder.dart';
+import '../../features/export/data/builders/pdf_report_content_builder.dart';
+import '../../features/export/data/datasources/export_file_local_data_source.dart';
+import '../../features/export/data/datasources/export_history_local_data_source.dart';
+import '../../features/export/data/datasources/export_pdf_builder.dart';
+import '../../features/export/data/repositories/export_repository_impl.dart';
+import '../../features/export/domain/repositories/export_repository.dart';
+import '../../features/export/domain/usecases/delete_export_history.dart';
+import '../../features/export/domain/usecases/export_all_data.dart';
+import '../../features/export/domain/usecases/export_expenses_as_csv.dart';
+import '../../features/export/domain/usecases/export_expenses_as_json.dart';
+import '../../features/export/domain/usecases/export_expenses_as_pdf.dart';
+import '../../features/export/domain/usecases/get_export_history.dart';
+import '../../features/export/domain/usecases/save_export_file.dart';
+import '../../features/export/domain/usecases/share_export_file.dart';
 import '../../features/export/presentation/cubit/export_cubit.dart';
 import '../../features/recurring/presentation/cubit/recurring_expense_cubit.dart';
 
@@ -597,12 +611,106 @@ Future<void> setupDependencies() async {
   // EXPORT FEATURE
   // ============================================================================
 
-  if (!sl.isRegistered<ExportService>()) {
-    sl.registerLazySingleton<ExportService>(() => ExportServiceImpl());
+  if (!sl.isRegistered<Box<Map>>(
+    instanceName: HiveExportHistoryLocalDataSource.boxName,
+  )) {
+    final historyBox = await Hive.openBox<Map>(
+      HiveExportHistoryLocalDataSource.boxName,
+    );
+    sl.registerSingleton<Box<Map>>(
+      historyBox,
+      instanceName: HiveExportHistoryLocalDataSource.boxName,
+    );
+  }
+
+  if (!sl.isRegistered<ExportHistoryLocalDataSource>()) {
+    sl.registerLazySingleton<ExportHistoryLocalDataSource>(
+      () => HiveExportHistoryLocalDataSource(
+        sl<Box<Map>>(instanceName: HiveExportHistoryLocalDataSource.boxName),
+      ),
+    );
+  }
+  if (!sl.isRegistered<ExportFileLocalDataSource>()) {
+    sl.registerLazySingleton<ExportFileLocalDataSource>(
+      () => ExportFileLocalDataSourceImpl(),
+    );
+  }
+  if (!sl.isRegistered<ExportPdfBuilder>()) {
+    sl.registerLazySingleton<ExportPdfBuilder>(() => const ExportPdfBuilder());
+  }
+  if (!sl.isRegistered<ExpensesExportPayloadBuilder>()) {
+    sl.registerLazySingleton<ExpensesExportPayloadBuilder>(
+      () => const ExpensesExportPayloadBuilder(),
+    );
+  }
+  if (!sl.isRegistered<BackupPayloadBuilder>()) {
+    sl.registerLazySingleton<BackupPayloadBuilder>(
+      () => const BackupPayloadBuilder(),
+    );
+  }
+  if (!sl.isRegistered<PdfReportContentBuilder>()) {
+    sl.registerLazySingleton<PdfReportContentBuilder>(
+      () => const PdfReportContentBuilder(),
+    );
+  }
+
+  if (!sl.isRegistered<ExportRepository>()) {
+    sl.registerLazySingleton<ExportRepository>(
+      () => ExportRepositoryImpl(
+        expenseRepository: sl<ExpenseRepository>(),
+        categoryRepository: sl<CategoryRepository>(),
+        settingsRepository: sl<SettingsRepository>(),
+        files: sl<ExportFileLocalDataSource>(),
+        history: sl<ExportHistoryLocalDataSource>(),
+        pdfBuilder: sl<ExportPdfBuilder>(),
+        getDashboardSummary: sl<GetDashboardSummary>(),
+        getTopCategories: sl<GetTopCategories>(),
+        getWeeklySpending: sl<GetWeeklySpending>(),
+        expensesPayload: sl<ExpensesExportPayloadBuilder>(),
+        backupPayload: sl<BackupPayloadBuilder>(),
+        pdfContent: sl<PdfReportContentBuilder>(),
+      ),
+    );
+  }
+
+  if (!sl.isRegistered<ExportExpensesAsCsv>()) {
+    sl.registerLazySingleton(() => ExportExpensesAsCsv(sl<ExportRepository>()));
+  }
+  if (!sl.isRegistered<ExportExpensesAsJson>()) {
+    sl.registerLazySingleton(() => ExportExpensesAsJson(sl<ExportRepository>()));
+  }
+  if (!sl.isRegistered<ExportExpensesAsPdf>()) {
+    sl.registerLazySingleton(() => ExportExpensesAsPdf(sl<ExportRepository>()));
+  }
+  if (!sl.isRegistered<ExportAllData>()) {
+    sl.registerLazySingleton(() => ExportAllData(sl<ExportRepository>()));
+  }
+  if (!sl.isRegistered<GetExportHistory>()) {
+    sl.registerLazySingleton(() => GetExportHistory(sl<ExportRepository>()));
+  }
+  if (!sl.isRegistered<DeleteExportHistory>()) {
+    sl.registerLazySingleton(() => DeleteExportHistory(sl<ExportRepository>()));
+  }
+  if (!sl.isRegistered<ShareExportFile>()) {
+    sl.registerLazySingleton(() => ShareExportFile(sl<ExportRepository>()));
+  }
+  if (!sl.isRegistered<SaveExportFile>()) {
+    sl.registerLazySingleton(() => SaveExportFile(sl<ExportRepository>()));
   }
 
   if (!sl.isRegistered<ExportCubit>()) {
-    sl.registerFactory<ExportCubit>(() => ExportCubit(sl<ExportService>()));
+    sl.registerFactory(
+      () => ExportCubit(
+        exportExpensesAsCsv: sl<ExportExpensesAsCsv>(),
+        exportExpensesAsJson: sl<ExportExpensesAsJson>(),
+        exportExpensesAsPdf: sl<ExportExpensesAsPdf>(),
+        exportAllData: sl<ExportAllData>(),
+        getExportHistory: sl<GetExportHistory>(),
+        deleteExportHistory: sl<DeleteExportHistory>(),
+        shareExportFile: sl<ShareExportFile>(),
+        saveExportFile: sl<SaveExportFile>(),
+      ),
+    );
   }
 }
 

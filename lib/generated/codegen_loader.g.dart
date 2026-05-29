@@ -29,6 +29,53 @@ class CodegenLoader extends AssetLoader{
     "insights": "الرؤى",
     "export": "تصدير"
   },
+  "export": {
+    "title": "التصدير والنسخ الاحتياطي",
+    "settingsEntry": {
+      "subtitle": "صدّر بياناتك وأدر النسخ الاحتياطية"
+    },
+    "actions": {
+      "title": "خيارات التصدير",
+      "saveLocal": "حفظ محليًا",
+      "csv": {
+        "title": "تصدير المصاريف إلى CSV",
+        "subtitle": "تصدير مناسب للجداول"
+      },
+      "json": {
+        "title": "تصدير المصاريف إلى JSON",
+        "subtitle": "بيانات منظمة للمطورين"
+      },
+      "pdf": {
+        "title": "إنشاء تقرير PDF",
+        "subtitle": "ملخص بسيط للمصاريف"
+      },
+      "backup": {
+        "title": "تصدير كل بيانات التطبيق",
+        "subtitle": "نسخ احتياطي لكل بيانات Hive المحلية"
+      }
+    },
+    "history": {
+      "title": "آخر الملفات المصدّرة",
+      "refresh": "تحديث",
+      "meta": "{date} • {size}",
+      "empty": {
+        "title": "لا توجد صادرات بعد",
+        "subtitle": "ستظهر ملفات التصدير هنا."
+      },
+      "delete": {
+        "title": "حذف التصدير",
+        "message": "سيتم حذف العنصر من السجل. قد يبقى الملف موجودًا على جهازك."
+      }
+    },
+    "states": {
+      "working": "جارٍ التنفيذ..."
+    },
+    "snackbar": {
+      "exported": "تم التصدير: {file}",
+      "saved": "تم الحفظ محليًا",
+      "shared": "تم فتح المشاركة"
+    }
+  },
   "common": {
     "loading": "جارٍ التحميل...",
     "error": "حدث خطأ ما",
@@ -462,34 +509,6 @@ class CodegenLoader extends AssetLoader{
         "confirm": "حذف"
       }
     }
-  },
-  "export": {
-    "title": "تصدير",
-    "dialog": {
-      "title": "تصدير البيانات",
-      "exporting": "جارٍ التصدير...",
-      "fileNotFound": "تعذر العثور على الملف: {filePath}",
-      "message": "اطّلع على هذا الملف المصدّر من Spend Wise!",
-      "options": {
-        "csv": {
-          "title": "تصدير CSV",
-          "subtitle": "تصدير المصاريف كملف CSV"
-        },
-        "summary": {
-          "title": "تصدير الملخص",
-          "subtitle": "تصدير ملخص لوحة التحكم"
-        },
-        "backup": {
-          "title": "إنشاء نسخة احتياطية",
-          "subtitle": "نسخ احتياطي لجميع بيانات التطبيق"
-        }
-      },
-      "actions": {
-        "close": "إغلاق",
-        "share": "مشاركة",
-        "tryAgain": "حاول مرة أخرى"
-      }
-    }
   }
 };
 static const Map<String,dynamic> _en = {
@@ -506,6 +525,53 @@ static const Map<String,dynamic> _en = {
     "budgets": "Budgets",
     "insights": "Insights",
     "export": "Export"
+  },
+  "export": {
+    "title": "Export & Backup",
+    "settingsEntry": {
+      "subtitle": "Export your data and manage backups"
+    },
+    "actions": {
+      "title": "Export options",
+      "saveLocal": "Save locally",
+      "csv": {
+        "title": "Export expenses to CSV",
+        "subtitle": "Spreadsheet-friendly export"
+      },
+      "json": {
+        "title": "Export expenses to JSON",
+        "subtitle": "Developer-friendly structured data"
+      },
+      "pdf": {
+        "title": "Generate PDF report",
+        "subtitle": "Simple spending report summary"
+      },
+      "backup": {
+        "title": "Export all app data",
+        "subtitle": "Backup all local Hive data"
+      }
+    },
+    "history": {
+      "title": "Recent exports",
+      "refresh": "Refresh",
+      "meta": "{date} • {size}",
+      "empty": {
+        "title": "No exports yet",
+        "subtitle": "Your exported files will appear here."
+      },
+      "delete": {
+        "title": "Delete export",
+        "message": "This will remove the item from history. The file may still exist on your device."
+      }
+    },
+    "states": {
+      "working": "Working..."
+    },
+    "snackbar": {
+      "exported": "Exported: {file}",
+      "saved": "Saved to local storage",
+      "shared": "Share opened"
+    }
   },
   "common": {
     "loading": "Loading...",
@@ -940,34 +1006,6 @@ static const Map<String,dynamic> _en = {
         "title": "Delete recurring expense",
         "cancel": "Cancel",
         "confirm": "Delete"
-      }
-    }
-  },
-  "export": {
-    "title": "Export",
-    "dialog": {
-      "title": "Export data",
-      "exporting": "Exporting...",
-      "fileNotFound": "File not found: {filePath}",
-      "message": "Check out this exported file from Spend Wise!",
-      "options": {
-        "csv": {
-          "title": "CSV export",
-          "subtitle": "Export expenses as CSV"
-        },
-        "summary": {
-          "title": "Summary export",
-          "subtitle": "Export dashboard summary"
-        },
-        "backup": {
-          "title": "Create backup",
-          "subtitle": "Back up all app data"
-        }
-      },
-      "actions": {
-        "close": "Close",
-        "share": "Share",
-        "tryAgain": "Try again"
       }
     }
   }

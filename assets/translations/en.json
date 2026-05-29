@@ -13,6 +13,53 @@
     "insights": "Insights",
     "export": "Export"
   },
+  "export": {
+    "title": "Export & Backup",
+    "settingsEntry": {
+      "subtitle": "Export your data and manage backups"
+    },
+    "actions": {
+      "title": "Export options",
+      "saveLocal": "Save locally",
+      "csv": {
+        "title": "Export expenses to CSV",
+        "subtitle": "Spreadsheet-friendly export"
+      },
+      "json": {
+        "title": "Export expenses to JSON",
+        "subtitle": "Developer-friendly structured data"
+      },
+      "pdf": {
+        "title": "Generate PDF report",
+        "subtitle": "Simple spending report summary"
+      },
+      "backup": {
+        "title": "Export all app data",
+        "subtitle": "Backup all local Hive data"
+      }
+    },
+    "history": {
+      "title": "Recent exports",
+      "refresh": "Refresh",
+      "meta": "{date} • {size}",
+      "empty": {
+        "title": "No exports yet",
+        "subtitle": "Your exported files will appear here."
+      },
+      "delete": {
+        "title": "Delete export",
+        "message": "This will remove the item from history. The file may still exist on your device."
+      }
+    },
+    "states": {
+      "working": "Working..."
+    },
+    "snackbar": {
+      "exported": "Exported: {file}",
+      "saved": "Saved to local storage",
+      "shared": "Share opened"
+    }
+  },
   "common": {
     "loading": "Loading...",
     "error": "An error occurred",
@@ -446,34 +493,6 @@
         "title": "Delete recurring expense",
         "cancel": "Cancel",
         "confirm": "Delete"
-      }
-    }
-  },
-  "export": {
-    "title": "Export",
-    "dialog": {
-      "title": "Export data",
-      "exporting": "Exporting...",
-      "fileNotFound": "File not found: {filePath}",
-      "message": "Check out this exported file from Spend Wise!",
-      "options": {
-        "csv": {
-          "title": "CSV export",
-          "subtitle": "Export expenses as CSV"
-        },
-        "summary": {
-          "title": "Summary export",
-          "subtitle": "Export dashboard summary"
-        },
-        "backup": {
-          "title": "Create backup",
-          "subtitle": "Back up all app data"
-        }
-      },
-      "actions": {
-        "close": "Close",
-        "share": "Share",
-        "tryAgain": "Try again"
       }
     }
   }

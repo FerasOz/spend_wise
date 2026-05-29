@@ -1,72 +1,123 @@
-import 'dart:io';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../domain/services/export_service.dart';
-import '../../../expenses/domain/entities/expense.dart';
-import '../../../categories/domain/entities/category.dart';
+
+import '../../domain/entities/export_file.dart';
+import '../../domain/entities/export_history_item.dart';
+import '../../domain/usecases/delete_export_history.dart';
+import '../../domain/usecases/export_all_data.dart';
+import '../../domain/usecases/export_expenses_as_csv.dart';
+import '../../domain/usecases/export_expenses_as_json.dart';
+import '../../domain/usecases/export_expenses_as_pdf.dart';
+import '../../domain/usecases/get_export_history.dart';
+import '../../domain/usecases/save_export_file.dart';
+import '../../domain/usecases/share_export_file.dart';
 
 part 'export_state.dart';
 
 class ExportCubit extends Cubit<ExportState> {
-  ExportCubit(this._exportService) : super(const ExportState.initial());
+  ExportCubit({
+    required ExportExpensesAsCsv exportExpensesAsCsv,
+    required ExportExpensesAsJson exportExpensesAsJson,
+    required ExportExpensesAsPdf exportExpensesAsPdf,
+    required ExportAllData exportAllData,
+    required GetExportHistory getExportHistory,
+    required DeleteExportHistory deleteExportHistory,
+    required ShareExportFile shareExportFile,
+    required SaveExportFile saveExportFile,
+  }) : _exportExpensesAsCsv = exportExpensesAsCsv,
+       _exportExpensesAsJson = exportExpensesAsJson,
+       _exportExpensesAsPdf = exportExpensesAsPdf,
+       _exportAllData = exportAllData,
+       _getExportHistory = getExportHistory,
+       _deleteExportHistory = deleteExportHistory,
+       _shareExportFile = shareExportFile,
+       _saveExportFile = saveExportFile,
+       super(const ExportState.initial());
 
-  final ExportService _exportService;
+  final ExportExpensesAsCsv _exportExpensesAsCsv;
+  final ExportExpensesAsJson _exportExpensesAsJson;
+  final ExportExpensesAsPdf _exportExpensesAsPdf;
+  final ExportAllData _exportAllData;
+  final GetExportHistory _getExportHistory;
+  final DeleteExportHistory _deleteExportHistory;
+  final ShareExportFile _shareExportFile;
+  final SaveExportFile _saveExportFile;
 
-  Future<void> exportExpensesAsCSV(
-    List<Expense> expenses,
-    Map<String, Category> categoriesMap,
-  ) async {
+  Future<void> loadHistory() async {
+    emit(state.copyWith(isLoadingHistory: true, errorMessage: null));
     try {
-      emit(const ExportState.loading());
-      final filePath = await _exportService.exportExpensesAsCSV(
-        expenses,
-        categoriesMap,
-      );
-      emit(ExportState.success(filePath, 'CSV'));
+      final history = await _getExportHistory();
+      emit(state.copyWith(isLoadingHistory: false, history: history));
     } catch (e) {
-      emit(ExportState.error(e.toString()));
+      emit(state.copyWith(isLoadingHistory: false, errorMessage: e.toString()));
     }
   }
 
-  Future<void> exportDashboardSummaryAsPDF(
-    List<Expense> expenses,
-    Map<String, Category> categoriesMap,
-  ) async {
+  Future<void> exportCsv() => _export(() => _exportExpensesAsCsv());
+  Future<void> exportJson() => _export(() => _exportExpensesAsJson());
+  Future<void> exportPdf() => _export(() => _exportExpensesAsPdf());
+  Future<void> exportBackup() => _export(() => _exportAllData());
+
+  Future<void> share(String path) async {
+    emit(
+      state.copyWith(
+        isSharing: true,
+        errorMessage: null,
+        clearLastAction: true,
+      ),
+    );
     try {
-      emit(const ExportState.loading());
-      final pdfBytes = await _exportService.exportDashboardSummaryAsPDF(
-        expenses,
-        categoriesMap,
-      );
-      final now = DateTime.now();
-      final fileName =
-          'summary_${now.year}${now.month.toString().padLeft(2, '0')}${now.day.toString().padLeft(2, '0')}_${now.hour.toString().padLeft(2, '0')}${now.minute.toString().padLeft(2, '0')}${now.second.toString().padLeft(2, '0')}.pdf';
-      final directory = await _getExportDirectory();
-      final file = File('${directory.path}/$fileName');
-      await file.create(recursive: true);
-      await file.writeAsBytes(pdfBytes);
-      emit(ExportState.success(file.path, 'PDF'));
+      await _shareExportFile(path);
+      emit(state.copyWith(isSharing: false, lastAction: ExportAction.shared));
     } catch (e) {
-      emit(ExportState.error(e.toString()));
+      emit(state.copyWith(isSharing: false, errorMessage: e.toString()));
     }
   }
 
-  Future<void> createBackup() async {
+  Future<void> saveToDownloads(String path) async {
+    emit(
+      state.copyWith(
+        isSaving: true,
+        errorMessage: null,
+        clearLastAction: true,
+      ),
+    );
     try {
-      emit(const ExportState.loading());
-      await _exportService.createBackup();
-      emit(const ExportState.backupSuccess());
+      await _saveExportFile(path);
+      emit(state.copyWith(isSaving: false, lastAction: ExportAction.saved));
     } catch (e) {
-      emit(ExportState.error(e.toString()));
+      emit(state.copyWith(isSaving: false, errorMessage: e.toString()));
     }
   }
 
-  void resetState() => emit(const ExportState.initial());
-
-  Future<Directory> _getExportDirectory() async {
-    final directory = Directory('/storage/emulated/0/Documents/SpendWise');
-    if (!await directory.exists()) {
-      await directory.create(recursive: true);
+  Future<void> deleteHistoryItem(String id) async {
+    emit(state.copyWith(isDeleting: true, errorMessage: null));
+    try {
+      await _deleteExportHistory(id);
+      final history = await _getExportHistory();
+      emit(state.copyWith(isDeleting: false, history: history));
+    } catch (e) {
+      emit(state.copyWith(isDeleting: false, errorMessage: e.toString()));
     }
-    return directory;
+  }
+
+  void clearFeedback() => emit(
+    state.copyWith(errorMessage: null, clearLastAction: true),
+  );
+
+  Future<void> _export(Future<ExportFile> Function() run) async {
+    emit(
+      state.copyWith(
+        isExporting: true,
+        errorMessage: null,
+        clearLastExport: true,
+      ),
+    );
+    try {
+      final file = await run();
+      final history = await _getExportHistory();
+      emit(state.copyWith(isExporting: false, lastExport: file, history: history));
+    } catch (e) {
+      emit(state.copyWith(isExporting: false, errorMessage: e.toString()));
+    }
   }
 }

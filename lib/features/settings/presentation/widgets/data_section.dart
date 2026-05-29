@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:spend_wise/app/routes/route_names.dart';
 import 'package:spend_wise/features/settings/domain/entities/app_settings.dart';
 import 'package:spend_wise/features/settings/presentation/widgets/settings_section.dart';
 import 'package:spend_wise/features/settings/presentation/widgets/settings_tile.dart';
@@ -16,6 +17,12 @@ class DataSection extends StatelessWidget {
     return SettingsSection(
       title: LocaleKeys.settings_data_title.tr(),
       children: [
+        SettingsTile(
+          icon: Icons.file_upload_outlined,
+          title: LocaleKeys.export_title.tr(),
+          subtitle: LocaleKeys.export_settingsEntry_subtitle.tr(),
+          onTap: () => Navigator.of(context).pushNamed(RouteNames.exportPage),
+        ),
         SettingsTile(
           icon: Icons.refresh_outlined,
           title: LocaleKeys.settings_data_reset_title.tr(),

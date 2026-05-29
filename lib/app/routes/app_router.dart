@@ -20,6 +20,8 @@ import 'package:spend_wise/features/expenses/presentation/pages/expenses_page.da
 import 'package:spend_wise/features/recurring/presentation/cubit/recurring_expense_cubit.dart';
 import 'package:spend_wise/features/settings/presentation/cubit/settings_cubit.dart';
 import 'package:spend_wise/features/settings/presentation/pages/settings_page.dart';
+import 'package:spend_wise/features/export/presentation/cubit/export_cubit.dart';
+import 'package:spend_wise/features/export/presentation/pages/export_page.dart';
 
 class AppRouters {
   Route? onGenerateRoute(RouteSettings settings) {
@@ -140,6 +142,14 @@ class AppRouters {
           builder: (context) => BlocProvider.value(
             value: context.read<SettingsCubit>(),
             child: const SettingsPage(),
+          ),
+        );
+
+      case RouteNames.exportPage:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) => sl<ExportCubit>()..loadHistory(),
+            child: const ExportPage(),
           ),
         );
 

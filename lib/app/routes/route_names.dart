@@ -7,4 +7,5 @@ class RouteNames {
   static const String categoryListPage = '/categoryListPage';
   static const String budgetPage = '/budgetPage';
   static const String settingsPage = '/settingsPage';
+  static const String exportPage = '/exportPage';
 }
