@@ -6,56 +6,39 @@ import '../../features/settings/domain/entities/app_currency.dart';
 class SupportedCurrencyOption {
   const SupportedCurrencyOption({
     required this.currency,
-    required this.name,
-    required this.ratePerUsd,
+    required this.translationKey,
   });
 
   final AppCurrency currency;
-  final String name;
-  final double ratePerUsd;
+  final String translationKey;
 }
 
 final supportedCurrencies = [
   SupportedCurrencyOption(
     currency: AppCurrency(code: 'USD', symbol: '\$'),
-    name: LocaleKeys.currency_names_USD.tr(),
-    ratePerUsd: 1,
+    translationKey: LocaleKeys.currency_names_USD,
   ),
   SupportedCurrencyOption(
     currency: AppCurrency(code: 'EUR', symbol: '€'),
-    name: LocaleKeys.currency_names_EUR.tr(),
-    ratePerUsd: 0.92,
+    translationKey: LocaleKeys.currency_names_EUR,
   ),
   SupportedCurrencyOption(
     currency: AppCurrency(code: 'ILS', symbol: '₪'),
-    name: LocaleKeys.currency_names_ILS.tr(),
-    ratePerUsd: 3.70,
+    translationKey: LocaleKeys.currency_names_ILS.tr(),
   ),
   SupportedCurrencyOption(
     currency: AppCurrency(code: 'JOD', symbol: 'JD '),
-    name: LocaleKeys.currency_names_JOD.tr(),
-    ratePerUsd: 0.71,
+    translationKey: LocaleKeys.currency_names_JOD.tr(),
   ),
   SupportedCurrencyOption(
     currency: AppCurrency(code: 'SAR', symbol: 'SAR '),
-    name: LocaleKeys.currency_names_SAR.tr(),
-    ratePerUsd: 3.75,
-  ),
-  SupportedCurrencyOption(
-    currency: AppCurrency(code: 'GBP', symbol: '£'),
-    name: LocaleKeys.currency_names_GBP.tr(),
-    ratePerUsd: 0.78,
+    translationKey: LocaleKeys.currency_names_SAR.tr(),
   ),
 ];
 
 final currencySymbols = {
   for (final option in supportedCurrencies)
     option.currency.code: option.currency.symbol,
-};
-
-final kExchangeRatesPerUsd = {
-  for (final option in supportedCurrencies)
-    option.currency.code: option.ratePerUsd,
 };
 
 bool isSupportedCurrency(String code) =>
@@ -75,5 +58,5 @@ AppCurrency currencyByCode(String code) {
 
 String currencyLabel(AppCurrency currency) {
   final option = currencyOptionByCode(currency.code);
-  return '${option.currency.code} · ${option.name}';
+  return '${option.currency.code} · ${option.translationKey.tr()}';
 }

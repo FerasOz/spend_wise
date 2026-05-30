@@ -137,7 +137,10 @@ class _CurrencyTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(option.name, style: theme.textTheme.bodyLarge),
+                  Text(
+                    option.translationKey.tr(),
+                    style: theme.textTheme.bodyLarge,
+                  ),
                   Text(
                     option.currency.symbol,
                     style: theme.textTheme.bodySmall,
