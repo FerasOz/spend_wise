@@ -15,9 +15,13 @@ class DashboardSpendingChartBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currency = context.select(
-      (SettingsCubit cubit) => cubit.state.settings?.currency ?? currencyByCode('USD'),
+      (SettingsCubit cubit) =>
+          cubit.state.settings?.currency ?? currencyByCode('USD'),
     );
-    final maxY = points.fold<double>(0, (max, point) => point.total > max ? point.total : max);
+    final maxY = points.fold<double>(
+      0,
+      (max, point) => point.total > max ? point.total : max,
+    );
     final safeMaxY = maxY == 0 ? 100.0 : maxY * 1.25;
 
     return Directionality(
@@ -29,10 +33,18 @@ class DashboardSpendingChartBody extends StatelessWidget {
           minY: 0,
           maxY: safeMaxY,
           borderData: FlBorderData(show: false),
-          gridData: FlGridData(show: true, drawVerticalLine: false, horizontalInterval: safeMaxY / 4),
+          gridData: FlGridData(
+            show: true,
+            drawVerticalLine: false,
+            horizontalInterval: safeMaxY / 4,
+          ),
           titlesData: FlTitlesData(
-            topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-            rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+            topTitles: const AxisTitles(
+              sideTitles: SideTitles(showTitles: false),
+            ),
+            rightTitles: const AxisTitles(
+              sideTitles: SideTitles(showTitles: false),
+            ),
             leftTitles: AxisTitles(
               sideTitles: SideTitles(
                 showTitles: true,
@@ -49,7 +61,9 @@ class DashboardSpendingChartBody extends StatelessWidget {
                 showTitles: true,
                 interval: 1,
                 getTitlesWidget: (value, _) => Text(
-                  value >= 0 && value < points.length ? points[value.toInt()].label : '',
+                  value >= 0 && value < points.length
+                      ? points[value.toInt()].label
+                      : '',
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
               ),
@@ -60,8 +74,14 @@ class DashboardSpendingChartBody extends StatelessWidget {
               getTooltipItems: (spots) => spots.map((spot) {
                 final index = spot.x.toInt().clamp(0, points.length - 1);
                 final label = points[index].label;
-                final amount = CurrencyDisplayService.formatFromUsd(spot.y, currency);
-                return LineTooltipItem('$label\n$amount', Theme.of(context).textTheme.labelMedium!);
+                final amount = CurrencyDisplayService.formatFromUsd(
+                  spot.y,
+                  currency,
+                );
+                return LineTooltipItem(
+                  '$label\n$amount',
+                  Theme.of(context).textTheme.labelMedium!,
+                );
               }).toList(),
             ),
           ),
@@ -77,7 +97,10 @@ class DashboardSpendingChartBody extends StatelessWidget {
                 show: true,
                 color: Theme.of(context).colorScheme.primary.withAlpha(28),
               ),
-              spots: List.generate(points.length, (index) => FlSpot(index.toDouble(), points[index].total)),
+              spots: List.generate(
+                points.length,
+                (index) => FlSpot(index.toDouble(), points[index].total),
+              ),
             ),
           ],
         ),
