@@ -19,31 +19,42 @@ class ExpensesFeedbackView extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return Center(
-      child: Padding(
-        padding: EdgeInsets.all(24.w),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              title,
-              style: textTheme.headlineSmall,
-              textAlign: TextAlign.center,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          child: ConstrainedBox(
+            constraints: BoxConstraints(minHeight: constraints.maxHeight),
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.all(24.w),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      title,
+                      style: textTheme.headlineSmall,
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 8.h),
+                    Text(
+                      message,
+                      style: textTheme.bodyMedium,
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 20.h),
+                    FilledButton(
+                      onPressed: onPressed,
+                      child: Text(actionLabel),
+                    ),
+                  ],
+                ),
+              ),
             ),
-            SizedBox(height: 8.h),
-            Text(
-              message,
-              style: textTheme.bodyMedium,
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: 20.h),
-            FilledButton(
-              onPressed: onPressed,
-              child: Text(actionLabel),
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }
