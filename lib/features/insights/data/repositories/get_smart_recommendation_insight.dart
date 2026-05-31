@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:spend_wise/features/insights/domain/entities/insight_card.dart';
-import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
+import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
+import 'package:spend_wise/features/insights/domain/entities/insight_card.dart';
 
 class GetSmartRecommendationInsight {
   InsightCard call(
@@ -16,7 +16,6 @@ class GetSmartRecommendationInsight {
     final lastSevenDays = expenses
         .where((e) => e.date.isAfter(now.subtract(const Duration(days: 7))))
         .toList();
-
     final lastThirtyDays = expenses
         .where((e) => e.date.isAfter(now.subtract(const Duration(days: 30))))
         .toList();
@@ -30,49 +29,54 @@ class GetSmartRecommendationInsight {
     final sevenDayAvg =
         lastSevenDays.fold<double>(0, (sum, e) => sum + e.amount) /
         (lastSevenDays.isNotEmpty ? 7 : 1);
-
-    String message;
-    int color = Colors.yellow.value;
+    final metadata = <String, String>{};
+    var variant = 'on_track';
+    var color = Colors.blue.value;
 
     if (sevenDayAvg > dailyAvg * 1.2) {
-      message =
-          'Your spending is ${((sevenDayAvg / dailyAvg - 1) * 100).toStringAsFixed(0)}% higher this week. '
-          'Consider reviewing your expenses.';
+      variant = 'higher';
       color = Colors.red.value;
+      metadata['percent'] = ((sevenDayAvg / dailyAvg - 1) * 100).toStringAsFixed(0);
     } else if (sevenDayAvg < dailyAvg * 0.8) {
-      message =
-          'Great job! You\'re spending less this week. Keep up the good work!';
+      variant = 'lower';
       color = Colors.green.value;
-    } else {
-      message = 'Your spending is on track with your average. Stay consistent!';
-      color = Colors.blue.value;
     }
 
-    // Additional recommendation: identify a high-spending category in the last 7 days
-    if (lastSevenDays.isNotEmpty) {
-      final categoryTotalsLast7Days = <String, double>{};
-      for (final expense in lastSevenDays) {
-        categoryTotalsLast7Days[expense.categoryId] =
-            (categoryTotalsLast7Days[expense.categoryId] ?? 0) + expense.amount;
-      }
-      if (categoryTotalsLast7Days.isNotEmpty) {
-        final topCategoryLast7Days = categoryTotalsLast7Days.entries
-            .reduce((a, b) => a.value > b.value ? a : b)
-            .key;
-        final categoryName = categoriesMap[topCategoryLast7Days]?.name ?? 'a category';
-        message += '\nConsider reducing spending on "$categoryName" this week.';
-      }
+    final categoryName = _topCategoryName(lastSevenDays, categoriesMap);
+    if (categoryName != null) {
+      metadata['category'] = categoryName;
     }
 
     return InsightCard(
       id: 'smart_recommendation',
       title: 'Smart recommendation',
-      message: message,
+      message: 'smart_recommendation.$variant',
       type: InsightType.smart_recommendation,
-      icon: '💡',
+      icon: 'SMART',
       color: color,
+      metadata: {'variant': variant, ...metadata},
     );
   }
 
-  InsightCard _emptyInsight() => InsightCard(id: 'smart_recommendation', title: 'Smart recommendation', message: '', type: InsightType.smart_recommendation, icon: '💡', color: Colors.yellow.value);
+  String? _topCategoryName(
+    List<Expense> expenses,
+    Map<String, Category> categoriesMap,
+  ) {
+    final totals = <String, double>{};
+    for (final expense in expenses) {
+      totals[expense.categoryId] = (totals[expense.categoryId] ?? 0) + expense.amount;
+    }
+    if (totals.isEmpty) return null;
+    final topId = totals.entries.reduce((a, b) => a.value > b.value ? a : b).key;
+    return categoriesMap[topId]?.displayName;
+  }
+
+  InsightCard _emptyInsight() => InsightCard(
+    id: 'smart_recommendation',
+    title: 'Smart recommendation',
+    message: '',
+    type: InsightType.smart_recommendation,
+    icon: 'SMART',
+    color: Colors.yellow.value,
+  );
 }

@@ -27,12 +27,15 @@ class GetTopCategoryInsight {
     return InsightCard(
       id: 'top_category',
       title: 'Top category',
-      message:
-          '${category?.name ?? 'Unknown'} leads your spending at $percentage% of the total.',
+      message: 'top_category.message',
       type: InsightType.topCategory,
       icon: 'TOP',
       color: category?.color ?? Colors.blue.value,
       amount: amount,
+      metadata: {
+        'category': category?.displayName ?? 'Unknown',
+        'percentage': percentage,
+      },
     );
   }
 

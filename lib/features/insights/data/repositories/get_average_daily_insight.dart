@@ -19,21 +19,23 @@ class GetAverageDailyInsight {
       return InsightCard(
         id: 'average_daily',
         title: 'Average daily',
-        message: 'No spending recorded this month yet.',
+        message: 'average_daily.no_spending',
         type: InsightType.average_daily,
         icon: 'AVG',
         color: Colors.purple.value,
+        metadata: const {'variant': 'no_spending'},
       );
     }
 
     return InsightCard(
       id: 'average_daily',
       title: 'Average daily',
-      message: 'Your daily average this month is staying at this level.',
+      message: 'average_daily.current',
       type: InsightType.average_daily,
       icon: 'AVG',
       color: Colors.purple.value,
       amount: avgDaily,
+      metadata: const {'variant': 'current'},
     );
   }
 

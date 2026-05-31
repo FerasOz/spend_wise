@@ -422,7 +422,40 @@ class CodegenLoader extends AssetLoader{
       "title": "التحليلات",
       "subTitle": "أنماط سريعة من أحدث نشاط لك",
       "emptyTitle": "لا توجد تحليلات بعد",
-      "emptyDescription": "أضف عددًا قليلًا من المصاريف الإضافية لفتح رؤى أكثر ذكاءً للإنفاق."
+      "emptyDescription": "أضف عددًا قليلًا من المصاريف الإضافية لفتح رؤى أكثر ذكاءً للإنفاق.",
+      "cards": {
+        "topCategory": {
+          "title": "أعلى فئة",
+          "message": "{category} تتصدر إنفاقك بنسبة {percentage}% من الإجمالي."
+        },
+        "spendingTrend": {
+          "title": "اتجاه الإنفاق",
+          "started": "بدأت الإنفاق هذا الشهر. تابع الأمر عن قرب.",
+          "increased": "إنفاقك أعلى بنسبة {percent}% مقارنة بالشهر الماضي.",
+          "decreased": "إنفاقك أقل بنسبة {percent}% مقارنة بالشهر الماضي."
+        },
+        "averageDaily": {
+          "title": "المتوسط اليومي",
+          "no_spending": "لا يوجد إنفاق مسجل هذا الشهر حتى الآن.",
+          "current": "متوسط إنفاقك اليومي هذا الشهر عند هذا المستوى."
+        },
+        "highestSpendingDay": {
+          "title": "أعلى يوم إنفاق",
+          "message": "كان أعلى إنفاق لديك في {day}."
+        },
+        "spendingStreak": {
+          "title": "سلسلة الإنفاق",
+          "message": "أنفقت خلال {days} أيام متتالية. حافظ على المتابعة.",
+          "value": "{days} أيام"
+        },
+        "smartRecommendation": {
+          "title": "توصية ذكية",
+          "higher": "إنفاقك أعلى بنسبة {percent}% هذا الأسبوع. راجع مصاريفك.",
+          "lower": "عمل ممتاز. إنفاقك أقل هذا الأسبوع. استمر بهذا الأداء.",
+          "on_track": "إنفاقك متوازن مع متوسطك. حافظ على الاتساق.",
+          "reduceCategory": "فكر في تقليل الإنفاق على {category} هذا الأسبوع."
+        }
+      }
     },
     "chart": {
       "labelFormat": "{label}: ",
@@ -921,7 +954,40 @@ static const Map<String,dynamic> _en = {
       "title": "Insights",
       "subTitle": "Quick patterns from your latest activity",
       "emptyTitle": "No insights yet",
-      "emptyDescription": "Add a few more expenses to unlock smarter spending observations."
+      "emptyDescription": "Add a few more expenses to unlock smarter spending observations.",
+      "cards": {
+        "topCategory": {
+          "title": "Top category",
+          "message": "{category} leads your spending at {percentage}% of the total."
+        },
+        "spendingTrend": {
+          "title": "Spending trend",
+          "started": "You started spending this month. Keep an eye on it.",
+          "increased": "Your spending is up {percent}% compared to last month.",
+          "decreased": "Your spending is down {percent}% compared to last month."
+        },
+        "averageDaily": {
+          "title": "Average daily",
+          "no_spending": "No spending recorded this month yet.",
+          "current": "Your daily average this month is staying at this level."
+        },
+        "highestSpendingDay": {
+          "title": "Highest spending day",
+          "message": "Your highest spending happened on {day}."
+        },
+        "spendingStreak": {
+          "title": "Spending streak",
+          "message": "You have spent on {days} consecutive days. Keep the momentum.",
+          "value": "{days} days"
+        },
+        "smartRecommendation": {
+          "title": "Smart recommendation",
+          "higher": "Your spending is {percent}% higher this week. Consider reviewing your expenses.",
+          "lower": "Great job. You're spending less this week. Keep up the good work.",
+          "on_track": "Your spending is on track with your average. Stay consistent.",
+          "reduceCategory": "Consider reducing spending on {category} this week."
+        }
+      }
     },
     "chart": {
       "labelFormat": "{label}: ",

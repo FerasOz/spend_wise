@@ -9,6 +9,7 @@ class InsightCard {
     this.amount,
     this.value,
     this.subtitle,
+    this.metadata = const {},
   });
 
   final String id;
@@ -20,6 +21,7 @@ class InsightCard {
   final double? amount;
   final String? value;
   final String? subtitle;
+  final Map<String, String> metadata;
 }
 
 enum InsightType {

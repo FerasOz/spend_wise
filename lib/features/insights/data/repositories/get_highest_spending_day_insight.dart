@@ -26,11 +26,12 @@ class GetHighestSpendingDayInsight {
     return InsightCard(
       id: 'highest_spending_day',
       title: 'Highest spending day',
-      message: 'Your highest spending happened on ${_dayName(highestDay.key)}.',
+      message: 'highest_spending_day.message',
       type: InsightType.highest_spending_day,
       icon: 'DAY',
       color: Colors.red.value,
       amount: highestDay.value,
+      metadata: {'day': _dayValue(highestDay.key)},
     );
   }
 
@@ -43,22 +44,7 @@ class GetHighestSpendingDayInsight {
     color: Colors.red.value,
   );
 
-  String _dayName(DateTime date) {
-    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-    const months = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ];
-    return '${days[date.weekday - 1]}, ${date.day} ${months[date.month - 1]}';
+  String _dayValue(DateTime date) {
+    return date.toIso8601String();
   }
 }
