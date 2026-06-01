@@ -36,7 +36,6 @@ class GetSpendingStreakInsight {
       title: 'Spending streak',
       message: 'spending_streak.message',
       type: InsightType.spending_streak,
-      icon: 'STREAK',
       value: '$streakDays',
       color: Colors.orange.value,
       metadata: {'days': '$streakDays'},
@@ -50,7 +49,6 @@ class GetSpendingStreakInsight {
     title: 'Spending streak',
     message: '',
     type: InsightType.spending_streak,
-    icon: 'STREAK',
     color: Colors.orange.value,
   );
 }

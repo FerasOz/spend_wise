@@ -21,7 +21,6 @@ class GetAverageDailyInsight {
         title: 'Average daily',
         message: 'average_daily.no_spending',
         type: InsightType.average_daily,
-        icon: 'AVG',
         color: Colors.purple.value,
         metadata: const {'variant': 'no_spending'},
       );
@@ -32,7 +31,6 @@ class GetAverageDailyInsight {
       title: 'Average daily',
       message: 'average_daily.current',
       type: InsightType.average_daily,
-      icon: 'AVG',
       color: Colors.purple.value,
       amount: avgDaily,
       metadata: const {'variant': 'current'},
@@ -44,7 +42,6 @@ class GetAverageDailyInsight {
     title: 'Average daily',
     message: '',
     type: InsightType.average_daily,
-    icon: 'AVG',
     color: Colors.purple.value,
   );
 }

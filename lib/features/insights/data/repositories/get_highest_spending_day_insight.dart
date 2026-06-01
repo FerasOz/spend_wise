@@ -28,7 +28,6 @@ class GetHighestSpendingDayInsight {
       title: 'Highest spending day',
       message: 'highest_spending_day.message',
       type: InsightType.highest_spending_day,
-      icon: 'DAY',
       color: Colors.red.value,
       amount: highestDay.value,
       metadata: {'day': _dayValue(highestDay.key)},
@@ -40,7 +39,6 @@ class GetHighestSpendingDayInsight {
     title: 'Highest spending day',
     message: '',
     type: InsightType.highest_spending_day,
-    icon: 'DAY',
     color: Colors.red.value,
   );
 

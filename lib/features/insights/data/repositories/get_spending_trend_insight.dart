@@ -21,7 +21,6 @@ class GetSpendingTrendInsight {
         title: 'Spending trend',
         message: 'spending_trend.started',
         type: InsightType.spending_trend,
-        icon: 'TREND',
         color: Colors.green.value,
         metadata: const {'variant': 'started'},
       );
@@ -37,7 +36,6 @@ class GetSpendingTrendInsight {
       title: 'Spending trend',
       message: 'spending_trend.$variant',
       type: InsightType.spending_trend,
-      icon: 'TREND',
       value: '${delta > 0 ? '+' : ''}${delta.toStringAsFixed(1)}%',
       color: delta >= 0 ? Colors.orange.value : Colors.green.value,
       metadata: {
@@ -58,7 +56,6 @@ class GetSpendingTrendInsight {
     title: 'Spending trend',
     message: '',
     type: InsightType.spending_trend,
-    icon: 'TREND',
     color: Colors.green.value,
   );
 }

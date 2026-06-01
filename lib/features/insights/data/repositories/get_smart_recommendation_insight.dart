@@ -52,7 +52,6 @@ class GetSmartRecommendationInsight {
       title: 'Smart recommendation',
       message: 'smart_recommendation.$variant',
       type: InsightType.smart_recommendation,
-      icon: 'SMART',
       color: color,
       metadata: {'variant': variant, ...metadata},
     );
@@ -76,7 +75,6 @@ class GetSmartRecommendationInsight {
     title: 'Smart recommendation',
     message: '',
     type: InsightType.smart_recommendation,
-    icon: 'SMART',
     color: Colors.yellow.value,
   );
 }

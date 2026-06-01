@@ -4,7 +4,6 @@ class InsightCard {
     required this.title,
     required this.message,
     required this.type,
-    required this.icon,
     required this.color,
     this.amount,
     this.value,
@@ -16,7 +15,6 @@ class InsightCard {
   final String title;
   final String message;
   final InsightType type;
-  final String icon;
   final int color;
   final double? amount;
   final String? value;

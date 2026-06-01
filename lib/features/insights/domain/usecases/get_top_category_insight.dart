@@ -29,7 +29,6 @@ class GetTopCategoryInsight {
       title: 'Top category',
       message: 'top_category.message',
       type: InsightType.topCategory,
-      icon: 'TOP',
       color: category?.color ?? Colors.blue.value,
       amount: amount,
       metadata: {
@@ -44,7 +43,6 @@ class GetTopCategoryInsight {
     title: 'Top category',
     message: '',
     type: InsightType.topCategory,
-    icon: 'TOP',
     color: Colors.blue.value,
   );
 }
