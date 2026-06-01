@@ -14,6 +14,7 @@ class DashboardSpendingChartBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final currency = context.select(
       (SettingsCubit cubit) =>
           cubit.state.settings?.currency ?? currencyByCode('USD'),
@@ -25,18 +26,23 @@ class DashboardSpendingChartBody extends StatelessWidget {
     final safeMaxY = maxY == 0 ? 100.0 : maxY * 1.25;
 
     return Directionality(
-      textDirection: TextDirection.ltr,
+      textDirection: Directionality.of(context),
       child: LineChart(
         LineChartData(
           minX: 0,
           maxX: 6,
           minY: 0,
           maxY: safeMaxY,
+          clipData: FlClipData.all(),
           borderData: FlBorderData(show: false),
           gridData: FlGridData(
             show: true,
             drawVerticalLine: false,
             horizontalInterval: safeMaxY / 4,
+            getDrawingHorizontalLine: (value) => FlLine(
+              color: theme.colorScheme.surfaceContainerHighest.withAlpha(90),
+              strokeWidth: 0.9,
+            ),
           ),
           titlesData: FlTitlesData(
             topTitles: const AxisTitles(
@@ -48,11 +54,14 @@ class DashboardSpendingChartBody extends StatelessWidget {
             leftTitles: AxisTitles(
               sideTitles: SideTitles(
                 showTitles: true,
-                reservedSize: 52.w,
+                reservedSize: 56.w,
                 interval: safeMaxY / 4,
-                getTitlesWidget: (value, _) => Text(
-                  CurrencyDisplayService.formatFromUsd(value, currency),
-                  style: Theme.of(context).textTheme.labelSmall,
+                getTitlesWidget: (value, meta) => SideTitleWidget(
+                  meta: meta,
+                  child: Text(
+                    CurrencyDisplayService.formatFromUsd(value, currency),
+                    style: theme.textTheme.labelSmall,
+                  ),
                 ),
               ),
             ),
@@ -60,17 +69,23 @@ class DashboardSpendingChartBody extends StatelessWidget {
               sideTitles: SideTitles(
                 showTitles: true,
                 interval: 1,
-                getTitlesWidget: (value, _) => Text(
-                  value >= 0 && value < points.length
-                      ? points[value.toInt()].label
-                      : '',
-                  style: Theme.of(context).textTheme.labelSmall,
+                getTitlesWidget: (value, meta) => SideTitleWidget(
+                  meta: meta,
+                  child: Text(
+                    value >= 0 && value < points.length
+                        ? points[value.toInt()].label
+                        : '',
+                    style: theme.textTheme.labelSmall,
+                  ),
                 ),
               ),
             ),
           ),
           lineTouchData: LineTouchData(
             touchTooltipData: LineTouchTooltipData(
+              tooltipPadding: const EdgeInsets.all(10),
+              tooltipMargin: 8,
+              getTooltipColor: (_) => theme.colorScheme.surfaceContainerHighest,
               getTooltipItems: (spots) => spots.map((spot) {
                 final index = spot.x.toInt().clamp(0, points.length - 1);
                 final label = points[index].label;
@@ -80,7 +95,7 @@ class DashboardSpendingChartBody extends StatelessWidget {
                 );
                 return LineTooltipItem(
                   '$label\n$amount',
-                  Theme.of(context).textTheme.labelMedium!,
+                  theme.textTheme.labelMedium!,
                 );
               }).toList(),
             ),
@@ -90,12 +105,29 @@ class DashboardSpendingChartBody extends StatelessWidget {
               isCurved: true,
               curveSmoothness: 0.18,
               preventCurveOverShooting: true,
+              isStrokeCapRound: true,
               barWidth: 3,
-              color: Theme.of(context).colorScheme.primary,
-              dotData: FlDotData(show: true),
+              color: theme.colorScheme.primary,
+              dotData: FlDotData(
+                show: true,
+                getDotPainter: (spot, percent, barData, index) =>
+                    FlDotCirclePainter(
+                      radius: 3.8,
+                      color: theme.colorScheme.primary,
+                      strokeWidth: 2,
+                      strokeColor: theme.colorScheme.surface,
+                    ),
+              ),
               belowBarData: BarAreaData(
                 show: true,
-                color: Theme.of(context).colorScheme.primary.withAlpha(28),
+                gradient: LinearGradient(
+                  colors: [
+                    theme.colorScheme.primary.withAlpha(32),
+                    theme.colorScheme.primary.withAlpha(8),
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
               ),
               spots: List.generate(
                 points.length,
@@ -104,6 +136,8 @@ class DashboardSpendingChartBody extends StatelessWidget {
             ),
           ],
         ),
+        duration: const Duration(milliseconds: 600),
+        curve: Curves.easeOutCubic,
       ),
     );
   }

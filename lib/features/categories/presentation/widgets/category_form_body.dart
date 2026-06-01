@@ -33,8 +33,13 @@ class CategoryFormBody extends StatelessWidget {
             children: [
               SafeArea(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.h),
-                  child: ResponsivePageContent(child: CategoryForm()),
+                  padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).viewInsets.bottom + 8.h,
+                  ),
+                  child: SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    child: ResponsivePageContent(child: CategoryForm()),
+                  ),
                 ),
               ),
               if (state.submissionStatus == RequestsStatus.loading)

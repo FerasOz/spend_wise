@@ -32,9 +32,13 @@ class CategoryDetailsExpensesSection extends StatelessWidget {
     if (expensesStatus == RequestsStatus.error && expenses.isEmpty) {
       return SliverFillRemaining(
         hasScrollBody: false,
-        child: _CategoryExpensesMessage(
-          icon: Icons.error_outline,
-          title: LocaleKeys.categories_details_error.tr(),
+        child: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 220),
+          child: _CategoryExpensesMessage(
+            key: const ValueKey('category-details-error'),
+            icon: Icons.error_outline,
+            title: LocaleKeys.categories_details_error.tr(),
+          ),
         ),
       );
     }
@@ -42,10 +46,14 @@ class CategoryDetailsExpensesSection extends StatelessWidget {
     if (expenses.isEmpty) {
       return SliverFillRemaining(
         hasScrollBody: false,
-        child: _CategoryExpensesMessage(
-          icon: Icons.receipt_long_outlined,
-          title: LocaleKeys.categories_details_titleEmpty.tr(),
-          message: LocaleKeys.categories_details_subtitleEmpty.tr(),
+        child: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 220),
+          child: _CategoryExpensesMessage(
+            key: const ValueKey('category-details-empty'),
+            icon: Icons.receipt_long_outlined,
+            title: LocaleKeys.categories_details_titleEmpty.tr(),
+            message: LocaleKeys.categories_details_subtitleEmpty.tr(),
+          ),
         ),
       );
     }
@@ -66,6 +74,7 @@ class CategoryDetailsExpensesSection extends StatelessWidget {
 
 class _CategoryExpensesMessage extends StatelessWidget {
   const _CategoryExpensesMessage({
+    super.key,
     required this.icon,
     required this.title,
     this.message,

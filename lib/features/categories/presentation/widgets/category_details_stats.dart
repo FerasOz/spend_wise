@@ -42,22 +42,16 @@ class CategoryDetailsStats extends StatelessWidget {
 
 class _CategoryStatCard extends StatelessWidget {
   const _CategoryStatCard.expenseCount({
-    required String label,
-    required String value,
-    required Color color,
-  }) : label = label,
-       value = value,
-       summary = null,
-       color = color;
+    required this.label,
+    required this.value,
+    required this.color,
+  }) : summary = null;
 
   const _CategoryStatCard.totalSpent({
-    required String label,
-    required CategoryExpenseSummary summary,
-    required Color color,
-  }) : label = label,
-       value = null,
-       summary = summary,
-       color = color;
+    required this.label,
+    required this.summary,
+    required this.color,
+  }) : value = null;
 
   final String label;
   final String? value;
@@ -66,7 +60,9 @@ class _CategoryStatCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 220),
+      curve: Curves.easeOutCubic,
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
         color: color.withAlpha(22),
@@ -77,20 +73,26 @@ class _CategoryStatCard extends StatelessWidget {
         children: [
           Text(label, style: Theme.of(context).textTheme.bodySmall),
           SizedBox(height: 6.h),
-          if (value != null)
-            Text(
-              value!,
-              style: Theme.of(
-                context,
-              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
-            )
-          else if (summary != null)
-            CurrencyText(
-              amount: summary!.totalSpent,
-              style: Theme.of(
-                context,
-              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
-            ),
+          AnimatedSwitcher(
+            duration: const Duration(milliseconds: 220),
+            switchInCurve: Curves.easeOut,
+            switchOutCurve: Curves.easeIn,
+            child: value != null
+                ? Text(
+                    value!,
+                    key: ValueKey(value),
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
+                  )
+                : CurrencyText(
+                    key: ValueKey(summary?.totalSpent ?? 0),
+                    amount: summary!.totalSpent,
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+          ),
         ],
       ),
     );

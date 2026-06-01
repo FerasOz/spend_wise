@@ -18,7 +18,9 @@ class CategoryDetailsHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 240),
+      curve: Curves.easeOutCubic,
       padding: EdgeInsets.all(20.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(AppRadius.xxl.r),
@@ -34,7 +36,9 @@ class CategoryDetailsHeader extends StatelessWidget {
             tag: 'category-icon-${category.id}',
             child: CircleAvatar(
               radius: 30.r,
-              backgroundColor: Theme.of(context).colorScheme.onPrimary.withAlpha(38),
+              backgroundColor: Theme.of(
+                context,
+              ).colorScheme.onPrimary.withAlpha(38),
               child: Icon(
                 CategoryPresentationData.iconFor(category.icon),
                 color: Theme.of(context).colorScheme.onPrimary,

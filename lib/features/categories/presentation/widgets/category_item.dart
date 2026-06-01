@@ -45,10 +45,13 @@ class CategoryItem extends StatelessWidget {
         child: Material(
           color: theme.colorScheme.surface,
           borderRadius: BorderRadius.circular(AppRadius.xxl.r),
+          elevation: 0,
           child: InkWell(
             onTap: onTap,
             borderRadius: BorderRadius.circular(AppRadius.xxl.r),
-            child: Ink(
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 220),
+              curve: Curves.easeOutCubic,
               padding: EdgeInsets.all(AppSpacing.lg.w),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(AppRadius.xxl.r),

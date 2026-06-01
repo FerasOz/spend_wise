@@ -32,7 +32,18 @@ class CategoryListBody extends StatelessWidget {
             builder: (context, state) {
               return AnimatedSwitcher(
                 duration: const Duration(milliseconds: 220),
-                child: CategoryListContent(state: state),
+                switchInCurve: Curves.easeOut,
+                switchOutCurve: Curves.easeIn,
+                transitionBuilder: (child, animation) => FadeTransition(
+                  opacity: animation,
+                  child: SizeTransition(sizeFactor: animation, child: child),
+                ),
+                child: CategoryListContent(
+                  key: ValueKey(
+                    '${state.categoriesStatus}-${state.categories.length}-${state.deletionStatus}',
+                  ),
+                  state: state,
+                ),
               );
             },
           ),

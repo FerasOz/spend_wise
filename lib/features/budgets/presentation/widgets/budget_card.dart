@@ -31,7 +31,8 @@ class BudgetCard extends StatelessWidget {
     final theme = Theme.of(context);
     final displayCurrency = context.select(
       (SettingsCubit cubit) =>
-          cubit.state.settings?.currency ?? const AppCurrency(code: 'USD', symbol: '\$'),
+          cubit.state.settings?.currency ??
+          const AppCurrency(code: 'USD', symbol: '\$'),
     );
     final ratio =
         (budget.budget.limitAmount == 0
@@ -40,58 +41,80 @@ class BudgetCard extends StatelessWidget {
             .clamp(0, 999)
             .round();
 
-    return Card(
-      child: Padding(
-        padding: EdgeInsets.all(AppSpacing.lg.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Expanded(child: CategoryBadge(category: category)),
-                PopupMenuButton<String>(
-                  onSelected: (value) {
-                    if (value == 'edit') {
-                      BudgetFormPage.open(context, budget: budget.budget);
-                      return;
-                    }
-                    onDelete();
-                  },
-                  itemBuilder: (_) => [
-                    PopupMenuItem(value: 'edit', child: Text(LocaleKeys.budgets_card_edit.tr())),
-                    PopupMenuItem(value: 'delete', child: Text(LocaleKeys.budgets_card_delete.tr())),
-                  ],
-                ),
-              ],
-            ),
-            SizedBox(height: AppSpacing.lg.h),
-            Text(
-              _rangeLabel(displayCurrency),
-              style: theme.textTheme.titleMedium,
-            ),
-            SizedBox(height: AppSpacing.spacing10.h),
-            BudgetProgressBar(progress: budget.progress, status: budget.status),
-            SizedBox(height: AppSpacing.md.h),
-            Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    '${CurrencyDisplayService.formatFromUsd(budget.budget.remainingAmount, displayCurrency)} ${LocaleKeys.budgets_remaining.tr()}',
-                    style: theme.textTheme.bodyMedium?.copyWith(
-                      color: theme.colorScheme.onSurfaceVariant,
-                    ),
-                  ),
-                ),
-                Text(
-                  '$ratio%',
-                  style: theme.textTheme.bodyMedium?.copyWith(
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ],
-            ),
-          ],
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 260),
+      curve: Curves.easeOutCubic,
+      padding: EdgeInsets.all(AppSpacing.lg.w),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface,
+        borderRadius: BorderRadius.circular(18.r),
+        border: Border.all(
+          color: theme.colorScheme.outlineVariant.withAlpha(80),
         ),
+        boxShadow: [
+          BoxShadow(
+            color: theme.brightness == Brightness.light
+                ? const Color(0x12000000)
+                : theme.colorScheme.surface.withAlpha(38),
+            blurRadius: 20,
+            offset: const Offset(0, 8),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Expanded(child: CategoryBadge(category: category)),
+              PopupMenuButton<String>(
+                onSelected: (value) {
+                  if (value == 'edit') {
+                    BudgetFormPage.open(context, budget: budget.budget);
+                    return;
+                  }
+                  onDelete();
+                },
+                itemBuilder: (_) => [
+                  PopupMenuItem(
+                    value: 'edit',
+                    child: Text(LocaleKeys.budgets_card_edit.tr()),
+                  ),
+                  PopupMenuItem(
+                    value: 'delete',
+                    child: Text(LocaleKeys.budgets_card_delete.tr()),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          SizedBox(height: AppSpacing.lg.h),
+          Text(
+            _rangeLabel(displayCurrency),
+            style: theme.textTheme.titleMedium,
+          ),
+          SizedBox(height: AppSpacing.spacing10.h),
+          BudgetProgressBar(progress: budget.progress, status: budget.status),
+          SizedBox(height: AppSpacing.md.h),
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  '${CurrencyDisplayService.formatFromUsd(budget.budget.remainingAmount, displayCurrency)} ${LocaleKeys.budgets_remaining.tr()}',
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: theme.colorScheme.onSurfaceVariant,
+                  ),
+                ),
+              ),
+              Text(
+                '$ratio%',
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
