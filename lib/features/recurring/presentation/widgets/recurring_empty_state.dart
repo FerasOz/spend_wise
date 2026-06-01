@@ -12,27 +12,40 @@ class RecurringEmptyState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Center(
       child: Padding(
         padding: EdgeInsets.all(AppSpacing.xxl.w),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
-              Icons.repeat_outlined,
-              size: 52.sp,
-              color: Theme.of(context).colorScheme.primary,
+            Container(
+              padding: EdgeInsets.all(AppSpacing.lg.w),
+              decoration: BoxDecoration(
+                color: theme.colorScheme.primaryContainer,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                Icons.repeat_outlined,
+                size: 48.sp,
+                color: theme.colorScheme.onPrimaryContainer,
+              ),
             ),
             SizedBox(height: AppSpacing.lg.h),
             Text(
               LocaleKeys.recurring_empty_title.tr(),
-              style: Theme.of(context).textTheme.titleLarge,
+              style: theme.textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
+              textAlign: TextAlign.center,
             ),
             SizedBox(height: AppSpacing.sm.h),
             Text(
               LocaleKeys.recurring_empty_description.tr(),
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyMedium,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
             ),
             SizedBox(height: AppSpacing.xxl.h),
             FilledButton.icon(

@@ -25,21 +25,52 @@ class RecurringExpenseTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: EdgeInsets.all(AppSpacing.lg.w),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: _RecurringExpenseContent(
-                item: recurringExpense,
-                category: category,
-              ),
+    final theme = Theme.of(context);
+
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 240),
+      curve: Curves.easeOutCubic,
+      margin: EdgeInsets.symmetric(vertical: AppSpacing.sm.h),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface,
+        borderRadius: BorderRadius.circular(18.r),
+        border: Border.all(
+          color: theme.colorScheme.outlineVariant.withValues(alpha: 80),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: theme.colorScheme.shadow.withValues(alpha: 20),
+            blurRadius: 18,
+            offset: const Offset(0, 10),
+          ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(18.r),
+          onTap: () {
+            RecurringExpenseFormPage.open(
+              context,
+              recurringExpense: recurringExpense,
+            );
+          },
+          child: Padding(
+            padding: EdgeInsets.all(AppSpacing.lg.w),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: _RecurringExpenseContent(
+                    item: recurringExpense,
+                    category: category,
+                  ),
+                ),
+                SizedBox(width: AppSpacing.md.w),
+                _RecurringExpenseActions(item: recurringExpense),
+              ],
             ),
-            SizedBox(width: AppSpacing.md.w),
-            _RecurringExpenseActions(item: recurringExpense),
-          ],
+          ),
         ),
       ),
     );
@@ -65,15 +96,30 @@ class _RecurringExpenseContent extends StatelessWidget {
         SizedBox(height: AppSpacing.sm.h),
         Row(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             CurrencyText(
               amount: item.amount,
-              style: theme.textTheme.bodyMedium,
+              style: theme.textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
             ),
-            const SizedBox(width: 4),
-            Text(
-              ' | ${item.repeatType.localizedName}',
-              style: theme.textTheme.bodyMedium,
+            SizedBox(width: AppSpacing.sm.w),
+            Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: AppSpacing.sm.w,
+                vertical: AppSpacing.xs.h,
+              ),
+              decoration: BoxDecoration(
+                color: theme.colorScheme.surfaceContainerHighest,
+                borderRadius: BorderRadius.circular(12.r),
+              ),
+              child: Text(
+                item.repeatType.localizedName,
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: theme.colorScheme.onSurfaceVariant,
+                ),
+              ),
             ),
           ],
         ),
@@ -99,12 +145,43 @@ class _RecurringExpenseActions extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Switch(
-          value: item.isActive,
-          onChanged: (value) {
-            context.read<RecurringExpenseCubit>().toggleActive(item, value);
-          },
+        AnimatedContainer(
+          duration: const Duration(milliseconds: 220),
+          padding: EdgeInsets.symmetric(
+            horizontal: AppSpacing.sm.w,
+            vertical: AppSpacing.xs.h,
+          ),
+          decoration: BoxDecoration(
+            color: item.isActive
+                ? Theme.of(context).colorScheme.primaryContainer
+                : Theme.of(context).colorScheme.surfaceContainerHighest,
+            borderRadius: BorderRadius.circular(14.r),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                item.isActive
+                    ? LocaleKeys.common_status_active.tr()
+                    : LocaleKeys.common_status_paused.tr(),
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                ),
+              ),
+              SizedBox(width: AppSpacing.xs.w),
+              Switch(
+                value: item.isActive,
+                onChanged: (value) {
+                  context.read<RecurringExpenseCubit>().toggleActive(
+                    item,
+                    value,
+                  );
+                },
+              ),
+            ],
+          ),
         ),
+        SizedBox(height: AppSpacing.sm.h),
         PopupMenuButton<String>(
           onSelected: (value) {
             if (value == 'edit') {

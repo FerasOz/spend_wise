@@ -102,6 +102,10 @@ class CodegenLoader extends AssetLoader{
       "loadBudgets": "تعذر تحميل الميزانيات.",
       "loadRecurringExpenses": "تعذر تحميل المصاريف المتكررة.",
       "budgetActionFailed": "فشلت عملية الميزانية."
+    },
+    "status": {
+      "active": "نشط",
+      "paused": "متوقف"
     }
   },
   "currency": {
@@ -632,6 +636,10 @@ static const Map<String,dynamic> _en = {
       "loadBudgets": "Failed to load budgets.",
       "loadRecurringExpenses": "Failed to load recurring expenses.",
       "budgetActionFailed": "Budget action failed."
+    },
+    "status": {
+      "active": "Active",
+      "paused": "Paused"
     }
   },
   "currency": {
