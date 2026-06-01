@@ -7,6 +7,7 @@ import '../pages/expense_details_page.dart';
 import 'expense_item_actions.dart';
 import 'expense_item_category_row.dart';
 import 'expense_item_supporting.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 
 class ExpenseItem extends StatelessWidget {
   const ExpenseItem({required this.expense, required this.category, super.key});
@@ -28,24 +29,27 @@ class ExpenseItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(24.r),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
+          padding: EdgeInsets.symmetric(
+            vertical: AppSpacing.lg.h,
+            horizontal: AppSpacing.lg.w,
+          ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ExpenseLeadingAccent(color: Color(category.color)),
-              SizedBox(width: 12.w),
+              SizedBox(width: AppSpacing.md.w),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ExpenseHeader(expense: expense),
-                    SizedBox(height: 10.h),
+                    SizedBox(height: AppSpacing.spacing10.h),
                     ExpenseItemCategoryRow(
                       category: category,
                       trailing: ExpenseItemActions(expense: expense),
                     ),
                     if ((expense.note ?? '').trim().isNotEmpty) ...[
-                      SizedBox(height: 12.h),
+                      SizedBox(height: AppSpacing.md.h),
                       Text(
                         expense.note!.trim(),
                         maxLines: 2,
@@ -55,7 +59,7 @@ class ExpenseItem extends StatelessWidget {
                         ),
                       ),
                     ],
-                    SizedBox(height: 12.h),
+                    SizedBox(height: AppSpacing.md.h),
                     ExpenseDateLabel(date: expense.date),
                   ],
                 ),

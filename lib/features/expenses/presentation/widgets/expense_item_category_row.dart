@@ -4,9 +4,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/widgets/category_badge.dart';
 import '../../../../features/categories/domain/entities/category.dart';
 import '../../../../features/categories/presentation/utils/category_presentation_data.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 
 class ExpenseItemCategoryRow extends StatelessWidget {
-  const ExpenseItemCategoryRow({required this.category, required this.trailing, super.key});
+  const ExpenseItemCategoryRow({
+    required this.category,
+    required this.trailing,
+    super.key,
+  });
 
   final Category category;
   final Widget trailing;
@@ -15,27 +20,33 @@ class ExpenseItemCategoryRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = Color(category.color);
 
-    return Row(
-      children: [
-        Container(
-          width: 52.w,
-          height: 52.w,
-          decoration: BoxDecoration(
-            color: color.withAlpha((0.16 * 255).round()),
-            borderRadius: BorderRadius.circular(16.r),
+    return FadeTransition(
+      opacity: AlwaysStoppedAnimation(0.95),
+      child: Row(
+        children: [
+          Container(
+            width: AppSpacing.xxl.w,
+            height: AppSpacing.xxl.w,
+            decoration: BoxDecoration(
+              color: color.withAlpha((0.16 * 255).round()),
+              borderRadius: BorderRadius.circular(AppSpacing.lg.r),
+            ),
+            child: Icon(
+              CategoryPresentationData.iconFor(category.icon),
+              size: AppSpacing.lg.sp,
+              color: color,
+            ),
           ),
-          child: Icon(
-            CategoryPresentationData.iconFor(category.icon),
-            size: 26.sp,
-            color: color,
+          SizedBox(width: AppSpacing.md.w),
+          Expanded(
+            child: CategoryChip(
+              category: category,
+              size: CategoryBadgeSize.small,
+            ),
           ),
-        ),
-        SizedBox(width: 10.w),
-        Expanded(
-          child: CategoryChip(category: category, size: CategoryBadgeSize.small),
-        ),
-        trailing,
-      ],
+          trailing,
+        ],
+      ),
     );
   }
 }

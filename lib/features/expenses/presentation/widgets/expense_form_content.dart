@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/core/base/requests_status.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
 import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
@@ -7,6 +8,7 @@ import 'package:spend_wise/features/expenses/presentation/widgets/expense_form.d
 import 'package:spend_wise/features/expenses/presentation/widgets/expense_form_intro.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_state.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 import '../cubit/expense_cubit.dart';
 
 class ExpenseFormContent extends StatelessWidget {
@@ -21,47 +23,53 @@ class ExpenseFormContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<
-      CategoryCubit,
-      CategoryState,
-      ({List<Category> categories, RequestsStatus status})
-    >(
-      selector: (state) => (
-        categories: state.categories,
-        status: state.categoriesStatus,
-      ),
-      builder: (context, categoryView) {
-        final sortedCategories = [...categoryView.categories]
-          ..sort((first, second) => first.name.compareTo(second.name));
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ExpenseFormIntro(isEditing: isEditing),
-            SizedBox(height: 24),
-            ExpenseForm(
-              categories: sortedCategories,
-              categoriesStatus: categoryView.status,
-              initialExpense: expense,
-              onDateSelected: context.read<ExpenseCubit>().setSelectedDate,
-              onCategorySelected: context
-                  .read<ExpenseCubit>()
-                  .setSelectedCategoryId,
-              onSubmit: (expenseData) {
-                if (expense != null) {
-                  final updatedExpense = expenseData.copyWith(
-                    id: expense!.id,
-                  );
-                  return context.read<ExpenseCubit>().updateExpense(
-                    updatedExpense,
-                  );
-                }
+    return FadeTransition(
+      opacity: AlwaysStoppedAnimation(0.95),
+      child: BlocSelector<
+        CategoryCubit,
+        CategoryState,
+        ({List<Category> categories, RequestsStatus status})
+      >(
+        selector: (state) => (
+          categories: state.categories,
+          status: state.categoriesStatus,
+        ),
+        builder: (context, categoryView) {
+          final sortedCategories = [...categoryView.categories]
+            ..sort((first, second) => first.name.compareTo(second.name));
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              FadeTransition(
+                opacity: AlwaysStoppedAnimation(0.9),
+                child: ExpenseFormIntro(isEditing: isEditing),
+              ),
+              SizedBox(height: AppSpacing.xxl.h),
+              ExpenseForm(
+                categories: sortedCategories,
+                categoriesStatus: categoryView.status,
+                initialExpense: expense,
+                onDateSelected: context.read<ExpenseCubit>().setSelectedDate,
+                onCategorySelected: context
+                    .read<ExpenseCubit>()
+                    .setSelectedCategoryId,
+                onSubmit: (expenseData) {
+                  if (expense != null) {
+                    final updatedExpense = expenseData.copyWith(
+                      id: expense!.id,
+                    );
+                    return context.read<ExpenseCubit>().updateExpense(
+                      updatedExpense,
+                    );
+                  }
 
-                return context.read<ExpenseCubit>().addExpense(expenseData);
-              },
-            ),
-          ],
-        );
-      },
+                  return context.read<ExpenseCubit>().addExpense(expenseData);
+                },
+              ),
+            ],
+          );
+        },
+      ),
     );
   }
 }

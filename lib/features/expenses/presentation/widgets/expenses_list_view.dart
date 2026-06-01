@@ -25,20 +25,26 @@ class ExpensesListView extends StatelessWidget {
       categories,
     );
 
-    return RefreshIndicator(
-      onRefresh: context.read<ExpenseCubit>().loadExpenses,
-      child: ListView.separated(
-        physics: const AlwaysScrollableScrollPhysics(),
-        itemCount: expenses.length,
-        separatorBuilder: (context, index) => SizedBox(height: 12.h),
-        itemBuilder: (context, index) {
-          final expense = expenses[index];
+    return FadeTransition(
+      opacity: AlwaysStoppedAnimation(0.95),
+      child: RefreshIndicator(
+        onRefresh: context.read<ExpenseCubit>().loadExpenses,
+        child: ListView.separated(
+          physics: const AlwaysScrollableScrollPhysics(),
+          itemCount: expenses.length,
+          separatorBuilder: (context, index) => SizedBox(height: 12.h),
+          itemBuilder: (context, index) {
+            final expense = expenses[index];
 
-          return ExpenseItem(
-            expense: expense,
-            category: categoryMap[expense.categoryId]!,
-          );
-        },
+            return FadeTransition(
+              opacity: AlwaysStoppedAnimation(0.9),
+              child: ExpenseItem(
+                expense: expense,
+                category: categoryMap[expense.categoryId]!,
+              ),
+            );
+          },
+        ),
       ),
     );
   }

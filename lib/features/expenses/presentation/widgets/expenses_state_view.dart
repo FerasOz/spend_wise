@@ -33,28 +33,40 @@ class ExpensesStateView extends StatelessWidget {
       selector: (state) => state,
       builder: (context, categoryState) {
         if (_isInitialLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return FadeTransition(
+            opacity: AlwaysStoppedAnimation(0.8),
+            child: const Center(child: CircularProgressIndicator()),
+          );
         }
         if (_hasInitialError) {
-          return ExpensesFeedbackView(
-            title: LocaleKeys.expenses_errorExpenses_title.tr(),
-            message: LocaleKeys.expenses_errorExpenses_subTitle.tr(),
-            actionLabel: LocaleKeys.expenses_errorExpenses_button.tr(),
-            onPressed: context.read<ExpenseCubit>().loadExpenses,
+          return FadeTransition(
+            opacity: AlwaysStoppedAnimation(0.9),
+            child: ExpensesFeedbackView(
+              title: LocaleKeys.expenses_errorExpenses_title.tr(),
+              message: LocaleKeys.expenses_errorExpenses_subTitle.tr(),
+              actionLabel: LocaleKeys.expenses_errorExpenses_button.tr(),
+              onPressed: context.read<ExpenseCubit>().loadExpenses,
+            ),
           );
         }
         if (expenseState.expenses.isEmpty) {
-          return _ExpensesEmptyState(
-            categoriesStatus: categoryState.categoriesStatus,
-            hasCategories: categoryState.categories.isNotEmpty,
+          return FadeTransition(
+            opacity: AlwaysStoppedAnimation(0.9),
+            child: _ExpensesEmptyState(
+              categoriesStatus: categoryState.categoriesStatus,
+              hasCategories: categoryState.categories.isNotEmpty,
+            ),
           );
         }
         if (filterState.visibleExpenses.isEmpty) {
-          return ExpensesFeedbackView(
-            title: LocaleKeys.expenses_noMatchExpenses_title.tr(),
-            message: LocaleKeys.expenses_noMatchExpenses_subTitle.tr(),
-            actionLabel: LocaleKeys.expenses_noMatchExpenses_button.tr(),
-            onPressed: context.read<ExpenseFilterCubit>().clearAll,
+          return FadeTransition(
+            opacity: AlwaysStoppedAnimation(0.9),
+            child: ExpensesFeedbackView(
+              title: LocaleKeys.expenses_noMatchExpenses_title.tr(),
+              message: LocaleKeys.expenses_noMatchExpenses_subTitle.tr(),
+              actionLabel: LocaleKeys.expenses_noMatchExpenses_button.tr(),
+              onPressed: context.read<ExpenseFilterCubit>().clearAll,
+            ),
           );
         }
 
@@ -104,22 +116,31 @@ class _ExpensesEmptyState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (categoriesStatus == RequestsStatus.loading && !hasCategories) {
-      return const Center(child: CircularProgressIndicator());
+      return FadeTransition(
+        opacity: AlwaysStoppedAnimation(0.8),
+        child: const Center(child: CircularProgressIndicator()),
+      );
     }
     if (!hasCategories) {
-      return ExpensesFeedbackView(
-        title: LocaleKeys.expenses_emptyCategory_title.tr(),
-        message: LocaleKeys.expenses_emptyCategory_subTitle.tr(),
-        actionLabel: LocaleKeys.expenses_emptyCategory_button.tr(),
-        onPressed: () => CategoryListPage.openCategoryManagementPage(context),
+      return FadeTransition(
+        opacity: AlwaysStoppedAnimation(0.9),
+        child: ExpensesFeedbackView(
+          title: LocaleKeys.expenses_emptyCategory_title.tr(),
+          message: LocaleKeys.expenses_emptyCategory_subTitle.tr(),
+          actionLabel: LocaleKeys.expenses_emptyCategory_button.tr(),
+          onPressed: () => CategoryListPage.openCategoryManagementPage(context),
+        ),
       );
     }
 
-    return ExpensesFeedbackView(
-      title: LocaleKeys.expenses_emptyExpenses_title.tr(),
-      message: LocaleKeys.expenses_emptyExpenses_subTitle.tr(),
-      actionLabel: LocaleKeys.expenses_emptyExpenses_button.tr(),
-      onPressed: () => ExpensesPage.openExpenseFormPage(context),
+    return FadeTransition(
+      opacity: AlwaysStoppedAnimation(0.9),
+      child: ExpensesFeedbackView(
+        title: LocaleKeys.expenses_emptyExpenses_title.tr(),
+        message: LocaleKeys.expenses_emptyExpenses_subTitle.tr(),
+        actionLabel: LocaleKeys.expenses_emptyExpenses_button.tr(),
+        onPressed: () => ExpensesPage.openExpenseFormPage(context),
+      ),
     );
   }
 }

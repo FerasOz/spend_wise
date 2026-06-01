@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
 import '../../../../core/base/requests_status.dart';
 import '../../../../features/categories/domain/entities/category.dart';
@@ -9,11 +10,11 @@ import '../../domain/entities/expense.dart';
 import '../cubit/expense_cubit.dart';
 import '../cubit/expense_state.dart';
 import 'expense_amount_field.dart';
-import 'expense_category_field.dart';
-import 'expense_date_picker.dart';
 import 'expense_note_field.dart';
 import 'expense_submit_button.dart';
 import 'expense_title_field.dart';
+import 'form/expense_category_section.dart';
+import 'form/expense_date_section.dart';
 
 typedef SubmitExpenseCallback = Future<void> Function(Expense expense);
 
@@ -101,27 +102,27 @@ class ExpenseForm extends StatelessWidget {
             initialValue: initialExpense?.title ?? '',
             onSaved: (value) => title = value,
           ),
-          SizedBox(height: 16.h),
+          SizedBox(height: AppSpacing.md.h),
           ExpenseAmountField(
             initialValue: initialExpense?.amount.toString() ?? '',
             onSaved: (value) => amount = value,
           ),
-          SizedBox(height: 16.h),
-          _ExpenseCategorySection(
+          SizedBox(height: AppSpacing.md.h),
+          ExpenseCategorySection(
             categories: categories,
             categoriesStatus: categoriesStatus,
             initialExpense: initialExpense,
             onSaved: (value) => categoryId = value,
             onCategorySelected: onCategorySelected,
           ),
-          SizedBox(height: 16.h),
-          _ExpenseDateSection(onDateSelected: onDateSelected),
-          SizedBox(height: 16.h),
+          SizedBox(height: AppSpacing.md.h),
+          ExpenseDateSection(onDateSelected: onDateSelected),
+          SizedBox(height: AppSpacing.md.h),
           ExpenseNoteField(
             initialValue: initialExpense?.note,
             onSaved: (value) => note = value,
           ),
-          SizedBox(height: 28.h),
+          SizedBox(height: AppSpacing.xxl.h),
           _ExpenseSubmitSection(isEditing: isEditing, onSubmit: handleSubmit),
         ],
       ),
@@ -132,57 +133,6 @@ class ExpenseForm extends StatelessWidget {
     ScaffoldMessenger.of(
       context,
     ).showSnackBar(SnackBar(content: Text(message)));
-  }
-}
-
-class _ExpenseCategorySection extends StatelessWidget {
-  const _ExpenseCategorySection({
-    required this.categories,
-    required this.categoriesStatus,
-    required this.initialExpense,
-    required this.onSaved,
-    required this.onCategorySelected,
-  });
-
-  final List<Category> categories;
-  final RequestsStatus categoriesStatus;
-  final Expense? initialExpense;
-  final ValueChanged<String?> onSaved;
-  final ValueChanged<String?> onCategorySelected;
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocSelector<ExpenseCubit, ExpenseState, String?>(
-      selector: (state) => state.selectedCategoryId,
-      builder: (context, selectedCategoryId) {
-        return ExpenseCategoryField(
-          categories: categories,
-          categoriesStatus: categoriesStatus,
-          initialValue: selectedCategoryId ?? initialExpense?.categoryId,
-          onSaved: onSaved,
-          onCategorySelected: onCategorySelected,
-        );
-      },
-    );
-  }
-}
-
-class _ExpenseDateSection extends StatelessWidget {
-  const _ExpenseDateSection({required this.onDateSelected});
-
-  final ValueChanged<DateTime> onDateSelected;
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocSelector<ExpenseCubit, ExpenseState, DateTime>(
-      selector: (state) => state.selectedDate,
-      builder: (context, selectedDate) {
-        return ExpenseDatePicker(
-          selectedDate: selectedDate,
-          onDateSelected: onDateSelected,
-        );
-      },
-    );
   }
 }
 
