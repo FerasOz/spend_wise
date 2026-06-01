@@ -4,6 +4,7 @@ import 'package:spend_wise/app/shell/cubit/shell_cubit.dart';
 import 'package:spend_wise/app/shell/main_shell_page.dart';
 import 'package:spend_wise/app/routes/route_names.dart';
 import 'package:spend_wise/core/di/injection_container.dart';
+import 'package:spend_wise/core/widgets/animations/app_page_transition.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
 import 'package:spend_wise/features/categories/presentation/pages/category_form_page.dart';
@@ -27,7 +28,8 @@ class AppRouters {
   Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case RouteNames.mainShellPage:
-        return MaterialPageRoute(
+        return AppPageTransition.route(
+          settings: settings,
           builder: (_) => MultiBlocProvider(
             providers: [
               BlocProvider(create: (context) => sl<ShellCubit>()),
@@ -47,7 +49,8 @@ class AppRouters {
           ),
         );
       case RouteNames.expensePage:
-        return MaterialPageRoute(
+        return AppPageTransition.route(
+          settings: settings,
           builder: (_) => MultiBlocProvider(
             providers: [
               BlocProvider(
@@ -64,7 +67,8 @@ class AppRouters {
       case RouteNames.addExpensePage:
         final expense = settings.arguments as Expense?;
 
-        return MaterialPageRoute(
+        return AppPageTransition.route(
+          settings: settings,
           builder: (_) => MultiBlocProvider(
             providers: [
               BlocProvider(
@@ -82,7 +86,8 @@ class AppRouters {
       case RouteNames.expenseDetailsPage:
         final args = settings.arguments as ExpenseDetailsRouteArgs;
 
-        return MaterialPageRoute(
+        return AppPageTransition.route(
+          settings: settings,
           builder: (_) => MultiBlocProvider(
             providers: [
               BlocProvider.value(value: args.expenseCubit),
@@ -93,7 +98,8 @@ class AppRouters {
         );
 
       case RouteNames.categoryListPage:
-        return MaterialPageRoute(
+        return AppPageTransition.route(
+          settings: settings,
           builder: (_) => MultiBlocProvider(
             providers: [
               BlocProvider(
@@ -110,7 +116,8 @@ class AppRouters {
       case RouteNames.categoryFormPage:
         final category = settings.arguments as Category?;
 
-        return MaterialPageRoute(
+        return AppPageTransition.route(
+          settings: settings,
           builder: (_) => MultiBlocProvider(
             providers: [
               BlocProvider(
@@ -123,7 +130,8 @@ class AppRouters {
           ),
         );
       case RouteNames.budgetPage:
-        return MaterialPageRoute(
+        return AppPageTransition.route(
+          settings: settings,
           builder: (_) => MultiBlocProvider(
             providers: [
               BlocProvider(create: (context) => sl<BudgetCubit>()),
@@ -138,7 +146,8 @@ class AppRouters {
           ),
         );
       case RouteNames.settingsPage:
-        return MaterialPageRoute(
+        return AppPageTransition.route(
+          settings: settings,
           builder: (context) => BlocProvider.value(
             value: context.read<SettingsCubit>(),
             child: const SettingsPage(),
@@ -146,7 +155,8 @@ class AppRouters {
         );
 
       case RouteNames.exportPage:
-        return MaterialPageRoute(
+        return AppPageTransition.route(
+          settings: settings,
           builder: (_) => BlocProvider(
             create: (_) => sl<ExportCubit>()..loadHistory(),
             child: const ExportPage(),
