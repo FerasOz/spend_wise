@@ -26,27 +26,30 @@ class SettingsPage extends StatelessWidget {
       ),
       body: BlocBuilder<SettingsCubit, SettingsState>(
         builder: (context, state) {
-          if (!state.isInitialized) {
-            return const Center(child: CircularProgressIndicator());
-          }
-
-          final settings = state.settings!;
-          return ResponsivePageContent(
-            child: CustomScrollView(
-              slivers: [
-                AppInfoSliver(settings: settings),
-                SliverToBoxAdapter(
-                  child: Column(
-                    children: [
-                      AppearanceSection(settings: settings),
-                      PreferencesSection(settings: settings),
-                      NotificationsSection(settings: settings),
-                      DataSection(settings: settings),
-                    ],
+          return AnimatedSwitcher(
+            duration: const Duration(milliseconds: 280),
+            switchInCurve: Curves.easeOut,
+            switchOutCurve: Curves.easeIn,
+            child: !state.isInitialized
+                ? const Center(child: CircularProgressIndicator())
+                : ResponsivePageContent(
+                    key: const ValueKey('settingsContent'),
+                    child: CustomScrollView(
+                      slivers: [
+                        AppInfoSliver(settings: state.settings!),
+                        SliverToBoxAdapter(
+                          child: Column(
+                            children: [
+                              AppearanceSection(settings: state.settings!),
+                              PreferencesSection(settings: state.settings!),
+                              NotificationsSection(settings: state.settings!),
+                              DataSection(settings: state.settings!),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
           );
         },
       ),

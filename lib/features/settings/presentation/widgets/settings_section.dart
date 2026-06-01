@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
 
 class SettingsSection extends StatelessWidget {
   const SettingsSection({
@@ -16,29 +17,36 @@ class SettingsSection extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title.toUpperCase(),
-            style: theme.textTheme.labelSmall?.copyWith(
-              letterSpacing: 1.1,
-              color: theme.colorScheme.onSurfaceVariant,
+      padding: EdgeInsets.symmetric(
+        vertical: AppSpacing.xxxl.h,
+        horizontal: AppSpacing.lg.w,
+      ),
+      child: AnimatedSize(
+        duration: const Duration(milliseconds: 220),
+        curve: Curves.easeOutCubic,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title.toUpperCase(),
+              style: theme.textTheme.labelSmall?.copyWith(
+                letterSpacing: 1.2,
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
             ),
-          ),
-          SizedBox(height: 12.h),
-          Column(
-            children: children
-                .map(
-                  (child) => Padding(
-                    padding: EdgeInsets.only(bottom: 12.h),
-                    child: child,
-                  ),
-                )
-                .toList(),
-          ),
-        ],
+            SizedBox(height: AppSpacing.sm.h),
+            Column(
+              children: children
+                  .map(
+                    (child) => Padding(
+                      padding: EdgeInsets.only(bottom: AppSpacing.md.h),
+                      child: child,
+                    ),
+                  )
+                  .toList(),
+            ),
+          ],
+        ),
       ),
     );
   }

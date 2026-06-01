@@ -16,7 +16,9 @@ class AppInfoSliver extends StatelessWidget {
     return SliverToBoxAdapter(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
-        child: Container(
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeOutCubic,
           width: double.infinity,
           padding: EdgeInsets.all(24.w),
           decoration: BoxDecoration(
@@ -33,15 +35,24 @@ class AppInfoSliver extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _InfoHeader(),
+              const _InfoHeader(),
               SizedBox(height: 20.h),
               Wrap(
                 spacing: 12.w,
                 runSpacing: 12.h,
                 children: [
-                  _InfoChip(label: _themeModeLabel(settings.themeMode)),
-                  _InfoChip(label: _currencyLabel(settings.currency)),
-                  _InfoChip(label: _languageLabel(settings.language)),
+                  _InfoChip(
+                    key: ValueKey(_themeModeLabel(settings.themeMode)),
+                    label: _themeModeLabel(settings.themeMode),
+                  ),
+                  _InfoChip(
+                    key: ValueKey(_currencyLabel(settings.currency)),
+                    label: _currencyLabel(settings.currency),
+                  ),
+                  _InfoChip(
+                    key: ValueKey(_languageLabel(settings.language)),
+                    label: _languageLabel(settings.language),
+                  ),
                 ],
               ),
             ],
@@ -53,6 +64,8 @@ class AppInfoSliver extends StatelessWidget {
 }
 
 class _InfoHeader extends StatelessWidget {
+  const _InfoHeader();
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -99,7 +112,7 @@ class _InfoHeader extends StatelessWidget {
 }
 
 class _InfoChip extends StatelessWidget {
-  const _InfoChip({required this.label});
+  const _InfoChip({super.key, required this.label});
 
   final String label;
 

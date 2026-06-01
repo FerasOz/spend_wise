@@ -15,11 +15,15 @@ void showLanguageBottomSheet(BuildContext context) {
     _LanguageOption(code: 'ar', language: AppLanguage.arabic),
   ];
 
-  showModalBottomSheet(
+  showModalBottomSheet<void>(
     context: context,
     isScrollControlled: true,
+    backgroundColor: Theme.of(context).colorScheme.surface,
+    clipBehavior: Clip.antiAlias,
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(AppRadius.xxl.r)),
+      borderRadius: BorderRadius.vertical(
+        top: Radius.circular(AppRadius.xxl.r),
+      ),
     ),
     builder: (context) => SafeArea(
       child: Padding(
@@ -27,6 +31,8 @@ void showLanguageBottomSheet(BuildContext context) {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            const _SheetHandle(),
+            SizedBox(height: AppSpacing.lg.h),
             _LanguageHeader(),
             SizedBox(height: AppSpacing.lg.h),
             ...languages.map((option) => _LanguageTile(option: option)),
@@ -40,14 +46,20 @@ void showLanguageBottomSheet(BuildContext context) {
 class _LanguageHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Row(
       children: [
         Text(
           LocaleKeys.settings_preferences_language_title.tr(),
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+          style: theme.textTheme.titleMedium?.copyWith(
+            fontWeight: FontWeight.w600,
+          ),
         ),
         const Spacer(),
-        IconButton(icon: const Icon(Icons.close), onPressed: () => Navigator.pop(context)),
+        IconButton(
+          icon: Icon(Icons.close, color: theme.colorScheme.onSurfaceVariant),
+          onPressed: () => Navigator.pop(context),
+        ),
       ],
     );
   }
@@ -62,7 +74,8 @@ class _LanguageTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final selectedLanguage = context.select(
-      (SettingsCubit cubit) => cubit.state.settings?.language ?? AppLanguage.english,
+      (SettingsCubit cubit) =>
+          cubit.state.settings?.language ?? AppLanguage.english,
     );
     final isSelected = selectedLanguage == option.language;
 
@@ -75,11 +88,17 @@ class _LanguageTile extends StatelessWidget {
           color: theme.colorScheme.primaryContainer,
           borderRadius: BorderRadius.circular(AppRadius.lg.r),
         ),
-        child: Icon(Icons.language, color: theme.colorScheme.onPrimaryContainer, size: 24.sp),
+        child: Icon(
+          Icons.language,
+          color: theme.colorScheme.onPrimaryContainer,
+          size: 24.sp,
+        ),
       ),
       title: Text(option.label.tr(), style: theme.textTheme.bodyLarge),
       subtitle: Text(option.nativeLabel.tr(), style: theme.textTheme.bodySmall),
-      trailing: isSelected ? Icon(Icons.check_circle, color: theme.colorScheme.primary) : null,
+      trailing: isSelected
+          ? Icon(Icons.check_circle, color: theme.colorScheme.primary)
+          : null,
       onTap: () async {
         await context.read<SettingsCubit>().updateLanguage(option.language);
         if (context.mounted) Navigator.pop(context);
@@ -94,10 +113,29 @@ class _LanguageOption {
   final String code;
   final AppLanguage language;
 
-  String get label =>
-      code == 'en' ? LocaleKeys.settings_languages_english : LocaleKeys.settings_languages_arabic;
+  String get label => code == 'en'
+      ? LocaleKeys.settings_languages_english
+      : LocaleKeys.settings_languages_arabic;
 
   String get nativeLabel => code == 'en'
       ? LocaleKeys.settings_languages_englishNative
       : LocaleKeys.settings_languages_arabicNative;
+}
+
+class _SheetHandle extends StatelessWidget {
+  const _SheetHandle();
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        width: 52.w,
+        height: 5.h,
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.onSurfaceVariant.withAlpha(32),
+          borderRadius: BorderRadius.circular(10.r),
+        ),
+      ),
+    );
+  }
 }

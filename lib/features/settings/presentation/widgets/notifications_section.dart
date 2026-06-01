@@ -14,26 +14,32 @@ class NotificationsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return SettingsSection(
       title: LocaleKeys.settings_notifications_title.tr(),
       children: [
         SettingsTile(
           icon: Icons.notifications_none_outlined,
-          title: LocaleKeys.settings_notifications_title.tr(),
+          title: LocaleKeys.settings_notifications_push.tr(),
           subtitle: LocaleKeys.settings_notifications_push_subtitle.tr(),
-          trailing: Switch(
+          trailing: Switch.adaptive(
             value: settings.notificationsEnabled,
             onChanged: (_) =>
                 context.read<SettingsCubit>().toggleNotifications(),
+            activeThumbColor: theme.colorScheme.primary,
+            activeTrackColor: theme.colorScheme.primary.withAlpha(90),
           ),
         ),
         SettingsTile(
           icon: Icons.cloud_circle_outlined,
-          title: LocaleKeys.settings_notifications_backup_title.tr(),
+          title: LocaleKeys.settings_notifications_backup.tr(),
           subtitle: LocaleKeys.settings_notifications_backup_subtitle.tr(),
-          trailing: Switch(
+          trailing: Switch.adaptive(
             value: settings.autoBackupEnabled,
             onChanged: (_) => context.read<SettingsCubit>().toggleAutoBackup(),
+            activeThumbColor: theme.colorScheme.primary,
+            activeTrackColor: theme.colorScheme.primary.withAlpha(90),
           ),
         ),
       ],

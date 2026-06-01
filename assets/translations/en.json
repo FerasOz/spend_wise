@@ -86,6 +86,10 @@
       "loadBudgets": "Failed to load budgets.",
       "loadRecurringExpenses": "Failed to load recurring expenses.",
       "budgetActionFailed": "Budget action failed."
+    },
+    "status": {
+      "active": "Active",
+      "paused": "Paused"
     }
   },
   "currency": {
@@ -130,6 +134,7 @@
     "notifications": {
       "title": "Notifications",
       "push": {
+        "title": "Push notifications",
         "subtitle": "Receive alerts and reminders"
       },
       "backup": {

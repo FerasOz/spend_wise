@@ -2,7 +2,7 @@
 
 // ignore_for_file: constant_identifier_names
 
-abstract class  LocaleKeys {
+abstract class LocaleKeys {
   static const app_about = 'app.about';
   static const app_settings = 'app.settings';
   static const app_subTitle = 'app.subTitle';
@@ -30,7 +30,8 @@ abstract class  LocaleKeys {
   static const export_actions_pdf_subtitle = 'export.actions.pdf.subtitle';
   static const export_actions_pdf = 'export.actions.pdf';
   static const export_actions_backup_title = 'export.actions.backup.title';
-  static const export_actions_backup_subtitle = 'export.actions.backup.subtitle';
+  static const export_actions_backup_subtitle =
+      'export.actions.backup.subtitle';
   static const export_actions_backup = 'export.actions.backup';
   static const export_actions = 'export.actions';
   static const export_history_title = 'export.history.title';
@@ -70,9 +71,14 @@ abstract class  LocaleKeys {
   static const common_validation_maxLength = 'common.validation.maxLength';
   static const common_validation = 'common.validation';
   static const common_errors_loadBudgets = 'common.errors.loadBudgets';
-  static const common_errors_loadRecurringExpenses = 'common.errors.loadRecurringExpenses';
-  static const common_errors_budgetActionFailed = 'common.errors.budgetActionFailed';
+  static const common_errors_loadRecurringExpenses =
+      'common.errors.loadRecurringExpenses';
+  static const common_errors_budgetActionFailed =
+      'common.errors.budgetActionFailed';
   static const common_errors = 'common.errors';
+  static const common_status_active = 'common.status.active';
+  static const common_status_paused = 'common.status.paused';
+  static const common_status = 'common.status';
   static const common = 'common';
   static const currency_selection = 'currency.selection';
   static const currency_displayHint = 'currency.displayHint';
@@ -88,40 +94,57 @@ abstract class  LocaleKeys {
   static const settings_hero_subtitle = 'settings.hero.subtitle';
   static const settings_hero = 'settings.hero';
   static const settings_appearance_title = 'settings.appearance.title';
-  static const settings_appearance_themeMode_title = 'settings.appearance.themeMode.title';
-  static const settings_appearance_themeMode_subtitle = 'settings.appearance.themeMode.subtitle';
-  static const settings_appearance_themeMode_light = 'settings.appearance.themeMode.light';
-  static const settings_appearance_themeMode_dark = 'settings.appearance.themeMode.dark';
-  static const settings_appearance_themeMode_system = 'settings.appearance.themeMode.system';
+  static const settings_appearance_themeMode_title =
+      'settings.appearance.themeMode.title';
+  static const settings_appearance_themeMode_subtitle =
+      'settings.appearance.themeMode.subtitle';
+  static const settings_appearance_themeMode_light =
+      'settings.appearance.themeMode.light';
+  static const settings_appearance_themeMode_dark =
+      'settings.appearance.themeMode.dark';
+  static const settings_appearance_themeMode_system =
+      'settings.appearance.themeMode.system';
   static const settings_appearance_themeMode = 'settings.appearance.themeMode';
   static const settings_appearance = 'settings.appearance';
   static const settings_preferences_title = 'settings.preferences.title';
-  static const settings_preferences_currency_title = 'settings.preferences.currency.title';
-  static const settings_preferences_currency_subtitle = 'settings.preferences.currency.subtitle';
-  static const settings_preferences_currency_displayHint = 'settings.preferences.currency.displayHint';
+  static const settings_preferences_currency_title =
+      'settings.preferences.currency.title';
+  static const settings_preferences_currency_subtitle =
+      'settings.preferences.currency.subtitle';
+  static const settings_preferences_currency_displayHint =
+      'settings.preferences.currency.displayHint';
   static const settings_preferences_currency = 'settings.preferences.currency';
-  static const settings_preferences_language_title = 'settings.preferences.language.title';
-  static const settings_preferences_language_subtitle = 'settings.preferences.language.subtitle';
+  static const settings_preferences_language_title =
+      'settings.preferences.language.title';
+  static const settings_preferences_language_subtitle =
+      'settings.preferences.language.subtitle';
   static const settings_preferences_language = 'settings.preferences.language';
   static const settings_preferences = 'settings.preferences';
   static const settings_notifications_title = 'settings.notifications.title';
-  static const settings_notifications_push_subtitle = 'settings.notifications.push.subtitle';
+  static const settings_notifications_push_subtitle =
+      'settings.notifications.push.subtitle';
   static const settings_notifications_push = 'settings.notifications.push';
-  static const settings_notifications_backup_title = 'settings.notifications.backup.title';
-  static const settings_notifications_backup_subtitle = 'settings.notifications.backup.subtitle';
+  static const settings_notifications_backup_title =
+      'settings.notifications.backup.title';
+  static const settings_notifications_backup_subtitle =
+      'settings.notifications.backup.subtitle';
   static const settings_notifications_backup = 'settings.notifications.backup';
   static const settings_notifications = 'settings.notifications';
   static const settings_data_title = 'settings.data.title';
   static const settings_data_reset_title = 'settings.data.reset.title';
   static const settings_data_reset_subtitle = 'settings.data.reset.subtitle';
-  static const settings_data_reset_dialogTitle = 'settings.data.reset.dialogTitle';
-  static const settings_data_reset_dialogMessage = 'settings.data.reset.dialogMessage';
+  static const settings_data_reset_dialogTitle =
+      'settings.data.reset.dialogTitle';
+  static const settings_data_reset_dialogMessage =
+      'settings.data.reset.dialogMessage';
   static const settings_data_reset = 'settings.data.reset';
   static const settings_data = 'settings.data';
   static const settings_languages_english = 'settings.languages.english';
   static const settings_languages_arabic = 'settings.languages.arabic';
-  static const settings_languages_englishNative = 'settings.languages.englishNative';
-  static const settings_languages_arabicNative = 'settings.languages.arabicNative';
+  static const settings_languages_englishNative =
+      'settings.languages.englishNative';
+  static const settings_languages_arabicNative =
+      'settings.languages.arabicNative';
   static const settings_languages = 'settings.languages';
   static const settings = 'settings';
   static const budgets_title = 'budgets.title';
@@ -141,7 +164,8 @@ abstract class  LocaleKeys {
   static const budgets_success_deleted = 'budgets.success.deleted';
   static const budgets_success = 'budgets.success';
   static const budgets_form_title_create = 'budgets.form.title.create';
-  static const budgets_form_title_selectCategory = 'budgets.form.title.selectCategory';
+  static const budgets_form_title_selectCategory =
+      'budgets.form.title.selectCategory';
   static const budgets_form_title_edit = 'budgets.form.title.edit';
   static const budgets_form_title = 'budgets.form.title';
   static const budgets_form_fields_name = 'budgets.form.fields.name';
@@ -152,7 +176,8 @@ abstract class  LocaleKeys {
   static const budgets_form_fields_category = 'budgets.form.fields.category';
   static const budgets_form_fields_limit = 'budgets.form.fields.limit';
   static const budgets_form_fields = 'budgets.form.fields';
-  static const budgets_form_validation_limitValid = 'budgets.form.validation.limitValid';
+  static const budgets_form_validation_limitValid =
+      'budgets.form.validation.limitValid';
   static const budgets_form_validation = 'budgets.form.validation';
   static const budgets_form = 'budgets.form';
   static const budgets = 'budgets';
@@ -160,122 +185,170 @@ abstract class  LocaleKeys {
   static const expenses_buttons_update = 'expenses.buttons.update';
   static const expenses_buttons_save = 'expenses.buttons.save';
   static const expenses_buttons = 'expenses.buttons';
-  static const expenses_messages_successDelete = 'expenses.messages.successDelete';
-  static const expenses_messages_failedDelete = 'expenses.messages.failedDelete';
+  static const expenses_messages_successDelete =
+      'expenses.messages.successDelete';
+  static const expenses_messages_failedDelete =
+      'expenses.messages.failedDelete';
   static const expenses_messages_failedLoad = 'expenses.messages.failedLoad';
-  static const expenses_messages_failedUpdate = 'expenses.messages.failedUpdate';
+  static const expenses_messages_failedUpdate =
+      'expenses.messages.failedUpdate';
   static const expenses_messages_failedAdd = 'expenses.messages.failedAdd';
   static const expenses_messages = 'expenses.messages';
   static const expenses_emptyExpenses_title = 'expenses.emptyExpenses.title';
-  static const expenses_emptyExpenses_subTitle = 'expenses.emptyExpenses.subTitle';
+  static const expenses_emptyExpenses_subTitle =
+      'expenses.emptyExpenses.subTitle';
   static const expenses_emptyExpenses_button = 'expenses.emptyExpenses.button';
   static const expenses_emptyExpenses = 'expenses.emptyExpenses';
   static const expenses_emptyCategory_title = 'expenses.emptyCategory.title';
-  static const expenses_emptyCategory_subTitle = 'expenses.emptyCategory.subTitle';
+  static const expenses_emptyCategory_subTitle =
+      'expenses.emptyCategory.subTitle';
   static const expenses_emptyCategory_button = 'expenses.emptyCategory.button';
-  static const expenses_emptyCategory_createCategoryTxt = 'expenses.emptyCategory.createCategoryTxt';
+  static const expenses_emptyCategory_createCategoryTxt =
+      'expenses.emptyCategory.createCategoryTxt';
   static const expenses_emptyCategory = 'expenses.emptyCategory';
-  static const expenses_noMatchExpenses_title = 'expenses.noMatchExpenses.title';
-  static const expenses_noMatchExpenses_subTitle = 'expenses.noMatchExpenses.subTitle';
-  static const expenses_noMatchExpenses_button = 'expenses.noMatchExpenses.button';
+  static const expenses_noMatchExpenses_title =
+      'expenses.noMatchExpenses.title';
+  static const expenses_noMatchExpenses_subTitle =
+      'expenses.noMatchExpenses.subTitle';
+  static const expenses_noMatchExpenses_button =
+      'expenses.noMatchExpenses.button';
   static const expenses_noMatchExpenses = 'expenses.noMatchExpenses';
   static const expenses_errorExpenses_title = 'expenses.errorExpenses.title';
-  static const expenses_errorExpenses_subTitle = 'expenses.errorExpenses.subTitle';
+  static const expenses_errorExpenses_subTitle =
+      'expenses.errorExpenses.subTitle';
   static const expenses_errorExpenses_button = 'expenses.errorExpenses.button';
   static const expenses_errorExpenses = 'expenses.errorExpenses';
   static const expenses_expensesFound = 'expenses.expensesFound';
   static const expenses_details_title = 'expenses.details.title';
   static const expenses_details_notFound = 'expenses.details.notFound';
-  static const expenses_details_subTitleNotFound = 'expenses.details.subTitleNotFound';
-  static const expenses_details_fields_amountSpent = 'expenses.details.fields.amountSpent';
+  static const expenses_details_subTitleNotFound =
+      'expenses.details.subTitleNotFound';
+  static const expenses_details_fields_amountSpent =
+      'expenses.details.fields.amountSpent';
   static const expenses_details_fields_title = 'expenses.details.fields.title';
-  static const expenses_details_fields_category = 'expenses.details.fields.category';
-  static const expenses_details_fields_amount = 'expenses.details.fields.amount';
+  static const expenses_details_fields_category =
+      'expenses.details.fields.category';
+  static const expenses_details_fields_amount =
+      'expenses.details.fields.amount';
   static const expenses_details_fields_date = 'expenses.details.fields.date';
   static const expenses_details_fields_note = 'expenses.details.fields.note';
-  static const expenses_details_fields_timeline = 'expenses.details.fields.timeline';
-  static const expenses_details_fields_created = 'expenses.details.fields.created';
-  static const expenses_details_fields_updated = 'expenses.details.fields.updated';
+  static const expenses_details_fields_timeline =
+      'expenses.details.fields.timeline';
+  static const expenses_details_fields_created =
+      'expenses.details.fields.created';
+  static const expenses_details_fields_updated =
+      'expenses.details.fields.updated';
   static const expenses_details_fields = 'expenses.details.fields';
   static const expenses_details = 'expenses.details';
   static const expenses_form_title_add = 'expenses.form.title.add';
   static const expenses_form_title_edit = 'expenses.form.title.edit';
   static const expenses_form_title = 'expenses.form.title';
   static const expenses_form_intro_addTitle = 'expenses.form.intro.addTitle';
-  static const expenses_form_intro_description = 'expenses.form.intro.description';
+  static const expenses_form_intro_description =
+      'expenses.form.intro.description';
   static const expenses_form_intro_editTitle = 'expenses.form.intro.editTitle';
   static const expenses_form_intro = 'expenses.form.intro';
-  static const expenses_form_formErrors_titleAndAmountRequired = 'expenses.form.formErrors.titleAndAmountRequired';
-  static const expenses_form_formErrors_categoryRequired = 'expenses.form.formErrors.categoryRequired';
-  static const expenses_form_formErrors_amountValid = 'expenses.form.formErrors.amountValid';
+  static const expenses_form_formErrors_titleAndAmountRequired =
+      'expenses.form.formErrors.titleAndAmountRequired';
+  static const expenses_form_formErrors_categoryRequired =
+      'expenses.form.formErrors.categoryRequired';
+  static const expenses_form_formErrors_amountValid =
+      'expenses.form.formErrors.amountValid';
   static const expenses_form_formErrors = 'expenses.form.formErrors';
   static const expenses_form_fields_title = 'expenses.form.fields.title';
-  static const expenses_form_fields_titlePlaceholder = 'expenses.form.fields.titlePlaceholder';
-  static const expenses_form_fields_titleRequired = 'expenses.form.fields.titleRequired';
+  static const expenses_form_fields_titlePlaceholder =
+      'expenses.form.fields.titlePlaceholder';
+  static const expenses_form_fields_titleRequired =
+      'expenses.form.fields.titleRequired';
   static const expenses_form_fields_amount = 'expenses.form.fields.amount';
-  static const expenses_form_fields_validAmount = 'expenses.form.fields.validAmount';
+  static const expenses_form_fields_validAmount =
+      'expenses.form.fields.validAmount';
   static const expenses_form_fields_date = 'expenses.form.fields.date';
-  static const expenses_form_fields_requiredCategory = 'expenses.form.fields.requiredCategory';
+  static const expenses_form_fields_requiredCategory =
+      'expenses.form.fields.requiredCategory';
   static const expenses_form_fields_note = 'expenses.form.fields.note';
-  static const expenses_form_fields_notePlaceholder = 'expenses.form.fields.notePlaceholder';
+  static const expenses_form_fields_notePlaceholder =
+      'expenses.form.fields.notePlaceholder';
   static const expenses_form_fields_currency = 'expenses.form.fields.currency';
   static const expenses_form_fields = 'expenses.form.fields';
-  static const expenses_form_validation_titleRequired = 'expenses.form.validation.titleRequired';
-  static const expenses_form_validation_amountRequired = 'expenses.form.validation.amountRequired';
-  static const expenses_form_validation_amountValid = 'expenses.form.validation.amountValid';
-  static const expenses_form_validation_dateRequired = 'expenses.form.validation.dateRequired';
-  static const expenses_form_validation_categoryRequired = 'expenses.form.validation.categoryRequired';
+  static const expenses_form_validation_titleRequired =
+      'expenses.form.validation.titleRequired';
+  static const expenses_form_validation_amountRequired =
+      'expenses.form.validation.amountRequired';
+  static const expenses_form_validation_amountValid =
+      'expenses.form.validation.amountValid';
+  static const expenses_form_validation_dateRequired =
+      'expenses.form.validation.dateRequired';
+  static const expenses_form_validation_categoryRequired =
+      'expenses.form.validation.categoryRequired';
   static const expenses_form_validation = 'expenses.form.validation';
   static const expenses_form = 'expenses.form';
   static const expenses_filters_title = 'expenses.filters.title';
-  static const expenses_filters_categories_all = 'expenses.filters.categories.all';
+  static const expenses_filters_categories_all =
+      'expenses.filters.categories.all';
   static const expenses_filters_categories = 'expenses.filters.categories';
   static const expenses_filters_dateRange = 'expenses.filters.dateRange';
   static const expenses_filters_amountRange = 'expenses.filters.amountRange';
   static const expenses_filters_searchHint = 'expenses.filters.searchHint';
-  static const expenses_filters_minimumAmount = 'expenses.filters.minimumAmount';
-  static const expenses_filters_maximumAmount = 'expenses.filters.maximumAmount';
+  static const expenses_filters_minimumAmount =
+      'expenses.filters.minimumAmount';
+  static const expenses_filters_maximumAmount =
+      'expenses.filters.maximumAmount';
   static const expenses_filters_newest = 'expenses.filters.newest';
   static const expenses_filters_oldest = 'expenses.filters.oldest';
-  static const expenses_filters_highestAmount = 'expenses.filters.highestAmount';
+  static const expenses_filters_highestAmount =
+      'expenses.filters.highestAmount';
   static const expenses_filters_lowestAmount = 'expenses.filters.lowestAmount';
-  static const expenses_filters_actions_apply = 'expenses.filters.actions.apply';
-  static const expenses_filters_actions_clear = 'expenses.filters.actions.clear';
-  static const expenses_filters_actions_cancel = 'expenses.filters.actions.cancel';
+  static const expenses_filters_actions_apply =
+      'expenses.filters.actions.apply';
+  static const expenses_filters_actions_clear =
+      'expenses.filters.actions.clear';
+  static const expenses_filters_actions_cancel =
+      'expenses.filters.actions.cancel';
   static const expenses_filters_actions = 'expenses.filters.actions';
   static const expenses_filters = 'expenses.filters';
   static const expenses_item_actions_edit = 'expenses.item.actions.edit';
   static const expenses_item_actions_delete = 'expenses.item.actions.delete';
   static const expenses_item_actions = 'expenses.item.actions';
   static const expenses_item = 'expenses.item';
-  static const expenses_management_delete_title = 'expenses.management.delete.title';
-  static const expenses_management_delete_subTitle = 'expenses.management.delete.subTitle';
-  static const expenses_management_delete_cancel = 'expenses.management.delete.cancel';
-  static const expenses_management_delete_confirm = 'expenses.management.delete.confirm';
+  static const expenses_management_delete_title =
+      'expenses.management.delete.title';
+  static const expenses_management_delete_subTitle =
+      'expenses.management.delete.subTitle';
+  static const expenses_management_delete_cancel =
+      'expenses.management.delete.cancel';
+  static const expenses_management_delete_confirm =
+      'expenses.management.delete.confirm';
   static const expenses_management_delete = 'expenses.management.delete';
   static const expenses_management = 'expenses.management';
   static const expenses = 'expenses';
   static const categories_title = 'categories.title';
   static const categories_errors_noCategory = 'categories.errors.noCategory';
-  static const categories_errors_noCategoryDescription = 'categories.errors.noCategoryDescription';
+  static const categories_errors_noCategoryDescription =
+      'categories.errors.noCategoryDescription';
   static const categories_errors_actionLabel = 'categories.errors.actionLabel';
   static const categories_errors_load = 'categories.errors.load';
   static const categories_errors_create = 'categories.errors.create';
   static const categories_errors_empty = 'categories.errors.empty';
-  static const categories_errors_emptyDescription = 'categories.errors.emptyDescription';
-  static const categories_errors_emptyActionLabel = 'categories.errors.emptyActionLabel';
+  static const categories_errors_emptyDescription =
+      'categories.errors.emptyDescription';
+  static const categories_errors_emptyActionLabel =
+      'categories.errors.emptyActionLabel';
   static const categories_errors = 'categories.errors';
   static const categories_details_title = 'categories.details.title';
   static const categories_details_totalSpent = 'categories.details.totalSpent';
   static const categories_details_error = 'categories.details.error';
   static const categories_details_titleEmpty = 'categories.details.titleEmpty';
-  static const categories_details_subtitleEmpty = 'categories.details.subtitleEmpty';
+  static const categories_details_subtitleEmpty =
+      'categories.details.subtitleEmpty';
   static const categories_details = 'categories.details';
   static const categories_list_spent = 'categories.list.spent';
   static const categories_list_delete_title = 'categories.list.delete.title';
-  static const categories_list_delete_subtitle = 'categories.list.delete.subtitle';
+  static const categories_list_delete_subtitle =
+      'categories.list.delete.subtitle';
   static const categories_list_delete_cancel = 'categories.list.delete.cancel';
-  static const categories_list_delete_confirm = 'categories.list.delete.confirm';
+  static const categories_list_delete_confirm =
+      'categories.list.delete.confirm';
   static const categories_list_delete = 'categories.list.delete';
   static const categories_list_tooltips_add = 'categories.list.tooltips.add';
   static const categories_list_tooltips = 'categories.list.tooltips';
@@ -284,30 +357,43 @@ abstract class  LocaleKeys {
   static const categories_form_title_edit = 'categories.form.title.edit';
   static const categories_form_title = 'categories.form.title';
   static const categories_form_newCategory = 'categories.form.newCategory';
-  static const categories_form_fields_categoryName = 'categories.form.fields.categoryName';
+  static const categories_form_fields_categoryName =
+      'categories.form.fields.categoryName';
   static const categories_form_fields_name = 'categories.form.fields.name';
-  static const categories_form_fields_emptyName = 'categories.form.fields.emptyName';
-  static const categories_form_fields_nameLength = 'categories.form.fields.nameLength';
-  static const categories_form_fields_selectColor = 'categories.form.fields.selectColor';
-  static const categories_form_fields_selectIcon = 'categories.form.fields.selectIcon';
+  static const categories_form_fields_emptyName =
+      'categories.form.fields.emptyName';
+  static const categories_form_fields_nameLength =
+      'categories.form.fields.nameLength';
+  static const categories_form_fields_selectColor =
+      'categories.form.fields.selectColor';
+  static const categories_form_fields_selectIcon =
+      'categories.form.fields.selectIcon';
   static const categories_form_fields_saving = 'categories.form.fields.saving';
   static const categories_form_fields = 'categories.form.fields';
   static const categories_form = 'categories.form';
   static const categories_item_stats = 'categories.item.stats';
   static const categories_item_actions_edit = 'categories.item.actions.edit';
-  static const categories_item_actions_delete = 'categories.item.actions.delete';
+  static const categories_item_actions_delete =
+      'categories.item.actions.delete';
   static const categories_item_actions = 'categories.item.actions';
-  static const categories_item_tooltips_actions = 'categories.item.tooltips.actions';
+  static const categories_item_tooltips_actions =
+      'categories.item.tooltips.actions';
   static const categories_item_tooltips = 'categories.item.tooltips';
   static const categories_item = 'categories.item';
   static const categories_deleting = 'categories.deleting';
   static const categories_default = 'categories.default';
-  static const categories_defaultCategories_food = 'categories.defaultCategories.food';
-  static const categories_defaultCategories_transportation = 'categories.defaultCategories.transportation';
-  static const categories_defaultCategories_utilities = 'categories.defaultCategories.utilities';
-  static const categories_defaultCategories_entertainment = 'categories.defaultCategories.entertainment';
-  static const categories_defaultCategories_health = 'categories.defaultCategories.health';
-  static const categories_defaultCategories_shopping = 'categories.defaultCategories.shopping';
+  static const categories_defaultCategories_food =
+      'categories.defaultCategories.food';
+  static const categories_defaultCategories_transportation =
+      'categories.defaultCategories.transportation';
+  static const categories_defaultCategories_utilities =
+      'categories.defaultCategories.utilities';
+  static const categories_defaultCategories_entertainment =
+      'categories.defaultCategories.entertainment';
+  static const categories_defaultCategories_health =
+      'categories.defaultCategories.health';
+  static const categories_defaultCategories_shopping =
+      'categories.defaultCategories.shopping';
   static const categories_defaultCategories = 'categories.defaultCategories';
   static const categories = 'categories';
   static const dashboard_title = 'dashboard.title';
@@ -318,67 +404,112 @@ abstract class  LocaleKeys {
   static const dashboard_empty = 'dashboard.empty';
   static const dashboard_overview_title = 'dashboard.overview.title';
   static const dashboard_overview_subTitle = 'dashboard.overview.subTitle';
-  static const dashboard_overview_spentThisMonth = 'dashboard.overview.spentThisMonth';
+  static const dashboard_overview_spentThisMonth =
+      'dashboard.overview.spentThisMonth';
   static const dashboard_overview_monthLabel = 'dashboard.overview.monthLabel';
-  static const dashboard_overview_totalSpending = 'dashboard.overview.totalSpending';
+  static const dashboard_overview_totalSpending =
+      'dashboard.overview.totalSpending';
   static const dashboard_overview_lifetime = 'dashboard.overview.lifetime';
-  static const dashboard_overview_averageDaily = 'dashboard.overview.averageDaily';
-  static const dashboard_overview_transactionsTracked = 'dashboard.overview.transactionsTracked';
+  static const dashboard_overview_averageDaily =
+      'dashboard.overview.averageDaily';
+  static const dashboard_overview_transactionsTracked =
+      'dashboard.overview.transactionsTracked';
   static const dashboard_overview_thisWeek = 'dashboard.overview.thisWeek';
-  static const dashboard_overview_CurrentWeek = 'dashboard.overview.CurrentWeek';
+  static const dashboard_overview_CurrentWeek =
+      'dashboard.overview.CurrentWeek';
   static const dashboard_overview = 'dashboard.overview';
   static const dashboard_insights_title = 'dashboard.insights.title';
   static const dashboard_insights_subTitle = 'dashboard.insights.subTitle';
   static const dashboard_insights_emptyTitle = 'dashboard.insights.emptyTitle';
-  static const dashboard_insights_emptyDescription = 'dashboard.insights.emptyDescription';
-  static const dashboard_insights_cards_topCategory_title = 'dashboard.insights.cards.topCategory.title';
-  static const dashboard_insights_cards_topCategory_message = 'dashboard.insights.cards.topCategory.message';
-  static const dashboard_insights_cards_topCategory = 'dashboard.insights.cards.topCategory';
-  static const dashboard_insights_cards_spendingTrend_title = 'dashboard.insights.cards.spendingTrend.title';
-  static const dashboard_insights_cards_spendingTrend_started = 'dashboard.insights.cards.spendingTrend.started';
-  static const dashboard_insights_cards_spendingTrend_increased = 'dashboard.insights.cards.spendingTrend.increased';
-  static const dashboard_insights_cards_spendingTrend_decreased = 'dashboard.insights.cards.spendingTrend.decreased';
-  static const dashboard_insights_cards_spendingTrend = 'dashboard.insights.cards.spendingTrend';
-  static const dashboard_insights_cards_averageDaily_title = 'dashboard.insights.cards.averageDaily.title';
-  static const dashboard_insights_cards_averageDaily_no_spending = 'dashboard.insights.cards.averageDaily.no_spending';
-  static const dashboard_insights_cards_averageDaily_current = 'dashboard.insights.cards.averageDaily.current';
-  static const dashboard_insights_cards_averageDaily = 'dashboard.insights.cards.averageDaily';
-  static const dashboard_insights_cards_highestSpendingDay_title = 'dashboard.insights.cards.highestSpendingDay.title';
-  static const dashboard_insights_cards_highestSpendingDay_message = 'dashboard.insights.cards.highestSpendingDay.message';
-  static const dashboard_insights_cards_highestSpendingDay = 'dashboard.insights.cards.highestSpendingDay';
-  static const dashboard_insights_cards_spendingStreak_title = 'dashboard.insights.cards.spendingStreak.title';
-  static const dashboard_insights_cards_spendingStreak_message = 'dashboard.insights.cards.spendingStreak.message';
-  static const dashboard_insights_cards_spendingStreak_value = 'dashboard.insights.cards.spendingStreak.value';
-  static const dashboard_insights_cards_spendingStreak = 'dashboard.insights.cards.spendingStreak';
-  static const dashboard_insights_cards_smartRecommendation_title = 'dashboard.insights.cards.smartRecommendation.title';
-  static const dashboard_insights_cards_smartRecommendation_higher = 'dashboard.insights.cards.smartRecommendation.higher';
-  static const dashboard_insights_cards_smartRecommendation_lower = 'dashboard.insights.cards.smartRecommendation.lower';
-  static const dashboard_insights_cards_smartRecommendation_on_track = 'dashboard.insights.cards.smartRecommendation.on_track';
-  static const dashboard_insights_cards_smartRecommendation_reduceCategory = 'dashboard.insights.cards.smartRecommendation.reduceCategory';
-  static const dashboard_insights_cards_smartRecommendation = 'dashboard.insights.cards.smartRecommendation';
+  static const dashboard_insights_emptyDescription =
+      'dashboard.insights.emptyDescription';
+  static const dashboard_insights_cards_topCategory_title =
+      'dashboard.insights.cards.topCategory.title';
+  static const dashboard_insights_cards_topCategory_message =
+      'dashboard.insights.cards.topCategory.message';
+  static const dashboard_insights_cards_topCategory =
+      'dashboard.insights.cards.topCategory';
+  static const dashboard_insights_cards_spendingTrend_title =
+      'dashboard.insights.cards.spendingTrend.title';
+  static const dashboard_insights_cards_spendingTrend_started =
+      'dashboard.insights.cards.spendingTrend.started';
+  static const dashboard_insights_cards_spendingTrend_increased =
+      'dashboard.insights.cards.spendingTrend.increased';
+  static const dashboard_insights_cards_spendingTrend_decreased =
+      'dashboard.insights.cards.spendingTrend.decreased';
+  static const dashboard_insights_cards_spendingTrend =
+      'dashboard.insights.cards.spendingTrend';
+  static const dashboard_insights_cards_averageDaily_title =
+      'dashboard.insights.cards.averageDaily.title';
+  static const dashboard_insights_cards_averageDaily_no_spending =
+      'dashboard.insights.cards.averageDaily.no_spending';
+  static const dashboard_insights_cards_averageDaily_current =
+      'dashboard.insights.cards.averageDaily.current';
+  static const dashboard_insights_cards_averageDaily =
+      'dashboard.insights.cards.averageDaily';
+  static const dashboard_insights_cards_highestSpendingDay_title =
+      'dashboard.insights.cards.highestSpendingDay.title';
+  static const dashboard_insights_cards_highestSpendingDay_message =
+      'dashboard.insights.cards.highestSpendingDay.message';
+  static const dashboard_insights_cards_highestSpendingDay =
+      'dashboard.insights.cards.highestSpendingDay';
+  static const dashboard_insights_cards_spendingStreak_title =
+      'dashboard.insights.cards.spendingStreak.title';
+  static const dashboard_insights_cards_spendingStreak_message =
+      'dashboard.insights.cards.spendingStreak.message';
+  static const dashboard_insights_cards_spendingStreak_value =
+      'dashboard.insights.cards.spendingStreak.value';
+  static const dashboard_insights_cards_spendingStreak =
+      'dashboard.insights.cards.spendingStreak';
+  static const dashboard_insights_cards_smartRecommendation_title =
+      'dashboard.insights.cards.smartRecommendation.title';
+  static const dashboard_insights_cards_smartRecommendation_higher =
+      'dashboard.insights.cards.smartRecommendation.higher';
+  static const dashboard_insights_cards_smartRecommendation_lower =
+      'dashboard.insights.cards.smartRecommendation.lower';
+  static const dashboard_insights_cards_smartRecommendation_on_track =
+      'dashboard.insights.cards.smartRecommendation.on_track';
+  static const dashboard_insights_cards_smartRecommendation_reduceCategory =
+      'dashboard.insights.cards.smartRecommendation.reduceCategory';
+  static const dashboard_insights_cards_smartRecommendation =
+      'dashboard.insights.cards.smartRecommendation';
   static const dashboard_insights_cards = 'dashboard.insights.cards';
   static const dashboard_insights = 'dashboard.insights';
   static const dashboard_chart_labelFormat = 'dashboard.chart.labelFormat';
-  static const dashboard_chart_section_weeklySpending = 'dashboard.chart.section.weeklySpending';
-  static const dashboard_chart_section_weeklySubtitle = 'dashboard.chart.section.weeklySubtitle';
-  static const dashboard_chart_section_noData_title = 'dashboard.chart.section.noData.title';
-  static const dashboard_chart_section_noData_message = 'dashboard.chart.section.noData.message';
-  static const dashboard_chart_section_noData = 'dashboard.chart.section.noData';
+  static const dashboard_chart_section_weeklySpending =
+      'dashboard.chart.section.weeklySpending';
+  static const dashboard_chart_section_weeklySubtitle =
+      'dashboard.chart.section.weeklySubtitle';
+  static const dashboard_chart_section_noData_title =
+      'dashboard.chart.section.noData.title';
+  static const dashboard_chart_section_noData_message =
+      'dashboard.chart.section.noData.message';
+  static const dashboard_chart_section_noData =
+      'dashboard.chart.section.noData';
   static const dashboard_chart_section = 'dashboard.chart.section';
   static const dashboard_chart_total = 'dashboard.chart.total';
   static const dashboard_chart_highestDay = 'dashboard.chart.highestDay';
   static const dashboard_chart_on = 'dashboard.chart.on';
   static const dashboard_chart = 'dashboard.chart';
-  static const dashboard_categoryBreakdown_title = 'dashboard.categoryBreakdown.title';
-  static const dashboard_categoryBreakdown_subTitle = 'dashboard.categoryBreakdown.subTitle';
-  static const dashboard_categoryBreakdown_emptyTitle = 'dashboard.categoryBreakdown.emptyTitle';
-  static const dashboard_categoryBreakdown_emptyDescription = 'dashboard.categoryBreakdown.emptyDescription';
-  static const dashboard_categoryBreakdown_spent = 'dashboard.categoryBreakdown.spent';
+  static const dashboard_categoryBreakdown_title =
+      'dashboard.categoryBreakdown.title';
+  static const dashboard_categoryBreakdown_subTitle =
+      'dashboard.categoryBreakdown.subTitle';
+  static const dashboard_categoryBreakdown_emptyTitle =
+      'dashboard.categoryBreakdown.emptyTitle';
+  static const dashboard_categoryBreakdown_emptyDescription =
+      'dashboard.categoryBreakdown.emptyDescription';
+  static const dashboard_categoryBreakdown_spent =
+      'dashboard.categoryBreakdown.spent';
   static const dashboard_categoryBreakdown = 'dashboard.categoryBreakdown';
-  static const dashboard_recentExpenses_title = 'dashboard.recentExpenses.title';
-  static const dashboard_recentExpenses_subTitle = 'dashboard.recentExpenses.subTitle';
-  static const dashboard_recentExpenses_emptyTitle = 'dashboard.recentExpenses.emptyTitle';
-  static const dashboard_recentExpenses_emptyDescription = 'dashboard.recentExpenses.emptyDescription';
+  static const dashboard_recentExpenses_title =
+      'dashboard.recentExpenses.title';
+  static const dashboard_recentExpenses_subTitle =
+      'dashboard.recentExpenses.subTitle';
+  static const dashboard_recentExpenses_emptyTitle =
+      'dashboard.recentExpenses.emptyTitle';
+  static const dashboard_recentExpenses_emptyDescription =
+      'dashboard.recentExpenses.emptyDescription';
   static const dashboard_recentExpenses = 'dashboard.recentExpenses';
   static const dashboard_errors_errorLoad = 'dashboard.errors.errorLoad';
   static const dashboard_errors_retryBtn = 'dashboard.errors.retryBtn';
@@ -394,37 +525,53 @@ abstract class  LocaleKeys {
   static const recurring_form_title_add = 'recurring.form.title.add';
   static const recurring_form_title_edit = 'recurring.form.title.edit';
   static const recurring_form_title = 'recurring.form.title';
-  static const recurring_form_validation_enterTitle = 'recurring.form.validation.enterTitle';
-  static const recurring_form_validation_enterAmount = 'recurring.form.validation.enterAmount';
+  static const recurring_form_validation_enterTitle =
+      'recurring.form.validation.enterTitle';
+  static const recurring_form_validation_enterAmount =
+      'recurring.form.validation.enterAmount';
   static const recurring_form_validation = 'recurring.form.validation';
   static const recurring_form_fields_title = 'recurring.form.fields.title';
   static const recurring_form_fields_amount = 'recurring.form.fields.amount';
-  static const recurring_form_fields_frequency = 'recurring.form.fields.frequency';
-  static const recurring_form_fields_startDate = 'recurring.form.fields.startDate';
+  static const recurring_form_fields_frequency =
+      'recurring.form.fields.frequency';
+  static const recurring_form_fields_startDate =
+      'recurring.form.fields.startDate';
   static const recurring_form_fields_endDate = 'recurring.form.fields.endDate';
-  static const recurring_form_fields_category = 'recurring.form.fields.category';
+  static const recurring_form_fields_category =
+      'recurring.form.fields.category';
   static const recurring_form_fields = 'recurring.form.fields';
-  static const recurring_form_frequencies_daily = 'recurring.form.frequencies.daily';
-  static const recurring_form_frequencies_weekly = 'recurring.form.frequencies.weekly';
-  static const recurring_form_frequencies_monthly = 'recurring.form.frequencies.monthly';
-  static const recurring_form_frequencies_yearly = 'recurring.form.frequencies.yearly';
+  static const recurring_form_frequencies_daily =
+      'recurring.form.frequencies.daily';
+  static const recurring_form_frequencies_weekly =
+      'recurring.form.frequencies.weekly';
+  static const recurring_form_frequencies_monthly =
+      'recurring.form.frequencies.monthly';
+  static const recurring_form_frequencies_yearly =
+      'recurring.form.frequencies.yearly';
   static const recurring_form_frequencies = 'recurring.form.frequencies';
   static const recurring_form_save = 'recurring.form.save';
   static const recurring_form_create = 'recurring.form.create';
   static const recurring_form_repeat = 'recurring.form.repeat';
   static const recurring_form = 'recurring.form';
-  static const recurring_successMessage_create = 'recurring.successMessage.create';
-  static const recurring_successMessage_update = 'recurring.successMessage.update';
-  static const recurring_successMessage_delete = 'recurring.successMessage.delete';
+  static const recurring_successMessage_create =
+      'recurring.successMessage.create';
+  static const recurring_successMessage_update =
+      'recurring.successMessage.update';
+  static const recurring_successMessage_delete =
+      'recurring.successMessage.delete';
   static const recurring_successMessage = 'recurring.successMessage';
-  static const recurring_errorMessage_failedAction = 'recurring.errorMessage.failedAction';
-  static const recurring_errorMessage_failedLoad = 'recurring.errorMessage.failedLoad';
+  static const recurring_errorMessage_failedAction =
+      'recurring.errorMessage.failedAction';
+  static const recurring_errorMessage_failedLoad =
+      'recurring.errorMessage.failedLoad';
   static const recurring_errorMessage = 'recurring.errorMessage';
-  static const recurring_management_delete_title = 'recurring.management.delete.title';
-  static const recurring_management_delete_cancel = 'recurring.management.delete.cancel';
-  static const recurring_management_delete_confirm = 'recurring.management.delete.confirm';
+  static const recurring_management_delete_title =
+      'recurring.management.delete.title';
+  static const recurring_management_delete_cancel =
+      'recurring.management.delete.cancel';
+  static const recurring_management_delete_confirm =
+      'recurring.management.delete.confirm';
   static const recurring_management_delete = 'recurring.management.delete';
   static const recurring_management = 'recurring.management';
   static const recurring = 'recurring';
-
 }
