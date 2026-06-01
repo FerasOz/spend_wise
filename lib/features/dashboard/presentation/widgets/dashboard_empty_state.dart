@@ -11,45 +11,60 @@ class DashboardEmptyState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: EdgeInsets.all(AppSpacing.xxl.w),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              padding: EdgeInsets.all(AppSpacing.xl.w),
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary.withAlpha(20),
-                shape: BoxShape.circle,
+    return FadeTransition(
+      opacity: AlwaysStoppedAnimation(0.9),
+      child: Center(
+        child: Padding(
+          padding: EdgeInsets.all(AppSpacing.xxl.w),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              FadeTransition(
+                opacity: AlwaysStoppedAnimation(0.8),
+                child: Container(
+                  padding: EdgeInsets.all(AppSpacing.xl.w),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.primary.withAlpha(20),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(
+                    Icons.insights_outlined,
+                    size: 42.sp,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                ),
               ),
-              child: Icon(
-                Icons.insights_outlined,
-                size: 42.sp,
-                color: Theme.of(context).colorScheme.primary,
+              SizedBox(height: AppSpacing.xl.h),
+              FadeTransition(
+                opacity: AlwaysStoppedAnimation(0.9),
+                child: Text(
+                  LocaleKeys.dashboard_empty_title.tr(),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w700),
+                  textAlign: TextAlign.center,
+                ),
               ),
-            ),
-            SizedBox(height: AppSpacing.xl.h),
-            Text(
-              LocaleKeys.dashboard_empty_title.tr(),
-              style: Theme.of(
-                context,
-              ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w700),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: AppSpacing.spacing10.h),
-            Text(
-              LocaleKeys.dashboard_empty_subTitle.tr(),
-              style: Theme.of(context).textTheme.bodyMedium,
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: AppSpacing.xxl.h),
-            FilledButton.icon(
-              onPressed: onAddExpense,
-              icon: const Icon(Icons.add),
-              label: Text(LocaleKeys.dashboard_empty_button.tr()),
-            ),
-          ],
+              SizedBox(height: AppSpacing.spacing10.h),
+              FadeTransition(
+                opacity: AlwaysStoppedAnimation(0.9),
+                child: Text(
+                  LocaleKeys.dashboard_empty_subTitle.tr(),
+                  style: Theme.of(context).textTheme.bodyMedium,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              SizedBox(height: AppSpacing.xxl.h),
+              FadeTransition(
+                opacity: AlwaysStoppedAnimation(0.9),
+                child: FilledButton.icon(
+                  onPressed: onAddExpense,
+                  icon: const Icon(Icons.add),
+                  label: Text(LocaleKeys.dashboard_empty_button.tr()),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

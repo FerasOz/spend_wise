@@ -16,29 +16,44 @@ class DashboardErrorState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: EdgeInsets.all(24.w),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.error_outline, size: 44.sp),
-            SizedBox(height: AppSpacing.spacing14.h),
-            Text(
-              LocaleKeys.dashboard_errors_errorLoad.tr(),
-              style: Theme.of(
-                context,
-              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: AppSpacing.sm.h),
-            Text(message, textAlign: TextAlign.center),
-            SizedBox(height: AppSpacing.spacing18.h),
-            FilledButton(
-              onPressed: onRetry,
-              child: Text(LocaleKeys.dashboard_errors_retryBtn.tr()),
-            ),
-          ],
+    return FadeTransition(
+      opacity: AlwaysStoppedAnimation(0.9),
+      child: Center(
+        child: Padding(
+          padding: EdgeInsets.all(AppSpacing.xxl.w),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              FadeTransition(
+                opacity: AlwaysStoppedAnimation(0.8),
+                child: Icon(Icons.error_outline, size: 44.sp),
+              ),
+              SizedBox(height: AppSpacing.md.h),
+              FadeTransition(
+                opacity: AlwaysStoppedAnimation(0.9),
+                child: Text(
+                  LocaleKeys.dashboard_errors_errorLoad.tr(),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              SizedBox(height: AppSpacing.sm.h),
+              FadeTransition(
+                opacity: AlwaysStoppedAnimation(0.9),
+                child: Text(message, textAlign: TextAlign.center),
+              ),
+              SizedBox(height: AppSpacing.md.h),
+              FadeTransition(
+                opacity: AlwaysStoppedAnimation(0.9),
+                child: FilledButton(
+                  onPressed: onRetry,
+                  child: Text(LocaleKeys.dashboard_errors_retryBtn.tr()),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

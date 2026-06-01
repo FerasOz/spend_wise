@@ -21,27 +21,33 @@ class DashboardCategoryBreakdown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DashboardSectionCard(
-      title: LocaleKeys.dashboard_categoryBreakdown_title.tr(),
-      subtitle: LocaleKeys.dashboard_categoryBreakdown_subTitle.tr(),
-      child: categories.isEmpty
-          ? DashboardSectionEmptyState(
-              title: LocaleKeys.dashboard_categoryBreakdown_emptyTitle.tr(),
-              message: LocaleKeys.dashboard_categoryBreakdown_emptyDescription
-                  .tr(),
-            )
-          : Column(
-              children: [
-                for (var index = 0; index < categories.length; index++) ...[
-                  _CategoryBreakdownItem(
-                    spending: categories[index],
-                    onTap: () => onCategoryTap(categories[index]),
-                  ),
-                  if (index != categories.length - 1)
-                    SizedBox(height: AppSpacing.spacing14.h),
-                ],
-              ],
-            ),
+    return FadeTransition(
+      opacity: AlwaysStoppedAnimation(0.95),
+      child: DashboardSectionCard(
+        title: LocaleKeys.dashboard_categoryBreakdown_title.tr(),
+        subtitle: LocaleKeys.dashboard_categoryBreakdown_subTitle.tr(),
+        child: categories.isEmpty
+            ? DashboardSectionEmptyState(
+                title: LocaleKeys.dashboard_categoryBreakdown_emptyTitle.tr(),
+                message: LocaleKeys.dashboard_categoryBreakdown_emptyDescription
+                    .tr(),
+              )
+            : FadeTransition(
+                opacity: AlwaysStoppedAnimation(0.9),
+                child: Column(
+                  children: [
+                    for (var index = 0; index < categories.length; index++) ...[
+                      _CategoryBreakdownItem(
+                        spending: categories[index],
+                        onTap: () => onCategoryTap(categories[index]),
+                      ),
+                      if (index != categories.length - 1)
+                        SizedBox(height: AppSpacing.spacing14.h),
+                    ],
+                  ],
+                ),
+              ),
+      ),
     );
   }
 }

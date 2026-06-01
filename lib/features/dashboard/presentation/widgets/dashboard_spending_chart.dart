@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_radius.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/widgets/currency_text.dart';
@@ -21,42 +22,48 @@ class DashboardSpendingChart extends StatelessWidget {
         ? const SpendingChartPoint(label: 'Mon', total: 0)
         : points.reduce((a, b) => a.total >= b.total ? a : b);
 
-    return DashboardSectionCard(
-      title: LocaleKeys.dashboard_chart_section_weeklySpending.tr(),
-      subtitle: LocaleKeys.dashboard_chart_section_weeklySubtitle.tr(),
-      child: total == 0
-          ? DashboardSectionEmptyState(
-              title: LocaleKeys.dashboard_chart_section_noData_title.tr(),
-              message: LocaleKeys.dashboard_chart_section_noData_message.tr(),
-            )
-          : Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Wrap(
-                  spacing: AppSpacing.sm.w,
-                  runSpacing: AppSpacing.sm.h,
+    return FadeTransition(
+      opacity: AlwaysStoppedAnimation(0.95),
+      child: DashboardSectionCard(
+        title: LocaleKeys.dashboard_chart_section_weeklySpending.tr(),
+        subtitle: LocaleKeys.dashboard_chart_section_weeklySubtitle.tr(),
+        child: total == 0
+            ? DashboardSectionEmptyState(
+                title: LocaleKeys.dashboard_chart_section_noData_title.tr(),
+                message: LocaleKeys.dashboard_chart_section_noData_message.tr(),
+              )
+            : FadeTransition(
+                opacity: AlwaysStoppedAnimation(0.9),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _ChartChip(
-                      label: LocaleKeys.dashboard_chart_total.tr(),
-                      child: CurrencyText(amount: total),
+                    Wrap(
+                      spacing: AppSpacing.sm.w,
+                      runSpacing: AppSpacing.sm.h,
+                      children: [
+                        _ChartChip(
+                          label: LocaleKeys.dashboard_chart_total.tr(),
+                          child: CurrencyText(amount: total),
+                        ),
+                        _ChartChip(
+                          label: LocaleKeys.dashboard_chart_highestDay.tr(),
+                          child: CurrencyText(
+                            amount: highest.total,
+                            suffix:
+                                ' ${LocaleKeys.dashboard_chart_on.tr()} ${highest.label}',
+                          ),
+                        ),
+                      ],
                     ),
-                    _ChartChip(
-                      label: LocaleKeys.dashboard_chart_highestDay.tr(),
-                      child: CurrencyText(
-                        amount: highest.total,
-                        suffix:
-                            ' ${LocaleKeys.dashboard_chart_on.tr()} ${highest.label}',
-                      ),
+                    SizedBox(height: AppSpacing.lg.h),
+                    SizedBox(
+                      height: 220.h,
+                      child: DashboardSpendingChartBody(points: points),
                     ),
                   ],
                 ),
-                SizedBox(height: AppSpacing.lg.h),
-                SizedBox(
-                  height: 220.h,
-                  child: DashboardSpendingChartBody(points: points),
-                ),
-              ],
-            ),
+              ),
+      ),
     );
   }
 }
@@ -69,12 +76,31 @@ class _ChartChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Chip(
-      label: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [Text('$label: '), child],
+    final theme = Theme.of(context);
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 260),
+      curve: Curves.easeOutCubic,
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSpacing.sm.w,
+        vertical: AppSpacing.xs.h,
       ),
-      backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surfaceContainerHighest,
+        borderRadius: BorderRadius.circular(AppRadius.xl.r),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            '$label: ',
+            style: theme.textTheme.bodySmall?.copyWith(
+              color: theme.colorScheme.onSurfaceVariant,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          child,
+        ],
+      ),
     );
   }
 }

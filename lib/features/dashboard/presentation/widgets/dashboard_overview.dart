@@ -54,7 +54,7 @@ class DashboardOverview extends StatelessWidget {
                           spending.category,
                         ),
                   ),
-                  SizedBox(height: 24.h),
+                  SizedBox(height: AppSpacing.xxl.h),
                   DashboardRecentExpenses(
                     expenses: state.recentExpenses,
                     categoriesById: state.categoriesById,
@@ -76,7 +76,7 @@ class DashboardOverview extends StatelessWidget {
                         ),
                   ),
                 ),
-                SizedBox(width: 24.w),
+                SizedBox(width: AppSpacing.xxl.w),
                 Expanded(
                   child: DashboardRecentExpenses(
                     expenses: state.recentExpenses,
@@ -87,7 +87,7 @@ class DashboardOverview extends StatelessWidget {
             );
           },
         ),
-        SizedBox(height: 24.h),
+        SizedBox(height: AppSpacing.xxl.h),
       ],
     );
   }

@@ -43,10 +43,10 @@ class DashboardPage extends StatelessWidget {
     );
 
     if (!showScaffold) {
-      return SafeArea(child: content);
+      return content;
     }
 
-    return Scaffold(body: SafeArea(child: content));
+    return Scaffold(body: content);
   }
 }
 
@@ -66,9 +66,12 @@ class _DashboardPageBody extends StatelessWidget {
           previous.categoriesById != current.categoriesById ||
           previous.errorMessage != current.errorMessage,
       builder: (context, state) {
-        return ResponsivePageContent(
-          maxWidth: 860,
-          child: _buildContent(context, state),
+        return FadeTransition(
+          opacity: AlwaysStoppedAnimation(0.95),
+          child: ResponsivePageContent(
+            maxWidth: 860,
+            child: _buildContent(context, state),
+          ),
         );
       },
     );
@@ -78,22 +81,34 @@ class _DashboardPageBody extends StatelessWidget {
     if ((state.status == RequestsStatus.initial ||
             state.status == RequestsStatus.loading) &&
         state.summary == null) {
-      return const Center(child: CircularProgressIndicator());
+      return FadeTransition(
+        opacity: AlwaysStoppedAnimation(0.8),
+        child: const Center(child: CircularProgressIndicator()),
+      );
     }
 
     if (state.status == RequestsStatus.error && state.summary == null) {
-      return DashboardErrorState(
-        message: state.errorMessage ?? 'Failed to load dashboard.',
-        onRetry: context.read<DashboardCubit>().loadDashboard,
+      return FadeTransition(
+        opacity: AlwaysStoppedAnimation(0.9),
+        child: DashboardErrorState(
+          message: state.errorMessage ?? 'Failed to load dashboard.',
+          onRetry: context.read<DashboardCubit>().loadDashboard,
+        ),
       );
     }
 
     if (!state.hasExpenses) {
-      return DashboardEmptyState(
-        onAddExpense: () => ExpensesPage.openExpenseFormPage(context),
+      return FadeTransition(
+        opacity: AlwaysStoppedAnimation(0.9),
+        child: DashboardEmptyState(
+          onAddExpense: () => ExpensesPage.openExpenseFormPage(context),
+        ),
       );
     }
 
-    return DashboardOverview(state: state);
+    return FadeTransition(
+      opacity: AlwaysStoppedAnimation(0.95),
+      child: DashboardOverview(state: state),
+    );
   }
 }
