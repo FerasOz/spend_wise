@@ -21,7 +21,7 @@ class NotificationsSection extends StatelessWidget {
       children: [
         SettingsTile(
           icon: Icons.notifications_none_outlined,
-          title: LocaleKeys.settings_notifications_push.tr(),
+          title: LocaleKeys.settings_notifications_push_title.tr(),
           subtitle: LocaleKeys.settings_notifications_push_subtitle.tr(),
           trailing: Switch.adaptive(
             value: settings.notificationsEnabled,
@@ -33,7 +33,7 @@ class NotificationsSection extends StatelessWidget {
         ),
         SettingsTile(
           icon: Icons.cloud_circle_outlined,
-          title: LocaleKeys.settings_notifications_backup.tr(),
+          title: LocaleKeys.settings_notifications_backup_title.tr(),
           subtitle: LocaleKeys.settings_notifications_backup_subtitle.tr(),
           trailing: Switch.adaptive(
             value: settings.autoBackupEnabled,

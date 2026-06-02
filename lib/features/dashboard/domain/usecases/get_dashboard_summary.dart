@@ -1,14 +1,16 @@
 import 'package:spend_wise/features/dashboard/domain/entities/dashboard_source_data.dart';
 import 'package:spend_wise/features/dashboard/domain/entities/dashboard_summary.dart';
 import 'package:spend_wise/features/dashboard/domain/usecases/get_top_categories.dart';
+import 'package:spend_wise/core/services/app_clock.dart';
 
 class GetDashboardSummary {
-  const GetDashboardSummary(this._getTopCategories);
+  const GetDashboardSummary(this._getTopCategories, this._clock);
 
   final GetTopCategories _getTopCategories;
+  final AppClock _clock;
 
   DashboardSummary call(DashboardSourceData sourceData) {
-    final now = DateTime.now();
+    final now = _clock.now();
     final totalSpending = sourceData.expenses.fold<double>(
       0,
       (sum, expense) => sum + expense.amount,

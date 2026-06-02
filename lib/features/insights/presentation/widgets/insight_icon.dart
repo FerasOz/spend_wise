@@ -30,11 +30,11 @@ class InsightIcon extends StatelessWidget {
   IconData get _iconData {
     return switch (type) {
       InsightType.topCategory => Icons.category_outlined,
-      InsightType.spending_trend => Icons.trending_up_outlined,
-      InsightType.average_daily => Icons.calendar_today_outlined,
-      InsightType.highest_spending_day => Icons.local_fire_department_outlined,
-      InsightType.spending_streak => Icons.timeline_outlined,
-      InsightType.smart_recommendation => Icons.lightbulb_outline,
+      InsightType.spendingTrend => Icons.trending_up_outlined,
+      InsightType.averageDaily => Icons.calendar_today_outlined,
+      InsightType.highestSpendingDay => Icons.local_fire_department_outlined,
+      InsightType.spendingStreak => Icons.timeline_outlined,
+      InsightType.smartRecommendation => Icons.lightbulb_outline,
     };
   }
 }

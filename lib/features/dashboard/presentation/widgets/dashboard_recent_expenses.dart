@@ -47,7 +47,7 @@ class DashboardRecentExpenses extends StatelessWidget {
                               icon: 'shopping_cart',
                               color: 0xFFFF6B6B,
                               isDefault: false,
-                              createdAt: expenses[index].date,
+                          createdAt: DateTime.fromMillisecondsSinceEpoch(0),
                             ),
                       ),
                       if (index != expenses.length - 1)

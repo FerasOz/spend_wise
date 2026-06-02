@@ -24,9 +24,9 @@ class InsightCard {
 
 enum InsightType {
   topCategory,
-  spending_trend,
-  average_daily,
-  highest_spending_day,
-  spending_streak,
-  smart_recommendation,
+  spendingTrend,
+  averageDaily,
+  highestSpendingDay,
+  spendingStreak,
+  smartRecommendation,
 }

@@ -1,17 +1,23 @@
 import '../../../expenses/domain/repositories/expense_repository.dart';
+import '../../../../core/services/app_clock.dart';
 import '../entities/budget.dart';
 import '../repositories/budget_repository.dart';
 
 class GetBudgets {
-  const GetBudgets(this._budgetRepository, this._expenseRepository);
+  const GetBudgets(
+    this._budgetRepository,
+    this._expenseRepository,
+    this._clock,
+  );
 
   final BudgetRepository _budgetRepository;
   final ExpenseRepository _expenseRepository;
+  final AppClock _clock;
 
   Future<List<Budget>> call() async {
     final budgets = await _budgetRepository.getBudgets();
     final expenses = await _expenseRepository.getExpenses();
-    final now = DateTime.now();
+    final now = _clock.now();
 
     return budgets.map((budget) {
       final spentAmount = expenses

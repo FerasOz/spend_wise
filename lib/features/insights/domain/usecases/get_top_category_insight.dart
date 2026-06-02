@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-
 import '../../../categories/domain/entities/category.dart';
 import '../../../expenses/domain/entities/expense.dart';
+import '../entities/insight_color_tokens.dart';
 import '../entities/insight_card.dart';
 
 class GetTopCategoryInsight {
@@ -29,10 +28,11 @@ class GetTopCategoryInsight {
       title: 'Top category',
       message: 'top_category.message',
       type: InsightType.topCategory,
-      color: category?.color ?? Colors.blue.value,
+      color: category?.color ?? InsightColorTokens.blue,
       amount: amount,
       metadata: {
-        'category': category?.displayName ?? 'Unknown',
+        'category': category?.name ?? 'Unknown',
+        'categoryId': category?.id ?? '',
         'percentage': percentage,
       },
     );
@@ -43,6 +43,6 @@ class GetTopCategoryInsight {
     title: 'Top category',
     message: '',
     type: InsightType.topCategory,
-    color: Colors.blue.value,
+    color: InsightColorTokens.blue,
   );
 }

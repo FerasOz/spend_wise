@@ -4,14 +4,22 @@ import '../utils/currency_formatter.dart';
 class CurrencyDisplayService {
   const CurrencyDisplayService._();
 
+  static const Map<String, double> _usdRates = {
+    'USD': 1,
+    'EUR': .92,
+    'ILS': 3.65,
+    'JOD': .71,
+    'SAR': 3.75,
+  };
+
   static double convertFromUsd(double amount, AppCurrency currency) {
-    // No conversion - return amount as-is
-    return amount;
+    final rate = _usdRates[currency.code.toUpperCase()] ?? 1;
+    return amount * rate;
   }
 
   static String formatFromUsd(double amount, AppCurrency currency) {
     return CurrencyFormatter.format(
-      amount, // Use original amount without conversion
+      convertFromUsd(amount, currency),
       symbol: currency.symbol,
     );
   }

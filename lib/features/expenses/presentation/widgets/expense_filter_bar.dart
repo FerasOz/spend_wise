@@ -9,6 +9,7 @@ import '../../../../core/utils/app_formatters.dart';
 import '../../../../features/settings/domain/entities/app_currency.dart';
 import '../../../../features/settings/presentation/cubit/settings_cubit.dart';
 import '../../../../features/categories/presentation/cubit/category_cubit.dart';
+import '../../../../features/categories/presentation/utils/category_display_name.dart';
 import '../../domain/entities/expense_filter.dart';
 import '../cubit/expense_filter_cubit.dart';
 import '../cubit/expense_filter_state.dart';
@@ -60,7 +61,7 @@ class ExpenseFilterBar extends StatelessWidget {
             ),
             for (final category in categories)
               ChoiceChip(
-                label: Text(category.displayName),
+                label: Text(category.localizedName),
                 selected: state.categoryFilterId == category.id,
                 onSelected: (_) => context
                     .read<ExpenseFilterCubit>()

@@ -13,9 +13,9 @@ class SupportedCurrencyOption {
   final String translationKey;
 }
 
-final supportedCurrencies = [
+const supportedCurrencies = [
   SupportedCurrencyOption(
-    currency: AppCurrency(code: 'USD', symbol: '\$'),
+    currency: AppCurrency(code: 'USD', symbol: r'$'),
     translationKey: LocaleKeys.currency_names_USD,
   ),
   SupportedCurrencyOption(
@@ -24,15 +24,15 @@ final supportedCurrencies = [
   ),
   SupportedCurrencyOption(
     currency: AppCurrency(code: 'ILS', symbol: '₪'),
-    translationKey: LocaleKeys.currency_names_ILS.tr(),
+    translationKey: LocaleKeys.currency_names_ILS,
   ),
   SupportedCurrencyOption(
     currency: AppCurrency(code: 'JOD', symbol: 'JD '),
-    translationKey: LocaleKeys.currency_names_JOD.tr(),
+    translationKey: LocaleKeys.currency_names_JOD,
   ),
   SupportedCurrencyOption(
     currency: AppCurrency(code: 'SAR', symbol: 'SAR '),
-    translationKey: LocaleKeys.currency_names_SAR.tr(),
+    translationKey: LocaleKeys.currency_names_SAR,
   ),
 ];
 
@@ -41,8 +41,9 @@ final currencySymbols = {
     option.currency.code: option.currency.symbol,
 };
 
-bool isSupportedCurrency(String code) =>
-    currencySymbols.containsKey(code.toUpperCase());
+bool isSupportedCurrency(String code) {
+  return currencySymbols.containsKey(code.toUpperCase());
+}
 
 SupportedCurrencyOption currencyOptionByCode(String code) {
   final normalizedCode = code.toUpperCase();

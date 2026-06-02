@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-
 import '../../../expenses/domain/entities/expense.dart';
 import '../../domain/entities/insight_card.dart';
+import '../../domain/entities/insight_color_tokens.dart';
 
 class GetAverageDailyInsight {
   InsightCard call(List<Expense> expenses) {
@@ -20,8 +19,8 @@ class GetAverageDailyInsight {
         id: 'average_daily',
         title: 'Average daily',
         message: 'average_daily.no_spending',
-        type: InsightType.average_daily,
-        color: Colors.purple.value,
+        type: InsightType.averageDaily,
+        color: InsightColorTokens.purple,
         metadata: const {'variant': 'no_spending'},
       );
     }
@@ -30,8 +29,8 @@ class GetAverageDailyInsight {
       id: 'average_daily',
       title: 'Average daily',
       message: 'average_daily.current',
-      type: InsightType.average_daily,
-      color: Colors.purple.value,
+      type: InsightType.averageDaily,
+      color: InsightColorTokens.purple,
       amount: avgDaily,
       metadata: const {'variant': 'current'},
     );
@@ -41,7 +40,7 @@ class GetAverageDailyInsight {
     id: 'average_daily',
     title: 'Average daily',
     message: '',
-    type: InsightType.average_daily,
-    color: Colors.purple.value,
+    type: InsightType.averageDaily,
+    color: InsightColorTokens.purple,
   );
 }

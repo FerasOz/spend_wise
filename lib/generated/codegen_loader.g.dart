@@ -150,6 +150,7 @@ class CodegenLoader extends AssetLoader{
     "notifications": {
       "title": "الإشعارات",
       "push": {
+        "title": "الإشعارات الفورية",
         "subtitle": "استقبل التنبيهات والتذكيرات"
       },
       "backup": {
@@ -684,6 +685,7 @@ static const Map<String,dynamic> _en = {
     "notifications": {
       "title": "Notifications",
       "push": {
+        "title": "Push notifications",
         "subtitle": "Receive alerts and reminders"
       },
       "backup": {

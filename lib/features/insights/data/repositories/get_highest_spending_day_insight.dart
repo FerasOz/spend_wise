@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-
 import '../../../expenses/domain/entities/expense.dart';
 import '../../domain/entities/insight_card.dart';
+import '../../domain/entities/insight_color_tokens.dart';
 
 class GetHighestSpendingDayInsight {
   InsightCard call(List<Expense> expenses) {
@@ -27,8 +26,8 @@ class GetHighestSpendingDayInsight {
       id: 'highest_spending_day',
       title: 'Highest spending day',
       message: 'highest_spending_day.message',
-      type: InsightType.highest_spending_day,
-      color: Colors.red.value,
+      type: InsightType.highestSpendingDay,
+      color: InsightColorTokens.red,
       amount: highestDay.value,
       metadata: {'day': _dayValue(highestDay.key)},
     );
@@ -38,8 +37,8 @@ class GetHighestSpendingDayInsight {
     id: 'highest_spending_day',
     title: 'Highest spending day',
     message: '',
-    type: InsightType.highest_spending_day,
-    color: Colors.red.value,
+    type: InsightType.highestSpendingDay,
+    color: InsightColorTokens.red,
   );
 
   String _dayValue(DateTime date) {

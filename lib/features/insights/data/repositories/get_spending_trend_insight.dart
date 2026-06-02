@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
+import 'package:spend_wise/features/insights/domain/entities/insight_color_tokens.dart';
 import 'package:spend_wise/features/insights/domain/entities/insight_card.dart';
 
 class GetSpendingTrendInsight {
@@ -20,8 +20,8 @@ class GetSpendingTrendInsight {
         id: 'spending_trend',
         title: 'Spending trend',
         message: 'spending_trend.started',
-        type: InsightType.spending_trend,
-        color: Colors.green.value,
+        type: InsightType.spendingTrend,
+        color: InsightColorTokens.green,
         metadata: const {'variant': 'started'},
       );
     }
@@ -35,9 +35,9 @@ class GetSpendingTrendInsight {
       id: 'spending_trend',
       title: 'Spending trend',
       message: 'spending_trend.$variant',
-      type: InsightType.spending_trend,
+      type: InsightType.spendingTrend,
       value: '${delta > 0 ? '+' : ''}${delta.toStringAsFixed(1)}%',
-      color: delta >= 0 ? Colors.orange.value : Colors.green.value,
+      color: delta >= 0 ? InsightColorTokens.orange : InsightColorTokens.green,
       metadata: {
         'variant': variant,
         'percent': delta.abs().toStringAsFixed(1),
@@ -55,7 +55,7 @@ class GetSpendingTrendInsight {
     id: 'spending_trend',
     title: 'Spending trend',
     message: '',
-    type: InsightType.spending_trend,
-    color: Colors.green.value,
+    type: InsightType.spendingTrend,
+    color: InsightColorTokens.green,
   );
 }

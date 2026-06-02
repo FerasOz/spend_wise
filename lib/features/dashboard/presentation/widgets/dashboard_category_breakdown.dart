@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/core/theme/app_spacing.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
 import '../../../../core/widgets/currency_text.dart';
+import '../../../../features/categories/presentation/utils/category_display_name.dart';
 import '../../../../features/categories/presentation/utils/category_presentation_data.dart';
 import '../../domain/entities/category_spending.dart';
 import 'dashboard_section_card.dart';
@@ -88,7 +89,7 @@ class _CategoryBreakdownItem extends StatelessWidget {
                 SizedBox(width: 12.w),
                 Expanded(
                   child: Text(
-                    spending.category.displayName,
+                    spending.category.localizedName,
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       fontWeight: FontWeight.w600,
                     ),

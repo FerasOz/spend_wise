@@ -53,7 +53,7 @@ class GetTopCategories {
       icon: 'shopping_cart',
       color: 0xFFFF6B6B,
       isDefault: false,
-      createdAt: DateTime.now(),
+      createdAt: DateTime.fromMillisecondsSinceEpoch(0),
     );
   }
 }

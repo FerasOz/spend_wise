@@ -3,15 +3,21 @@ import 'dart:io';
 import 'package:share_plus/share_plus.dart';
 
 import '../../../categories/data/datasources/category_local_data_source.dart';
+import '../../../categories/data/models/category_model.dart';
 import '../../../categories/domain/repositories/category_repository.dart';
 import '../../../budgets/data/datasources/budget_local_data_source.dart';
+import '../../../budgets/data/models/budget_model.dart';
+import '../../../budgets/domain/repositories/budget_repository.dart';
 import '../../../dashboard/domain/entities/dashboard_source_data.dart';
 import '../../../dashboard/domain/usecases/get_dashboard_summary.dart';
 import '../../../dashboard/domain/usecases/get_top_categories.dart';
 import '../../../dashboard/domain/usecases/get_weekly_spending.dart';
 import '../../../expenses/data/datasources/expense_local_data_source.dart';
+import '../../../expenses/data/models/expense_model.dart';
 import '../../../expenses/domain/repositories/expense_repository.dart';
 import '../../../recurring/data/datasources/recurring_expense_local_data_source.dart';
+import '../../../recurring/data/models/recurring_expense_model.dart';
+import '../../../recurring/domain/repositories/recurring_expense_repository.dart';
 import '../../../settings/data/datasources/settings_local_data_source.dart';
 import '../../../settings/domain/repositories/settings_repository.dart';
 import '../../domain/entities/export_file.dart';
@@ -36,6 +42,8 @@ class ExportRepositoryImpl implements ExportRepository {
   const ExportRepositoryImpl({
     required ExpenseRepository expenseRepository,
     required CategoryRepository categoryRepository,
+    required BudgetRepository budgetRepository,
+    required RecurringExpenseRepository recurringRepository,
     required SettingsRepository settingsRepository,
     required ExportFileLocalDataSource files,
     required ExportHistoryLocalDataSource history,
@@ -48,6 +56,8 @@ class ExportRepositoryImpl implements ExportRepository {
     required PdfReportContentBuilder pdfContent,
   }) : _expenses = expenseRepository,
        _categories = categoryRepository,
+       _budgets = budgetRepository,
+       _recurring = recurringRepository,
        _settings = settingsRepository,
        _files = files,
        _history = history,
@@ -61,6 +71,8 @@ class ExportRepositoryImpl implements ExportRepository {
 
   final ExpenseRepository _expenses;
   final CategoryRepository _categories;
+  final BudgetRepository _budgets;
+  final RecurringExpenseRepository _recurring;
   final SettingsRepository _settings;
   final ExportFileLocalDataSource _files;
   final ExportHistoryLocalDataSource _history;

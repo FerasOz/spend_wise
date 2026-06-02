@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
+import 'package:spend_wise/features/insights/domain/entities/insight_color_tokens.dart';
 import 'package:spend_wise/features/insights/domain/entities/insight_card.dart';
 
 class GetSpendingStreakInsight {
@@ -35,9 +35,9 @@ class GetSpendingStreakInsight {
       id: 'spending_streak',
       title: 'Spending streak',
       message: 'spending_streak.message',
-      type: InsightType.spending_streak,
+      type: InsightType.spendingStreak,
       value: '$streakDays',
-      color: Colors.orange.value,
+      color: InsightColorTokens.orange,
       metadata: {'days': '$streakDays'},
     );
   }
@@ -48,7 +48,7 @@ class GetSpendingStreakInsight {
     id: 'spending_streak',
     title: 'Spending streak',
     message: '',
-    type: InsightType.spending_streak,
-    color: Colors.orange.value,
+    type: InsightType.spendingStreak,
+    color: InsightColorTokens.orange,
   );
 }

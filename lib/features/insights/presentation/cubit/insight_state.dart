@@ -6,15 +6,13 @@ class InsightState {
       isLoading = false,
       error = null;
 
-  const InsightState.loaded(List<InsightCard> insights)
-    : insights = insights,
-      isLoading = false,
+  const InsightState.loaded(this.insights)
+    : isLoading = false,
       error = null;
 
-  const InsightState.error(String error)
+  const InsightState.error(this.error)
     : insights = const [],
-      isLoading = false,
-      error = error;
+      isLoading = false;
 
   final List<InsightCard> insights;
   final bool isLoading;

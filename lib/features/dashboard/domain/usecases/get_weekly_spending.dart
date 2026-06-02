@@ -1,11 +1,14 @@
 import 'package:spend_wise/features/dashboard/domain/entities/dashboard_source_data.dart';
 import 'package:spend_wise/features/dashboard/domain/entities/spending_chart_point.dart';
+import 'package:spend_wise/core/services/app_clock.dart';
 
 class GetWeeklySpending {
-  const GetWeeklySpending();
+  const GetWeeklySpending(this._clock);
+
+  final AppClock _clock;
 
   List<SpendingChartPoint> call(DashboardSourceData sourceData) {
-    final now = DateTime.now();
+    final now = _clock.now();
     final weekStart = DateTime(
       now.year,
       now.month,

@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
 import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
+import 'package:spend_wise/features/insights/domain/entities/insight_color_tokens.dart';
 import 'package:spend_wise/features/insights/domain/entities/insight_card.dart';
 
 class GetSmartRecommendationInsight {
@@ -31,33 +31,33 @@ class GetSmartRecommendationInsight {
         (lastSevenDays.isNotEmpty ? 7 : 1);
     final metadata = <String, String>{};
     var variant = 'on_track';
-    var color = Colors.blue.value;
+    var color = InsightColorTokens.blue;
 
     if (sevenDayAvg > dailyAvg * 1.2) {
       variant = 'higher';
-      color = Colors.red.value;
+      color = InsightColorTokens.red;
       metadata['percent'] = ((sevenDayAvg / dailyAvg - 1) * 100).toStringAsFixed(0);
     } else if (sevenDayAvg < dailyAvg * 0.8) {
       variant = 'lower';
-      color = Colors.green.value;
+      color = InsightColorTokens.green;
     }
 
     final categoryName = _topCategoryName(lastSevenDays, categoriesMap);
     if (categoryName != null) {
-      metadata['category'] = categoryName;
+      metadata.addAll(categoryName);
     }
 
     return InsightCard(
       id: 'smart_recommendation',
       title: 'Smart recommendation',
       message: 'smart_recommendation.$variant',
-      type: InsightType.smart_recommendation,
+      type: InsightType.smartRecommendation,
       color: color,
       metadata: {'variant': variant, ...metadata},
     );
   }
 
-  String? _topCategoryName(
+  Map<String, String>? _topCategoryName(
     List<Expense> expenses,
     Map<String, Category> categoriesMap,
   ) {
@@ -67,14 +67,16 @@ class GetSmartRecommendationInsight {
     }
     if (totals.isEmpty) return null;
     final topId = totals.entries.reduce((a, b) => a.value > b.value ? a : b).key;
-    return categoriesMap[topId]?.displayName;
+    final category = categoriesMap[topId];
+    if (category == null) return null;
+    return {'category': category.name, 'categoryId': category.id};
   }
 
   InsightCard _emptyInsight() => InsightCard(
     id: 'smart_recommendation',
     title: 'Smart recommendation',
     message: '',
-    type: InsightType.smart_recommendation,
-    color: Colors.yellow.value,
+    type: InsightType.smartRecommendation,
+    color: InsightColorTokens.yellow,
   );
 }

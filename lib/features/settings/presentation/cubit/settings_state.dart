@@ -6,15 +6,13 @@ class SettingsState {
       isLoading = false,
       error = null;
 
-  const SettingsState.loaded(AppSettings settings)
-    : settings = settings,
-      isLoading = false,
+  const SettingsState.loaded(this.settings)
+    : isLoading = false,
       error = null;
 
-  const SettingsState.error(String error)
+  const SettingsState.error(this.error)
     : settings = null,
-      isLoading = false,
-      error = error;
+      isLoading = false;
 
   final AppSettings? settings;
   final bool isLoading;
