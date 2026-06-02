@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
+import 'package:spend_wise/features/categories/presentation/utils/category_display_name.dart';
 import 'package:spend_wise/features/categories/presentation/utils/category_presentation_data.dart';
 import 'package:spend_wise/core/theme/app_radius.dart';
 import 'package:spend_wise/core/theme/app_spacing.dart';
@@ -70,7 +71,7 @@ class CategoryChip extends StatelessWidget {
             ],
             if (showLabel)
               Text(
-                category.displayName,
+                category.localizedName,
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: categoryColor,
                   fontWeight: FontWeight.w500,
@@ -114,7 +115,7 @@ class CategoryChip extends StatelessWidget {
             ],
             if (showLabel)
               Text(
-                category.displayName,
+                category.localizedName,
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: categoryColor,
                   fontWeight: FontWeight.w600,
@@ -155,7 +156,7 @@ class CategoryChip extends StatelessWidget {
           if (showLabel) ...[
             SizedBox(height: AppSpacing.sm.h),
             Text(
-              category.displayName,
+              category.localizedName,
               style: theme.textTheme.bodySmall?.copyWith(
                 fontWeight: FontWeight.w500,
               ),

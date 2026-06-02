@@ -23,6 +23,15 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
   }
 
   @override
+  Future<List<Expense>> getExpensesByCategoryId(String categoryId) async {
+    final expenseModels = await _localDataSource.getExpenses();
+    return expenseModels
+        .where((expenseModel) => expenseModel.categoryId == categoryId)
+        .map((expenseModel) => expenseModel.toEntity())
+        .toList(growable: false);
+  }
+
+  @override
   Future<void> updateExpense(Expense expense) {
     final expenseModel = ExpenseModel.fromEntity(expense);
     return _localDataSource.updateExpense(expenseModel);

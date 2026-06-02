@@ -13,7 +13,7 @@ class CategoryResolver {
       icon: CategoryPresentationData.defaultIconName,
       color: CategoryPresentationData.defaultColorValue,
       isDefault: false,
-      createdAt: DateTime.now(),
+      createdAt: DateTime.fromMillisecondsSinceEpoch(0),
     );
   }
 

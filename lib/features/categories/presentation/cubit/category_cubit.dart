@@ -3,6 +3,7 @@ import 'package:spend_wise/core/base/requests_status.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
 import 'package:spend_wise/features/categories/domain/usecases/add_category.dart';
 import 'package:spend_wise/features/categories/domain/usecases/can_delete_category.dart';
+import 'package:spend_wise/features/categories/domain/usecases/can_delete_category_referential_integrity.dart';
 import 'package:spend_wise/features/categories/domain/usecases/delete_category.dart';
 import 'package:spend_wise/features/categories/domain/usecases/get_categories.dart';
 import 'package:spend_wise/features/categories/domain/usecases/update_category.dart';
@@ -16,11 +17,13 @@ class CategoryCubit extends Cubit<CategoryState> {
     required UpdateCategory updateCategory,
     required DeleteCategory deleteCategory,
     required CanDeleteCategory canDeleteCategory,
+    required CanDeleteCategoryReferentialIntegrity canDeleteCategoryReferentialIntegrity,
   }) : _addCategory = addCategory,
        _getCategories = getCategories,
        _updateCategory = updateCategory,
        _deleteCategory = deleteCategory,
        _canDeleteCategory = canDeleteCategory,
+       _canDeleteCategoryReferentialIntegrity = canDeleteCategoryReferentialIntegrity,
        super(const CategoryState());
 
   final AddCategory _addCategory;
@@ -28,6 +31,7 @@ class CategoryCubit extends Cubit<CategoryState> {
   final UpdateCategory _updateCategory;
   final DeleteCategory _deleteCategory;
   final CanDeleteCategory _canDeleteCategory;
+  final CanDeleteCategoryReferentialIntegrity _canDeleteCategoryReferentialIntegrity;
 
   void initializeForm([Category? category]) {
     final nextState = category == null
@@ -42,7 +46,7 @@ class CategoryCubit extends Cubit<CategoryState> {
             clearUserMessage: true,
           )
         : state.copyWith(
-            categoryName: category.displayName,
+            categoryName: category.name,
             selectedIcon: category.icon,
             selectedColor: category.color,
             editingCategory: category,
@@ -137,10 +141,17 @@ class CategoryCubit extends Cubit<CategoryState> {
     );
 
     try {
-      final canDelete = await _canDeleteCategory(category.id);
+      final canDelete = await _canDeleteCategoryReferentialIntegrity(category.id);
       if (!canDelete) {
-        _emitDeletionError('Default categories cannot be deleted.');
-        return;
+        // Check if it's a default category for backward compatibility
+        final isDefaultCheck = await _canDeleteCategory(category.id);
+        if (!isDefaultCheck) {
+          _emitDeletionError('Default categories cannot be deleted.');
+          return;
+        } else {
+          _emitDeletionError('Cannot delete category while expenses are still assigned to it.');
+          return;
+        }
       }
 
       await _deleteCategory(category.id);

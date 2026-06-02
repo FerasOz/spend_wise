@@ -7,6 +7,7 @@ import 'package:spend_wise/core/theme/app_colors.dart';
 import 'package:spend_wise/core/theme/app_radius.dart';
 import 'package:spend_wise/core/theme/app_spacing.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
+import 'package:spend_wise/features/categories/presentation/utils/category_display_name.dart';
 import 'package:spend_wise/features/categories/presentation/utils/category_expense_summary.dart';
 import 'package:spend_wise/features/categories/presentation/utils/category_presentation_data.dart';
 
@@ -131,7 +132,7 @@ class _CategoryTextContent extends StatelessWidget {
           children: [
             Flexible(
               child: Text(
-                category.displayName,
+                category.localizedName,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(

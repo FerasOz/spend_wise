@@ -7,6 +7,8 @@ abstract class ExpenseLocalDataSource {
 
   Future<List<ExpenseModel>> getExpenses();
 
+  Future<List<ExpenseModel>> getExpensesByCategoryId(String categoryId);
+
   Future<void> updateExpense(ExpenseModel expense);
 
   Future<void> deleteExpense(String id);
@@ -31,6 +33,14 @@ class HiveExpenseLocalDataSource implements ExpenseLocalDataSource {
           (expenseMap) =>
               ExpenseModel.fromJson(Map<String, dynamic>.from(expenseMap)),
         )
+        .toList(growable: false);
+  }
+
+  @override
+  Future<List<ExpenseModel>> getExpensesByCategoryId(String categoryId) async {
+    final expenseModels = await getExpenses();
+    return expenseModels
+        .where((expenseModel) => expenseModel.categoryId == categoryId)
         .toList(growable: false);
   }
 

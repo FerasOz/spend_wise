@@ -5,6 +5,7 @@ import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../features/categories/domain/entities/category.dart';
+import '../../../../features/categories/presentation/utils/category_display_name.dart';
 import '../../domain/entities/expense.dart';
 
 class ExpenseDetailsOverview extends StatelessWidget {
@@ -40,7 +41,7 @@ class ExpenseDetailsOverview extends StatelessWidget {
         ),
         SizedBox(height: AppSpacing.sm.h),
         Text(
-          category.displayName,
+          category.localizedName,
           style: Theme.of(
             context,
           ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),

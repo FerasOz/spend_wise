@@ -4,6 +4,7 @@ import 'package:spend_wise/core/theme/app_radius.dart';
 import 'package:spend_wise/core/theme/app_spacing.dart';
 
 import '../../../../features/categories/domain/entities/category.dart';
+import '../../../../features/categories/presentation/utils/category_display_name.dart';
 import '../../../../features/categories/presentation/utils/category_presentation_data.dart';
 
 class CategoryDetailsHeader extends StatelessWidget {
@@ -49,7 +50,7 @@ class CategoryDetailsHeader extends StatelessWidget {
           SizedBox(width: AppSpacing.lg.w),
           Expanded(
             child: Text(
-              category.displayName,
+              category.localizedName,
               style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                 color: Theme.of(context).colorScheme.onPrimary,
                 fontWeight: FontWeight.w700,
