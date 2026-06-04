@@ -1,9 +1,9 @@
-import 'package:spend_wise/features/insights/data/repositories/get_average_daily_insight.dart';
-import 'package:spend_wise/features/insights/data/repositories/get_highest_spending_day_insight.dart';
-import 'package:spend_wise/features/insights/data/repositories/get_smart_recommendation_insight.dart';
-import 'package:spend_wise/features/insights/data/repositories/get_spending_streak_insight.dart';
-import 'package:spend_wise/features/insights/data/repositories/get_spending_trend_insight.dart';
-import 'package:spend_wise/features/insights/domain/usecases/get_top_category_insight.dart';
+import '../../domain/usecases/get_average_daily_insight.dart';
+import '../../domain/usecases/get_highest_spending_day_insight.dart';
+import '../../domain/usecases/get_smart_recommendation_insight.dart';
+import '../../domain/usecases/get_spending_streak_insight.dart';
+import '../../domain/usecases/get_spending_trend_insight.dart';
+import '../../domain/usecases/get_top_category_insight.dart';
 import '../../domain/entities/insight_card.dart';
 import '../../domain/repositories/insight_repository.dart';
 import '../../../expenses/domain/entities/expense.dart';
