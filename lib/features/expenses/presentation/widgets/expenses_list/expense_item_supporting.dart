@@ -1,0 +1,71 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/utils/app_formatters.dart';
+import 'package:spend_wise/core/widgets/currency_text.dart';
+import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
+
+class ExpenseLeadingAccent extends StatelessWidget {
+  const ExpenseLeadingAccent({required this.color, super.key});
+
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 6.w,
+      height: 80.h,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(4.r),
+      ),
+    );
+  }
+}
+
+class ExpenseHeader extends StatelessWidget {
+  const ExpenseHeader({required this.expense, super.key});
+
+  final Expense expense;
+
+  @override
+  Widget build(BuildContext context) {
+    final textStyle = Theme.of(
+      context,
+    ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700);
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(child: Text(expense.title, style: textStyle)),
+        SizedBox(width: 10.w),
+        CurrencyText(amount: expense.amount, style: textStyle),
+      ],
+    );
+  }
+}
+
+class ExpenseDateLabel extends StatelessWidget {
+  const ExpenseDateLabel({required this.date, super.key});
+
+  final DateTime date;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Icon(
+          Icons.calendar_today,
+          size: 14.sp,
+          color: Theme.of(context).colorScheme.onSurfaceVariant,
+        ),
+        SizedBox(width: 6.w),
+        Text(
+          AppFormatters.shortDate(date),
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+            color: Theme.of(context).colorScheme.onSurfaceVariant,
+          ),
+        ),
+      ],
+    );
+  }
+}

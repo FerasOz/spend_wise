@@ -1,13 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/features/expenses/presentation/widgets/expense_form/expense_form_content.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
 import '../../../../core/base/requests_status.dart';
 import '../../../../core/widgets/responsive_page_content.dart';
 import '../../domain/entities/expense.dart';
 import '../cubit/expense_cubit.dart';
 import '../cubit/expense_state.dart';
-import '../widgets/expense_form_content.dart';
 import '../../../categories/presentation/cubit/category_cubit.dart';
 
 class ExpenseFormPage extends StatelessWidget {

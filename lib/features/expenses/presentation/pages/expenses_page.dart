@@ -6,7 +6,7 @@ import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../core/widgets/responsive_page_content.dart';
 import '../../../categories/presentation/cubit/category_cubit.dart';
-import '../../domain/entities/expense.dart';
+import '../../../../features/expenses/domain/entities/expense.dart';
 import '../cubit/expense_cubit.dart';
 import '../cubit/expense_filter_cubit.dart';
 import '../cubit/expense_filter_state.dart';
@@ -54,14 +54,19 @@ class ExpensesPage extends StatelessWidget {
   }) async {
     context.read<ExpenseCubit>().initializeForm(expense);
     await Navigator.of(context).push(
-      MaterialPageRoute<void>(
-        builder: (_) => MultiBlocProvider(
+      PageRouteBuilder<void>(
+        pageBuilder: (context, animation, secondaryAnimation) => MultiBlocProvider(
           providers: [
             BlocProvider.value(value: context.read<ExpenseCubit>()),
             BlocProvider.value(value: context.read<CategoryCubit>()),
           ],
           child: ExpenseFormPage(expense: expense),
         ),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) => FadeTransition(
+          opacity: animation,
+          child: child,
+        ),
+        transitionDuration: const Duration(milliseconds: 300),
       ),
     );
   }

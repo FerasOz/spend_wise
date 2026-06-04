@@ -2,6 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/features/expenses/presentation/widgets/expense_details/expense_details_actions.dart';
+import 'package:spend_wise/features/expenses/presentation/widgets/expense_details/expense_details_header.dart';
+import 'package:spend_wise/features/expenses/presentation/widgets/expense_details/expense_details_metadata.dart';
+import 'package:spend_wise/features/expenses/presentation/widgets/expense_details/expense_details_missing_state.dart';
+import 'package:spend_wise/features/expenses/presentation/widgets/expense_details/expense_details_note_card.dart';
+import 'package:spend_wise/features/expenses/presentation/widgets/expense_details/expense_details_overview.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../app/routes/route_names.dart';
@@ -14,12 +20,6 @@ import '../cubit/expense_cubit.dart';
 import '../cubit/expense_state.dart';
 import '../models/expense_details_view_data.dart';
 import '../utils/expense_management_flow.dart';
-import '../widgets/expense_details_actions.dart';
-import '../widgets/expense_details_header.dart';
-import '../widgets/expense_details_metadata.dart';
-import '../widgets/expense_details_missing_state.dart';
-import '../widgets/expense_details_note_card.dart';
-import '../widgets/expense_details_overview.dart';
 import 'expense_form_page.dart';
 
 class ExpenseDetailsRouteArgs {
