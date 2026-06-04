@@ -3,6 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:spend_wise/features/settings/domain/entities/app_currency.dart';
 import '../../../../core/constants/currencies.dart';
 import '../../domain/entities/app_settings.dart';
+import '../models/app_settings_model.dart';
 
 abstract class SettingsLocalDataSource {
   static const boxName = 'settings';
@@ -55,31 +56,36 @@ class HiveSettingsLocalDataSource implements SettingsLocalDataSource {
         notificationsEnabled: true,
         autoBackupEnabled: false,
       );
-      await _safePut(defaultSettings.toJson());
+      final model = AppSettingsModel.fromEntity(defaultSettings);
+      await _safePut(model.toJson());
       return defaultSettings;
     }
-    return AppSettings.fromJson(Map<String, dynamic>.from(data));
+    final model = AppSettingsModel.fromJson(Map<String, dynamic>.from(data));
+    return model.toEntity();
   }
 
   @override
   Future<void> updateThemeMode(AppThemeMode themeMode) async {
     final settings = await getSettings();
     final updated = settings.copyWith(themeMode: themeMode);
-    await _safePut(updated.toJson());
+    final model = AppSettingsModel.fromEntity(updated);
+    await _safePut(model.toJson());
   }
 
   @override
   Future<void> updateCurrency(AppCurrency currency) async {
     final settings = await getSettings();
     final updated = settings.copyWith(currency: currency);
-    await _safePut(updated.toJson());
+    final model = AppSettingsModel.fromEntity(updated);
+    await _safePut(model.toJson());
   }
 
   @override
   Future<void> updateLanguage(AppLanguage language) async {
     final settings = await getSettings();
     final updated = settings.copyWith(language: language);
-    await _safePut(updated.toJson());
+    final model = AppSettingsModel.fromEntity(updated);
+    await _safePut(model.toJson());
   }
 
   @override
@@ -88,7 +94,8 @@ class HiveSettingsLocalDataSource implements SettingsLocalDataSource {
     final updated = settings.copyWith(
       notificationsEnabled: !settings.notificationsEnabled,
     );
-    await _safePut(updated.toJson());
+    final model = AppSettingsModel.fromEntity(updated);
+    await _safePut(model.toJson());
   }
 
   @override
@@ -97,7 +104,8 @@ class HiveSettingsLocalDataSource implements SettingsLocalDataSource {
     final updated = settings.copyWith(
       autoBackupEnabled: !settings.autoBackupEnabled,
     );
-    await _safePut(updated.toJson());
+    final model = AppSettingsModel.fromEntity(updated);
+    await _safePut(model.toJson());
   }
 
   @override
@@ -109,7 +117,8 @@ class HiveSettingsLocalDataSource implements SettingsLocalDataSource {
       notificationsEnabled: true,
       autoBackupEnabled: false,
     );
-    await _safePut(defaultSettings.toJson());
+    final model = AppSettingsModel.fromEntity(defaultSettings);
+    await _safePut(model.toJson());
   }
 
   @override
