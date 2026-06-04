@@ -2,8 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/features/expenses/presentation/widgets/expenses_list/expenses_list_view.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
-
 import '../../../../core/base/requests_status.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../features/categories/presentation/cubit/category_cubit.dart';
@@ -15,7 +15,6 @@ import '../cubit/expense_filter_state.dart';
 import '../cubit/expense_state.dart';
 import '../pages/expenses_page.dart';
 import 'expenses_feedback_view.dart';
-import 'expenses_list_view.dart';
 
 class ExpensesStateView extends StatelessWidget {
   const ExpensesStateView({
@@ -33,14 +32,14 @@ class ExpensesStateView extends StatelessWidget {
       selector: (state) => state,
       builder: (context, categoryState) {
         if (_isInitialLoading) {
-          return FadeTransition(
+          return const FadeTransition(
             opacity: AlwaysStoppedAnimation(0.8),
-            child: const Center(child: CircularProgressIndicator()),
+            child: Center(child: CircularProgressIndicator()),
           );
         }
         if (_hasInitialError) {
           return FadeTransition(
-            opacity: AlwaysStoppedAnimation(0.9),
+            opacity: const AlwaysStoppedAnimation(0.9),
             child: ExpensesFeedbackView(
               title: LocaleKeys.expenses_errorExpenses_title.tr(),
               message: LocaleKeys.expenses_errorExpenses_subTitle.tr(),
@@ -51,7 +50,7 @@ class ExpensesStateView extends StatelessWidget {
         }
         if (expenseState.expenses.isEmpty) {
           return FadeTransition(
-            opacity: AlwaysStoppedAnimation(0.9),
+            opacity: const AlwaysStoppedAnimation(0.9),
             child: _ExpensesEmptyState(
               categoriesStatus: categoryState.categoriesStatus,
               hasCategories: categoryState.categories.isNotEmpty,
@@ -60,7 +59,7 @@ class ExpensesStateView extends StatelessWidget {
         }
         if (filterState.visibleExpenses.isEmpty) {
           return FadeTransition(
-            opacity: AlwaysStoppedAnimation(0.9),
+            opacity: const AlwaysStoppedAnimation(0.9),
             child: ExpensesFeedbackView(
               title: LocaleKeys.expenses_noMatchExpenses_title.tr(),
               message: LocaleKeys.expenses_noMatchExpenses_subTitle.tr(),
@@ -117,13 +116,13 @@ class _ExpensesEmptyState extends StatelessWidget {
   Widget build(BuildContext context) {
     if (categoriesStatus == RequestsStatus.loading && !hasCategories) {
       return FadeTransition(
-        opacity: AlwaysStoppedAnimation(0.8),
+        opacity: const AlwaysStoppedAnimation(0.8),
         child: const Center(child: CircularProgressIndicator()),
       );
     }
     if (!hasCategories) {
       return FadeTransition(
-        opacity: AlwaysStoppedAnimation(0.9),
+        opacity: const AlwaysStoppedAnimation(0.9),
         child: ExpensesFeedbackView(
           title: LocaleKeys.expenses_emptyCategory_title.tr(),
           message: LocaleKeys.expenses_emptyCategory_subTitle.tr(),
@@ -134,7 +133,7 @@ class _ExpensesEmptyState extends StatelessWidget {
     }
 
     return FadeTransition(
-      opacity: AlwaysStoppedAnimation(0.9),
+      opacity: const AlwaysStoppedAnimation(0.9),
       child: ExpensesFeedbackView(
         title: LocaleKeys.expenses_emptyExpenses_title.tr(),
         message: LocaleKeys.expenses_emptyExpenses_subTitle.tr(),

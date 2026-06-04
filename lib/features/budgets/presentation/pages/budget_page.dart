@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/features/budgets/presentation/pages/budget_form_page.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
-
 import '../../../../core/base/requests_status.dart';
 import '../../../../core/widgets/responsive_page_content.dart';
 import '../../../expenses/presentation/cubit/expense_cubit.dart';
@@ -10,16 +10,15 @@ import '../../../expenses/presentation/cubit/expense_state.dart';
 import '../cubit/budget_cubit.dart';
 import '../cubit/budget_state.dart';
 import '../widgets/budget_empty_state.dart';
-import '../widgets/budget_form_page.dart';
 import '../widgets/budget_list_view.dart';
 
 class BudgetPage extends StatelessWidget {
   const BudgetPage({super.key});
 
   static Future<void> open(BuildContext context) {
-    return Navigator.of(context).push(
-      MaterialPageRoute<void>(builder: (_) => const BudgetPage()),
-    );
+    return Navigator.of(
+      context,
+    ).push(MaterialPageRoute<void>(builder: (_) => const BudgetPage()));
   }
 
   @override
@@ -27,7 +26,8 @@ class BudgetPage extends StatelessWidget {
     return MultiBlocListener(
       listeners: [
         BlocListener<ExpenseCubit, ExpenseState>(
-          listenWhen: (previous, current) => previous.expenses != current.expenses,
+          listenWhen: (previous, current) =>
+              previous.expenses != current.expenses,
           listener: (context, _) => context.read<BudgetCubit>().loadBudgets(),
         ),
         BlocListener<BudgetCubit, BudgetState>(
@@ -76,7 +76,9 @@ class _BudgetBody extends StatelessWidget {
       return const Center(child: CircularProgressIndicator());
     }
     if (state.status == RequestsStatus.error && state.budgets.isEmpty) {
-      return Center(child: Text(state.errorMessage ?? LocaleKeys.common_error.tr()));
+      return Center(
+        child: Text(state.errorMessage ?? LocaleKeys.common_error.tr()),
+      );
     }
     if (state.budgets.isEmpty) {
       return BudgetEmptyState(onAddBudget: () => BudgetFormPage.open(context));
