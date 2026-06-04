@@ -4,8 +4,8 @@ import 'package:spend_wise/app/shell/models/shell_destination.dart';
 import 'package:spend_wise/features/categories/presentation/pages/category_list_page.dart';
 import 'package:spend_wise/features/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:spend_wise/features/expenses/presentation/pages/expenses_page.dart';
+import 'package:spend_wise/features/recurring/presentation/pages/recurring_expense_form_page.dart';
 import 'package:spend_wise/features/recurring/presentation/pages/recurring_expenses_page.dart';
-import 'package:spend_wise/features/recurring/presentation/widgets/recurring_expense_form_page.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
 
 List<ShellDestination> buildShellDestinations() {

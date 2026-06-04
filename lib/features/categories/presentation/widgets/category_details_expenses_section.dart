@@ -1,12 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/features/expenses/presentation/widgets/expenses_list/expense_list_item.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
-
 import '../../../../core/base/requests_status.dart';
 import '../../../../features/categories/domain/entities/category.dart';
 import '../../../../features/expenses/domain/entities/expense.dart';
-import '../../../../features/expenses/presentation/widgets/expense_list_item.dart';
 
 class CategoryDetailsExpensesSection extends StatelessWidget {
   const CategoryDetailsExpensesSection({

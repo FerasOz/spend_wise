@@ -1,10 +1,10 @@
 import 'package:get_it/get_it.dart';
 
-import '../../features/insights/data/repositories/get_average_daily_insight.dart';
-import '../../features/insights/data/repositories/get_highest_spending_day_insight.dart';
-import '../../features/insights/data/repositories/get_smart_recommendation_insight.dart';
-import '../../features/insights/data/repositories/get_spending_streak_insight.dart';
-import '../../features/insights/data/repositories/get_spending_trend_insight.dart';
+import '../../features/insights/domain/usecases/get_average_daily_insight.dart';
+import '../../features/insights/domain/usecases/get_highest_spending_day_insight.dart';
+import '../../features/insights/domain/usecases/get_smart_recommendation_insight.dart';
+import '../../features/insights/domain/usecases/get_spending_streak_insight.dart';
+import '../../features/insights/domain/usecases/get_spending_trend_insight.dart';
 import '../../features/insights/data/repositories/insight_repository_impl.dart';
 import '../../features/insights/domain/repositories/insight_repository.dart';
 import '../../features/insights/domain/usecases/get_top_category_insight.dart';

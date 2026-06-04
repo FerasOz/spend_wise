@@ -2,10 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/core/theme/app_spacing.dart';
+import 'package:spend_wise/features/expenses/presentation/widgets/expenses_list/expense_list_item.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
 import '../../../../features/categories/domain/entities/category.dart';
 import '../../../../features/expenses/domain/entities/expense.dart';
-import '../../../../features/expenses/presentation/widgets/expense_list_item.dart';
 import 'dashboard_section_card.dart';
 import 'dashboard_section_empty_state.dart';
 
