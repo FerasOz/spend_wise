@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/features/recurring/presentation/extensions/recurring_repeat_type_extension.dart';
+import 'package:spend_wise/features/recurring/presentation/pages/recurring_expense_form_page.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/app_formatters.dart';
@@ -11,7 +12,6 @@ import '../../../../core/widgets/category_badge.dart';
 import '../../../../features/categories/domain/entities/category.dart';
 import '../../domain/entities/recurring_expense.dart';
 import '../cubit/recurring_expense_cubit.dart';
-import 'recurring_expense_form_page.dart';
 
 class RecurringExpenseTile extends StatelessWidget {
   const RecurringExpenseTile({
