@@ -6,7 +6,7 @@ import 'package:spend_wise/core/base/requests_status.dart';
 import 'package:spend_wise/core/widgets/responsive_page_content.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_state.dart';
-import 'package:spend_wise/features/categories/presentation/widgets/category_form.dart';
+import 'package:spend_wise/features/categories/presentation/widgets/category_form/category_form.dart';
 import 'package:spend_wise/features/categories/presentation/widgets/category_loading_overlay.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
 

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
 
-import '../../../../core/widgets/currency_text.dart';
-import '../../../../features/categories/presentation/utils/category_expense_summary.dart';
+import '../../../../../core/widgets/currency_text.dart';
+import '../../utils/category_expense_summary.dart';
 
 class CategoryDetailsStats extends StatelessWidget {
   const CategoryDetailsStats({

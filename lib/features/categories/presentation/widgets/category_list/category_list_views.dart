@@ -6,8 +6,8 @@ import 'package:spend_wise/features/categories/presentation/cubit/category_cubit
 import 'package:spend_wise/features/categories/presentation/cubit/category_state.dart';
 import 'package:spend_wise/features/categories/presentation/pages/category_list_page.dart';
 import 'package:spend_wise/features/categories/presentation/utils/category_expense_summary.dart';
-import 'package:spend_wise/features/categories/presentation/widgets/category_feedback_view.dart';
-import 'package:spend_wise/features/categories/presentation/widgets/category_item.dart';
+import 'package:spend_wise/features/categories/presentation/widgets/category_list/category_feedback_view.dart';
+import 'package:spend_wise/features/categories/presentation/widgets/category_list/category_item.dart';
 import 'package:spend_wise/features/categories/presentation/widgets/category_loading_overlay.dart';
 import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
 import 'package:spend_wise/features/expenses/presentation/cubit/expense_cubit.dart';

@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/core/theme/app_radius.dart';
 import 'package:spend_wise/core/theme/app_spacing.dart';
 
-import '../../../../features/categories/domain/entities/category.dart';
-import '../../../../features/categories/presentation/utils/category_display_name.dart';
-import '../../../../features/categories/presentation/utils/category_presentation_data.dart';
+import '../../../domain/entities/category.dart';
+import '../../utils/category_display_name.dart';
+import '../../utils/category_presentation_data.dart';
 
 class CategoryDetailsHeader extends StatelessWidget {
   const CategoryDetailsHeader({

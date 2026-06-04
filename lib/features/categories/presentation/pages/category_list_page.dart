@@ -7,9 +7,9 @@ import 'package:spend_wise/core/widgets/responsive_page_content.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
 import 'package:spend_wise/features/categories/presentation/pages/category_details_page.dart';
-import 'package:spend_wise/features/categories/presentation/widgets/category_form_body.dart';
-import 'package:spend_wise/features/categories/presentation/widgets/category_listeners.dart';
-import 'package:spend_wise/features/categories/presentation/widgets/category_list_views.dart';
+import 'package:spend_wise/features/categories/presentation/widgets/category_form/category_form_body.dart';
+import 'package:spend_wise/features/categories/presentation/widgets/category_list/category_listeners.dart';
+import 'package:spend_wise/features/categories/presentation/widgets/category_list/category_list_views.dart';
 import 'package:spend_wise/features/expenses/presentation/cubit/expense_cubit.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
 
