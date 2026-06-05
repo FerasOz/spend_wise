@@ -12,8 +12,8 @@ import '../cubit/expense_filter_cubit.dart';
 import '../cubit/expense_filter_state.dart';
 import '../cubit/expense_state.dart';
 import 'expense_form_page.dart';
-import '../widgets/expense_filter_bar.dart';
-import '../widgets/expenses_state_view.dart';
+import '../widgets/expenses_list/expense_filter_bar.dart';
+import '../widgets/expenses_list/expenses_state_view.dart';
 
 class ExpensesPage extends StatelessWidget {
   const ExpensesPage({super.key, this.showScaffold = true});

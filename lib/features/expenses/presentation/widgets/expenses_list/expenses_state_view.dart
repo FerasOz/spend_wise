@@ -2,18 +2,18 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/base/requests_status.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
+import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
+import 'package:spend_wise/features/categories/presentation/cubit/category_state.dart';
+import 'package:spend_wise/features/categories/presentation/pages/category_list_page.dart';
+import 'package:spend_wise/features/expenses/presentation/cubit/expense_cubit.dart';
+import 'package:spend_wise/features/expenses/presentation/cubit/expense_filter_cubit.dart';
+import 'package:spend_wise/features/expenses/presentation/cubit/expense_filter_state.dart';
+import 'package:spend_wise/features/expenses/presentation/cubit/expense_state.dart';
+import 'package:spend_wise/features/expenses/presentation/pages/expenses_page.dart';
 import 'package:spend_wise/features/expenses/presentation/widgets/expenses_list/expenses_list_view.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
-import '../../../../core/base/requests_status.dart';
-import '../../../../core/theme/app_spacing.dart';
-import '../../../../features/categories/presentation/cubit/category_cubit.dart';
-import '../../../../features/categories/presentation/cubit/category_state.dart';
-import '../../../../features/categories/presentation/pages/category_list_page.dart';
-import '../cubit/expense_cubit.dart';
-import '../cubit/expense_filter_cubit.dart';
-import '../cubit/expense_filter_state.dart';
-import '../cubit/expense_state.dart';
-import '../pages/expenses_page.dart';
 import 'expenses_feedback_view.dart';
 
 class ExpensesStateView extends StatelessWidget {
