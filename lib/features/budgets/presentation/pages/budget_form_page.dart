@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
+import 'package:spend_wise/core/services/id_generator.dart';
+import 'package:spend_wise/core/services/app_clock.dart';
 
 import '../../../../core/base/requests_status.dart';
 import '../../../../core/widgets/category_picker.dart';
@@ -44,11 +46,11 @@ class BudgetFormPage extends StatelessWidget {
       if (selectedCategoryId.value == null) return;
 
       final nextBudget = Budget(
-        id: budget?.id ?? DateTime.now().microsecondsSinceEpoch.toString(),
+        id: budget?.id ?? context.read<IdGenerator>().generate(),
         categoryId: selectedCategoryId.value!,
         limitAmount: double.parse(limitValue!),
         period: budget?.period ?? BudgetPeriod.monthly,
-        createdAt: budget?.createdAt ?? DateTime.now(),
+        createdAt: budget?.createdAt ?? context.read<AppClock>().now(),
       );
 
       if (isEditing) {

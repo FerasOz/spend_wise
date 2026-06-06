@@ -7,11 +7,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:get_it/get_it.dart';
 import 'package:spend_wise/app/routes/app_router.dart';
 import 'package:spend_wise/spend_wise_app.dart';
+import 'package:spend_wise/core/di/injection_container.dart' show sl, setupDependencies;
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+    // Initialize dependencies
+    await setupDependencies();
+
     // Build our app and trigger a frame.
     await tester.pumpWidget(SpendWiseApp(appRouters: AppRouters()));
 

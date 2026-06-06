@@ -8,21 +8,26 @@ import 'package:path_provider/path_provider.dart';
 import '../../domain/entities/export_type.dart';
 import '../../domain/entities/export_file_result.dart';
 
+import '../../../../core/services/app_clock.dart';
+
 abstract class ExportFileLocalDataSource {
   Future<ExportFileResult> writeCsv({
     required String fileNameBase,
     required List<List<dynamic>> rows,
+    required AppClock clock,
   });
 
   Future<ExportFileResult> writeJson({
     required String fileNameBase,
     required Object json,
     required ExportType type,
+    required AppClock clock,
   });
 
   Future<ExportFileResult> writePdf({
     required String fileNameBase,
     required Uint8List bytes,
+    required AppClock clock,
   });
 
   Future<String> copyToDownloads(String path);
@@ -35,8 +40,9 @@ class ExportFileLocalDataSourceImpl implements ExportFileLocalDataSource {
   Future<ExportFileResult> writeCsv({
     required String fileNameBase,
     required List<List<dynamic>> rows,
+    required AppClock clock,
   }) async {
-    final createdAt = DateTime.now();
+    final createdAt = clock.now();
     final fileName = '$fileNameBase.${ExportType.csv.extension}';
     final file = await _createFile(fileName);
     await file.writeAsString(const ListToCsvConverter().convert(rows));
@@ -48,8 +54,9 @@ class ExportFileLocalDataSourceImpl implements ExportFileLocalDataSource {
     required String fileNameBase,
     required Object json,
     required ExportType type,
+    required AppClock clock,
   }) async {
-    final createdAt = DateTime.now();
+    final createdAt = clock.now();
     final fileName = '$fileNameBase.${type.extension}';
     final file = await _createFile(fileName);
     await file.writeAsString(const JsonEncoder.withIndent('  ').convert(json));
@@ -60,8 +67,9 @@ class ExportFileLocalDataSourceImpl implements ExportFileLocalDataSource {
   Future<ExportFileResult> writePdf({
     required String fileNameBase,
     required Uint8List bytes,
+    required AppClock clock,
   }) async {
-    final createdAt = DateTime.now();
+    final createdAt = clock.now();
     final fileName = '$fileNameBase.${ExportType.pdf.extension}';
     final file = await _createFile(fileName);
     await file.writeAsBytes(bytes);

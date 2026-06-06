@@ -1,11 +1,15 @@
+import 'package:spend_wise/core/services/app_clock.dart';
+
 abstract class IdGenerator {
   String generate();
 }
 
 /// Simple timestamp-based ID generator. Replaceable for Firebase/UUID later.
 class TimestampIdGenerator implements IdGenerator {
-  const TimestampIdGenerator();
+  final AppClock _clock;
+
+  const TimestampIdGenerator(this._clock);
 
   @override
-  String generate() => DateTime.now().microsecondsSinceEpoch.toString();
+  String generate() => _clock.now().microsecondsSinceEpoch.toString();
 }

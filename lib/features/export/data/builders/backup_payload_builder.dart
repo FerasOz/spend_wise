@@ -1,13 +1,16 @@
+import 'package:spend_wise/core/services/app_clock.dart';
+
 class BackupPayloadBuilder {
   const BackupPayloadBuilder();
 
   Map<String, Object?> build({
     required String appName,
     required Map<String, Object?> collections,
+    required AppClock clock,
   }) {
     return {
       'app': appName,
-      'generatedAt': DateTime.now().toIso8601String(),
+      'generatedAt': clock.now().toIso8601String(),
       ...collections,
     };
   }

@@ -5,6 +5,8 @@ abstract class BudgetRepository {
 
   Future<List<Budget>> getBudgets();
 
+  Future<List<Budget>> getBudgetsByCategoryId(String categoryId);
+
   Future<void> updateBudget(Budget budget);
 
   Future<void> deleteBudget(String id);

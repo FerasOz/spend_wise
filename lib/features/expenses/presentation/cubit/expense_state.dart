@@ -1,4 +1,5 @@
 import '../../../../core/base/requests_status.dart';
+import '../../../../core/services/app_clock.dart';
 import '../../domain/entities/expense.dart';
 
 class ExpenseState {
@@ -10,7 +11,9 @@ class ExpenseState {
     this.selectedCategoryId,
     this.loadErrorMessage,
     this.submissionErrorMessage,
-  }) : selectedDate = selectedDate ?? DateTime.now();
+    required AppClock clock,
+  }) : _clock = clock,
+       selectedDate = selectedDate ?? clock.now();
 
   final RequestsStatus expensesStatus;
   final RequestsStatus submissionStatus;
@@ -19,6 +22,7 @@ class ExpenseState {
   final String? selectedCategoryId;
   final String? loadErrorMessage;
   final String? submissionErrorMessage;
+  final AppClock _clock;
 
   ExpenseState copyWith({
     RequestsStatus? expensesStatus,
@@ -46,6 +50,7 @@ class ExpenseState {
       submissionErrorMessage: clearSubmissionErrorMessage
           ? null
           : (submissionErrorMessage ?? this.submissionErrorMessage),
+      clock: _clock,
     );
   }
 }

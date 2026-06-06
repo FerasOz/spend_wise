@@ -1,6 +1,7 @@
 import '../../../categories/domain/entities/category.dart';
 import '../../../expenses/data/models/expense_model.dart';
 import '../../../expenses/domain/entities/expense.dart';
+import 'package:spend_wise/core/services/app_clock.dart';
 
 class ExpensesExportPayloadBuilder {
   const ExpensesExportPayloadBuilder();
@@ -22,9 +23,10 @@ class ExpensesExportPayloadBuilder {
   Object jsonPayload(
     List<Expense> expenses,
     Map<String, Category> categoriesById,
+    AppClock clock,
   ) {
     return {
-      'generatedAt': DateTime.now().toIso8601String(),
+      'generatedAt': clock.now().toIso8601String(),
       'expenses': expenses.map((e) {
         final category = categoriesById[e.categoryId]?.name ?? 'Unknown';
         return {...ExpenseModel.fromEntity(e).toJson(), 'categoryName': category};

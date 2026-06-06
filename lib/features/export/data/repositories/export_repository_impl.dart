@@ -5,6 +5,7 @@ import 'package:share_plus/share_plus.dart';
 import '../../../categories/data/datasources/category_local_data_source.dart';
 import '../../../categories/data/models/category_model.dart';
 import '../../../categories/domain/repositories/category_repository.dart';
+import '../../../../core/services/app_clock.dart';
 import '../../../budgets/data/datasources/budget_local_data_source.dart';
 import '../../../budgets/data/models/budget_model.dart';
 import '../../../budgets/domain/repositories/budget_repository.dart';
@@ -54,6 +55,7 @@ class ExportRepositoryImpl implements ExportRepository {
     required ExpensesExportPayloadBuilder expensesPayload,
     required BackupPayloadBuilder backupPayload,
     required PdfReportContentBuilder pdfContent,
+    required AppClock clock,
   }) : _expenses = expenseRepository,
        _categories = categoryRepository,
        _budgets = budgetRepository,
@@ -67,7 +69,8 @@ class ExportRepositoryImpl implements ExportRepository {
        _getWeeklySpending = getWeeklySpending,
        _expensesPayload = expensesPayload,
        _backupPayload = backupPayload,
-       _pdfContent = pdfContent;
+       _pdfContent = pdfContent,
+       _clock = clock;
 
   final ExpenseRepository _expenses;
   final CategoryRepository _categories;
@@ -83,23 +86,26 @@ class ExportRepositoryImpl implements ExportRepository {
   final ExpensesExportPayloadBuilder _expensesPayload;
   final BackupPayloadBuilder _backupPayload;
   final PdfReportContentBuilder _pdfContent;
+  final AppClock _clock;
 
   @override
   Future<ExportFile> exportExpenses(ExportType type) async {
     final expenses = await _expenses.getExpenses();
     final categories = await _categories.getCategories();
     final byId = {for (final c in categories) c.id: c};
-    final base = ExportFileNameBuilder.build(type);
+    final base = ExportFileNameBuilder.build(type, _clock);
 
     final result = switch (type) {
       ExportType.csv => await _files.writeCsv(
         fileNameBase: base,
         rows: _expensesPayload.csvRows(expenses, byId),
+        clock: _clock,
       ),
       ExportType.json => await _files.writeJson(
         fileNameBase: base,
-        json: _expensesPayload.jsonPayload(expenses, byId),
+        json: _expensesPayload.jsonPayload(expenses, byId, _clock),
         type: type,
+        clock: _clock,
       ),
       _ => throw UnsupportedError('Unsupported export type: ${type.key}'),
     };

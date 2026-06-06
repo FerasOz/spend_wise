@@ -8,6 +8,7 @@ import 'package:spend_wise/core/utils/app_formatters.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
 import 'package:spend_wise/features/categories/presentation/utils/category_display_name.dart';
 import 'package:spend_wise/features/expenses/domain/entities/expense_filter.dart';
+import 'package:spend_wise/features/expenses/presentation/cubit/expense_cubit.dart';
 import 'package:spend_wise/features/expenses/presentation/cubit/expense_filter_cubit.dart';
 import 'package:spend_wise/features/expenses/presentation/cubit/expense_filter_state.dart';
 import 'package:spend_wise/features/settings/domain/entities/app_currency.dart';
@@ -111,8 +112,8 @@ class ExpenseFilterBar extends StatelessWidget {
   ) async {
     final range = await showDateRangePicker(
       context: context,
-      firstDate: DateTime.now().subtract(const Duration(days: 365 * 5)),
-      lastDate: DateTime.now().add(const Duration(days: 365)),
+      firstDate: context.read<ExpenseCubit>().now.subtract(const Duration(days: 365 * 5)),
+      lastDate: context.read<ExpenseCubit>().now.add(const Duration(days: 365)),
       initialDateRange:
           state.filterStartDate == null || state.filterEndDate == null
           ? null

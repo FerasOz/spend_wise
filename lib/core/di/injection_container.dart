@@ -29,7 +29,7 @@ Future<void> setupDependencies() async {
 
   // Register lightweight infra services
   if (!sl.isRegistered<IdGenerator>()) {
-    sl.registerLazySingleton<IdGenerator>(() => const TimestampIdGenerator());
+    sl.registerLazySingleton<IdGenerator>(() => TimestampIdGenerator(sl<AppClock>()));
   }
 
   // ============================================================================

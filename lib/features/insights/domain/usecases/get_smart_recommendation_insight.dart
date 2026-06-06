@@ -2,8 +2,13 @@ import 'package:spend_wise/features/categories/domain/entities/category.dart';
 import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
 import 'package:spend_wise/features/insights/domain/entities/insight_color_tokens.dart';
 import 'package:spend_wise/features/insights/domain/entities/insight_card.dart';
+import 'package:spend_wise/core/services/app_clock.dart';
 
 class GetSmartRecommendationInsight {
+  final AppClock _clock;
+
+  GetSmartRecommendationInsight({required AppClock clock}) : _clock = clock;
+
   InsightCard call(
     List<Expense> expenses,
     Map<String, Category> categoriesMap,
@@ -12,7 +17,7 @@ class GetSmartRecommendationInsight {
       return _emptyInsight();
     }
 
-    final now = DateTime.now();
+    final now = _clock.now();
     final lastSevenDays = expenses
         .where((e) => e.date.isAfter(now.subtract(const Duration(days: 7))))
         .toList();

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/core/base/requests_status.dart';
+import 'package:spend_wise/core/services/id_generator.dart';
 import 'package:spend_wise/core/theme/app_spacing.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
@@ -120,14 +121,14 @@ class _ExpenseFormState extends State<ExpenseForm> {
     final savedExpense = Expense(
       id: widget.initialExpense != null
           ? widget.initialExpense!.id
-          : DateTime.now().microsecondsSinceEpoch.toString(),
+          : context.read<IdGenerator>().generate(),
       title: trimmedTitle,
       amount: amountValue,
       categoryId: trimmedCategoryId,
       date: context.read<ExpenseCubit>().state.selectedDate,
       note: _note?.trim(),
-      createdAt: widget.initialExpense?.createdAt ?? DateTime.now(),
-      updatedAt: DateTime.now(),
+      createdAt: widget.initialExpense?.createdAt ?? context.read<ExpenseCubit>().now,
+      updatedAt: context.read<ExpenseCubit>().now,
     );
 
     await widget.onSubmit(savedExpense);

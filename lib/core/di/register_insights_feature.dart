@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 
+import '../../core/services/app_clock.dart';
 import '../../features/insights/domain/usecases/get_average_daily_insight.dart';
 import '../../features/insights/domain/usecases/get_highest_spending_day_insight.dart';
 import '../../features/insights/domain/usecases/get_smart_recommendation_insight.dart';
@@ -21,13 +22,13 @@ Future<void> registerInsightsFeature(GetIt sl) async {
 
   if (!sl.isRegistered<GetSpendingTrendInsight>()) {
     sl.registerLazySingleton<GetSpendingTrendInsight>(
-      () => GetSpendingTrendInsight(),
+      () => GetSpendingTrendInsight(clock: sl<AppClock>()),
     );
   }
 
   if (!sl.isRegistered<GetAverageDailyInsight>()) {
     sl.registerLazySingleton<GetAverageDailyInsight>(
-      () => GetAverageDailyInsight(),
+      () => GetAverageDailyInsight(clock: sl<AppClock>()),
     );
   }
 
@@ -39,13 +40,13 @@ Future<void> registerInsightsFeature(GetIt sl) async {
 
   if (!sl.isRegistered<GetSpendingStreakInsight>()) {
     sl.registerLazySingleton<GetSpendingStreakInsight>(
-      () => GetSpendingStreakInsight(),
+      () => GetSpendingStreakInsight(clock: sl<AppClock>()),
     );
   }
 
   if (!sl.isRegistered<GetSmartRecommendationInsight>()) {
     sl.registerLazySingleton<GetSmartRecommendationInsight>(
-      () => GetSmartRecommendationInsight(),
+      () => GetSmartRecommendationInsight(clock: sl<AppClock>()),
     );
   }
 

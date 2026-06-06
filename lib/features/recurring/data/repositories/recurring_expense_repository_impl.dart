@@ -22,6 +22,12 @@ class RecurringExpenseRepositoryImpl implements RecurringExpenseRepository {
   }
 
   @override
+  Future<List<RecurringExpense>> getRecurringExpensesByCategoryId(String categoryId) async {
+    final recurringExpenses = await getRecurringExpenses();
+    return recurringExpenses.where((recurringExpense) => recurringExpense.categoryId == categoryId).toList(growable: false);
+  }
+
+  @override
   Future<void> updateRecurringExpense(RecurringExpense recurringExpense) {
     return _localDataSource.updateRecurringExpense(
       RecurringExpenseModel.fromEntity(recurringExpense),
