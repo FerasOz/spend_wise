@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(flutter clean *)",
+      "Bash(flutter pub *)",
+      "Bash(flutter doctor *)",
+      "Bash(taskkill /f /t /im flutter.exe)",
+      "Bash(taskkill /f /im flutter.exe)",
+      "Bash(taskkill /f /im chrome.exe)",
+      "Bash(git reset *)"
+    ]
+  }
+}

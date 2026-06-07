@@ -5,10 +5,7 @@ import 'package:spend_wise/features/expenses/presentation/widgets/expense_form/e
 import '../../cubit/expense_cubit.dart';
 
 class ExpenseDateSection extends StatefulWidget {
-  const ExpenseDateSection({
-    super.key,
-    required this.onDateSelected,
-  });
+  const ExpenseDateSection({super.key, required this.onDateSelected});
 
   final ValueChanged<DateTime> onDateSelected;
 
@@ -40,15 +37,6 @@ class _ExpenseDateSectionState extends State<ExpenseDateSection> {
           opacity: const AlwaysStoppedAnimation(0.9),
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: _focusNode.hasFocus
-                    ? Theme.of(context).colorScheme.primary
-                    : Theme.of(context).colorScheme.outline,
-                width: _focusNode.hasFocus ? 2.0 : 1.0,
-              ),
-              borderRadius: BorderRadius.circular(12.0),
-            ),
             child: ExpenseDatePicker(
               selectedDate: selectedDate,
               onDateSelected: widget.onDateSelected,

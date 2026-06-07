@@ -40,15 +40,6 @@ class _ExpenseAmountFieldState extends State<ExpenseAmountField> {
       opacity: AlwaysStoppedAnimation(0.9),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: _focusNode.hasFocus
-                ? Theme.of(context).colorScheme.primary
-                : Theme.of(context).colorScheme.outline,
-            width: _focusNode.hasFocus ? 2.0 : 1.0,
-          ),
-          borderRadius: BorderRadius.circular(12.0),
-        ),
         child: TextFormField(
           focusNode: _focusNode,
           key: ValueKey(widget.initialValue.isEmpty ? 'amount' : 'amount_${widget.initialValue}'),

@@ -34,13 +34,11 @@ class ExpenseCategoryField extends StatefulWidget {
 
 class _ExpenseCategoryFieldState extends State<ExpenseCategoryField> {
   late final FocusNode _internalFocusNode;
-  late final FocusNode _effectiveFocusNode;
 
   @override
   void initState() {
     super.initState();
     _internalFocusNode = FocusNode();
-    _effectiveFocusNode = widget.focusNode ?? _internalFocusNode;
   }
 
   @override
@@ -57,15 +55,6 @@ class _ExpenseCategoryFieldState extends State<ExpenseCategoryField> {
       opacity: AlwaysStoppedAnimation(0.9),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: _effectiveFocusNode.hasFocus
-                ? Theme.of(context).colorScheme.primary
-                : Theme.of(context).colorScheme.outline,
-            width: _effectiveFocusNode.hasFocus ? 2.0 : 1.0,
-          ),
-          borderRadius: BorderRadius.circular(12.0),
-        ),
         child: FormField<String>(
           initialValue: widget.initialValue,
           validator: (value) {
@@ -92,7 +81,8 @@ class _ExpenseCategoryFieldState extends State<ExpenseCategoryField> {
                     emptyStateMessage: LocaleKeys
                         .expenses_emptyCategory_createCategoryTxt
                         .tr(),
-                    emptyStateActionLabel: LocaleKeys.expenses_emptyCategory_button
+                    emptyStateActionLabel: LocaleKeys
+                        .expenses_emptyCategory_button
                         .tr(),
                     onEmptyStateActionPressed: () =>
                         CategoryListPage.openCategoryManagementPage(context),

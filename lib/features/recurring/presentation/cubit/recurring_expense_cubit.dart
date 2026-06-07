@@ -31,6 +31,21 @@ class RecurringExpenseCubit extends Cubit<RecurringExpenseState> {
   final DeleteRecurringExpense _deleteRecurringExpense;
   final GenerateDueExpenses _generateDueExpenses;
 
+  void initializeForm([RecurringExpense? recurringExpense]) {
+    emit(
+      state.copyWith(
+        selectedTitle: recurringExpense?.title ?? '',
+        selectedAmount: recurringExpense?.amount.toString() ?? '',
+        selectedCategoryId: recurringExpense?.categoryId,
+        selectedRepeatType: recurringExpense?.repeatType ?? RecurringRepeatType.monthly,
+        selectedDueDate: recurringExpense?.nextDueDate ?? DateTime.now(),
+        clearSelectedCategoryId: recurringExpense == null,
+        submissionStatus: RequestsStatus.initial,
+        clearSubmissionErrorMessage: true,
+      ),
+    );
+  }
+
   Future<void> initialize() async {
     await _generateAndTrackDueExpenses();
     await loadRecurringExpenses();

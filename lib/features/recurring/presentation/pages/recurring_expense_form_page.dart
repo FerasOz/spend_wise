@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/core/di/injection_container.dart';
 import 'package:spend_wise/features/recurring/presentation/widgets/recurring_expense_form_content.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
 import '../../../categories/presentation/cubit/category_cubit.dart';
@@ -16,13 +17,16 @@ class RecurringExpenseFormPage extends StatelessWidget {
   static Future<void> open(
     BuildContext context, {
     RecurringExpense? recurringExpense,
-  }) {
-    return Navigator.of(context).push(
+  }) async {
+    await Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (_) => MultiBlocProvider(
           providers: [
-            BlocProvider.value(value: context.read<RecurringExpenseCubit>()),
-            BlocProvider.value(value: context.read<CategoryCubit>()),
+            BlocProvider(
+              create: (_) => sl<RecurringExpenseCubit>()
+                ..initializeForm(recurringExpense),
+            ),
+            BlocProvider(create: (_) => sl<CategoryCubit>()..loadCategories()),
           ],
           child: RecurringExpenseFormPage(recurringExpense: recurringExpense),
         ),

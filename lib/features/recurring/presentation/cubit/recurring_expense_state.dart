@@ -9,6 +9,14 @@ class RecurringExpenseState {
     this.generatedExpenseCount = 0,
     this.errorMessage,
     this.submissionMessage,
+    // Form fields
+    this.selectedTitle = '',
+    this.selectedAmount = '',
+    this.selectedCategoryId,
+    this.selectedRepeatType,
+    this.selectedDueDate,
+    this.clearSelectedCategoryId = false,
+    this.clearSubmissionErrorMessage = true,
   });
 
   final RequestsStatus status;
@@ -17,6 +25,13 @@ class RecurringExpenseState {
   final int generatedExpenseCount;
   final String? errorMessage;
   final String? submissionMessage;
+  final String selectedTitle;
+  final String selectedAmount;
+  final String? selectedCategoryId;
+  final RecurringRepeatType? selectedRepeatType;
+  final DateTime? selectedDueDate;
+  final bool clearSelectedCategoryId;
+  final bool clearSubmissionErrorMessage;
 
   RecurringExpenseState copyWith({
     RequestsStatus? status,
@@ -25,6 +40,13 @@ class RecurringExpenseState {
     int? generatedExpenseCount,
     String? errorMessage,
     String? submissionMessage,
+    String? selectedTitle,
+    String? selectedAmount,
+    String? selectedCategoryId,
+    RecurringRepeatType? selectedRepeatType,
+    DateTime? selectedDueDate,
+    bool? clearSelectedCategoryId,
+    bool? clearSubmissionErrorMessage,
     bool clearErrorMessage = false,
     bool clearSubmissionMessage = false,
   }) {
@@ -37,6 +59,13 @@ class RecurringExpenseState {
       submissionMessage: clearSubmissionMessage
           ? null
           : (submissionMessage ?? this.submissionMessage),
+      selectedTitle: selectedTitle ?? this.selectedTitle,
+      selectedAmount: selectedAmount ?? this.selectedAmount,
+      selectedCategoryId: selectedCategoryId ?? this.selectedCategoryId,
+      selectedRepeatType: selectedRepeatType ?? this.selectedRepeatType,
+      selectedDueDate: selectedDueDate ?? this.selectedDueDate,
+      clearSelectedCategoryId: clearSelectedCategoryId ?? this.clearSelectedCategoryId,
+      clearSubmissionErrorMessage: clearSubmissionErrorMessage ?? this.clearSubmissionErrorMessage,
     );
   }
 }

@@ -23,11 +23,8 @@ class ExpenseFilterBar extends StatelessWidget {
     final categories = context.select(
       (CategoryCubit cubit) => cubit.state.sortedCategories,
     );
-    final displayCurrency = context.select(
-      (SettingsCubit cubit) =>
-          cubit.state.settings?.currency ??
-          (throw StateError('Settings not loaded')),
-    );
+    final settingsState = context.select((SettingsCubit cubit) => cubit.state);
+    final displayCurrency = settingsState.settings?.currency ?? const AppCurrency(code: 'USD', symbol: r'$');
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
