@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spend_wise/core/di/injection_container.dart';
+import 'package:spend_wise/core/services/id_generator.dart';
 import 'package:spend_wise/features/recurring/presentation/widgets/recurring_expense_form_content.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
 import '../../../categories/presentation/cubit/category_cubit.dart';
