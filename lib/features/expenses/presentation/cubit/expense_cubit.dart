@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
 
 import '../../../../core/base/requests_status.dart';
+import '../../../../core/services/app_clock.dart';
 import '../../domain/entities/expense.dart';
 import '../../domain/usecases/add_expense.dart';
 import '../../domain/usecases/delete_expense.dart';
@@ -16,21 +17,26 @@ class ExpenseCubit extends Cubit<ExpenseState> {
     required GetExpenses getExpenses,
     required UpdateExpense updateExpense,
     required DeleteExpense deleteExpense,
+    required AppClock clock,
   }) : _addExpense = addExpense,
        _getExpenses = getExpenses,
        _updateExpense = updateExpense,
        _deleteExpense = deleteExpense,
-       super(ExpenseState());
+       _clock = clock,
+       super(ExpenseState(selectedDate: clock.now(), clock: clock));
 
   final AddExpense _addExpense;
   final GetExpenses _getExpenses;
   final UpdateExpense _updateExpense;
   final DeleteExpense _deleteExpense;
+  final AppClock _clock;
+
+  DateTime get now => _clock.now();
 
   void initializeForm([Expense? expense]) {
     emit(
       state.copyWith(
-        selectedDate: expense?.date ?? DateTime.now(),
+        selectedDate: expense?.date ?? _clock.now(),
         selectedCategoryId: expense?.categoryId,
         clearSelectedCategoryId: expense == null,
         submissionStatus: RequestsStatus.initial,
@@ -92,7 +98,7 @@ class ExpenseCubit extends Cubit<ExpenseState> {
             expensesStatus: RequestsStatus.success,
             submissionStatus: RequestsStatus.success,
             expenses: List<Expense>.unmodifiable([...state.expenses, expense]),
-            selectedDate: DateTime.now(),
+            selectedDate: now,
             clearSelectedCategoryId: true,
             clearLoadErrorMessage: true,
             clearSubmissionErrorMessage: true,
@@ -112,7 +118,7 @@ class ExpenseCubit extends Cubit<ExpenseState> {
             expensesStatus: RequestsStatus.success,
             submissionStatus: RequestsStatus.success,
             expenses: _replaceExpense(expense),
-            selectedDate: DateTime.now(),
+            selectedDate: now,
             clearSelectedCategoryId: true,
             clearLoadErrorMessage: true,
             clearSubmissionErrorMessage: true,

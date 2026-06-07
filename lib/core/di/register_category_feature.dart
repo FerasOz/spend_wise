@@ -1,6 +1,9 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import '../../core/services/app_clock.dart';
+import '../../core/services/id_generator.dart';
+import '../../features/budgets/domain/repositories/budget_repository.dart';
 import '../../features/categories/data/datasources/category_local_data_source.dart';
 import '../../features/categories/data/repositories/category_repository_impl.dart';
 import '../../features/categories/domain/repositories/category_repository.dart';
@@ -11,6 +14,7 @@ import '../../features/categories/domain/usecases/delete_category.dart';
 import '../../features/categories/domain/usecases/get_categories.dart';
 import '../../features/categories/domain/usecases/update_category.dart';
 import '../../features/expenses/domain/repositories/expense_repository.dart';
+import '../../features/recurring/domain/repositories/recurring_expense_repository.dart';
 import '../../features/categories/presentation/cubit/category_cubit.dart';
 
 Future<void> registerCategoryFeature(GetIt sl) async {
@@ -24,7 +28,7 @@ Future<void> registerCategoryFeature(GetIt sl) async {
 
     // Initialize with default categories if box is empty
     if (categoriesBox.isEmpty) {
-      await _initializeDefaultCategories(categoriesBox);
+      await _initializeDefaultCategories(categoriesBox, sl<AppClock>());
     }
 
     sl.registerSingleton<Box<Map>>(
@@ -85,6 +89,8 @@ Future<void> registerCategoryFeature(GetIt sl) async {
       () => CanDeleteCategoryReferentialIntegrity(
         sl<CategoryRepository>(),
         sl<ExpenseRepository>(),
+        sl<BudgetRepository>(),
+        sl<RecurringExpenseRepository>(),
       ),
     );
   }
@@ -100,13 +106,15 @@ Future<void> registerCategoryFeature(GetIt sl) async {
         canDeleteCategory: sl<CanDeleteCategory>(),
         canDeleteCategoryReferentialIntegrity:
             sl<CanDeleteCategoryReferentialIntegrity>(),
+        clock: sl<AppClock>(),
+        idGenerator: sl<IdGenerator>(),
       ),
     );
   }
 }
 
 /// Initialize the categories box with default categories
-Future<void> _initializeDefaultCategories(Box<Map> box) async {
+Future<void> _initializeDefaultCategories(Box<Map> box, AppClock clock) async {
   final defaultCategories = [
     {
       'id': 'cat_shopping',
@@ -114,7 +122,7 @@ Future<void> _initializeDefaultCategories(Box<Map> box) async {
       'icon': 'shopping_cart',
       'color': 0xFFFF6B6B,
       'isDefault': true,
-      'createdAt': DateTime.now().toIso8601String(),
+      'createdAt': clock.now().toIso8601String(),
     },
     {
       'id': 'cat_food',
@@ -122,7 +130,7 @@ Future<void> _initializeDefaultCategories(Box<Map> box) async {
       'icon': 'restaurant',
       'color': 0xFFFF922B,
       'isDefault': true,
-      'createdAt': DateTime.now().toIso8601String(),
+      'createdAt': clock.now().toIso8601String(),
     },
     {
       'id': 'cat_transport',
@@ -130,7 +138,7 @@ Future<void> _initializeDefaultCategories(Box<Map> box) async {
       'icon': 'directions_car',
       'color': 0xFF0C93E4,
       'isDefault': true,
-      'createdAt': DateTime.now().toIso8601String(),
+      'createdAt': clock.now().toIso8601String(),
     },
     {
       'id': 'cat_entertainment',
@@ -138,7 +146,7 @@ Future<void> _initializeDefaultCategories(Box<Map> box) async {
       'icon': 'movie',
       'color': 0xFF7950F2,
       'isDefault': true,
-      'createdAt': DateTime.now().toIso8601String(),
+      'createdAt': clock.now().toIso8601String(),
     },
     {
       'id': 'cat_utilities',
@@ -146,7 +154,7 @@ Future<void> _initializeDefaultCategories(Box<Map> box) async {
       'icon': 'electricity',
       'color': 0xFF20C997,
       'isDefault': true,
-      'createdAt': DateTime.now().toIso8601String(),
+      'createdAt': clock.now().toIso8601String(),
     },
     {
       'id': 'cat_health',
@@ -154,7 +162,7 @@ Future<void> _initializeDefaultCategories(Box<Map> box) async {
       'icon': 'health_and_safety',
       'color': 0xFF69DB7C,
       'isDefault': true,
-      'createdAt': DateTime.now().toIso8601String(),
+      'createdAt': clock.now().toIso8601String(),
     },
   ];
 

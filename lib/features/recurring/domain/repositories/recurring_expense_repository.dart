@@ -5,6 +5,8 @@ abstract class RecurringExpenseRepository {
 
   Future<List<RecurringExpense>> getRecurringExpenses();
 
+  Future<List<RecurringExpense>> getRecurringExpensesByCategoryId(String categoryId);
+
   Future<void> updateRecurringExpense(RecurringExpense recurringExpense);
 
   Future<void> deleteRecurringExpense(String id);

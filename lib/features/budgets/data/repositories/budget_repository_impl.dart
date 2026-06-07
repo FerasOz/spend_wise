@@ -20,6 +20,12 @@ class BudgetRepositoryImpl implements BudgetRepository {
   }
 
   @override
+  Future<List<Budget>> getBudgetsByCategoryId(String categoryId) async {
+    final budgets = await getBudgets();
+    return budgets.where((budget) => budget.categoryId == categoryId).toList(growable: false);
+  }
+
+  @override
   Future<void> updateBudget(Budget budget) {
     return _localDataSource.updateBudget(BudgetModel.fromEntity(budget));
   }

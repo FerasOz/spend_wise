@@ -22,7 +22,7 @@ extension _ExportRepositoryPdfX on ExportRepositoryImpl {
 
     final bytes = _pdfBuilder.buildSimpleReport(
       appName: 'SpendWise',
-      generatedAt: DateTime.now().toString(),
+      generatedAt: _clock.now().toString(),
       totalSpending: content.totalSpending,
       topCategory: content.topCategory,
       recentExpenses: content.recentExpenses,
@@ -30,8 +30,9 @@ extension _ExportRepositoryPdfX on ExportRepositoryImpl {
     );
 
     final result = await _files.writePdf(
-      fileNameBase: ExportFileNameBuilder.build(ExportType.pdf),
+      fileNameBase: ExportFileNameBuilder.build(ExportType.pdf, _clock),
       bytes: await bytes,
+      clock: _clock,
     );
     return _toExportFile(await _storeHistory(result));
   }

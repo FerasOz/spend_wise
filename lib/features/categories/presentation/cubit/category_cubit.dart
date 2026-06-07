@@ -1,5 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spend_wise/core/base/requests_status.dart';
+import 'package:spend_wise/core/services/app_clock.dart';
+import 'package:spend_wise/core/services/id_generator.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
 import 'package:spend_wise/features/categories/domain/usecases/add_category.dart';
 import 'package:spend_wise/features/categories/domain/usecases/can_delete_category.dart';
@@ -18,12 +20,16 @@ class CategoryCubit extends Cubit<CategoryState> {
     required DeleteCategory deleteCategory,
     required CanDeleteCategory canDeleteCategory,
     required CanDeleteCategoryReferentialIntegrity canDeleteCategoryReferentialIntegrity,
+    required AppClock clock,
+    required IdGenerator idGenerator,
   }) : _addCategory = addCategory,
        _getCategories = getCategories,
        _updateCategory = updateCategory,
        _deleteCategory = deleteCategory,
        _canDeleteCategory = canDeleteCategory,
        _canDeleteCategoryReferentialIntegrity = canDeleteCategoryReferentialIntegrity,
+       _clock = clock,
+       _idGenerator = idGenerator,
        super(const CategoryState());
 
   final AddCategory _addCategory;
@@ -32,6 +38,8 @@ class CategoryCubit extends Cubit<CategoryState> {
   final DeleteCategory _deleteCategory;
   final CanDeleteCategory _canDeleteCategory;
   final CanDeleteCategoryReferentialIntegrity _canDeleteCategoryReferentialIntegrity;
+  final AppClock _clock;
+  final IdGenerator _idGenerator;
 
   void initializeForm([Category? category]) {
     final nextState = category == null
@@ -348,12 +356,12 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
 
     return Category(
-      id: DateTime.now().microsecondsSinceEpoch.toString(),
+      id: _idGenerator.generate(),
       name: trimmedName,
       icon: state.selectedIcon,
       color: state.selectedColor,
       isDefault: false,
-      createdAt: DateTime.now(),
+      createdAt: _clock.now(),
     );
   }
 

@@ -10,6 +10,7 @@ extension _ExportRepositoryBackupX on ExportRepositoryImpl {
 
     final payload = _backupPayload.build(
       appName: 'SpendWise',
+      clock: _clock,
       collections: {
         HiveCategoryLocalDataSource.boxName: categories
             .map((category) => CategoryModel.fromEntity(category).toJson())
@@ -28,9 +29,10 @@ extension _ExportRepositoryBackupX on ExportRepositoryImpl {
     );
 
     final result = await _files.writeJson(
-      fileNameBase: ExportFileNameBuilder.build(ExportType.backup),
+      fileNameBase: ExportFileNameBuilder.build(ExportType.backup, _clock),
       json: payload,
       type: ExportType.backup,
+      clock: _clock,
     );
     return _toExportFile(await _storeHistory(result));
   }

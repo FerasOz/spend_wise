@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import '../../../../core/services/app_clock.dart';
 import '../../features/expenses/data/datasources/expense_local_data_source.dart';
 import '../../features/expenses/data/repositories/expense_repository_impl.dart';
 import '../../features/expenses/domain/repositories/expense_repository.dart';
@@ -68,6 +69,7 @@ Future<void> registerExpenseFeature(GetIt sl) async {
         getExpenses: sl<GetExpenses>(),
         updateExpense: sl<UpdateExpense>(),
         deleteExpense: sl<DeleteExpense>(),
+        clock: sl<AppClock>(),
       ),
     );
   }

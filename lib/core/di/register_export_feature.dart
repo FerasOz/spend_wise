@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import '../../../../core/services/app_clock.dart';
 import '../../features/export/data/builders/backup_payload_builder.dart';
 import '../../features/export/data/builders/expenses_export_payload_builder.dart';
 import '../../features/export/data/builders/pdf_report_content_builder.dart';
@@ -84,6 +85,7 @@ Future<void> registerExportFeature(GetIt sl) async {
         expensesPayload: sl<ExpensesExportPayloadBuilder>(),
         backupPayload: sl<BackupPayloadBuilder>(),
         pdfContent: sl<PdfReportContentBuilder>(),
+        clock: sl<AppClock>(),
       ),
     );
   }

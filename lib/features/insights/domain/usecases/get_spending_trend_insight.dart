@@ -1,14 +1,19 @@
 import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
 import 'package:spend_wise/features/insights/domain/entities/insight_color_tokens.dart';
 import 'package:spend_wise/features/insights/domain/entities/insight_card.dart';
+import 'package:spend_wise/core/services/app_clock.dart';
 
 class GetSpendingTrendInsight {
+  final AppClock _clock;
+
+  GetSpendingTrendInsight({required AppClock clock}) : _clock = clock;
+
   InsightCard call(List<Expense> expenses) {
     if (expenses.length < 2) {
       return _emptyInsight();
     }
 
-    final now = DateTime.now();
+    final now = _clock.now();
     final currentMonth = DateTime(now.year, now.month);
     final previousMonth = DateTime(now.year, now.month - 1);
     final currentMonthSpending = _monthTotal(expenses, currentMonth);

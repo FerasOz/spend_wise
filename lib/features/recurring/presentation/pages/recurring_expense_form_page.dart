@@ -5,6 +5,7 @@ import 'package:spend_wise/core/di/injection_container.dart';
 import 'package:spend_wise/features/recurring/presentation/widgets/recurring_expense_form_content.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
 import '../../../categories/presentation/cubit/category_cubit.dart';
+import '../../../expenses/presentation/cubit/expense_cubit.dart';
 import '../../domain/entities/recurring_expense.dart';
 import '../cubit/recurring_expense_cubit.dart';
 import '../cubit/recurring_expense_state.dart';
@@ -47,7 +48,7 @@ class RecurringExpenseFormPage extends StatelessWidget {
       recurringExpense?.repeatType ?? RecurringRepeatType.monthly,
     );
     final dueDate = ValueNotifier<DateTime>(
-      recurringExpense?.nextDueDate ?? DateTime.now(),
+      recurringExpense?.nextDueDate ?? context.read<ExpenseCubit>().now,
     );
     Future<void> submit() async {
       final isValid = formKey.currentState?.validate() ?? false;
@@ -57,14 +58,14 @@ class RecurringExpenseFormPage extends StatelessWidget {
       final nextRecurringExpense = RecurringExpense(
         id:
             recurringExpense?.id ??
-            DateTime.now().microsecondsSinceEpoch.toString(),
+            context.read<IdGenerator>().generate(),
         title: (title ?? '').trim(),
         amount: double.parse((amountValue ?? '').trim()),
         categoryId: selectedCategoryId.value!,
         repeatType: repeatType.value,
         nextDueDate: dueDate.value,
         isActive: recurringExpense?.isActive ?? true,
-        createdAt: recurringExpense?.createdAt ?? DateTime.now(),
+        createdAt: recurringExpense?.createdAt ?? context.read<ExpenseCubit>().now,
       );
 
       if (recurringExpense != null) {
