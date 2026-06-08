@@ -79,29 +79,29 @@ class RecurringExpenseCubit extends Cubit<RecurringExpenseState> {
     }
   }
 
-  Future<void> createRecurringExpense(RecurringExpense recurringExpense) {
-    return _submit(
+  Future<void> createRecurringExpense(RecurringExpense recurringExpense) async {
+    await _submit(
       action: () => _createRecurringExpense(recurringExpense),
       successMessage: LocaleKeys.recurring_successMessage_create.tr(),
     );
   }
 
-  Future<void> updateRecurringExpense(RecurringExpense recurringExpense) {
-    return _submit(
+  Future<void> updateRecurringExpense(RecurringExpense recurringExpense) async {
+    await _submit(
       action: () => _updateRecurringExpense(recurringExpense),
       successMessage: LocaleKeys.recurring_successMessage_update.tr(),
     );
   }
 
-  Future<void> deleteRecurringExpense(String id) {
-    return _submit(
+  Future<void> deleteRecurringExpense(String id) async {
+    await _submit(
       action: () => _deleteRecurringExpense(id),
       successMessage: LocaleKeys.recurring_successMessage_delete.tr(),
     );
   }
 
-  Future<void> toggleActive(RecurringExpense recurringExpense, bool isActive) {
-    return updateRecurringExpense(
+  Future<void> toggleActive(RecurringExpense recurringExpense, bool isActive) async {
+    await updateRecurringExpense(
       recurringExpense.copyWith(isActive: isActive),
     );
   }

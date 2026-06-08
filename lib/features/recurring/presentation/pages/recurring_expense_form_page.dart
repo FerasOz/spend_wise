@@ -29,6 +29,7 @@ class RecurringExpenseFormPage extends StatelessWidget {
                 ..initializeForm(recurringExpense),
             ),
             BlocProvider(create: (_) => sl<CategoryCubit>()..loadCategories()),
+            BlocProvider(create: (_) => sl<ExpenseCubit>()),
           ],
           child: RecurringExpenseFormPage(recurringExpense: recurringExpense),
         ),
@@ -59,7 +60,7 @@ class RecurringExpenseFormPage extends StatelessWidget {
       final nextRecurringExpense = RecurringExpense(
         id:
             recurringExpense?.id ??
-            context.read<IdGenerator>().generate(),
+            sl<IdGenerator>().generate(),
         title: (title ?? '').trim(),
         amount: double.parse((amountValue ?? '').trim()),
         categoryId: selectedCategoryId.value!,

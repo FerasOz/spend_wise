@@ -92,12 +92,11 @@ class ExpenseCubit extends Cubit<ExpenseState> {
   Future<void> addExpense(Expense expense) async {
     await _performSubmission(
       action: () => _addExpense(expense),
-      onSuccess: () {
+      onSuccess: () async {
+        await loadExpenses();
         emit(
           state.copyWith(
-            expensesStatus: RequestsStatus.success,
             submissionStatus: RequestsStatus.success,
-            expenses: List<Expense>.unmodifiable([...state.expenses, expense]),
             selectedDate: now,
             clearSelectedCategoryId: true,
             clearLoadErrorMessage: true,
@@ -112,12 +111,11 @@ class ExpenseCubit extends Cubit<ExpenseState> {
   Future<void> updateExpense(Expense expense) async {
     await _performSubmission(
       action: () => _updateExpense(expense),
-      onSuccess: () {
+      onSuccess: () async {
+        await loadExpenses();
         emit(
           state.copyWith(
-            expensesStatus: RequestsStatus.success,
             submissionStatus: RequestsStatus.success,
-            expenses: _replaceExpense(expense),
             selectedDate: now,
             clearSelectedCategoryId: true,
             clearLoadErrorMessage: true,
