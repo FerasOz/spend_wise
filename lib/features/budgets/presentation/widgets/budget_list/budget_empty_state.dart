@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
 
-import '../../../../core/theme/app_spacing.dart';
+import '../../../../../core/theme/app_spacing.dart';
 
 class BudgetEmptyState extends StatelessWidget {
   const BudgetEmptyState({required this.onAddBudget, super.key});

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/theme/app_colors.dart';
-import '../../domain/entities/budget_progress.dart';
+import '../../../../../core/theme/app_colors.dart';
+import '../../../domain/entities/budget_progress.dart';
 
 class BudgetProgressBar extends StatelessWidget {
   const BudgetProgressBar({

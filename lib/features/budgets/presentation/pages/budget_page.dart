@@ -9,8 +9,8 @@ import '../../../expenses/presentation/cubit/expense_cubit.dart';
 import '../../../expenses/presentation/cubit/expense_state.dart';
 import '../cubit/budget_cubit.dart';
 import '../cubit/budget_state.dart';
-import '../widgets/budget_empty_state.dart';
-import '../widgets/budget_list_view.dart';
+import '../widgets/budget_list/budget_empty_state.dart';
+import '../widgets/budget_list/budget_list_view.dart';
 
 class BudgetPage extends StatelessWidget {
   const BudgetPage({super.key});

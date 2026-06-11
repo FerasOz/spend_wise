@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/utils/category_resolver.dart';
-import '../../../../features/categories/presentation/cubit/category_cubit.dart';
-import '../../domain/entities/budget_progress.dart';
-import '../cubit/budget_cubit.dart';
+import '../../../../../core/utils/category_resolver.dart';
+import '../../../../../features/categories/presentation/cubit/category_cubit.dart';
+import '../../../domain/entities/budget_progress.dart';
+import '../../cubit/budget_cubit.dart';
 import 'budget_card.dart';
 
 class BudgetListView extends StatelessWidget {
