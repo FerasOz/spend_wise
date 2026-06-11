@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
 
-import '../../../../core/utils/app_formatters.dart';
+import '../../../../../core/utils/app_formatters.dart';
 
 class RecurringExpenseDueDateTile extends StatelessWidget {
   const RecurringExpenseDueDateTile({

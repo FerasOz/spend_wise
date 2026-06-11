@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:spend_wise/features/recurring/presentation/extensions/recurring_repeat_type_extension.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
 
-import '../../domain/entities/recurring_expense.dart';
+import '../../../domain/entities/recurring_expense.dart';
 
 class RecurringExpenseRepeatSection extends StatelessWidget {
   const RecurringExpenseRepeatSection({

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/widgets/category_picker.dart';
-import '../../../../features/categories/domain/entities/category.dart';
+import '../../../../../core/widgets/category_picker.dart';
+import '../../../../../features/categories/domain/entities/category.dart';
 
 class RecurringExpenseCategorySection extends StatelessWidget {
   const RecurringExpenseCategorySection({

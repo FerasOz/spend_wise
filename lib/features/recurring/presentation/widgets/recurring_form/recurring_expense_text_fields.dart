@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
 
-import '../../../../core/theme/app_spacing.dart';
+import '../../../../../core/theme/app_spacing.dart';
 
 class RecurringExpenseTextFields extends StatelessWidget {
   const RecurringExpenseTextFields({

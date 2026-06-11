@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/theme/app_spacing.dart';
-import '../../../../core/utils/category_resolver.dart';
-import '../../../../features/categories/presentation/cubit/category_cubit.dart';
-import '../../domain/entities/recurring_expense.dart';
+import '../../../../../core/theme/app_spacing.dart';
+import '../../../../../core/utils/category_resolver.dart';
+import '../../../../../features/categories/presentation/cubit/category_cubit.dart';
+import '../../../domain/entities/recurring_expense.dart';
 import 'recurring_expense_tile.dart';
 
 class RecurringExpensesListView extends StatelessWidget {

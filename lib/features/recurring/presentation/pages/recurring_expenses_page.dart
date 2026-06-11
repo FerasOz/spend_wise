@@ -5,8 +5,8 @@ import '../../../../core/base/requests_status.dart';
 import '../../../../core/widgets/responsive_page_content.dart';
 import '../cubit/recurring_expense_cubit.dart';
 import '../cubit/recurring_expense_state.dart';
-import '../widgets/recurring_empty_state.dart';
-import '../widgets/recurring_expenses_list_view.dart';
+import '../widgets/recurring_list/recurring_empty_state.dart';
+import '../widgets/recurring_list/recurring_expenses_list_view.dart';
 
 class RecurringExpensesPage extends StatelessWidget {
   const RecurringExpensesPage({super.key, this.showScaffold = true});

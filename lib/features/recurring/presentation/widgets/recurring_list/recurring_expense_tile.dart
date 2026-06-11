@@ -5,13 +5,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/features/recurring/presentation/extensions/recurring_repeat_type_extension.dart';
 import 'package:spend_wise/features/recurring/presentation/pages/recurring_expense_form_page.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
-import '../../../../core/theme/app_spacing.dart';
-import '../../../../core/utils/app_formatters.dart';
-import '../../../../core/widgets/currency_text.dart';
-import '../../../../core/widgets/category_badge.dart';
-import '../../../../features/categories/domain/entities/category.dart';
-import '../../domain/entities/recurring_expense.dart';
-import '../cubit/recurring_expense_cubit.dart';
+import '../../../../../core/theme/app_spacing.dart';
+import '../../../../../core/utils/app_formatters.dart';
+import '../../../../../core/widgets/currency_text.dart';
+import '../../../../../core/widgets/category_badge.dart';
+import '../../../../../features/categories/domain/entities/category.dart';
+import '../../../domain/entities/recurring_expense.dart';
+import '../../cubit/recurring_expense_cubit.dart';
 
 class RecurringExpenseTile extends StatelessWidget {
   const RecurringExpenseTile({
@@ -151,24 +151,10 @@ class _RecurringExpenseActions extends StatelessWidget {
             horizontal: AppSpacing.sm.w,
             vertical: AppSpacing.xs.h,
           ),
-          decoration: BoxDecoration(
-            color: item.isActive
-                ? Theme.of(context).colorScheme.primaryContainer
-                : Theme.of(context).colorScheme.surfaceContainerHighest,
-            borderRadius: BorderRadius.circular(14.r),
-          ),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(14.r)),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
-                item.isActive
-                    ? LocaleKeys.common_status_active.tr()
-                    : LocaleKeys.common_status_paused.tr(),
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: Theme.of(context).colorScheme.onSurfaceVariant,
-                ),
-              ),
-              SizedBox(width: AppSpacing.xs.w),
               Switch(
                 value: item.isActive,
                 onChanged: (value) {
