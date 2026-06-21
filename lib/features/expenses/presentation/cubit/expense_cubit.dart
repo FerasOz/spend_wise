@@ -192,14 +192,6 @@ class ExpenseCubit extends Cubit<ExpenseState> {
     }
   }
 
-  List<Expense> _replaceExpense(Expense updatedExpense) {
-    return List<Expense>.unmodifiable(
-      state.expenses.map((expense) {
-        return expense.id == updatedExpense.id ? updatedExpense : expense;
-      }),
-    );
-  }
-
   List<Expense> _removeExpense(String id) {
     return List<Expense>.unmodifiable(
       state.expenses.where((expense) => expense.id != id),

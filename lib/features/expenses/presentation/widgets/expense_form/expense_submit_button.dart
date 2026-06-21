@@ -46,8 +46,11 @@ class _ExpenseSubmitButtonState extends State<ExpenseSubmitButton> {
         width: double.infinity,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 100),
-          transform: Matrix4.identity()
-            ..scale(_isPressed ? 0.98 : 1.0),
+          transform: Matrix4.diagonal3Values(
+            _isPressed ? 0.98 : 1.0,
+            _isPressed ? 0.98 : 1.0,
+            1.0,
+          ),
           child: FilledButton(
             onPressed: widget.submissionStatus == RequestsStatus.loading ? null : widget.onSubmit,
             child: Text(

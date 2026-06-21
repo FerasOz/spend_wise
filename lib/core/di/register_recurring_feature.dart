@@ -1,7 +1,9 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../features/recurring/data/datasources/recurring_expense_local_data_source.dart';
+import '../../features/recurring/data/datasources/recurring_expense_remote_data_source.dart';
 import '../../features/recurring/data/repositories/recurring_expense_repository_impl.dart';
 import '../../features/recurring/domain/repositories/recurring_expense_repository.dart';
 import '../../features/recurring/domain/usecases/create_recurring_expense.dart';
@@ -23,11 +25,20 @@ Future<void> registerRecurringFeature(GetIt sl) async {
     );
   }
 
+  // Recurring Expense Remote Data Source
+  if (!sl.isRegistered<RecurringExpenseRemoteDataSource>()) {
+    sl.registerLazySingleton<RecurringExpenseRemoteDataSource>(
+      () => SupabaseRecurringExpenseRemoteDataSource(Supabase.instance.client),
+    );
+  }
+
   // Recurring Expense Repository
   if (!sl.isRegistered<RecurringExpenseRepository>()) {
     sl.registerLazySingleton<RecurringExpenseRepository>(
-      () =>
-          RecurringExpenseRepositoryImpl(sl<RecurringExpenseLocalDataSource>()),
+      () => RecurringExpenseRepositoryImpl(
+        sl<RecurringExpenseLocalDataSource>(),
+        sl<RecurringExpenseRemoteDataSource>(),
+      ),
     );
   }
 

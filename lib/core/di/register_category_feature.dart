@@ -1,10 +1,12 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../core/services/app_clock.dart';
 import '../../core/services/id_generator.dart';
 import '../../features/budgets/domain/repositories/budget_repository.dart';
 import '../../features/categories/data/datasources/category_local_data_source.dart';
+import '../../features/categories/data/datasources/category_remote_data_source.dart';
 import '../../features/categories/data/repositories/category_repository_impl.dart';
 import '../../features/categories/domain/repositories/category_repository.dart';
 import '../../features/categories/domain/usecases/add_category.dart';
@@ -46,10 +48,20 @@ Future<void> registerCategoryFeature(GetIt sl) async {
     );
   }
 
+  // Category Remote Data Source
+  if (!sl.isRegistered<CategoryRemoteDataSource>()) {
+    sl.registerLazySingleton<CategoryRemoteDataSource>(
+      () => SupabaseCategoryRemoteDataSource(Supabase.instance.client),
+    );
+  }
+
   // Category Repository
   if (!sl.isRegistered<CategoryRepository>()) {
     sl.registerLazySingleton<CategoryRepository>(
-      () => CategoryRepositoryImpl(sl<CategoryLocalDataSource>()),
+      () => CategoryRepositoryImpl(
+        sl<CategoryLocalDataSource>(),
+        sl<CategoryRemoteDataSource>(),
+      ),
     );
   }
 

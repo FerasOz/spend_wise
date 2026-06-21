@@ -1,7 +1,9 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../features/budgets/data/datasources/budget_local_data_source.dart';
+import '../../features/budgets/data/datasources/budget_remote_data_source.dart';
 import '../../features/budgets/data/repositories/budget_repository_impl.dart';
 import '../../features/budgets/domain/repositories/budget_repository.dart';
 import '../../features/budgets/domain/usecases/calculate_budget_progress.dart';
@@ -24,10 +26,20 @@ Future<void> registerBudgetFeature(GetIt sl) async {
     );
   }
 
+  // Budget Remote Data Source
+  if (!sl.isRegistered<BudgetRemoteDataSource>()) {
+    sl.registerLazySingleton<BudgetRemoteDataSource>(
+      () => SupabaseBudgetRemoteDataSource(Supabase.instance.client),
+    );
+  }
+
   // Budget Repository
   if (!sl.isRegistered<BudgetRepository>()) {
     sl.registerLazySingleton<BudgetRepository>(
-      () => BudgetRepositoryImpl(sl<BudgetLocalDataSource>()),
+      () => BudgetRepositoryImpl(
+        sl<BudgetLocalDataSource>(),
+        sl<BudgetRemoteDataSource>(),
+      ),
     );
   }
 

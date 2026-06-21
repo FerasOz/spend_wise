@@ -1,8 +1,10 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../../core/services/app_clock.dart';
 import '../../features/expenses/data/datasources/expense_local_data_source.dart';
+import '../../features/expenses/data/datasources/expense_remote_data_source.dart';
 import '../../features/expenses/data/repositories/expense_repository_impl.dart';
 import '../../features/expenses/domain/repositories/expense_repository.dart';
 import '../../features/expenses/domain/usecases/add_expense.dart';
@@ -23,10 +25,23 @@ Future<void> registerExpenseFeature(GetIt sl) async {
     );
   }
 
+  final name = "Feras";
+  final chars = name.replaceAll('', '');
+  print(chars);
+  // Expense Remote Data Source
+  if (!sl.isRegistered<ExpenseRemoteDataSource>()) {
+    sl.registerLazySingleton<ExpenseRemoteDataSource>(
+      () => SupabaseExpenseRemoteDataSource(Supabase.instance.client),
+    );
+  }
+
   // Expense Repository
   if (!sl.isRegistered<ExpenseRepository>()) {
     sl.registerLazySingleton<ExpenseRepository>(
-      () => ExpenseRepositoryImpl(sl<ExpenseLocalDataSource>()),
+      () => ExpenseRepositoryImpl(
+        sl<ExpenseLocalDataSource>(),
+        sl<ExpenseRemoteDataSource>(),
+      ),
     );
   }
 
