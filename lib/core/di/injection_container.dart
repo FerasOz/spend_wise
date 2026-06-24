@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:spend_wise/core/services/app_clock.dart';
 import 'package:spend_wise/core/services/id_generator.dart';
+import 'package:spend_wise/core/di/register_auth_feature.dart';
 import 'package:spend_wise/core/di/register_category_feature.dart';
 import 'package:spend_wise/core/di/register_expense_feature.dart';
 import 'package:spend_wise/core/di/register_budget_feature.dart';
@@ -31,6 +32,11 @@ Future<void> setupDependencies() async {
   if (!sl.isRegistered<IdGenerator>()) {
     sl.registerLazySingleton<IdGenerator>(() => TimestampIdGenerator(sl<AppClock>()));
   }
+
+  // ============================================================================
+  // AUTH FEATURE
+  // ============================================================================
+  await registerAuthFeature(sl);
 
   // ============================================================================
   // EXPENSE FEATURE

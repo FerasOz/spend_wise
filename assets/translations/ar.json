@@ -531,5 +531,24 @@
         "confirm": "حذف"
       }
     }
+  },
+  "auth": {
+    "login_title": "تسجيل الدخول",
+    "login_subtitle": "مرحبا بعودتك! يرجى تسجيل الدخول للمتابعة",
+    "register_title": "إنشاء حساب",
+    "register_subtitle": "انضم إلينا لبدء تتبع مصاريفك",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "confirm_password": "تأكيد كلمة المرور",
+    "login_button": "تسجيل الدخول",
+    "register_button": "إنشاء حساب",
+    "dont_have_account": "ليس لديك حساب؟",
+    "already_have_account": "لديك حساب بالفعل؟",
+    "validation_email_required": "البريد الإلكتروني مطلوب",
+    "validation_invalid_email": "يرجى إدخال بريد إلكتروني صحيح",
+    "validation_password_required": "كلمة المرور مطلوبة",
+    "validation_password_length": "يجب أن تكون كلمة المرور على الأقل 6 أحرف",
+    "validation_passwordsDoNotMatch": "كلمات المرور غير متطابقة",
+    "validation_emailInvalid": "يرجى إدخال عنوان بريد إلكتروني صحيح"
   }
 }

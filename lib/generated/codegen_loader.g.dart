@@ -547,6 +547,25 @@ class CodegenLoader extends AssetLoader{
         "confirm": "حذف"
       }
     }
+  },
+  "auth": {
+    "login_title": "تسجيل الدخول",
+    "login_subtitle": "مرحبا بعودتك! يرجى تسجيل الدخول للمتابعة",
+    "register_title": "إنشاء حساب",
+    "register_subtitle": "انضم إلينا لبدء تتبع مصاريفك",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "confirm_password": "تأكيد كلمة المرور",
+    "login_button": "تسجيل الدخول",
+    "register_button": "إنشاء حساب",
+    "dont_have_account": "ليس لديك حساب؟",
+    "already_have_account": "لديك حساب بالفعل؟",
+    "validation_email_required": "البريد الإلكتروني مطلوب",
+    "validation_invalid_email": "يرجى إدخال بريد إلكتروني صحيح",
+    "validation_password_required": "كلمة المرور مطلوبة",
+    "validation_password_length": "يجب أن تكون كلمة المرور على الأقل 6 أحرف",
+    "validation_passwordsDoNotMatch": "كلمات المرور غير متطابقة",
+    "validation_emailInvalid": "يرجى إدخال عنوان بريد إلكتروني صحيح"
   }
 };
 static const Map<String,dynamic> _en = {
@@ -1084,6 +1103,25 @@ static const Map<String,dynamic> _en = {
         "confirm": "Delete"
       }
     }
+  },
+  "auth": {
+    "login_title": "Sign In",
+    "login_subtitle": "Welcome back! Please sign in to continue",
+    "register_title": "Create Account",
+    "register_subtitle": "Join us to start tracking your expenses",
+    "email": "Email",
+    "password": "Password",
+    "confirm_password": "Confirm Password",
+    "login_button": "Sign In",
+    "register_button": "Create Account",
+    "dont_have_account": "Don't have an account?",
+    "already_have_account": "Already have an account?",
+    "validation_email_required": "Email is required",
+    "validation_invalid_email": "Please enter a valid email",
+    "validation_password_required": "Password is required",
+    "validation_password_length": "Password must be at least 6 characters",
+    "validation_passwordsDoNotMatch": "Passwords do not match",
+    "validation_emailInvalid": "Please enter a valid email address"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

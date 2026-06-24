@@ -5,6 +5,9 @@ import 'package:spend_wise/app/shell/main_shell_page.dart';
 import 'package:spend_wise/app/routes/route_names.dart';
 import 'package:spend_wise/core/di/injection_container.dart';
 import 'package:spend_wise/core/widgets/animations/app_page_transition.dart';
+import 'package:spend_wise/features/auth/presentation/pages/login_page.dart';
+import 'package:spend_wise/features/auth/presentation/pages/register_page.dart';
+import 'package:spend_wise/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
 import 'package:spend_wise/features/categories/presentation/pages/category_form_page.dart';
@@ -160,6 +163,22 @@ class AppRouters {
           builder: (_) => BlocProvider(
             create: (_) => sl<ExportCubit>()..loadHistory(),
             child: const ExportPage(),
+          ),
+        );
+      case RouteNames.loginPage:
+        return AppPageTransition.route(
+          settings: settings,
+          builder: (_) => BlocProvider(
+            create: (_) => sl<AuthCubit>(),
+            child: const LoginPage(),
+          ),
+        );
+      case RouteNames.registerPage:
+        return AppPageTransition.route(
+          settings: settings,
+          builder: (_) => BlocProvider(
+            create: (_) => sl<AuthCubit>(),
+            child: const RegisterPage(),
           ),
         );
 
