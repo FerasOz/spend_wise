@@ -8,6 +8,7 @@ import 'package:spend_wise/core/widgets/animations/app_page_transition.dart';
 import 'package:spend_wise/features/auth/presentation/pages/login_page.dart';
 import 'package:spend_wise/features/auth/presentation/pages/register_page.dart';
 import 'package:spend_wise/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:spend_wise/features/auth/presentation/widgets/auth_gate.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
 import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
 import 'package:spend_wise/features/categories/presentation/pages/category_form_page.dart';
@@ -47,6 +48,7 @@ class AppRouters {
               BlocProvider(
                 create: (context) => sl<DashboardCubit>()..loadDashboard(),
               ),
+              BlocProvider(create: (context) => sl<AuthCubit>()),
             ],
             child: const MainShellPage(),
           ),
@@ -173,6 +175,11 @@ class AppRouters {
             child: const LoginPage(),
           ),
         );
+      case RouteNames.authGate:
+        return AppPageTransition.route(
+          builder: (BuildContext context) => AuthGate(),
+        );
+
       case RouteNames.registerPage:
         return AppPageTransition.route(
           settings: settings,
@@ -181,7 +188,6 @@ class AppRouters {
             child: const RegisterPage(),
           ),
         );
-
       default:
         return null;
     }

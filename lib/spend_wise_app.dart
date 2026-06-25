@@ -42,7 +42,7 @@ class SpendWiseApp extends StatelessWidget {
                 theme: AppTheme.light,
                 darkTheme: AppTheme.dark,
                 themeMode: _themeModeFor(state.settings?.themeMode),
-                initialRoute: RouteNames.loginPage,
+                initialRoute: RouteNames.authGate,
                 onGenerateRoute: appRouters.onGenerateRoute,
               );
             },

@@ -8,6 +8,7 @@ class RouteNames {
   static const String budgetPage = '/budgetPage';
   static const String settingsPage = '/settingsPage';
   static const String exportPage = '/exportPage';
-  static const String loginPage = '/loginPage';
+  static const String loginPage = '/loginScreen';
   static const String registerPage = '/registerPage';
+  static const String authGate = '/authGate';
 }
