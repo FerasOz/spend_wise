@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/app/routes/route_names.dart';
 import 'package:spend_wise/core/theme/app_spacing.dart';
+import 'package:spend_wise/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
 
 class MainShellDrawer extends StatelessWidget {
@@ -55,6 +57,17 @@ class MainShellDrawer extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg.w),
               child: Divider(color: Theme.of(context).dividerColor),
+            ),
+            ListTile(
+              leading: const Icon(Icons.logout_outlined),
+              title: const Text("LogOut"),
+              onTap: () {
+                context.read<AuthCubit>().logout();
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  RouteNames.loginPage,
+                  (route) => false,
+                );
+              },
             ),
           ],
         ),
