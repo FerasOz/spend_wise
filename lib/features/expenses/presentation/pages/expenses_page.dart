@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
-import 'package:spend_wise/core/di/injection_container.dart';
-
 import '../../../../core/widgets/responsive_page_content.dart';
 import '../../../categories/presentation/cubit/category_cubit.dart';
 import '../../../../features/expenses/domain/entities/expense.dart';
@@ -53,14 +51,14 @@ class ExpensesPage extends StatelessWidget {
     BuildContext context, {
     Expense? expense,
   }) async {
+    final expenseCubit = context.read<ExpenseCubit>()..initializeForm(expense);
+
     await Navigator.of(context).push(
       PageRouteBuilder<void>(
         pageBuilder: (context, animation, secondaryAnimation) => MultiBlocProvider(
           providers: [
-            BlocProvider(
-              create: (_) => sl<ExpenseCubit>()..initializeForm(expense),
-            ),
-            BlocProvider(create: (_) => sl<CategoryCubit>()..loadCategories()),
+            BlocProvider.value(value: expenseCubit),
+            BlocProvider.value(value: context.read<CategoryCubit>()),
           ],
           child: ExpenseFormPage(expense: expense),
         ),

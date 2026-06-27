@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:spend_wise/features/categories/data/datasources/category_local_data_source.dart';
 import 'package:spend_wise/features/categories/data/datasources/category_remote_data_source.dart';
 import 'package:spend_wise/features/categories/data/models/category_model.dart';
@@ -33,15 +35,7 @@ class CategoryRepositoryImpl implements CategoryRepository {
 
   @override
   Future<List<Category>> getCategories() async {
-    try {
-      final remoteCategories = await _remoteDataSource.getCategories();
-      for (final category in remoteCategories) {
-        await _localDataSource.addCategory(category);
-      }
-    } catch (_) {
-      // Offline fallback
-    }
-
+    unawaited(_syncFromRemote());
     final categoryModels = await _localDataSource.getCategories();
     return categoryModels
         .map((categoryModel) => categoryModel.toEntity())
@@ -54,6 +48,17 @@ class CategoryRepositoryImpl implements CategoryRepository {
     await _localDataSource.updateCategory(categoryModel);
     try {
       await _remoteDataSource.updateCategory(categoryModel);
+    } catch (_) {
+      // Offline fallback
+    }
+  }
+
+  Future<void> _syncFromRemote() async {
+    try {
+      final remoteCategories = await _remoteDataSource.getCategories();
+      for (final category in remoteCategories) {
+        await _localDataSource.addCategory(category);
+      }
     } catch (_) {
       // Offline fallback
     }

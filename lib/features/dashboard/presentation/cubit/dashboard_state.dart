@@ -1,4 +1,5 @@
 import 'package:spend_wise/core/base/requests_status.dart';
+import 'package:spend_wise/features/budgets/domain/entities/budget_progress.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
 import 'package:spend_wise/features/dashboard/domain/entities/category_spending.dart';
 import 'package:spend_wise/features/dashboard/domain/entities/dashboard_summary.dart';
@@ -14,6 +15,7 @@ class DashboardState {
     this.recentExpenses = const [],
     this.topCategories = const [],
     this.insights = const [],
+    this.budgetAlerts = const [],
     this.categoriesById = const {},
     this.errorMessage,
   });
@@ -24,6 +26,7 @@ class DashboardState {
   final List<Expense> recentExpenses;
   final List<CategorySpending> topCategories;
   final List<InsightCard> insights;
+  final List<BudgetProgress> budgetAlerts;
   final Map<String, Category> categoriesById;
   final String? errorMessage;
 
@@ -34,6 +37,7 @@ class DashboardState {
     List<Expense>? recentExpenses,
     List<CategorySpending>? topCategories,
     List<InsightCard>? insights,
+    List<BudgetProgress>? budgetAlerts,
     Map<String, Category>? categoriesById,
     String? errorMessage,
     bool clearErrorMessage = false,
@@ -45,6 +49,7 @@ class DashboardState {
       recentExpenses: recentExpenses ?? this.recentExpenses,
       topCategories: topCategories ?? this.topCategories,
       insights: insights ?? this.insights,
+      budgetAlerts: budgetAlerts ?? this.budgetAlerts,
       categoriesById: categoriesById ?? this.categoriesById,
       errorMessage: clearErrorMessage ? null : (errorMessage ?? this.errorMessage),
     );

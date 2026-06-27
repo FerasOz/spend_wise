@@ -5,6 +5,7 @@ import 'package:spend_wise/core/di/injection_container.dart';
 import 'package:spend_wise/core/services/id_generator.dart';
 import 'package:spend_wise/features/recurring/presentation/widgets/recurring_form/recurring_expense_form_content.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
+import '../../../../core/base/requests_status.dart';
 import '../../../categories/presentation/cubit/category_cubit.dart';
 import '../../../expenses/presentation/cubit/expense_cubit.dart';
 import '../../domain/entities/recurring_expense.dart';
@@ -20,16 +21,16 @@ class RecurringExpenseFormPage extends StatelessWidget {
     BuildContext context, {
     RecurringExpense? recurringExpense,
   }) async {
+    final recurringCubit = context.read<RecurringExpenseCubit>()
+      ..initializeForm(recurringExpense);
+
     await Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (_) => MultiBlocProvider(
           providers: [
-            BlocProvider(
-              create: (_) => sl<RecurringExpenseCubit>()
-                ..initializeForm(recurringExpense),
-            ),
-            BlocProvider(create: (_) => sl<CategoryCubit>()..loadCategories()),
-            BlocProvider(create: (_) => sl<ExpenseCubit>()),
+            BlocProvider.value(value: recurringCubit),
+            BlocProvider.value(value: context.read<CategoryCubit>()),
+            BlocProvider.value(value: context.read<ExpenseCubit>()),
           ],
           child: RecurringExpenseFormPage(recurringExpense: recurringExpense),
         ),
@@ -52,22 +53,22 @@ class RecurringExpenseFormPage extends StatelessWidget {
     final dueDate = ValueNotifier<DateTime>(
       recurringExpense?.nextDueDate ?? context.read<ExpenseCubit>().now,
     );
+
     Future<void> submit() async {
       final isValid = formKey.currentState?.validate() ?? false;
       if (!isValid || selectedCategoryId.value == null) return;
       formKey.currentState?.save();
 
       final nextRecurringExpense = RecurringExpense(
-        id:
-            recurringExpense?.id ??
-            sl<IdGenerator>().generate(),
+        id: recurringExpense?.id ?? sl<IdGenerator>().generate(),
         title: (title ?? '').trim(),
         amount: double.parse((amountValue ?? '').trim()),
         categoryId: selectedCategoryId.value!,
         repeatType: repeatType.value,
         nextDueDate: dueDate.value,
         isActive: recurringExpense?.isActive ?? true,
-        createdAt: recurringExpense?.createdAt ?? context.read<ExpenseCubit>().now,
+        createdAt:
+            recurringExpense?.createdAt ?? context.read<ExpenseCubit>().now,
       );
 
       if (recurringExpense != null) {
@@ -79,44 +80,66 @@ class RecurringExpenseFormPage extends StatelessWidget {
           nextRecurringExpense,
         );
       }
-      if (context.mounted) Navigator.of(context).pop();
     }
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          isEditing
-              ? LocaleKeys.recurring_form_title_edit.tr()
-              : LocaleKeys.recurring_form_title_add.tr(),
-        ),
-      ),
-      body: SafeArea(
-        child: BlocBuilder<RecurringExpenseCubit, RecurringExpenseState>(
-          buildWhen: (previous, current) =>
-              previous.submissionStatus != current.submissionStatus,
-          builder: (context, state) {
-            final categories = context.select(
-              (CategoryCubit cubit) => cubit.state.sortedCategories,
-            );
+    return BlocListener<RecurringExpenseCubit, RecurringExpenseState>(
+      listenWhen: (previous, current) =>
+          previous.submissionStatus != current.submissionStatus,
+      listener: (context, state) {
+        if (state.submissionStatus == RequestsStatus.success) {
+          Navigator.of(context).pop();
+          return;
+        }
 
-            return RecurringExpenseFormContent(
-              formKey: formKey,
-              title: title,
-              amountValue: amountValue,
-              categories: categories,
-              selectedCategoryId: selectedCategoryId,
-              repeatType: repeatType,
-              dueDate: dueDate,
-              submissionStatus: state.submissionStatus,
-              isEditing: isEditing,
-              onTitleSaved: (value) => title = value,
-              onAmountSaved: (value) => amountValue = value?.trim(),
-              onCategoryChanged: (value) => selectedCategoryId.value = value,
-              onRepeatTypeChanged: (value) => repeatType.value = value,
-              onDueDateChanged: (value) => dueDate.value = value,
-              onSubmit: submit,
-            );
-          },
+        if (state.submissionStatus == RequestsStatus.error) {
+          final message =
+              state.submissionMessage ??
+              LocaleKeys.recurring_errorMessage_failedAction.tr();
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(message)));
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            isEditing
+                ? LocaleKeys.recurring_form_title_edit.tr()
+                : LocaleKeys.recurring_form_title_add.tr(),
+          ),
+        ),
+        body: SafeArea(
+          child: BlocBuilder<RecurringExpenseCubit, RecurringExpenseState>(
+            buildWhen: (previous, current) =>
+                previous.submissionStatus != current.submissionStatus,
+            builder: (context, state) {
+              final categoryView = context.select(
+                (CategoryCubit cubit) => (
+                  categories: cubit.state.sortedCategories,
+                  status: cubit.state.categoriesStatus,
+                ),
+              );
+
+              return RecurringExpenseFormContent(
+                formKey: formKey,
+                title: title,
+                amountValue: amountValue,
+                categories: categoryView.categories,
+                categoriesStatus: categoryView.status,
+                selectedCategoryId: selectedCategoryId,
+                repeatType: repeatType,
+                dueDate: dueDate,
+                submissionStatus: state.submissionStatus,
+                isEditing: isEditing,
+                onTitleSaved: (value) => title = value,
+                onAmountSaved: (value) => amountValue = value?.trim(),
+                onCategoryChanged: (value) => selectedCategoryId.value = value,
+                onRepeatTypeChanged: (value) => repeatType.value = value,
+                onDueDateChanged: (value) => dueDate.value = value,
+                onSubmit: submit,
+              );
+            },
+          ),
         ),
       ),
     );

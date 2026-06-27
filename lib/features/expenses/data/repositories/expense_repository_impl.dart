@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import '../../domain/entities/expense.dart';
 import '../../domain/repositories/expense_repository.dart';
 import '../datasources/expense_local_data_source.dart';
@@ -23,15 +25,12 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
 
   @override
   Future<List<Expense>> getExpenses() async {
-    try {
-      final remoteExpenses = await _remoteDataSource.getExpenses();
-      for (final expense in remoteExpenses) {
-        await _localDataSource.addExpense(expense);
-      }
-    } catch (_) {
-      // Offline fallback: ignore errors, fetch from local datasource below
-    }
+    unawaited(_syncFromRemote());
+    return getLocalExpenses();
+  }
 
+  @override
+  Future<List<Expense>> getLocalExpenses() async {
     final expenseModels = await _localDataSource.getExpenses();
     return expenseModels
         .map((expenseModel) => expenseModel.toEntity())
@@ -40,16 +39,10 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
 
   @override
   Future<List<Expense>> getExpensesByCategoryId(String categoryId) async {
-    try {
-      final remoteExpenses = await _remoteDataSource.getExpenses();
-      for (final expense in remoteExpenses) {
-        await _localDataSource.addExpense(expense);
-      }
-    } catch (_) {
-      // Offline fallback
-    }
-
-    final expenseModels = await _localDataSource.getExpensesByCategoryId(categoryId);
+    unawaited(_syncFromRemote());
+    final expenseModels = await _localDataSource.getExpensesByCategoryId(
+      categoryId,
+    );
     return expenseModels
         .map((expenseModel) => expenseModel.toEntity())
         .toList(growable: false);
@@ -73,6 +66,17 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
       await _remoteDataSource.deleteExpense(id);
     } catch (_) {
       // Offline fallback: catch remote exceptions
+    }
+  }
+
+  Future<void> _syncFromRemote() async {
+    try {
+      final remoteExpenses = await _remoteDataSource.getExpenses();
+      for (final expense in remoteExpenses) {
+        await _localDataSource.addExpense(expense);
+      }
+    } catch (_) {
+      // Offline fallback
     }
   }
 }

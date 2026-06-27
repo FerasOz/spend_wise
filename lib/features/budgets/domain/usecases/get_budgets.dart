@@ -16,7 +16,7 @@ class GetBudgets {
 
   Future<List<Budget>> call() async {
     final budgets = await _budgetRepository.getBudgets();
-    final expenses = await _expenseRepository.getExpenses();
+    final expenses = await _expenseRepository.getLocalExpenses();
     final now = _clock.now();
 
     return budgets.map((budget) {

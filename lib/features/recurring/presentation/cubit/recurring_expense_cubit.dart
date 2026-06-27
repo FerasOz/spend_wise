@@ -120,13 +120,15 @@ class RecurringExpenseCubit extends Cubit<RecurringExpenseState> {
     try {
       await action();
       await _generateAndTrackDueExpenses();
+      final recurringExpenses = await _getRecurringExpenses();
       emit(
         state.copyWith(
+          status: RequestsStatus.success,
+          recurringExpenses: recurringExpenses,
           submissionStatus: RequestsStatus.success,
           submissionMessage: successMessage,
         ),
       );
-      await loadRecurringExpenses();
     } catch (error, stackTrace) {
       addError(error, stackTrace);
       emit(

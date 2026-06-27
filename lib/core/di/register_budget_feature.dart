@@ -93,7 +93,7 @@ Future<void> registerBudgetFeature(GetIt sl) async {
         updateBudget: sl<UpdateBudget>(),
         deleteBudget: sl<DeleteBudget>(),
         calculateBudgetProgress: sl<CalculateBudgetProgress>(),
-      )..loadBudgets(),
+      ),
     );
   }
 }

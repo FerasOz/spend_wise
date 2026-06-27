@@ -7,6 +7,8 @@ import '../../features/dashboard/domain/usecases/get_dashboard_summary.dart';
 import '../../features/dashboard/domain/usecases/get_recent_expenses.dart';
 import '../../features/dashboard/domain/usecases/get_top_categories.dart';
 import '../../features/dashboard/domain/usecases/get_weekly_spending.dart';
+import '../../features/budgets/domain/usecases/calculate_budget_progress.dart';
+import '../../features/budgets/domain/usecases/get_budgets.dart';
 import '../../features/dashboard/presentation/cubit/dashboard_cubit.dart';
 import '../../core/services/app_clock.dart';
 import '../../features/categories/domain/repositories/category_repository.dart';
@@ -63,6 +65,8 @@ Future<void> registerDashboardFeature(GetIt sl) async {
         getRecentExpenses: sl<GetRecentExpenses>(),
         getTopCategories: sl<GetTopCategories>(),
         generateInsights: sl<GenerateInsights>(),
+        getBudgets: sl<GetBudgets>(),
+        calculateBudgetProgress: sl<CalculateBudgetProgress>(),
       ),
     );
   }

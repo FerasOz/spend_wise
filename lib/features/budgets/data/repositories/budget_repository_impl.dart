@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import '../../domain/entities/budget.dart';
 import '../../domain/repositories/budget_repository.dart';
 import '../datasources/budget_local_data_source.dart';
@@ -23,15 +25,7 @@ class BudgetRepositoryImpl implements BudgetRepository {
 
   @override
   Future<List<Budget>> getBudgets() async {
-    try {
-      final remoteBudgets = await _remoteDataSource.getBudgets();
-      for (final budget in remoteBudgets) {
-        await _localDataSource.createBudget(budget);
-      }
-    } catch (_) {
-      // Offline fallback
-    }
-
+    unawaited(_syncFromRemote());
     final models = await _localDataSource.getBudgets();
     return models.map((model) => model.toEntity()).toList(growable: false);
   }
@@ -39,7 +33,9 @@ class BudgetRepositoryImpl implements BudgetRepository {
   @override
   Future<List<Budget>> getBudgetsByCategoryId(String categoryId) async {
     final budgets = await getBudgets();
-    return budgets.where((budget) => budget.categoryId == categoryId).toList(growable: false);
+    return budgets
+        .where((budget) => budget.categoryId == categoryId)
+        .toList(growable: false);
   }
 
   @override
@@ -58,6 +54,17 @@ class BudgetRepositoryImpl implements BudgetRepository {
     await _localDataSource.deleteBudget(id);
     try {
       await _remoteDataSource.deleteBudget(id);
+    } catch (_) {
+      // Offline fallback
+    }
+  }
+
+  Future<void> _syncFromRemote() async {
+    try {
+      final remoteBudgets = await _remoteDataSource.getBudgets();
+      for (final budget in remoteBudgets) {
+        await _localDataSource.createBudget(budget);
+      }
     } catch (_) {
       // Offline fallback
     }

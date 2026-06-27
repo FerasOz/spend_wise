@@ -139,7 +139,9 @@ class AppRouters {
           settings: settings,
           builder: (_) => MultiBlocProvider(
             providers: [
-              BlocProvider(create: (context) => sl<BudgetCubit>()),
+              BlocProvider(
+                create: (context) => sl<BudgetCubit>()..loadBudgets(),
+              ),
               BlocProvider(
                 create: (context) => sl<ExpenseCubit>()..loadExpenses(),
               ),

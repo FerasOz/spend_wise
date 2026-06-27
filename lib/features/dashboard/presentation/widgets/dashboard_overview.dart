@@ -5,6 +5,7 @@ import 'package:spend_wise/core/theme/app_spacing.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
 import '../../../categories/presentation/pages/category_list_page.dart';
 import '../cubit/dashboard_state.dart';
+import 'dashboard_budget_alerts.dart';
 import 'dashboard_category_breakdown.dart';
 import 'dashboard_insights.dart';
 import 'dashboard_recent_expenses.dart';
@@ -37,6 +38,10 @@ class DashboardOverview extends StatelessWidget {
         SizedBox(height: AppSpacing.xxl.h),
         DashboardSummaryCards(summary: summary),
         SizedBox(height: AppSpacing.xxl.h),
+        DashboardBudgetAlerts(
+          alerts: state.budgetAlerts,
+          categoriesById: state.categoriesById,
+        ),
         DashboardInsights(insights: state.insights),
         SizedBox(height: AppSpacing.xxl.h),
         DashboardSpendingChart(points: state.weeklySpending),

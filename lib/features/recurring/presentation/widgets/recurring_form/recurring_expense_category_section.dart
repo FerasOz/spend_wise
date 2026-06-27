@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/base/requests_status.dart';
 import '../../../../../core/widgets/category_picker.dart';
 import '../../../../../features/categories/domain/entities/category.dart';
 
 class RecurringExpenseCategorySection extends StatelessWidget {
   const RecurringExpenseCategorySection({
     required this.categories,
+    required this.categoriesStatus,
     required this.selectedCategoryId,
     required this.onCategoryChanged,
     super.key,
   });
 
   final List<Category> categories;
+  final RequestsStatus categoriesStatus;
   final ValueNotifier<String?> selectedCategoryId;
   final ValueChanged<String> onCategoryChanged;
 
@@ -22,6 +25,7 @@ class RecurringExpenseCategorySection extends StatelessWidget {
       builder: (context, currentCategoryId, _) {
         return CategorySelector(
           categories: categories,
+          status: categoriesStatus,
           selectedCategoryId: currentCategoryId,
           onCategorySelected: (category) => onCategoryChanged(category.id),
         );

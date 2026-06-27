@@ -63,6 +63,7 @@ class _DashboardPageBody extends StatelessWidget {
           previous.weeklySpending != current.weeklySpending ||
           previous.recentExpenses != current.recentExpenses ||
           previous.topCategories != current.topCategories ||
+          previous.budgetAlerts != current.budgetAlerts ||
           previous.categoriesById != current.categoriesById ||
           previous.errorMessage != current.errorMessage,
       builder: (context, state) {

@@ -25,9 +25,6 @@ Future<void> registerExpenseFeature(GetIt sl) async {
     );
   }
 
-  final name = "Feras";
-  final chars = name.replaceAll('', '');
-  print(chars);
   // Expense Remote Data Source
   if (!sl.isRegistered<ExpenseRemoteDataSource>()) {
     sl.registerLazySingleton<ExpenseRemoteDataSource>(

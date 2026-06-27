@@ -5,7 +5,6 @@ import 'package:spend_wise/features/expenses/presentation/widgets/expense_form/e
 import 'package:spend_wise/generated/locale_keys.g.dart';
 import '../../../../core/base/requests_status.dart';
 import '../../../../core/widgets/responsive_page_content.dart';
-import '../../../../core/di/injection_container.dart';
 import '../../domain/entities/expense.dart';
 import '../cubit/expense_cubit.dart';
 import '../cubit/expense_state.dart';
@@ -17,14 +16,14 @@ class ExpenseFormPage extends StatelessWidget {
   final Expense? expense;
 
   static Future<void> open(BuildContext context, {Expense? expense}) async {
+    final expenseCubit = context.read<ExpenseCubit>()..initializeForm(expense);
+
     await Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (_) => MultiBlocProvider(
           providers: [
-            BlocProvider(
-              create: (_) => sl<ExpenseCubit>()..initializeForm(expense),
-            ),
-            BlocProvider(create: (_) => sl<CategoryCubit>()),
+            BlocProvider.value(value: expenseCubit),
+            BlocProvider.value(value: context.read<CategoryCubit>()),
           ],
           child: ExpenseFormPage(expense: expense),
         ),

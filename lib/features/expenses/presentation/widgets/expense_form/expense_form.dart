@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/core/base/requests_status.dart';
+import 'package:spend_wise/core/di/injection_container.dart';
 import 'package:spend_wise/core/services/id_generator.dart';
 import 'package:spend_wise/core/theme/app_spacing.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
@@ -121,7 +122,7 @@ class _ExpenseFormState extends State<ExpenseForm> {
     final savedExpense = Expense(
       id: widget.initialExpense != null
           ? widget.initialExpense!.id
-          : context.read<IdGenerator>().generate(),
+          : sl<IdGenerator>().generate(),
       title: trimmedTitle,
       amount: amountValue,
       categoryId: trimmedCategoryId,

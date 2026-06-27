@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import '../../domain/entities/recurring_expense.dart';
 import '../../domain/repositories/recurring_expense_repository.dart';
 import '../datasources/recurring_expense_local_data_source.dart';
@@ -5,7 +7,10 @@ import '../datasources/recurring_expense_remote_data_source.dart';
 import '../models/recurring_expense_model.dart';
 
 class RecurringExpenseRepositoryImpl implements RecurringExpenseRepository {
-  const RecurringExpenseRepositoryImpl(this._localDataSource, this._remoteDataSource);
+  const RecurringExpenseRepositoryImpl(
+    this._localDataSource,
+    this._remoteDataSource,
+  );
 
   final RecurringExpenseLocalDataSource _localDataSource;
   final RecurringExpenseRemoteDataSource _remoteDataSource;
@@ -23,23 +28,19 @@ class RecurringExpenseRepositoryImpl implements RecurringExpenseRepository {
 
   @override
   Future<List<RecurringExpense>> getRecurringExpenses() async {
-    try {
-      final remoteRecurringExpenses = await _remoteDataSource.getRecurringExpenses();
-      for (final item in remoteRecurringExpenses) {
-        await _localDataSource.createRecurringExpense(item);
-      }
-    } catch (_) {
-      // Offline fallback
-    }
-
+    unawaited(_syncFromRemote());
     final models = await _localDataSource.getRecurringExpenses();
     return models.map((model) => model.toEntity()).toList(growable: false);
   }
 
   @override
-  Future<List<RecurringExpense>> getRecurringExpensesByCategoryId(String categoryId) async {
+  Future<List<RecurringExpense>> getRecurringExpensesByCategoryId(
+    String categoryId,
+  ) async {
     final recurringExpenses = await getRecurringExpenses();
-    return recurringExpenses.where((recurringExpense) => recurringExpense.categoryId == categoryId).toList(growable: false);
+    return recurringExpenses
+        .where((recurringExpense) => recurringExpense.categoryId == categoryId)
+        .toList(growable: false);
   }
 
   @override
@@ -58,6 +59,18 @@ class RecurringExpenseRepositoryImpl implements RecurringExpenseRepository {
     await _localDataSource.deleteRecurringExpense(id);
     try {
       await _remoteDataSource.deleteRecurringExpense(id);
+    } catch (_) {
+      // Offline fallback
+    }
+  }
+
+  Future<void> _syncFromRemote() async {
+    try {
+      final remoteRecurringExpenses = await _remoteDataSource
+          .getRecurringExpenses();
+      for (final item in remoteRecurringExpenses) {
+        await _localDataSource.createRecurringExpense(item);
+      }
     } catch (_) {
       // Offline fallback
     }

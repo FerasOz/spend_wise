@@ -17,6 +17,7 @@ class RecurringExpenseFormContent extends StatelessWidget {
     required this.title,
     required this.amountValue,
     required this.categories,
+    required this.categoriesStatus,
     required this.selectedCategoryId,
     required this.repeatType,
     required this.dueDate,
@@ -35,6 +36,7 @@ class RecurringExpenseFormContent extends StatelessWidget {
   final String? title;
   final String? amountValue;
   final List<Category> categories;
+  final RequestsStatus categoriesStatus;
   final ValueNotifier<String?> selectedCategoryId;
   final ValueNotifier<RecurringRepeatType> repeatType;
   final ValueNotifier<DateTime> dueDate;
@@ -65,6 +67,7 @@ class RecurringExpenseFormContent extends StatelessWidget {
             SizedBox(height: AppSpacing.spacing20.h),
             RecurringExpenseCategorySection(
               categories: categories,
+              categoriesStatus: categoriesStatus,
               selectedCategoryId: selectedCategoryId,
               onCategoryChanged: onCategoryChanged,
             ),
