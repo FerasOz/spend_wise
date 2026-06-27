@@ -140,6 +140,10 @@ abstract class  LocaleKeys {
   static const budgets_card_of = 'budgets.card.of';
   static const budgets_card = 'budgets.card';
   static const budgets_remaining = 'budgets.remaining';
+  static const budgets_alerts_title = 'budgets.alerts.title';
+  static const budgets_alerts_warning = 'budgets.alerts.warning';
+  static const budgets_alerts_exceeded = 'budgets.alerts.exceeded';
+  static const budgets_alerts = 'budgets.alerts';
   static const budgets_success_created = 'budgets.success.created';
   static const budgets_success_updated = 'budgets.success.updated';
   static const budgets_success_deleted = 'budgets.success.deleted';

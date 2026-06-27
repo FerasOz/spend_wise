@@ -173,6 +173,11 @@
       "of": "of"
     },
     "remaining": "remaining",
+    "alerts": {
+      "title": "Budget alerts",
+      "warning": "{category} is at {percent}% of its budget",
+      "exceeded": "{category} has exceeded its budget"
+    },
     "success": {
       "created": "Budget created successfully.",
       "updated": "Budget updated successfully.",

@@ -189,6 +189,11 @@ class CodegenLoader extends AssetLoader{
       "of": "من"
     },
     "remaining": "متبقي",
+    "alerts": {
+      "title": "تنبيهات الميزانية",
+      "warning": "{category} وصلت إلى {percent}% من ميزانيتها",
+      "exceeded": "{category} تجاوزت ميزانيتها"
+    },
     "success": {
       "created": "تم إنشاء الميزانية بنجاح.",
       "updated": "تم تحديث الميزانية بنجاح.",
@@ -743,6 +748,11 @@ static const Map<String,dynamic> _en = {
       "of": "of"
     },
     "remaining": "remaining",
+    "alerts": {
+      "title": "Budget alerts",
+      "warning": "{category} is at {percent}% of its budget",
+      "exceeded": "{category} has exceeded its budget"
+    },
     "success": {
       "created": "Budget created successfully.",
       "updated": "Budget updated successfully.",

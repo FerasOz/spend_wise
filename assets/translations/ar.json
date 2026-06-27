@@ -173,6 +173,11 @@
       "of": "من"
     },
     "remaining": "متبقي",
+    "alerts": {
+      "title": "تنبيهات الميزانية",
+      "warning": "{category} وصلت إلى {percent}% من ميزانيتها",
+      "exceeded": "{category} تجاوزت ميزانيتها"
+    },
     "success": {
       "created": "تم إنشاء الميزانية بنجاح.",
       "updated": "تم تحديث الميزانية بنجاح.",
