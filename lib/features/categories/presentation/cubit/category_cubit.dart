@@ -91,8 +91,13 @@ class CategoryCubit extends Cubit<CategoryState> {
     emit(state.copyWith(selectedColor: colorValue));
   }
 
-  Future<void> loadCategories() async {
+  Future<void> loadCategories({bool force = false}) async {
     if (state.categoriesStatus == RequestsStatus.loading) {
+      return;
+    }
+    if (!force &&
+        state.categoriesStatus == RequestsStatus.success &&
+        state.categories.isNotEmpty) {
       return;
     }
 

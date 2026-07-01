@@ -16,21 +16,13 @@ class CategoryRepositoryImpl implements CategoryRepository {
   Future<void> addCategory(Category category) async {
     final categoryModel = CategoryModel.fromEntity(category);
     await _localDataSource.addCategory(categoryModel);
-    try {
-      await _remoteDataSource.addCategory(categoryModel);
-    } catch (_) {
-      // Offline fallback
-    }
+    unawaited(_syncWrite(() => _remoteDataSource.addCategory(categoryModel)));
   }
 
   @override
   Future<void> deleteCategory(String id) async {
     await _localDataSource.deleteCategory(id);
-    try {
-      await _remoteDataSource.deleteCategory(id);
-    } catch (_) {
-      // Offline fallback
-    }
+    unawaited(_syncWrite(() => _remoteDataSource.deleteCategory(id)));
   }
 
   @override
@@ -46,11 +38,7 @@ class CategoryRepositoryImpl implements CategoryRepository {
   Future<void> updateCategory(Category category) async {
     final categoryModel = CategoryModel.fromEntity(category);
     await _localDataSource.updateCategory(categoryModel);
-    try {
-      await _remoteDataSource.updateCategory(categoryModel);
-    } catch (_) {
-      // Offline fallback
-    }
+    unawaited(_syncWrite(() => _remoteDataSource.updateCategory(categoryModel)));
   }
 
   Future<void> _syncFromRemote() async {
@@ -59,6 +47,14 @@ class CategoryRepositoryImpl implements CategoryRepository {
       for (final category in remoteCategories) {
         await _localDataSource.addCategory(category);
       }
+    } catch (_) {
+      // Offline fallback
+    }
+  }
+
+  Future<void> _syncWrite(Future<void> Function() write) async {
+    try {
+      await write();
     } catch (_) {
       // Offline fallback
     }

@@ -56,6 +56,7 @@ class _ExpenseCategoryFieldState extends State<ExpenseCategoryField> {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         child: FormField<String>(
+          key: ValueKey(widget.initialValue),
           initialValue: widget.initialValue,
           validator: (value) {
             if (value == null || value.isEmpty) {

@@ -52,6 +52,7 @@ class _ExpenseCategorySectionState extends State<ExpenseCategorySection> {
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
             child: ExpenseCategoryField(
+              key: ValueKey(selectedCategoryId ?? widget.initialExpense?.categoryId),
               categories: widget.categories,
               categoriesStatus: widget.categoriesStatus,
               initialValue:

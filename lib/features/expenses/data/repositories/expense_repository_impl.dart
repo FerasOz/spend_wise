@@ -16,11 +16,7 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
   Future<void> addExpense(Expense expense) async {
     final expenseModel = ExpenseModel.fromEntity(expense);
     await _localDataSource.addExpense(expenseModel);
-    try {
-      await _remoteDataSource.addExpense(expenseModel);
-    } catch (_) {
-      // Offline fallback: catch remote exceptions
-    }
+    unawaited(_syncWrite(() => _remoteDataSource.addExpense(expenseModel)));
   }
 
   @override
@@ -52,20 +48,20 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
   Future<void> updateExpense(Expense expense) async {
     final expenseModel = ExpenseModel.fromEntity(expense);
     await _localDataSource.updateExpense(expenseModel);
-    try {
-      await _remoteDataSource.updateExpense(expenseModel);
-    } catch (_) {
-      // Offline fallback: catch remote exceptions
-    }
+    unawaited(_syncWrite(() => _remoteDataSource.updateExpense(expenseModel)));
   }
 
   @override
   Future<void> deleteExpense(String id) async {
     await _localDataSource.deleteExpense(id);
+    unawaited(_syncWrite(() => _remoteDataSource.deleteExpense(id)));
+  }
+
+  Future<void> _syncWrite(Future<void> Function() write) async {
     try {
-      await _remoteDataSource.deleteExpense(id);
+      await write();
     } catch (_) {
-      // Offline fallback: catch remote exceptions
+      // Offline fallback
     }
   }
 

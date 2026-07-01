@@ -165,7 +165,7 @@ class ExpenseCubit extends Cubit<ExpenseState> {
 
   Future<void> _performSubmission({
     required Future<void> Function() action,
-    required void Function() onSuccess,
+    required Future<void> Function() onSuccess,
     required String fallbackErrorMessage,
   }) async {
     emit(
@@ -177,7 +177,7 @@ class ExpenseCubit extends Cubit<ExpenseState> {
 
     try {
       await action();
-      onSuccess();
+      await onSuccess();
     } catch (error, stackTrace) {
       addError(error, stackTrace);
       emit(

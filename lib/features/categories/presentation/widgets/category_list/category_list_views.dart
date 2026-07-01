@@ -111,7 +111,8 @@ class CategoryListContent extends StatelessWidget {
             );
 
             return RefreshIndicator(
-              onRefresh: context.read<CategoryCubit>().loadCategories,
+              onRefresh: () =>
+                  context.read<CategoryCubit>().loadCategories(force: true),
               child: ListView.builder(
                 itemCount: state.sortedCategories.length,
                 itemBuilder: (context, index) {

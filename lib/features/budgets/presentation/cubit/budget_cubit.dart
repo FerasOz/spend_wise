@@ -32,6 +32,10 @@ class BudgetCubit extends Cubit<BudgetState> {
   final CalculateBudgetProgress _calculateBudgetProgress;
 
   Future<void> loadBudgets() async {
+    if (state.status == RequestsStatus.loading) {
+      return;
+    }
+
     emit(state.copyWith(status: RequestsStatus.loading, clearErrorMessage: true));
 
     try {
@@ -88,13 +92,13 @@ class BudgetCubit extends Cubit<BudgetState> {
 
     try {
       await action();
+      await loadBudgets();
       emit(
         state.copyWith(
           submissionStatus: RequestsStatus.success,
           submissionMessage: successMessage,
         ),
       );
-      await loadBudgets();
     } catch (error, stackTrace) {
       addError(error, stackTrace);
       emit(

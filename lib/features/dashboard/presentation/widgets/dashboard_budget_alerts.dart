@@ -7,6 +7,7 @@ import 'package:spend_wise/core/widgets/category_badge.dart';
 import 'package:spend_wise/features/budgets/domain/entities/budget_progress.dart';
 import 'package:spend_wise/features/budgets/presentation/widgets/budget_list/budget_progress_bar.dart';
 import 'package:spend_wise/features/categories/domain/entities/category.dart';
+import 'package:spend_wise/features/categories/presentation/utils/category_display_name.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
 
 class DashboardBudgetAlerts extends StatelessWidget {
@@ -46,13 +47,14 @@ class DashboardBudgetAlerts extends StatelessWidget {
           final percent = (alert.progress * 100).clamp(0, 999).round();
           final isExceeded = alert.status == BudgetProgressStatus.exceeded;
           final accentColor = isExceeded ? AppColors.danger : const Color(0xFFF59E0B);
+          final categoryName = category.localizedName;
           final message = isExceeded
               ? LocaleKeys.budgets_alerts_exceeded.tr(
-                  namedArgs: {'category': category.name},
+                  namedArgs: {'category': categoryName},
                 )
               : LocaleKeys.budgets_alerts_warning.tr(
                   namedArgs: {
-                    'category': category.name,
+                    'category': categoryName,
                     'percent': '$percent',
                   },
                 );

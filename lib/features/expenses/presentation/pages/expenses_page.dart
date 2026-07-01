@@ -52,13 +52,17 @@ class ExpensesPage extends StatelessWidget {
     Expense? expense,
   }) async {
     final expenseCubit = context.read<ExpenseCubit>()..initializeForm(expense);
+    final categoryCubit = context.read<CategoryCubit>();
+    if (categoryCubit.state.categories.isEmpty) {
+      categoryCubit.loadCategories();
+    }
 
     await Navigator.of(context).push(
       PageRouteBuilder<void>(
         pageBuilder: (context, animation, secondaryAnimation) => MultiBlocProvider(
           providers: [
             BlocProvider.value(value: expenseCubit),
-            BlocProvider.value(value: context.read<CategoryCubit>()),
+            BlocProvider.value(value: categoryCubit),
           ],
           child: ExpenseFormPage(expense: expense),
         ),

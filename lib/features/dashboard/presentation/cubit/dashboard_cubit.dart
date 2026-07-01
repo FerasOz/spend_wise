@@ -44,6 +44,10 @@ class DashboardCubit extends Cubit<DashboardState> {
   final CalculateBudgetProgress _calculateBudgetProgress;
 
   Future<void> loadDashboard() async {
+    if (state.status == RequestsStatus.loading) {
+      return;
+    }
+
     emit(
       state.copyWith(status: RequestsStatus.loading, clearErrorMessage: true),
     );

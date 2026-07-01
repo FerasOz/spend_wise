@@ -16,11 +16,7 @@ class BudgetRepositoryImpl implements BudgetRepository {
   Future<void> createBudget(Budget budget) async {
     final model = BudgetModel.fromEntity(budget);
     await _localDataSource.createBudget(model);
-    try {
-      await _remoteDataSource.createBudget(model);
-    } catch (_) {
-      // Offline fallback
-    }
+    unawaited(_syncWrite(() => _remoteDataSource.createBudget(model)));
   }
 
   @override
@@ -42,21 +38,13 @@ class BudgetRepositoryImpl implements BudgetRepository {
   Future<void> updateBudget(Budget budget) async {
     final model = BudgetModel.fromEntity(budget);
     await _localDataSource.updateBudget(model);
-    try {
-      await _remoteDataSource.updateBudget(model);
-    } catch (_) {
-      // Offline fallback
-    }
+    unawaited(_syncWrite(() => _remoteDataSource.updateBudget(model)));
   }
 
   @override
   Future<void> deleteBudget(String id) async {
     await _localDataSource.deleteBudget(id);
-    try {
-      await _remoteDataSource.deleteBudget(id);
-    } catch (_) {
-      // Offline fallback
-    }
+    unawaited(_syncWrite(() => _remoteDataSource.deleteBudget(id)));
   }
 
   Future<void> _syncFromRemote() async {
@@ -65,6 +53,14 @@ class BudgetRepositoryImpl implements BudgetRepository {
       for (final budget in remoteBudgets) {
         await _localDataSource.createBudget(budget);
       }
+    } catch (_) {
+      // Offline fallback
+    }
+  }
+
+  Future<void> _syncWrite(Future<void> Function() write) async {
+    try {
+      await write();
     } catch (_) {
       // Offline fallback
     }

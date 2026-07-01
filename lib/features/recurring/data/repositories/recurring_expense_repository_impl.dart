@@ -19,11 +19,7 @@ class RecurringExpenseRepositoryImpl implements RecurringExpenseRepository {
   Future<void> createRecurringExpense(RecurringExpense recurringExpense) async {
     final model = RecurringExpenseModel.fromEntity(recurringExpense);
     await _localDataSource.createRecurringExpense(model);
-    try {
-      await _remoteDataSource.createRecurringExpense(model);
-    } catch (_) {
-      // Offline fallback
-    }
+    unawaited(_syncWrite(() => _remoteDataSource.createRecurringExpense(model)));
   }
 
   @override
@@ -47,21 +43,13 @@ class RecurringExpenseRepositoryImpl implements RecurringExpenseRepository {
   Future<void> updateRecurringExpense(RecurringExpense recurringExpense) async {
     final model = RecurringExpenseModel.fromEntity(recurringExpense);
     await _localDataSource.updateRecurringExpense(model);
-    try {
-      await _remoteDataSource.updateRecurringExpense(model);
-    } catch (_) {
-      // Offline fallback
-    }
+    unawaited(_syncWrite(() => _remoteDataSource.updateRecurringExpense(model)));
   }
 
   @override
   Future<void> deleteRecurringExpense(String id) async {
     await _localDataSource.deleteRecurringExpense(id);
-    try {
-      await _remoteDataSource.deleteRecurringExpense(id);
-    } catch (_) {
-      // Offline fallback
-    }
+    unawaited(_syncWrite(() => _remoteDataSource.deleteRecurringExpense(id)));
   }
 
   Future<void> _syncFromRemote() async {
@@ -71,6 +59,14 @@ class RecurringExpenseRepositoryImpl implements RecurringExpenseRepository {
       for (final item in remoteRecurringExpenses) {
         await _localDataSource.createRecurringExpense(item);
       }
+    } catch (_) {
+      // Offline fallback
+    }
+  }
+
+  Future<void> _syncWrite(Future<void> Function() write) async {
+    try {
+      await write();
     } catch (_) {
       // Offline fallback
     }

@@ -20,16 +20,29 @@ class MainShellPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<RecurringExpenseCubit, RecurringExpenseState>(
-      listenWhen: (previous, current) =>
-          previous.generatedExpenseCount != current.generatedExpenseCount &&
-          current.generatedExpenseCount > 0,
-      listener: (context, _) {
-        context.read<ExpenseCubit>().loadExpenses();
-        context.read<ExpenseFilterCubit>().clearAll();
-        context.read<DashboardCubit>().loadDashboard();
-      },
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<RecurringExpenseCubit, RecurringExpenseState>(
+          listenWhen: (previous, current) =>
+              previous.generatedExpenseCount != current.generatedExpenseCount &&
+              current.generatedExpenseCount > 0,
+          listener: (context, _) {
+            context.read<ExpenseCubit>().loadExpenses();
+            context.read<ExpenseFilterCubit>().clearAll();
+            context.read<DashboardCubit>().loadDashboard();
+          },
+        ),
+        BlocListener<ShellCubit, ShellState>(
+          listenWhen: (previous, current) =>
+              previous.currentIndex != current.currentIndex &&
+              current.currentIndex == 0,
+          listener: (context, _) =>
+              context.read<DashboardCubit>().loadDashboard(),
+        ),
+      ],
       child: BlocBuilder<ShellCubit, ShellState>(
+        buildWhen: (previous, current) =>
+            previous.currentIndex != current.currentIndex,
         builder: (context, state) {
           final currentDestination = _destinations[state.currentIndex];
 

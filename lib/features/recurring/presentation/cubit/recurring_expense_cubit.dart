@@ -52,6 +52,10 @@ class RecurringExpenseCubit extends Cubit<RecurringExpenseState> {
   }
 
   Future<void> loadRecurringExpenses() async {
+    if (state.status == RequestsStatus.loading) {
+      return;
+    }
+
     emit(
       state.copyWith(status: RequestsStatus.loading, clearErrorMessage: true),
     );

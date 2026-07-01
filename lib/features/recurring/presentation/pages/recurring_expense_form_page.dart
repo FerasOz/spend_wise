@@ -23,13 +23,17 @@ class RecurringExpenseFormPage extends StatelessWidget {
   }) async {
     final recurringCubit = context.read<RecurringExpenseCubit>()
       ..initializeForm(recurringExpense);
+    final categoryCubit = context.read<CategoryCubit>();
+    if (categoryCubit.state.categories.isEmpty) {
+      categoryCubit.loadCategories();
+    }
 
     await Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (_) => MultiBlocProvider(
           providers: [
             BlocProvider.value(value: recurringCubit),
-            BlocProvider.value(value: context.read<CategoryCubit>()),
+            BlocProvider.value(value: categoryCubit),
             BlocProvider.value(value: context.read<ExpenseCubit>()),
           ],
           child: RecurringExpenseFormPage(recurringExpense: recurringExpense),
