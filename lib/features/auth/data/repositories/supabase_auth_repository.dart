@@ -48,6 +48,7 @@ class SupabaseAuthRepository implements AuthRepository {
         id: user.id,
         email: user.email ?? '',
         displayName: user.userMetadata?['full_name'] as String?,
+        requiresEmailConfirmation: response.session == null,
       );
     } catch (e) {
       return null;

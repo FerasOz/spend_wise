@@ -6,13 +6,13 @@
 |---|---|
 | **Session ID** | `019ded10-ad92-7de3-9ddc-618bbededbbc` |
 | **Working Dir** | `d:\Dev\FlutterProjects\spend_wise` |
-| **Model** | `gpt-5.4` |
+| **Model** | `gpt-5.5` |
 | **Provider** | `openai` |
 | **Source** | vscode |
 | **Started** | 5/3/2026, 11:59:46 AM |
-| **Last Updated** | 5/24/2026, 3:19:11 PM |
-| **Messages** | 76 |
-| **Total Tokens** | 42,785,741 |
+| **Last Updated** | 7/1/2026, 12:43:07 PM |
+| **Messages** | 119 |
+| **Total Tokens** | 64,889,933 |
 
 ---
 
@@ -26909,6 +26909,14564 @@ aborted by user
 <turn_aborted>
 The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
 </turn_aborted>
+
+
+---
+
+## User <sup>5/31/2026, 10:37:12 AM</sup>
+
+<environment_context>
+  <current_date>2026-05-31</current_date>
+  <timezone>Asia/Hebron</timezone>
+</environment_context>
+
+
+---
+
+## User <sup>5/31/2026, 10:37:12 AM</sup>
+
+# Context from my IDE setup:
+
+## Active file: lib/app/shell/widgets/main_shell_drawer.dart
+
+## Open tabs:
+- main_shell_drawer.dart: lib/app/shell/widgets/main_shell_drawer.dart
+- en.json: assets/translations/en.json
+
+## My request for Codex:
+هناك مشكلة لما افتح الكيبورد في expenses page وما يكون فيه expenses وتكون خالية يعني ما فيها الا السيرش وال chip والرسالة الي تقول no expenses yet مع زر add "Bottom overlowed by 109 pixel" اتوقع لازم تخلي كل الصفحة scrollable مو بس expenses list مدري شوف الخيار الانسب والحل الافضل expenses page وما يكون فيه expenses وتكون
+
+
+---
+
+## User <sup>5/31/2026, 10:37:51 AM</sup>
+
+# Context from my IDE setup:
+
+## Active file: lib/app/shell/widgets/main_shell_drawer.dart
+
+## Open tabs:
+- main_shell_drawer.dart: lib/app/shell/widgets/main_shell_drawer.dart
+- en.json: assets/translations/en.json
+
+## My request for Codex:
+هناك مشكلة لما افتح الكيبورد في expenses page وما يكون فيه expenses وتكون خالية يعني ما فيها الا السيرش وال chip والرسالة الي تقول no expenses yet مع زر add "Bottom overlowed by 109 pixel" اتوقع لازم تخلي كل الصفحة scrollable مو بس expenses list مدري شوف الخيار الانسب والحل الافضل expenses page وما يكون فيه expenses وتكون
+
+
+---
+
+## User <sup>5/31/2026, 12:08:08 PM</sup>
+
+# Context from my IDE setup:
+
+## Active file: lib/app/shell/widgets/main_shell_drawer.dart
+
+## Open tabs:
+- main_shell_drawer.dart: lib/app/shell/widgets/main_shell_drawer.dart
+- en.json: assets/translations/en.json
+## My request for Codex:
+هناك مشكلة لما افتح الكيبورد في expenses page وما يكون فيه expenses وتكون خالية يعني ما فيها الا السيرش وال chip والرسالة الي تقول no expenses yet مع زر add "Bottom overlowed by 109 pixel" اتوقع لازم تخلي كل الصفحة scrollable مو بس expenses list مدري شوف الخيار الانسب والحل الافضل expenses page وما يكون فيه expenses وتكون
+
+
+---
+
+## User <sup>5/31/2026, 12:23:49 PM</sup>
+
+# Context from my IDE setup:
+
+## Active file: lib/app/shell/widgets/main_shell_drawer.dart
+
+## Open tabs:
+- main_shell_drawer.dart: lib/app/shell/widgets/main_shell_drawer.dart
+- en.json: assets/translations/en.json
+## My request for Codex:
+هناك مشكلة لما افتح الكيبورد في expenses page وما يكون فيه expenses وتكون خالية يعني ما فيها الا السيرش وال chip والرسالة الي تقول no expenses yet مع زر add "Bottom overlowed by 109 pixel" اتوقع لازم تخلي كل الصفحة scrollable مو بس expenses list مدري شوف الخيار الانسب والحل الافضل expenses page وما يكون فيه expenses وتكون
+
+
+---
+
+## Codex <sup>5/31/2026, 1:27:19 PM</sup>
+
+سأفحص تركيب `ExpensesPage` وحالة القائمة الفارغة تحديدًا، لأن overflow مع الكيبورد غالبًا يكون من `Column` غير قابلة للتمرير أو empty state داخل مساحة ضيقة. بعدها أطبّق الحل الأقل إزعاجًا لباقي حالات القائمة.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\presentation\\pages\\expenses_page.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\presentation\\widgets\\expenses_state_view.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\presentation\\widgets\\expenses_list_view.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\presentation\\widgets\\expense_filter_bar.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"No expenses|Add your first|expenses_empty|ExpenseFilter|Search|Column\\(\" lib\\features\\expenses\\presentation",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.7 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+import '../../../../core/widgets/responsive_page_content.dart';
+import '../../../categories/presentation/cubit/category_cubit.dart';
+import '../../domain/entities/expense.dart';
+import '../cubit/expense_cubit.dart';
+import '../cubit/expense_filter_cubit.dart';
+import '../cubit/expense_filter_state.dart';
+import '../cubit/expense_state.dart';
+import 'expense_form_page.dart';
+import '../widgets/expense_filter_bar.dart';
+import '../widgets/expenses_state_view.dart';
+
+class ExpensesPage extends StatelessWidget {
+  const ExpensesPage({super.key, this.showScaffold = true});
+
+  final bool showScaffold;
+
+  @override
+  Widget build(BuildContext context) {
+    final
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.6 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+import '../../../../core/base/requests_status.dart';
+import '../../../../core/theme/app_spacing.dart';
+import '../../../../features/categories/presentation/cubit/category_cubit.dart';
+import '../../../../features/categories/presentation/cubit/category_state.dart';
+import '../../../../features/categories/presentation/pages/category_list_page.dart';
+import '../cubit/expense_cubit.dart';
+import '../cubit/expense_filter_cubit.dart';
+import '../cubit/expense_filter_state.dart';
+import '../cubit/expense_state.dart';
+import '../pages/expenses_page.dart';
+import 'expenses_feedback_view.dart';
+import 'expenses_list_view.dart';
+
+class ExpensesStateView extends StatelessW
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.7 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/utils/category_resolver.dart';
+import '../../../../features/categories/domain/entities/category.dart';
+import '../../domain/entities/expense.dart';
+import '../cubit/expense_cubit.dart';
+import 'expense_list_item.dart';
+
+class ExpensesListView extends StatelessWidget {
+  const ExpensesListView({
+    required this.expenses,
+    required this.categories,
+    super.key,
+  });
+
+  final List<Expense> expenses;
+  final List<Category> categories;
+
+  @override
+  Widget build(BuildContext context) {
+    final categoryMap = CategoryResolver.resolveCategoriesBatch(
+      expenses.map((expense) => expense.categoryId).toList(),
+      categories,
+    );
+
+    return RefreshIndicator(
+      onRefresh: context.read<ExpenseCubit>().loadExpenses,
+      child: L
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.6 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+import '../../../../core/services/currency_display_service.dart';
+import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/utils/app_formatters.dart';
+import '../../../../features/settings/domain/entities/app_currency.dart';
+import '../../../../features/settings/presentation/cubit/settings_cubit.dart';
+import '../../../../features/categories/presentation/cubit/category_cubit.dart';
+import '../../domain/entities/expense_filter.dart';
+import '../cubit/expense_filter_cubit.dart';
+import '../cubit/expense_filter_state.dart';
+
+class ExpenseFilterBar extends StatelessWidget {
+  const ExpenseFilterBar({super.key});
+
+  @override
+  Widget build(BuildCon
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 2.5 seconds
+Output:
+lib\features\expenses\presentation\pages\expenses_page.dart:31:              context.read<ExpenseFilterCubit>().syncExpenses(state.expenses),
+lib\features\expenses\presentation\pages\expenses_page.dart:76:      child: Column(
+lib\features\expenses\presentation\pages\expenses_page.dart:79:          const ExpenseFilterBar(),
+lib\features\expenses\presentation\pages\expenses_page.dart:82:            child: BlocBuilder<ExpenseFilterCubit, ExpenseFilterState>(
+lib\features\expenses\presentation\widgets\expenses_state_view.dart:28:  final ExpenseFilterState filterState;
+lib\features\expenses\presentation\widgets\expenses_state_view.dart:57:            onPressed: context.read<ExpenseFilterCubit>().clearAll,
+lib\features\expenses\presentation\widgets\expenses_state_view.dart:61:        return Column(
+lib\features\expenses\presentation\widgets\expenses_state_view.dart:111:        title: LocaleKeys.expenses_emptyCategory_title.tr(),
+lib\features\expens
+...(truncated)
+```
+
+</details>
+
+السبب صار واضح: `ExpensesPage` عندها `Column` ثابتة وفي الداخل `Expanded`، لكن empty state نفسها ليست قابلة للتمرير. عند فتح الكيبورد تصغر المساحة، فينكسر الجزء الفارغ. سأخلي حالة المحتوى الفارغ/الخطأ قابلة للتمرير مع الحفاظ على القائمة العادية كما هي.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\presentation\\widgets\\expenses_feedback_view.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\core\\widgets\\responsive_page_content.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\presentation\\widgets\\expense_category_field.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+class ExpensesFeedbackView extends StatelessWidget {
+  const ExpensesFeedbackView({
+    required this.title,
+    required this.message,
+    required this.actionLabel,
+    required this.onPressed,
+    super.key,
+  });
+
+  final String title;
+  final String message;
+  final String actionLabel;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.all(24.w),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              title,
+              style: textTheme.headlineSmall,
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 8.h),
+            Text(
+              message,
+     
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+class ResponsivePageContent extends StatelessWidget {
+  const ResponsivePageContent({
+    required this.child,
+    super.key,
+    this.maxWidth = 720,
+    this.mobilePadding = 16,
+    this.desktopPadding = 24,
+  });
+
+  final Widget child;
+  final double maxWidth;
+  final double mobilePadding;
+  final double desktopPadding;
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final horizontalPadding = constraints.maxWidth >= 700
+            ? desktopPadding.w
+            : mobilePadding.w;
+
+        return Align(
+          alignment: Alignment.topCenter,
+          child: ConstrainedBox(
+            constraints: BoxConstraints(maxWidth: maxWidth.w),
+            child: Padding(
+              padding: EdgeInsets.all(horizontalPadding),
+         
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+import '../../../../core/base/requests_status.dart';
+import '../../../../core/utils/category_resolver.dart';
+import '../../../../core/widgets/category_picker.dart';
+import '../../../../features/categories/domain/entities/category.dart';
+import '../../../../features/categories/presentation/pages/category_list_page.dart';
+
+class ExpenseCategoryField extends StatelessWidget {
+  const ExpenseCategoryField({
+    required this.categories,
+    required this.categoriesStatus,
+    required this.initialValue,
+    required this.onSaved,
+    required this.onCategorySelected,
+    super.key,
+  });
+
+  final List<Category> categories;
+  final RequestsStatus categoriesStatus;
+  final String? initialValue;
+  final ValueCh
+...(truncated)
+```
+
+</details>
+
+سأعدّل `ExpensesFeedbackView` نفسه بدل لفّ الصفحة كلها، لأن هذه هي القطعة التي تظهر في empty/error/no match. بهذه الطريقة القائمة الطبيعية تبقى performant، والحالات الفارغة تصبح scrollable عندما يفتح الكيبورد.
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/expenses/presentation/widgets/expenses_feedback_view.dart\n@@\n   @override\n   Widget build(BuildContext context) {\n     final textTheme = Theme.of(context).textTheme;\n \n-    return Center(\n-      child: Padding(\n-        padding: EdgeInsets.all(24.w),\n-        child: Column(\n-          mainAxisSize: MainAxisSize.min,\n-          children: [\n-            Text(\n-              title,\n-              style: textTheme.headlineSmall,\n-              textAlign: TextAlign.center,\n-            ),\n-            SizedBox(height: 8.h),\n-            Text(\n-              message,\n-              style: textTheme.bodyMedium,\n-              textAlign: TextAlign.center,\n-            ),\n-            SizedBox(height: 20.h),\n-            FilledButton(\n-              onPressed: onPressed,\n-              child: Text(actionLabel),\n-            ),\n-          ],\n-        ),\n-      ),\n+    return LayoutBuilder(\n+      builder: (context, constraints) {\n+        return SingleChildScrollView(\n+          physics: const AlwaysScrollableScrollPhysics(),\n+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,\n+          child: ConstrainedBox(\n+            constraints: BoxConstraints(minHeight: constraints.maxHeight),\n+            child: Center(\n+              child: Padding(\n+                padding: EdgeInsets.all(24.w),\n+                child: Column(\n+                  mainAxisSize: MainAxisSize.min,\n+                  children: [\n+                    Text(\n+                      title,\n+                      style: textTheme.headlineSmall,\n+                      textAlign: TextAlign.center,\n+                    ),\n+                    SizedBox(height: 8.h),\n+                    Text(\n+                      message,\n+                      style: textTheme.bodyMedium,\n+                      textAlign: TextAlign.center,\n+                    ),\n+                    Siz
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.2 seconds
+Output:
+Success. Updated the following files:
+M lib/features/expenses/presentation/widgets/expenses_feedback_view.dart
+```
+
+</details>
+
+التعديل أصبح محصورًا في widget الفيدباك؛ الآن سأشغل تحليلًا سريعًا على ملفات expenses المعنية للتأكد ما دخلنا warning أو خطأ جديد.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "dart analyze lib\\features\\expenses\\presentation\\pages\\expenses_page.dart lib\\features\\expenses\\presentation\\widgets\\expenses_state_view.dart lib\\features\\expenses\\presentation\\widgets\\expenses_feedback_view.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 120000
+}
+```
+
+</details>
+
+
+---
+
+## User <sup>5/31/2026, 1:27:19 PM</sup>
+
+كيف اترجم insights الموجودة في dashboard ابيك تخليها تتغير مع تغير اللغة
+
+
+---
+
+## Codex <sup>5/31/2026, 1:41:38 PM</sup>
+
+سأحوّل الـ insights نفسها من نصوص جاهزة داخل use cases/repositories إلى مفاتيح ترجمة، لأن المشكلة ليست في widget فقط؛ النصوص تُبنى قبل العرض داخل طبقة insights ثم تُعرض في dashboard. سأضيف مفاتيح `insights` للترجمات وأربطها بحيث تتحدث مع تغيير اللغة.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\domain\\entities\\insight_card.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\presentation\\widgets\\insight_card_widget.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\data\\repositories\\get_average_daily_insight.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\data\\repositories\\get_highest_spending_day_insight.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\data\\repositories\\get_spending_trend_insight.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\domain\\usecases\\get_top_category_insight.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+class InsightCard {
+  const InsightCard({
+    required this.id,
+    required this.title,
+    required this.message,
+    required this.type,
+    required this.icon,
+    required this.color,
+    this.amount,
+    this.value,
+    this.subtitle,
+  });
+
+  final String id;
+  final String title;
+  final String message;
+  final InsightType type;
+  final String icon;
+  final int color;
+  final double? amount;
+  final String? value;
+  final String? subtitle;
+}
+
+enum InsightType {
+  topCategory,
+  spending_trend,
+  average_daily,
+  highest_spending_day,
+  spending_streak,
+  smart_recommendation,
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.6 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/widgets/currency_text.dart';
+import '../../domain/entities/insight_card.dart';
+
+class InsightCardWidget extends StatelessWidget {
+  const InsightCardWidget({required this.insight, super.key});
+
+  final InsightCard insight;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Card(
+      elevation: 2,
+      color: theme.colorScheme.surfaceContainerHighest,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+      child: Padding(
+        padding: EdgeInsets.all(16.w),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Text(insight.icon, style: TextStyle(fontSize: 24.sp)),
+                SizedBox(width: 12.w),
+
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.7 seconds
+Output:
+import 'package:flutter/material.dart';
+
+import '../../../expenses/domain/entities/expense.dart';
+import '../../domain/entities/insight_card.dart';
+
+class GetAverageDailyInsight {
+  InsightCard call(List<Expense> expenses) {
+    if (expenses.isEmpty) {
+      return _emptyInsight();
+    }
+
+    final now = DateTime.now();
+    final totalThisMonth = expenses
+        .where((e) => e.date.year == now.year && e.date.month == now.month)
+        .fold<double>(0, (sum, e) => sum + e.amount);
+    final avgDaily = totalThisMonth / (now.day > 0 ? now.day : 1);
+
+    if (totalThisMonth == 0) {
+      return InsightCard(
+        id: 'average_daily',
+        title: 'Average daily',
+        message: 'No spending recorded this month yet.',
+        type: InsightType.average_daily,
+        icon: 'AVG',
+        color: Colors.purple.value,
+      );
+    }
+
+    return InsightCard(
+      id: 'average_daily',
+      title: 'Average daily',
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:flutter/material.dart';
+
+import '../../../expenses/domain/entities/expense.dart';
+import '../../domain/entities/insight_card.dart';
+
+class GetHighestSpendingDayInsight {
+  InsightCard call(List<Expense> expenses) {
+    if (expenses.isEmpty) {
+      return _emptyInsight();
+    }
+
+    final dailyTotals = <DateTime, double>{};
+    for (final expense in expenses) {
+      final dayStart = DateTime(
+        expense.date.year,
+        expense.date.month,
+        expense.date.day,
+      );
+      dailyTotals[dayStart] = (dailyTotals[dayStart] ?? 0) + expense.amount;
+    }
+
+    final highestDay = dailyTotals.entries.reduce((a, b) {
+      return a.value > b.value ? a : b;
+    });
+
+    return InsightCard(
+      id: 'highest_spending_day',
+      title: 'Highest spending day',
+      message: 'Your highest spending happened on ${_dayName(highestDay.key)}.',
+      type: InsightType.highest_spending_day,
+      ico
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:spend_wise/features/insights/domain/entities/insight_card.dart';
+import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
+
+class GetSpendingTrendInsight {
+  InsightCard call(List<Expense> expenses) {
+    if (expenses.length < 2) {
+      return _emptyInsight();
+    }
+
+    final now = DateTime.now();
+    final currentMonth = DateTime(now.year, now.month);
+    final previousMonth = DateTime(now.year, now.month - 1);
+
+    final currentMonthSpending = expenses
+        .where(
+          (e) =>
+              e.date.year == currentMonth.year &&
+              e.date.month == currentMonth.month,
+        )
+        .fold<double>(0, (sum, e) => sum + e.amount);
+
+    final previousMonthSpending = expenses
+        .where(
+          (e) =>
+              e.date.year == previousMonth.year &&
+              e.date.month == previousMonth.month,
+        )
+       
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:flutter/material.dart';
+
+import '../../../categories/domain/entities/category.dart';
+import '../../../expenses/domain/entities/expense.dart';
+import '../entities/insight_card.dart';
+
+class GetTopCategoryInsight {
+  InsightCard call(
+    List<Expense> expenses,
+    Map<String, Category> categoriesMap,
+  ) {
+    if (expenses.isEmpty) {
+      return _emptyInsight();
+    }
+
+    final totals = <String, double>{};
+    for (final expense in expenses) {
+      totals[expense.categoryId] = (totals[expense.categoryId] ?? 0) + expense.amount;
+    }
+
+    final topId = totals.entries.reduce((a, b) => a.value > b.value ? a : b).key;
+    final amount = totals[topId]!;
+    final total = expenses.fold<double>(0, (sum, expense) => sum + expense.amount);
+    final percentage = (amount / total * 100).toStringAsFixed(1);
+    final category = categoriesMap[topId];
+
+    return InsightCard(
+      id: 'top_category',
+      t
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\data\\repositories\\get_spending_streak_insight.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\data\\repositories\\get_smart_recommendation_insight.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\data\\repositories\\insight_repository_impl.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\dashboard\\presentation\\cubit\\dashboard_cubit.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content assets\\translations\\en.json",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content assets\\translations\\ar.json",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:spend_wise/features/insights/domain/entities/insight_card.dart';
+import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
+
+class GetSpendingStreakInsight {
+  InsightCard call(List<Expense> expenses) {
+    if (expenses.isEmpty) {
+      return _emptyInsight();
+    }
+
+    final now = DateTime.now();
+    final sortedExpenses = expenses.toList()
+      ..sort((a, b) => b.date.compareTo(a.date));
+
+    var streakDays = 0;
+    var currentDate = DateTime(now.year, now.month, now.day);
+
+    // Check if today has an expense
+    bool spentToday = sortedExpenses.any(
+      (e) =>
+          e.date.year == currentDate.year &&
+          e.date.month == currentDate.month &&
+          e.date.day == currentDate.day,
+    );
+
+    if (spentToday) {
+      streakDays = 1;
+      currentDate = currentDate.subtract(const Duration(days: 1));
+    } else {
+      // If no
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:spend_wise/features/insights/domain/entities/insight_card.dart';
+import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
+import 'package:spend_wise/features/categories/domain/entities/category.dart';
+
+class GetSmartRecommendationInsight {
+  InsightCard call(
+    List<Expense> expenses,
+    Map<String, Category> categoriesMap,
+  ) {
+    if (expenses.isEmpty) {
+      return _emptyInsight();
+    }
+
+    final now = DateTime.now();
+    final lastSevenDays = expenses
+        .where((e) => e.date.isAfter(now.subtract(const Duration(days: 7))))
+        .toList();
+
+    final lastThirtyDays = expenses
+        .where((e) => e.date.isAfter(now.subtract(const Duration(days: 30))))
+        .toList();
+
+    if (lastThirtyDays.isEmpty) {
+      return _emptyInsight();
+    }
+
+    final dailyAvg =
+        lastThirtyDays.fold<double>(0, (sum, e) => sum + e.amou
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:spend_wise/features/insights/data/repositories/get_average_daily_insight.dart';
+import 'package:spend_wise/features/insights/data/repositories/get_highest_spending_day_insight.dart';
+import 'package:spend_wise/features/insights/data/repositories/get_smart_recommendation_insight.dart';
+import 'package:spend_wise/features/insights/data/repositories/get_spending_streak_insight.dart';
+import 'package:spend_wise/features/insights/data/repositories/get_spending_trend_insight.dart';
+import 'package:spend_wise/features/insights/domain/usecases/get_top_category_insight.dart';
+import '../../domain/entities/insight_card.dart';
+import '../../domain/repositories/insight_repository.dart';
+import '../../../expenses/domain/entities/expense.dart';
+import '../../../categories/domain/entities/category.dart';
+
+class InsightRepositoryImpl implements InsightRepository {
+  const InsightRepositoryImpl({
+    required GetTopCategoryInsight
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/features/categories/domain/entities/category.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+import '../../../../core/base/requests_status.dart';
+import '../../domain/usecases/get_dashboard_source_data.dart';
+import '../../domain/usecases/get_dashboard_summary.dart';
+import '../../domain/usecases/get_recent_expenses.dart';
+import '../../domain/usecases/get_top_categories.dart';
+import '../../domain/usecases/get_weekly_spending.dart';
+import 'dashboard_state.dart';
+import 'package:spend_wise/features/insights/domain/usecases/generate_insights.dart';
+
+class DashboardCubit extends Cubit<DashboardState> {
+  DashboardCubit({
+    required GetDashboardSourceData getDashboardSourceData,
+    required GetDashboardSummary getDashboardSummary,
+    required GetWeeklySpending getWeeklySpend
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.6 seconds
+Output:
+{
+  "app": {
+    "about": "About",
+    "settings": "Settings",
+    "subTitle":"Smart Expense & Subscription Tracker"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "expenses": "Expenses",
+    "recurring": "Recurring",
+    "categories": "Categories",
+    "budgets": "Budgets",
+    "insights": "Insights",
+    "export": "Export"
+  },
+  "export": {
+    "title": "Export & Backup",
+    "settingsEntry": {
+      "subtitle": "Export your data and manage backups"
+    },
+    "actions": {
+      "title": "Export options",
+      "saveLocal": "Save locally",
+      "csv": {
+        "title": "Export expenses to CSV",
+        "subtitle": "Spreadsheet-friendly export"
+      },
+      "json": {
+        "title": "Export expenses to JSON",
+        "subtitle": "Developer-friendly structured data"
+      },
+      "pdf": {
+        "title": "Generate PDF report",
+        "subtitle": "Simple spending report summary"
+      },
+  
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+{
+  "app": {
+    "about": "ط­ظˆظ„",
+    "settings": "ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ",
+    "subTitle":"ظ…طھطھط¨ط¹ ط°ظƒظٹ ظ„ظ„ظ…طµط±ظˆظپط§طھ ظˆط§ظ„ط§ط´طھط±ط§ظƒط§طھ"
+  },
+  "navigation": {
+    "dashboard": "ط§ظ„ط±ط¦ظٹط³ظٹط©",
+    "expenses": "ط§ظ„ظ…طµط§ط±ظٹظپ",
+    "recurring": "ط§ظ„ظ…طھظƒط±ط±ط©",
+    "categories": "ط§ظ„ظپط¦ط§طھ",
+    "budgets": "ط§ظ„ظ…ظٹط²ط§ظ†ظٹط§طھ",
+    "insights": "ط§ظ„ط±ط¤ظ‰",
+    "export": "طھطµط¯ظٹط±"
+  },
+  "export": {
+    "title": "ط§ظ„طھطµط¯ظٹط± ظˆط§ظ„ظ†ط³ط® ط§ظ„ط§ط­طھظٹط§ط·ظٹ",
+    "settingsEntry": {
+      "subtitle": "طµط¯ظ‘ط± ط¨ظٹط§ظ†ط§طھظƒ ظˆط£ط¯ط± ط§ظ„ظ†ط³ط® ط§ظ„ط§ط­طھظٹط§ط·ظٹط©"
+    },
+    "actions": {
+      "title": "ط®ظٹط§ط±ط§طھ ط§ظ„طھطµط¯ظٹط±",
+      "saveLocal": "ط­ظپط¸ ظ…ط­ظ„ظٹظ‹ط§",
+      "csv": {
+        "title": "طھطµط¯ظٹط± ط§ظ„ظ…طµط§ط±ظٹظپ ط¥ظ„ظ‰ CSV",
+        "subtitle": "طھطµط¯ظٹط± ظ…ظ†ط§ط³ط¨ ظ„ظ„ط¬ط¯ط§ظˆظ„"
+      },
+      "json": {
+        "title": "طھطµط¯ظٹط± ط§ظ„ظ…طµط§ط±ظٹظپ ط¥ظ„ظ‰ J
+...(truncated)
+```
+
+</details>
+
+الطريقة الأنظف هنا أن لا نخزن نص insight النهائي داخل الحالة، لأن هذا يظل باللغة القديمة. سأخلي الـ insight يحتفظ ببياناته الدلالية مثل النوع والنسبة واسم الفئة، والـ widget هو الذي يترجمها وقت العرض، وبكذا يتغير النص مباشرة مع تغيير اللغة.
+
+سأعدل الآن ملفات insights نفسها مع إضافة مفاتيح ترجمة تحت `dashboard.insights.cards`. لن ألمس `lib/generated` يدويًا؛ بعد إضافة المفاتيح سأحاول تشغيل التوليد حتى تظهر كمفاتيح `LocaleKeys` لو اكتمل الأمر.
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/insights/domain/entities/insight_card.dart\n@@\n     this.amount,\n     this.value,\n     this.subtitle,\n+    this.metadata = const {},\n   });\n@@\n   final double? amount;\n   final String? value;\n   final String? subtitle;\n+  final Map<String, String> metadata;\n }\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+M lib/features/insights/domain/entities/insight_card.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/insights/data/repositories/get_average_daily_insight.dart\n@@\n       return InsightCard(\n         id: 'average_daily',\n         title: 'Average daily',\n-        message: 'No spending recorded this month yet.',\n+        message: 'average_daily.no_spending',\n         type: InsightType.average_daily,\n         icon: 'AVG',\n         color: Colors.purple.value,\n+        metadata: const {'variant': 'no_spending'},\n       );\n     }\n@@\n       id: 'average_daily',\n       title: 'Average daily',\n-      message: 'Your daily average this month is staying at this level.',\n+      message: 'average_daily.current',\n       type: InsightType.average_daily,\n       icon: 'AVG',\n       color: Colors.purple.value,\n       amount: avgDaily,\n+      metadata: const {'variant': 'current'},\n     );\n   }\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+M lib/features/insights/data/repositories/get_average_daily_insight.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/insights/data/repositories/get_highest_spending_day_insight.dart\n@@\n     return InsightCard(\n       id: 'highest_spending_day',\n       title: 'Highest spending day',\n-      message: 'Your highest spending happened on ${_dayName(highestDay.key)}.',\n+      message: 'highest_spending_day.message',\n       type: InsightType.highest_spending_day,\n       icon: 'DAY',\n       color: Colors.red.value,\n       amount: highestDay.value,\n+      metadata: {'day': _dayValue(highestDay.key)},\n     );\n   }\n@@\n-  String _dayName(DateTime date) {\n-    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];\n-    const months = [\n-      'Jan',\n-      'Feb',\n-      'Mar',\n-      'Apr',\n-      'May',\n-      'Jun',\n-      'Jul',\n-      'Aug',\n-      'Sep',\n-      'Oct',\n-      'Nov',\n-      'Dec',\n-    ];\n-    return '${days[date.weekday - 1]}, ${date.day} ${months[date.month - 1]}';\n+  String _dayValue(DateTime date) {\n+    return date.toIso8601String();\n   }\n }\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+M lib/features/insights/data/repositories/get_highest_spending_day_insight.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/insights/data/repositories/get_spending_trend_insight.dart\n@@\n       return InsightCard(\n         id: 'spending_trend',\n         title: 'Spending trend',\n-        message: 'You started spending this month! Keep an eye on it. ًں“ˆ',\n+        message: 'spending_trend.started',\n         type: InsightType.spending_trend,\n-        icon: 'ًں“ˆ',\n+        icon: 'TREND',\n         color: Colors.green.value,\n+        metadata: const {'variant': 'started'},\n       );\n     }\n@@\n-    final direction = delta >= 0 ? 'up' : 'down';\n-    final message =\n-        'Your spending is $direction ${delta.abs().toStringAsFixed(1)}% compared to last month.';\n+    final variant = delta >= 0 ? 'increased' : 'decreased';\n \n     return InsightCard(\n       id: 'spending_trend',\n       title: 'Spending trend',\n-      message: message,\n+      message: 'spending_trend.$variant',\n       type: InsightType.spending_trend,\n-      icon: 'ًں“ˆ',\n+      icon: 'TREND',\n       value: '${delta > 0 ? '+' : ''}${delta.toStringAsFixed(1)}%',\n       color: delta >= 0 ? Colors.orange.value : Colors.green.value,\n+      metadata: {\n+        'variant': variant,\n+        'percent': delta.abs().toStringAsFixed(1),\n+      },\n     );\n   }\n@@\n     title: 'Spending trend',\n     message: '',\n     type: InsightType.spending_trend,\n-    icon: 'ًں“ˆ',\n+    icon: 'TREND',\n     color: Colors.green.value,\n   );\n }\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+apply_patch verification failed: Failed to find expected lines in d:\Dev\FlutterProjects\spend_wise\lib\features\insights\data\repositories\get_spending_trend_insight.dart:
+      return InsightCard(
+        id: 'spending_trend',
+        title: 'Spending trend',
+        message: 'You started spending this month! Keep an eye on it. ًں“ˆ',
+        type: InsightType.spending_trend,
+        icon: 'ًں“ˆ',
+        color: Colors.green.value,
+      );
+    }
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\data\\repositories\\get_spending_trend_insight.dart | Select-Object -First 90",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:spend_wise/features/insights/domain/entities/insight_card.dart';
+import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
+
+class GetSpendingTrendInsight {
+  InsightCard call(List<Expense> expenses) {
+    if (expenses.length < 2) {
+      return _emptyInsight();
+    }
+
+    final now = DateTime.now();
+    final currentMonth = DateTime(now.year, now.month);
+    final previousMonth = DateTime(now.year, now.month - 1);
+
+    final currentMonthSpending = expenses
+        .where(
+          (e) =>
+              e.date.year == currentMonth.year &&
+              e.date.month == currentMonth.month,
+        )
+        .fold<double>(0, (sum, e) => sum + e.amount);
+
+    final previousMonthSpending = expenses
+        .where(
+          (e) =>
+              e.date.year == previousMonth.year &&
+              e.date.month == previousMonth.month,
+        )
+       
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Delete File: lib/features/insights/data/repositories/get_spending_trend_insight.dart\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.2 seconds
+Output:
+Success. Updated the following files:
+D lib/features/insights/data/repositories/get_spending_trend_insight.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Add File: lib/features/insights/data/repositories/get_spending_trend_insight.dart\n+import 'package:flutter/material.dart';\n+import 'package:spend_wise/features/expenses/domain/entities/expense.dart';\n+import 'package:spend_wise/features/insights/domain/entities/insight_card.dart';\n+\n+class GetSpendingTrendInsight {\n+  InsightCard call(List<Expense> expenses) {\n+    if (expenses.length < 2) {\n+      return _emptyInsight();\n+    }\n+\n+    final now = DateTime.now();\n+    final currentMonth = DateTime(now.year, now.month);\n+    final previousMonth = DateTime(now.year, now.month - 1);\n+    final currentMonthSpending = _monthTotal(expenses, currentMonth);\n+    final previousMonthSpending = _monthTotal(expenses, previousMonth);\n+\n+    if (previousMonthSpending == 0) {\n+      if (currentMonthSpending == 0) return _emptyInsight();\n+      return InsightCard(\n+        id: 'spending_trend',\n+        title: 'Spending trend',\n+        message: 'spending_trend.started',\n+        type: InsightType.spending_trend,\n+        icon: 'TREND',\n+        color: Colors.green.value,\n+        metadata: const {'variant': 'started'},\n+      );\n+    }\n+\n+    final delta =\n+        ((currentMonthSpending - previousMonthSpending) / previousMonthSpending) *\n+        100;\n+    final variant = delta >= 0 ? 'increased' : 'decreased';\n+\n+    return InsightCard(\n+      id: 'spending_trend',\n+      title: 'Spending trend',\n+      message: 'spending_trend.$variant',\n+      type: InsightType.spending_trend,\n+      icon: 'TREND',\n+      value: '${delta > 0 ? '+' : ''}${delta.toStringAsFixed(1)}%',\n+      color: delta >= 0 ? Colors.orange.value : Colors.green.value,\n+      metadata: {\n+        'variant': variant,\n+        'percent': delta.abs().toStringAsFixed(1),\n+      },\n+    );\n+  }\n+\n+  double _monthTotal(List<Expense> expenses, DateTime month) {\n+    return expenses\n+        .where((e) => e.date.year == month.year && 
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+A lib/features/insights/data/repositories/get_spending_trend_insight.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/insights/domain/usecases/get_top_category_insight.dart\n@@\n     return InsightCard(\n       id: 'top_category',\n       title: 'Top category',\n-      message:\n-          '${category?.name ?? 'Unknown'} leads your spending at $percentage% of the total.',\n+      message: 'top_category.message',\n       type: InsightType.topCategory,\n       icon: 'TOP',\n       color: category?.color ?? Colors.blue.value,\n       amount: amount,\n+      metadata: {\n+        'category': category?.name ?? 'Unknown',\n+        'percentage': percentage,\n+      },\n     );\n   }\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+M lib/features/insights/domain/usecases/get_top_category_insight.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/insights/data/repositories/get_spending_streak_insight.dart\n@@\n     return InsightCard(\n       id: 'spending_streak',\n       title: 'Spending streak',\n-      message:\n-          'You have spent on $streakDays consecutive days. Keep the momentum! ًںژ¯',\n+      message: 'spending_streak.message',\n       type: InsightType.spending_streak,\n-      icon: 'ًں”¥',\n-      value: '$streakDays days',\n+      icon: 'STREAK',\n+      value: '$streakDays',\n       color: Colors.orange.value,\n+      metadata: {'days': '$streakDays'},\n     );\n   }\n@@\n     title: 'Spending streak',\n     message: '',\n     type: InsightType.spending_streak,\n-    icon: 'ًں”¥',\n+    icon: 'STREAK',\n     color: Colors.orange.value,\n   );\n }\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+apply_patch verification failed: Failed to find expected lines in d:\Dev\FlutterProjects\spend_wise\lib\features\insights\data\repositories\get_spending_streak_insight.dart:
+    return InsightCard(
+      id: 'spending_streak',
+      title: 'Spending streak',
+      message:
+          'You have spent on $streakDays consecutive days. Keep the momentum! ًںژ¯',
+      type: InsightType.spending_streak,
+      icon: 'ًں”¥',
+      value: '$streakDays days',
+      color: Colors.orange.value,
+    );
+  }
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Delete File: lib/features/insights/data/repositories/get_spending_streak_insight.dart\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+D lib/features/insights/data/repositories/get_spending_streak_insight.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Add File: lib/features/insights/data/repositories/get_spending_streak_insight.dart\n+import 'package:flutter/material.dart';\n+import 'package:spend_wise/features/expenses/domain/entities/expense.dart';\n+import 'package:spend_wise/features/insights/domain/entities/insight_card.dart';\n+\n+class GetSpendingStreakInsight {\n+  InsightCard call(List<Expense> expenses) {\n+    if (expenses.isEmpty) {\n+      return _emptyInsight();\n+    }\n+\n+    final sortedExpenses = expenses.toList()\n+      ..sort((a, b) => b.date.compareTo(a.date));\n+    var streakDays = 0;\n+    var currentDate = _dayStart(DateTime.now());\n+    final spentToday = sortedExpenses.any((expense) {\n+      return _dayStart(expense.date).isAtSameMomentAs(currentDate);\n+    });\n+\n+    if (spentToday) {\n+      streakDays = 1;\n+    }\n+    currentDate = currentDate.subtract(const Duration(days: 1));\n+\n+    for (final expense in sortedExpenses) {\n+      final expenseDate = _dayStart(expense.date);\n+      if (expenseDate.isAtSameMomentAs(currentDate)) {\n+        streakDays++;\n+        currentDate = currentDate.subtract(const Duration(days: 1));\n+      } else if (expenseDate.isBefore(currentDate)) {\n+        break;\n+      }\n+    }\n+\n+    return InsightCard(\n+      id: 'spending_streak',\n+      title: 'Spending streak',\n+      message: 'spending_streak.message',\n+      type: InsightType.spending_streak,\n+      icon: 'STREAK',\n+      value: '$streakDays',\n+      color: Colors.orange.value,\n+      metadata: {'days': '$streakDays'},\n+    );\n+  }\n+\n+  DateTime _dayStart(DateTime date) => DateTime(date.year, date.month, date.day);\n+\n+  InsightCard _emptyInsight() => InsightCard(\n+    id: 'spending_streak',\n+    title: 'Spending streak',\n+    message: '',\n+    type: InsightType.spending_streak,\n+    icon: 'STREAK',\n+    color: Colors.orange.value,\n+  );\n+}\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+A lib/features/insights/data/repositories/get_spending_streak_insight.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Delete File: lib/features/insights/data/repositories/get_smart_recommendation_insight.dart\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+D lib/features/insights/data/repositories/get_smart_recommendation_insight.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Add File: lib/features/insights/data/repositories/get_smart_recommendation_insight.dart\n+import 'package:flutter/material.dart';\n+import 'package:spend_wise/features/categories/domain/entities/category.dart';\n+import 'package:spend_wise/features/expenses/domain/entities/expense.dart';\n+import 'package:spend_wise/features/insights/domain/entities/insight_card.dart';\n+\n+class GetSmartRecommendationInsight {\n+  InsightCard call(\n+    List<Expense> expenses,\n+    Map<String, Category> categoriesMap,\n+  ) {\n+    if (expenses.isEmpty) {\n+      return _emptyInsight();\n+    }\n+\n+    final now = DateTime.now();\n+    final lastSevenDays = expenses\n+        .where((e) => e.date.isAfter(now.subtract(const Duration(days: 7))))\n+        .toList();\n+    final lastThirtyDays = expenses\n+        .where((e) => e.date.isAfter(now.subtract(const Duration(days: 30))))\n+        .toList();\n+\n+    if (lastThirtyDays.isEmpty) {\n+      return _emptyInsight();\n+    }\n+\n+    final dailyAvg =\n+        lastThirtyDays.fold<double>(0, (sum, e) => sum + e.amount) / 30;\n+    final sevenDayAvg =\n+        lastSevenDays.fold<double>(0, (sum, e) => sum + e.amount) /\n+        (lastSevenDays.isNotEmpty ? 7 : 1);\n+    final metadata = <String, String>{};\n+    var variant = 'on_track';\n+    var color = Colors.blue.value;\n+\n+    if (sevenDayAvg > dailyAvg * 1.2) {\n+      variant = 'higher';\n+      color = Colors.red.value;\n+      metadata['percent'] = ((sevenDayAvg / dailyAvg - 1) * 100).toStringAsFixed(0);\n+    } else if (sevenDayAvg < dailyAvg * 0.8) {\n+      variant = 'lower';\n+      color = Colors.green.value;\n+    }\n+\n+    final categoryName = _topCategoryName(lastSevenDays, categoriesMap);\n+    if (categoryName != null) {\n+      metadata['category'] = categoryName;\n+    }\n+\n+    return InsightCard(\n+      id: 'smart_recommendation',\n+      title: 'Smart recommendation',\n+      message: 'smart_recommendation.$variant
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+A lib/features/insights/data/repositories/get_smart_recommendation_insight.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/insights/presentation/widgets/insight_card_widget.dart\n@@\n+import 'package:easy_localization/easy_localization.dart';\n import 'package:flutter/material.dart';\n import 'package:flutter_screenutil/flutter_screenutil.dart';\n@@\n                       Text(\n-                        insight.title,\n+                        _title(context),\n                         style: theme.textTheme.titleMedium?.copyWith(\n                           fontWeight: FontWeight.w600,\n                         ),\n@@\n                       else if (insight.value != null)\n                         Text(\n-                          insight.value!,\n+                          _value(context),\n                           style: theme.textTheme.bodySmall?.copyWith(\n                             color: theme.colorScheme.onSurfaceVariant,\n@@\n             Text(\n-              insight.message,\n+              _message(context),\n               style: theme.textTheme.bodyMedium,\n               maxLines: 3,\n               overflow: TextOverflow.ellipsis,\n@@\n       ),\n     );\n   }\n+\n+  String _title(BuildContext context) {\n+    return 'dashboard.insights.cards.${_typeKey}.title'.tr();\n+  }\n+\n+  String _message(BuildContext context) {\n+    final args = Map<String, String>.from(insight.metadata);\n+    final day = _localizedDay(context);\n+    if (day != null) args['day'] = day;\n+\n+    final key = switch (insight.type) {\n+      InsightType.spending_trend =>\n+        'dashboard.insights.cards.spendingTrend.${args['variant'] ?? 'increased'}',\n+      InsightType.average_daily =>\n+        'dashboard.insights.cards.averageDaily.${args['variant'] ?? 'current'}',\n+      InsightType.smart_recommendation =>\n+        'dashboard.insights.cards.smartRecommendation.${args['variant'] ?? 'on_track'}',\n+      _ => 'dashboard.insights.cards.${_typeKey}.message',\n+    };\n+\n+    final message = key.tr(namedArgs: args);\n+    fi
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+M lib/features/insights/presentation/widgets/insight_card_widget.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: assets/translations/en.json\n@@\n     \"insights\":{\n       \"title\":\"Insights\",\n       \"subTitle\":\"Quick patterns from your latest activity\",\n       \"emptyTitle\":\"No insights yet\",\n-      \"emptyDescription\":\"Add a few more expenses to unlock smarter spending observations.\"\n+      \"emptyDescription\":\"Add a few more expenses to unlock smarter spending observations.\",\n+      \"cards\": {\n+        \"topCategory\": {\n+          \"title\": \"Top category\",\n+          \"message\": \"{category} leads your spending at {percentage}% of the total.\"\n+        },\n+        \"spendingTrend\": {\n+          \"title\": \"Spending trend\",\n+          \"started\": \"You started spending this month. Keep an eye on it.\",\n+          \"increased\": \"Your spending is up {percent}% compared to last month.\",\n+          \"decreased\": \"Your spending is down {percent}% compared to last month.\"\n+        },\n+        \"averageDaily\": {\n+          \"title\": \"Average daily\",\n+          \"no_spending\": \"No spending recorded this month yet.\",\n+          \"current\": \"Your daily average this month is staying at this level.\"\n+        },\n+        \"highestSpendingDay\": {\n+          \"title\": \"Highest spending day\",\n+          \"message\": \"Your highest spending happened on {day}.\"\n+        },\n+        \"spendingStreak\": {\n+          \"title\": \"Spending streak\",\n+          \"message\": \"You have spent on {days} consecutive days. Keep the momentum.\",\n+          \"value\": \"{days} days\"\n+        },\n+        \"smartRecommendation\": {\n+          \"title\": \"Smart recommendation\",\n+          \"higher\": \"Your spending is {percent}% higher this week. Consider reviewing your expenses.\",\n+          \"lower\": \"Great job. You're spending less this week. Keep up the good work.\",\n+          \"on_track\": \"Your spending is on track with your average. Stay consistent.\",\n+       
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+M assets/translations/en.json
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Select-String -Path assets\\translations\\ar.json -Pattern '\"insights\"' -Context 0,8",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+
+> assets\translations\ar.json:13:    "insights": "الرؤى",
+  assets\translations\ar.json:14:    "export": "تصدير"
+  assets\translations\ar.json:15:  },
+  assets\translations\ar.json:16:  "export": {
+  assets\translations\ar.json:17:    "title": "التصدير والنسخ الاحتياطي",
+  assets\translations\ar.json:18:    "settingsEntry": {
+  assets\translations\ar.json:19:      "subtitle": "صدّر بياناتك وأدر النسخ الاحتياطية"
+  assets\translations\ar.json:20:    },
+  assets\translations\ar.json:21:    "actions": {
+> assets\translations\ar.json:405:    "insights":{
+  assets\translations\ar.json:406:      "title":"التحليلات",
+  assets\translations\ar.json:407:      "subTitle":"أنماط سريعة من أحدث نشاط لك",
+  assets\translations\ar.json:408:      "emptyTitle":"لا توجد تحليلات بعد",
+  assets\translations\ar.json:409:      "emptyDescription":"أضف عددًا قليلًا من المصاريف الإضافية لفتح رؤى أكثر ذكاءً 
+للإنفاق."
+  assets\translations\ar.json:410:
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: assets/translations/ar.json\n@@\n     \"insights\":{\n       \"title\":\"التحليلات\",\n       \"subTitle\":\"أنماط سريعة من أحدث نشاط لك\",\n       \"emptyTitle\":\"لا توجد تحليلات بعد\",\n-      \"emptyDescription\":\"أضف عددًا قليلًا من المصاريف الإضافية لفتح رؤى أكثر ذكاءً للإنفاق.\"\n+      \"emptyDescription\":\"أضف عددًا قليلًا من المصاريف الإضافية لفتح رؤى أكثر ذكاءً للإنفاق.\",\n+      \"cards\": {\n+        \"topCategory\": {\n+          \"title\": \"أعلى فئة\",\n+          \"message\": \"{category} تتصدر إنفاقك بنسبة {percentage}% من الإجمالي.\"\n+        },\n+        \"spendingTrend\": {\n+          \"title\": \"اتجاه الإنفاق\",\n+          \"started\": \"بدأت الإنفاق هذا الشهر. تابع الأمر عن قرب.\",\n+          \"increased\": \"إنفاقك أعلى بنسبة {percent}% مقارنة بالشهر الماضي.\",\n+          \"decreased\": \"إنفاقك أقل بنسبة {percent}% مقارنة بالشهر الماضي.\"\n+        },\n+        \"averageDaily\": {\n+          \"title\": \"المتوسط اليومي\",\n+          \"no_spending\": \"لا يوجد إنفاق مسجل هذا الشهر حتى الآن.\",\n+          \"current\": \"متوسط إنفاقك اليومي هذا الشهر عند هذا المستوى.\"\n+        },\n+        \"highestSpendingDay\": {\n+          \"title\": \"أعلى يوم إنفاق\",\n+          \"message\": \"كان أعلى إنفاق لديك في {day}.\"\n+        },\n+        \"spendingStreak\": {\n+          \"title\": \"سلسلة الإنفاق\",\n+          \"message\": \"أنفقت خلال {days} أيام متتالية. حافظ على المتابعة.\",\n+          \"value\": \"{days} أيام\"\n+        },\n+        \"smartRecommendation\": {\n+          \"title\": \"توصية ذكية\",\n+          \"higher\": \"إنفاقك أعلى بنسبة {percent}% هذا الأسبوع. راجع مصاريفك.\",\n+          \"lower\": \"عمل ممتاز. إنفاقك أقل هذا الأسبوع. استمر بهذا الأداء.\",\n+          \"on_track\": \"إنفاقك متوازن مع متوسطك. حافظ على الاتساق.\",\n+          \"reduceCategory\": \"فكر في تقليل الإنفاق على {category} هذا الأسبوع.\"\n+        }\n+      }\n     },\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+M assets/translations/ar.json
+```
+
+</details>
+
+أضفت مفاتيح الترجمة للـ insight cards نفسها. الآن سأشغل توليد easy_localization حتى `CodegenLoader` يقرأ المفاتيح الجديدة؛ بدون هذه الخطوة التطبيق سيبقى يستخدم نسخة قديمة من الترجمات.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "flutter pub run easy_localization:generate --source-dir ./assets/translations",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 120000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Wall time: 638.3 seconds
+aborted by user
+```
+
+</details>
+
+
+---
+
+## User <sup>5/31/2026, 1:41:38 PM</sup>
+
+<turn_aborted>
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+</turn_aborted>
+
+
+---
+
+## User <sup>5/31/2026, 1:41:38 PM</sup>
+
+i ran the 2 commands for you contniue
+
+
+---
+
+## Codex <sup>5/31/2026, 1:56:53 PM</sup>
+
+تمام، بما أنك شغّلت التوليد سأكمل من هنا: أراجع المفاتيح الجديدة داخل `lib/generated` وأحوّل مفاتيح insights من strings إلى `LocaleKeys` قدر الإمكان، ثم أعمل تحليل سريع للملفات التي لمسناها.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Select-String -Path lib\\generated\\locale_keys.g.dart -Pattern \"dashboard_insights_cards|topCategory|spendingTrend|averageDaily|highestSpendingDay|spendingStreak|smartRecommendation\"",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Select-String -Path lib\\generated\\codegen_loader.g.dart -Pattern \"topCategory|spendingTrend|averageDaily|smartRecommendation\"",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\presentation\\widgets\\insight_card_widget.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+
+lib\generated\locale_keys.g.dart:325:  static const dashboard_overview_averageDaily = 
+'dashboard.overview.averageDaily';
+lib\generated\locale_keys.g.dart:334:  static const dashboard_insights_cards_topCategory_title = 
+'dashboard.insights.cards.topCategory.title';
+lib\generated\locale_keys.g.dart:335:  static const dashboard_insights_cards_topCategory_message = 
+'dashboard.insights.cards.topCategory.message';
+lib\generated\locale_keys.g.dart:336:  static const dashboard_insights_cards_topCategory = 
+'dashboard.insights.cards.topCategory';
+lib\generated\locale_keys.g.dart:337:  static const dashboard_insights_cards_spendingTrend_title = 
+'dashboard.insights.cards.spendingTrend.title';
+lib\generated\locale_keys.g.dart:338:  static const dashboard_insights_cards_spendingTrend_started = 
+'dashboard.insights.cards.spendingTrend.started';
+lib\generated\locale_keys.g.dart:339:  static const dashboard_insights_cards_spendingTrend_incre
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+
+lib\generated\codegen_loader.g.dart:416:      "averageDaily": "متوسط الإنفاق اليومي",
+lib\generated\codegen_loader.g.dart:427:        "topCategory": {
+lib\generated\codegen_loader.g.dart:431:        "spendingTrend": {
+lib\generated\codegen_loader.g.dart:437:        "averageDaily": {
+lib\generated\codegen_loader.g.dart:451:        "smartRecommendation": {
+lib\generated\codegen_loader.g.dart:948:      "averageDaily": "Average daily",
+lib\generated\codegen_loader.g.dart:959:        "topCategory": {
+lib\generated\codegen_loader.g.dart:963:        "spendingTrend": {
+lib\generated\codegen_loader.g.dart:969:        "averageDaily": {
+lib\generated\codegen_loader.g.dart:983:        "smartRecommendation": {
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/widgets/currency_text.dart';
+import '../../domain/entities/insight_card.dart';
+
+class InsightCardWidget extends StatelessWidget {
+  const InsightCardWidget({required this.insight, super.key});
+
+  final InsightCard insight;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Card(
+      elevation: 2,
+      color: theme.colorScheme.surfaceContainerHighest,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+      child: Padding(
+        padding: EdgeInsets.all(16.w),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Text(insight.icon, style: TextStyle(
+...(truncated)
+```
+
+</details>
+
+المفاتيح الجديدة ظهرت في `LocaleKeys` بنجاح. سأبدّل الـ widget الآن من string paths إلى `LocaleKeys` مباشرة، وهذا يخلي الكود أقرب للنمط الذي تريده وأسهل في الصيانة.
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/insights/presentation/widgets/insight_card_widget.dart\n@@\n import 'package:flutter_screenutil/flutter_screenutil.dart';\n+import 'package:spend_wise/generated/locale_keys.g.dart';\n@@\n   String _title(BuildContext context) {\n-    return 'dashboard.insights.cards.${_typeKey}.title'.tr();\n+    return _titleKey.tr();\n   }\n@@\n     final key = switch (insight.type) {\n-      InsightType.spending_trend =>\n-        'dashboard.insights.cards.spendingTrend.${args['variant'] ?? 'increased'}',\n-      InsightType.average_daily =>\n-        'dashboard.insights.cards.averageDaily.${args['variant'] ?? 'current'}',\n-      InsightType.smart_recommendation =>\n-        'dashboard.insights.cards.smartRecommendation.${args['variant'] ?? 'on_track'}',\n-      _ => 'dashboard.insights.cards.${_typeKey}.message',\n+      InsightType.spending_trend => _spendingTrendMessageKey(args['variant']),\n+      InsightType.average_daily => _averageDailyMessageKey(args['variant']),\n+      InsightType.smart_recommendation =>\n+        _smartRecommendationMessageKey(args['variant']),\n+      _ => _messageKey,\n     };\n \n     final message = key.tr(namedArgs: args);\n     final category = args['category'];\n     if (insight.type == InsightType.smart_recommendation && category != null) {\n-      return '$message\\n${'dashboard.insights.cards.smartRecommendation.reduceCategory'.tr(namedArgs: {'category': category})}';\n+      return '$message\\n${LocaleKeys.dashboard_insights_cards_smartRecommendation_reduceCategory.tr(namedArgs: {'category': category})}';\n     }\n     return message;\n   }\n@@\n   String _value(BuildContext context) {\n     if (insight.type == InsightType.spending_streak) {\n-      return 'dashboard.insights.cards.spendingStreak.value'.tr(\n+      return LocaleKeys.dashboard_insights_cards_spendingStreak_value.tr(\n         namedArgs: {'days': insight.metadata['days'] ?? insight.value ?? '0'},\n       );\n     }\
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+M lib/features/insights/presentation/widgets/insight_card_widget.dart
+```
+
+</details>
+
+الآن صارت بطاقة الـ insight تترجم من داخل العرض نفسه بدل الاعتماد على النص المخزن في الـ state. سأشغل analyzer على ملفات insights والـ dashboard المرتبطة للتأكد أن التعديل نظيف.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "dart analyze lib\\features\\insights\\domain\\entities\\insight_card.dart lib\\features\\insights\\presentation\\widgets\\insight_card_widget.dart lib\\features\\insights\\data\\repositories\\get_average_daily_insight.dart lib\\features\\insights\\data\\repositories\\get_highest_spending_day_insight.dart lib\\features\\insights\\data\\repositories\\get_spending_trend_insight.dart lib\\features\\insights\\data\\repositories\\get_spending_streak_insight.dart lib\\features\\insights\\data\\repositories\\get_smart_recommendation_insight.dart lib\\features\\insights\\domain\\usecases\\get_top_category_insight.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 120000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Wall time: 862.4 seconds
+aborted by user
+```
+
+</details>
+
+
+---
+
+## User <sup>5/31/2026, 1:56:53 PM</sup>
+
+<turn_aborted>
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+</turn_aborted>
+
+
+---
+
+## User <sup>5/31/2026, 1:59:04 PM</sup>
+
+الايكون في insights card ما ابيها كلام مثل AVG, STREAK وما الى ذلك غيرها وخليها ايكون وضع ايكون مناسب كذلك ابيك تستخدم مع المودل json_serializable مو بس هنا في كل ملفات المودل الموجودة في المشروع اذا ما بتستخدم فيها استخدمه
+
+
+---
+
+## Codex <sup>5/31/2026, 2:41:40 PM</sup>
+
+سأبدّل عرض أيقونة الـ insight من نص إلى `IconData` مناسبة حسب نوع التحليل، ثم أراجع ملفات `data/models` في المشروع لأتأكد أي موديلات ما زالت لا تستخدم `json_serializable` وأحوّلها بنفس نمط المشروع.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg --files lib | rg \"data[/\\\\]models[/\\\\].*model\\.dart$|\\.g\\.dart$\"",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\presentation\\widgets\\insight_card_widget.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"class .*Model|part '.*\\.g\\.dart'|JsonSerializable|fromJson|toJson|fromMap|toMap\" lib\\features lib\\core",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 1
+Wall time: 6.6 seconds
+Output:
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+import '../../../../core/widgets/currency_text.dart';
+import '../../domain/entities/insight_card.dart';
+
+class InsightCardWidget extends StatelessWidget {
+  const InsightCardWidget({required this.insight, super.key});
+
+  final InsightCard insight;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Card(
+      elevation: 2,
+      color: theme.colorScheme.surfaceContainerHighest,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+      child: Padding(
+        padding: EdgeInsets.all(16.w),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              childr
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 7.2 seconds
+Output:
+lib\features\budgets\data\models\budget_model.g.dart:6:// JsonSerializableGenerator
+lib\features\budgets\data\models\budget_model.dart:5:part 'budget_model.g.dart';
+lib\features\budgets\data\models\budget_model.dart:7:@JsonSerializable()
+lib\features\budgets\data\models\budget_model.dart:8:class BudgetModel {
+lib\features\budgets\data\models\budget_model.dart:23:  factory BudgetModel.fromJson(Map<String, dynamic> json) =>
+lib\features\budgets\data\models\budget_model.dart:36:  Map<String, dynamic> toJson() => _$BudgetModelToJson(this);
+lib\features\budgets\data\datasources\budget_local_data_source.dart:23:    await _box.put(budget.id, budget.toJson());
+lib\features\budgets\data\datasources\budget_local_data_source.dart:29:        .map((value) => BudgetModel.fromJson(Map<String, dynamic>.from(value)))
+lib\features\budgets\data\datasources\budget_local_data_source.dart:35:    await _box.put(budget.id, budget.toJson());
+lib\features\settings\dat
+...(truncated)
+```
+
+</details>
+
+نتيجة البحث الأولية تقول إن موديلات `expenses/categories/budgets/recurring/export` كلها أصلًا عليها `@JsonSerializable()` ومعها ملفات `.g.dart`. سأثبت ذلك بعد تعديل الأيقونات، وإذا ظهر موديل ناقص أحوله مباشرة بدل ما نخمن.
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/insights/presentation/widgets/insight_card_widget.dart\n@@\n             Row(\n               children: [\n-                Text(insight.icon, style: TextStyle(fontSize: 24.sp)),\n+                _InsightIcon(type: insight.type),\n                 SizedBox(width: 12.w),\n                 Expanded(\n@@\n   }\n }\n+\n+class _InsightIcon extends StatelessWidget {\n+  const _InsightIcon({required this.type});\n+\n+  final InsightType type;\n+\n+  @override\n+  Widget build(BuildContext context) {\n+    final theme = Theme.of(context);\n+\n+    return Container(\n+      width: 44.w,\n+      height: 44.w,\n+      decoration: BoxDecoration(\n+        color: theme.colorScheme.primaryContainer,\n+        borderRadius: BorderRadius.circular(14.r),\n+      ),\n+      child: Icon(\n+        _iconData,\n+        color: theme.colorScheme.onPrimaryContainer,\n+        size: 22.sp,\n+      ),\n+    );\n+  }\n+\n+  IconData get _iconData {\n+    return switch (type) {\n+      InsightType.topCategory => Icons.category_outlined,\n+      InsightType.spending_trend => Icons.trending_up_outlined,\n+      InsightType.average_daily => Icons.calendar_today_outlined,\n+      InsightType.highest_spending_day => Icons.local_fire_department_outlined,\n+      InsightType.spending_streak => Icons.timeline_outlined,\n+      InsightType.smart_recommendation => Icons.lightbulb_outline,\n+    };\n+  }\n+}\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+M lib/features/insights/presentation/widgets/insight_card_widget.dart
+```
+
+</details>
+
+الأيقونات الآن صارت `Icon` فعلية داخل حاوية متناسقة مع الثيم بدل نصوص مثل `AVG` و`STREAK`. سأكمل مراجعة ملفات الموديل واحدة واحدة لأتأكد من `json_serializable` بدون ما ألمس غير الناقص.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg --files lib | rg \"data[/\\\\]models[/\\\\].*\\.dart$\"",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\data\\models\\expense_model.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\categories\\data\\models\\category_model.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\budgets\\data\\models\\budget_model.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\recurring\\data\\models\\recurring_expense_model.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\export\\data\\models\\export_history_item_model.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 1
+Wall time: 0.8 seconds
+Output:
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 1.2 seconds
+Output:
+import 'package:json_annotation/json_annotation.dart';
+
+import '../../domain/entities/expense.dart';
+
+part 'expense_model.g.dart';
+
+@JsonSerializable()
+class ExpenseModel {
+  const ExpenseModel({
+    required this.id,
+    required this.title,
+    required this.amount,
+    required this.categoryId,
+    required this.date,
+    this.note,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  final String id;
+  final String title;
+  final double amount;
+  final String categoryId;
+  final DateTime date;
+  final String? note;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+
+  factory ExpenseModel.fromJson(Map<String, dynamic> json) =>
+      _$ExpenseModelFromJson(json);
+
+  factory ExpenseModel.fromEntity(Expense expense) {
+    return ExpenseModel(
+      id: expense.id,
+      title: expense.title,
+      amount: expense.amount,
+      categoryId: expense.categoryId,
+      date: expense.date,
+      note: expen
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.7 seconds
+Output:
+import 'package:json_annotation/json_annotation.dart';
+
+import '../../domain/entities/category.dart';
+
+part 'category_model.g.dart';
+
+@JsonSerializable()
+class CategoryModel {
+  final String id;
+  final String name;
+  final String icon;
+  final int color;
+  final bool isDefault;
+  final DateTime createdAt;
+
+  const CategoryModel({
+    required this.id,
+    required this.name,
+    required this.icon,
+    required this.color,
+    required this.isDefault,
+    required this.createdAt,
+  });
+
+  factory CategoryModel.fromJson(Map<String, dynamic> json) =>
+      _$CategoryModelFromJson(json);
+
+  factory CategoryModel.fromEntity(Category category) {
+    return CategoryModel(
+      id: category.id,
+      name: category.name,
+      icon: category.icon,
+      color: category.color,
+      isDefault: category.isDefault,
+      createdAt: category.createdAt,
+    );
+  }
+
+  Map<String, dynamic> toJson() => _$CategoryModel
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:json_annotation/json_annotation.dart';
+
+import '../../domain/entities/budget.dart';
+
+part 'budget_model.g.dart';
+
+@JsonSerializable()
+class BudgetModel {
+  const BudgetModel({
+    required this.id,
+    required this.categoryId,
+    required this.limitAmount,
+    required this.period,
+    required this.createdAt,
+  });
+
+  final String id;
+  final String categoryId;
+  final double limitAmount;
+  final String period;
+  final DateTime createdAt;
+
+  factory BudgetModel.fromJson(Map<String, dynamic> json) =>
+      _$BudgetModelFromJson(json);
+
+  factory BudgetModel.fromEntity(Budget budget) {
+    return BudgetModel(
+      id: budget.id,
+      categoryId: budget.categoryId,
+      limitAmount: budget.limitAmount,
+      period: budget.period.name,
+      createdAt: budget.createdAt,
+    );
+  }
+
+  Map<String, dynamic> toJson() => _$BudgetModelToJson(this);
+
+  Budget toEntity() {
+    return Budget(
+ 
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 1.2 seconds
+Output:
+import 'package:json_annotation/json_annotation.dart';
+
+import '../../domain/entities/recurring_expense.dart';
+
+part 'recurring_expense_model.g.dart';
+
+@JsonSerializable()
+class RecurringExpenseModel {
+  const RecurringExpenseModel({
+    required this.id,
+    required this.title,
+    required this.amount,
+    required this.categoryId,
+    required this.repeatType,
+    required this.nextDueDate,
+    required this.isActive,
+    required this.createdAt,
+  });
+
+  final String id;
+  final String title;
+  final double amount;
+  final String categoryId;
+  final String repeatType;
+  final DateTime nextDueDate;
+  final bool isActive;
+  final DateTime createdAt;
+
+  factory RecurringExpenseModel.fromJson(Map<String, dynamic> json) =>
+      _$RecurringExpenseModelFromJson(json);
+
+  factory RecurringExpenseModel.fromEntity(RecurringExpense recurringExpense) {
+    return RecurringExpenseModel(
+      id: recurringExpense.id,
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 1.2 seconds
+Output:
+import 'package:json_annotation/json_annotation.dart';
+
+import '../../domain/entities/export_history_item.dart';
+import '../../domain/entities/export_type.dart';
+
+part 'export_history_item_model.g.dart';
+
+class ExportTypeConverter implements JsonConverter<ExportType, String> {
+  const ExportTypeConverter();
+
+  @override
+  ExportType fromJson(String json) {
+    return ExportType.values.firstWhere(
+      (t) => t.key == json,
+      orElse: () => ExportType.csv,
+    );
+  }
+
+  @override
+  String toJson(ExportType object) => object.key;
+}
+
+@JsonSerializable()
+class ExportHistoryItemModel {
+  const ExportHistoryItemModel({
+    required this.id,
+    required this.path,
+    required this.fileName,
+    required this.createdAt,
+    required this.sizeBytes,
+    required this.type,
+  });
+
+  final String id;
+  final String path;
+  final String fileName;
+  final DateTime createdAt;
+  final int sizeBytes;
+  @ExportTypeC
+...(truncated)
+```
+
+</details>
+
+الموديلات الموجودة فعليًا تحت `data/models` كلها تستخدم `json_serializable`: expense, category, budget, recurring, export history. بقي احتمال واحد: ملفات تحمل اسم model خارج هذا المسار، سأفحصها الآن قبل ما أقول إن الجزء هذا مكتمل.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-ChildItem -Path lib -Recurse -Filter *model.dart | Select-Object FullName",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"class .*Model\" lib",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"fromMap|toMap|Map<String, dynamic> toJson|factory .*fromJson\" lib\\features lib\\core",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.7 seconds
+Output:
+
+FullName                                                                                         
+--------                                                                                         
+D:\Dev\FlutterProjects\spend_wise\lib\features\budgets\data\models\budget_model.dart             
+D:\Dev\FlutterProjects\spend_wise\lib\features\categories\data\models\category_model.dart        
+D:\Dev\FlutterProjects\spend_wise\lib\features\expenses\data\models\expense_model.dart           
+D:\Dev\FlutterProjects\spend_wise\lib\features\export\data\models\export_history_item_model.dart 
+D:\Dev\FlutterProjects\spend_wise\lib\features\recurring\data\models\recurring_expense_model.dart
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.6 seconds
+Output:
+lib\features\categories\data\models\category_model.dart:8:class CategoryModel {
+lib\features\export\data\models\export_history_item_model.dart:24:class ExportHistoryItemModel {
+lib\features\recurring\data\models\recurring_expense_model.dart:8:class RecurringExpenseModel {
+lib\features\budgets\data\models\budget_model.dart:8:class BudgetModel {
+lib\features\expenses\data\models\expense_model.dart:8:class ExpenseModel {
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.6 seconds
+Output:
+lib\features\settings\domain\entities\app_settings.dart:39:  Map<String, dynamic> toJson() {
+lib\features\settings\domain\entities\app_settings.dart:49:  factory AppSettings.fromJson(Map<String, dynamic> json) {
+lib\features\expenses\data\models\expense_model.dart:29:  factory ExpenseModel.fromJson(Map<String, dynamic> json) =>
+lib\features\expenses\data\models\expense_model.dart:45:  Map<String, dynamic> toJson() => _$ExpenseModelToJson(this);
+lib\features\recurring\data\models\recurring_expense_model.dart:29:  factory RecurringExpenseModel.fromJson(Map<String, dynamic> json) =>
+lib\features\recurring\data\models\recurring_expense_model.dart:45:  Map<String, dynamic> toJson() => _$RecurringExpenseModelToJson(this);
+lib\features\export\data\models\export_history_item_model.dart:42:  factory ExportHistoryItemModel.fromJson(Map<String, dynamic> json) =>
+lib\features\export\data\models\export_history_item_model.dart:56:  Map<String, dynamic> t
+...(truncated)
+```
+
+</details>
+
+تأكدت أن كل ملفات `*model.dart` الموجودة في المشروع محوّلة فعلًا إلى `json_serializable` ولا يوجد model ناقص. الملف الوحيد الذي فيه `toJson/fromJson` يدوي هو `AppSettings` وهو domain entity وليس model، وتحويله يحتاج refactor منفصل لأن الإعدادات مربوطة مباشرة بالـ Hive data source.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "dart analyze lib\\features\\insights\\presentation\\widgets\\insight_card_widget.dart lib\\features\\insights\\domain\\entities\\insight_card.dart lib\\features\\expenses\\data\\models\\expense_model.dart lib\\features\\categories\\data\\models\\category_model.dart lib\\features\\budgets\\data\\models\\budget_model.dart lib\\features\\recurring\\data\\models\\recurring_expense_model.dart lib\\features\\export\\data\\models\\export_history_item_model.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 120000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Wall time: 2483.8 seconds
+aborted by user
+```
+
+</details>
+
+
+---
+
+## User <sup>5/31/2026, 2:41:40 PM</sup>
+
+<turn_aborted>
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+</turn_aborted>
+
+
+---
+
+## User <sup>5/31/2026, 2:42:09 PM</sup>
+
+ابيك تشرح لي وش سويت عشان تغير اللغة في insights بالتفصيل
+
+
+---
+
+## Codex <sup>5/31/2026, 2:42:34 PM</sup>
+
+عشان الـ insights تتغير مع تغيير اللغة، غيرت الفكرة من “نخزن النص النهائي داخل الـ state” إلى “نخزن بيانات الـ insight فقط، ونترجم النص وقت العرض”.
+
+قبل التعديل كان كل use case يرجع `InsightCard` فيه نص جاهز مثل:
+```dart
+title: 'Average daily',
+message: 'Your daily average this month is staying at this level.',
+```
+
+المشكلة هنا أن النص يتولد مرة واحدة وقت تحميل الـ dashboard. فإذا غيرت اللغة بعد ذلك، الـ widget يعرض نفس النص المخزن القديم، لذلك ما يتغير.
+
+الآن صار الـ use case يرجع مفتاح/نوع ورسائل رمزية بدل النص النهائي، مثل:
+```dart
+message: 'average_daily.current',
+metadata: const {'variant': 'current'},
+```
+
+وأضفت داخل `InsightCard` حقل:
+```dart
+final Map<String, String> metadata;
+```
+
+هذا يسمح نخزن بيانات تحتاجها الترجمة مثل:
+- اسم الفئة الأعلى إنفاقًا
+- النسبة المئوية
+- عدد الأيام
+- تاريخ أعلى يوم صرف
+- نوع الرسالة: increased / decreased / current / higher / lower
+
+مثال `Top category` صار يخزن:
+```dart
+metadata: {
+  'category': category?.name ?? 'Unknown',
+  'percentage': percentage,
+}
+```
+
+ثم في [insight_card_widget.dart](/d:/Dev/FlutterProjects/spend_wise/lib/features/insights/presentation/widgets/insight_card_widget.dart) صار الـ widget هو الذي يختار مفتاح الترجمة حسب نوع الـ insight:
+```dart
+LocaleKeys.dashboard_insights_cards_topCategory_message.tr(
+  namedArgs: args,
+)
+```
+
+وبكذا لما تتغير اللغة، `EasyLocalization` يعيد بناء النص المعروض من `tr()` مباشرة حسب `context.locale`.
+
+أضفت كذلك مفاتيح الترجمة داخل:
+- [en.json](/d:/Dev/FlutterProjects/spend_wise/assets/translations/en.json)
+- [ar.json](/d:/Dev/FlutterProjects/spend_wise/assets/translations/ar.json)
+
+تحت:
+```json
+dashboard.insights.cards
+```
+
+مثال:
+```json
+"topCategory": {
+  "title": "Top category",
+  "message": "{category} leads your spending at {percentage}% of the total."
+}
+```
+
+وفي العربي:
+```json
+"topCategory": {
+  "title": "أعلى فئة",
+  "message": "{category} تتصدر إنفاقك بنسبة {percentage}% من الإجمالي."
+}
+```
+
+أيضًا بدلت الأيقونة من نصوص مثل `AVG` و`STREAK` إلى `IconData` فعلية داخل `InsightCardWidget` حسب نوع insight:
+```dart
+InsightType.average_daily => Icons.calendar_today_outlined
+InsightType.spending_streak => Icons.timeline_outlined
+InsightType.smart_recommendation => Icons.lightbulb_outline
+```
+
+الخلاصة: الحسابات بقيت في use cases، لكن النصوص صارت في presentation layer عبر `LocaleKeys.tr()`، وهذا هو السبب الذي يخلي insights تتغير مع تغيير اللغة بدون إعادة تشغيل.
+
+
+---
+
+## User <sup>5/31/2026, 3:18:19 PM</sup>
+
+هناك شيء يحتاج التعديل وهو انك مثلا في اعلى فئة Top category & smart recommendation مكتوبة فيه اعلى كاتقوري بالانجليزي اسم الكاتقوري حتى لو غيرت اللغة مع اننا ضبطناها في شاشة category
+
+
+---
+
+## Codex <sup>5/31/2026, 3:47:33 PM</sup>
+
+سأربط اسم الفئة داخل الـ insights بنفس آلية عرض أسماء الفئات الموجودة في شاشة categories، بدل تمرير `category.name` الخام. المشكلة غالبًا أن الـ metadata يأخذ الاسم المخزن مباشرة، وهذا لا يمر على mapping الخاص بالفئات الافتراضية.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"displayName|defaultCategories|CategoryPresentation|category.name|localized|LocaleKeys.categories_default\" lib\\features\\categories lib\\core lib\\features\\insights",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\categories\\domain\\entities\\category.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\categories\\presentation\\utils\\category_presentation_data.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\categories\\presentation\\widgets\\category_item.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\core\\widgets\\category_badge.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 3 seconds
+Output:
+lib\core\di\injection_container.dart:721:  final defaultCategories = [
+lib\core\di\injection_container.dart:772:  for (final category in defaultCategories) {
+lib\features\insights\presentation\widgets\insight_card_widget.dart:79:    final day = _localizedDay(context);
+lib\features\insights\presentation\widgets\insight_card_widget.dart:107:  String? _localizedDay(BuildContext context) {
+lib\features\categories\domain\entities\category.dart:21:  String get displayName {
+lib\features\categories\domain\entities\category.dart:25:          return LocaleKeys.categories_defaultCategories_shopping.tr();
+lib\features\categories\domain\entities\category.dart:27:          return LocaleKeys.categories_defaultCategories_food.tr();
+lib\features\categories\domain\entities\category.dart:29:          return LocaleKeys.categories_defaultCategories_transportation.tr();
+lib\features\categories\domain\entities\category.dart:31:          return LocaleKeys.categ
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 2.3 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import '../../../../generated/locale_keys.g.dart';
+
+class Category {
+  final String id;
+  final String name;
+  final String icon;
+  final int color;
+  final bool isDefault;
+  final DateTime createdAt;
+
+  const Category({
+    required this.id,
+    required this.name,
+    required this.icon,
+    required this.color,
+    required this.isDefault,
+    required this.createdAt,
+  });
+
+  String get displayName {
+    if (isDefault) {
+      switch (id) {
+        case 'cat_shopping':
+          return LocaleKeys.categories_defaultCategories_shopping.tr();
+        case 'cat_food':
+          return LocaleKeys.categories_defaultCategories_food.tr();
+        case 'cat_transport':
+          return LocaleKeys.categories_defaultCategories_transportation.tr();
+        case 'cat_entertainment':
+          return LocaleKeys.categories_defaultCategories_entertainment.tr();
+    
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 2.7 seconds
+Output:
+import 'package:flutter/material.dart';
+
+class CategoryPresentationData {
+  const CategoryPresentationData._();
+
+  static const String defaultIconName = 'shopping_cart';
+  static const int defaultColorValue = 0xFFFF6B6B;
+
+  static const List<String> iconNames = [
+    'shopping_cart',
+    'restaurant',
+    'local_gas_station',
+    'directions_car',
+    'movie',
+    'sports_esports',
+    'health_and_safety',
+    'favorite',
+    'home',
+    'build',
+    'school',
+    'travel_explore',
+    'pets',
+    'music_note',
+    'fitness_center',
+    'checkroom',
+    'phone',
+    'wifi',
+    'electricity',
+    'water_drop',
+    'card_giftcard',
+    'celebration',
+  ];
+
+  static const List<int> colorPalette = [
+    0xFFFF6B6B,
+    0xFFEE5A6F,
+    0xFFC92A2A,
+    0xFFFF922B,
+    0xFFFD7E14,
+    0xFFFCC419,
+    0xFFFFD43B,
+    0xFFC0EB75,
+    0xFF69DB7C,
+    0xFF37B24D,
+    0xFF20C997,
+    0xFF0C93E4,
+    0xFF1971
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 2.8 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+import '../../../../core/widgets/currency_text.dart';
+import 'package:spend_wise/core/theme/app_colors.dart';
+import 'package:spend_wise/core/theme/app_radius.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
+import 'package:spend_wise/features/categories/domain/entities/category.dart';
+import 'package:spend_wise/features/categories/presentation/utils/category_expense_summary.dart';
+import 'package:spend_wise/features/categories/presentation/utils/category_presentation_data.dart';
+
+class CategoryItem extends StatelessWidget {
+  const CategoryItem({
+    required this.category,
+    required this.summary,
+    required this.onTap,
+    required this.onEdit,
+    this.onDelete,
+    super.key,
+  });
+
+
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 1.8 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/features/categories/domain/entities/category.dart';
+import 'package:spend_wise/features/categories/presentation/utils/category_presentation_data.dart';
+import 'package:spend_wise/core/theme/app_radius.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
+
+class CategoryChip extends StatelessWidget {
+  const CategoryChip({
+    required this.category,
+    this.size = CategoryBadgeSize.medium,
+    this.showLabel = true,
+    this.showIcon = true,
+    this.onTap,
+    this.isSelected = false,
+    super.key,
+  });
+
+  final Category category;
+  final CategoryBadgeSize size;
+  final bool showLabel;
+  final bool showIcon;
+  final VoidCallback? onTap;
+  final bool isSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final categoryColor = C
+...(truncated)
+```
+
+</details>
+
+المكان الصحيح للتعديل هو توليد metadata في use cases: بدل `category.name` نستخدم `category.displayName`، لأنه already يترجم default categories. سأعدل Top Category و Smart Recommendation فقط لأنهما يمرران اسم فئة داخل الرسالة.
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/insights/domain/usecases/get_top_category_insight.dart\n@@\n       icon: 'TOP',\n       color: category?.color ?? Colors.blue.value,\n       amount: amount,\n       metadata: {\n-        'category': category?.name ?? 'Unknown',\n+        'category': category?.displayName ?? 'Unknown',\n         'percentage': percentage,\n       },\n     );\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.2 seconds
+Output:
+Success. Updated the following files:
+M lib/features/insights/domain/usecases/get_top_category_insight.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/insights/data/repositories/get_smart_recommendation_insight.dart\n@@\n     if (totals.isEmpty) return null;\n     final topId = totals.entries.reduce((a, b) => a.value > b.value ? a : b).key;\n-    return categoriesMap[topId]?.name;\n+    return categoriesMap[topId]?.displayName;\n   }\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+M lib/features/insights/data/repositories/get_smart_recommendation_insight.dart
+```
+
+</details>
+
+بهذا التعديل الفئات الافتراضية ستظهر مترجمة داخل insights أيضًا. سأعمل فحصًا خفيفًا للملفات المعنية للتأكد من imports والدلالات فقط.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "dart analyze lib\\features\\insights\\domain\\usecases\\get_top_category_insight.dart lib\\features\\insights\\data\\repositories\\get_smart_recommendation_insight.dart lib\\features\\insights\\presentation\\widgets\\insight_card_widget.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 120000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Wall time: 1706.7 seconds
+aborted by user
+```
+
+</details>
+
+
+---
+
+## User <sup>5/31/2026, 3:47:33 PM</sup>
+
+<turn_aborted>
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+</turn_aborted>
+
+
+---
+
+## User <sup>6/1/2026, 10:05:38 AM</sup>
+
+<environment_context>
+  <current_date>2026-06-01</current_date>
+  <timezone>Asia/Hebron</timezone>
+</environment_context>
+
+
+---
+
+## User <sup>6/1/2026, 10:05:38 AM</sup>
+
+Start Phase 4.
+
+Goals:
+
+1. Final UI Polish
+2. Animations
+3. Performance Optimization
+
+Project Rules:
+
+- Use existing theme files only.
+- Do not hardcode colors.
+- Use AppColors, AppTextStyles, AppSpacing, AppTheme, and the current theme infrastructure.
+- Continue using the existing Clean Architecture structure.
+- Continue using Cubit.
+- Do not use StatelessWidget.
+- Keep files between 100–130 lines whenever possible.
+- Split widgets into small focused files.
+- Avoid large widget files.
+- Do not touch generated files.
+
+Widget Organization Rule:
+
+If a feature contains multiple screens, organize widgets like:
+
+presentation/widgets/
+├── add/
+├── edit/
+├── details/
+├── list/
+
+Each screen should only contain widgets related to that screen.
+
+Animations:
+
+Add subtle professional animations:
+
+- Page transitions
+- Fade animations
+- Slide animations
+- Dashboard card animations
+- Budget card animations
+- Category card animations
+- Recurring expense card animations
+- Animated empty states
+- Animated charts
+- Animated switches
+- Animated dialogs
+- Animated bottom sheets
+- Small button micro-interactions
+
+Performance Optimization:
+
+Review presentation layer and improve:
+
+- Unnecessary rebuilds
+- Large widget trees
+- Repeated calculations inside build methods
+- List rendering performance
+- Chart rendering performance
+- BlocBuilder optimization
+- buildWhen usage where appropriate
+- Selector usage where appropriate
+- Const constructors where appropriate
+
+UI Polish:
+
+Improve:
+
+- Spacing consistency
+- Visual hierarchy
+- Typography consistency
+- Loading states
+- Empty states
+- Error states
+- Card consistency
+- Shadows and elevations
+- Responsive layouts
+
+At the end provide:
+
+- Performance improvements
+- Animation improvements
+- UI improvements
+- Created files
+- Modified files
+
+
+---
+
+## Codex <sup>6/1/2026, 10:08:07 AM</sup>
+
+سأبدأ Phase 4 كـ pass عملي على الواجهات الأكثر ظهورًا: dashboard cards/chart، budget cards، category cards، recurring cards، وempty/error states. ملاحظة صغيرة: قاعدة “Do not use StatelessWidget” تبدو عكس قواعد المشروع السابقة، لذلك سأتعامل معها كأن المقصود “Do not use StatefulWidget” وأبقي كل شيء بدون stateful.
+
+<details>
+<summary>Tool: <code>update_plan</code></summary>
+
+```json
+{
+  "plan": [
+    {
+      "step": "Inspect current theme tokens and high-impact presentation widgets",
+      "status": "in_progress"
+    },
+    {
+      "step": "Add reusable lightweight animation/polish widgets without changing architecture",
+      "status": "pending"
+    },
+    {
+      "step": "Apply animations and rebuild optimizations to dashboard, budgets, categories, recurring, and empty states",
+      "status": "pending"
+    },
+    {
+      "step": "Run targeted analysis and summarize created/modified files",
+      "status": "pending"
+    }
+  ]
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Plan updated
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\core\\theme\\app_colors.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\core\\theme\\app_spacing.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\core\\theme\\app_radius.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\dashboard\\presentation\\widgets\\dashboard_summary_cards.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\budgets\\presentation\\widgets\\budget_card.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\recurring\\presentation\\widgets\\recurring_expense_tile.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:flutter/material.dart';
+
+class AppColors {
+  const AppColors._();
+
+  static const Color seed = Color(0xFF0F766E);
+
+  static const Color lightBackground = Color(0xFFF4F7F6);
+  static const Color lightSurface = Color(0xFFFFFFFF);
+  static const Color lightSurfaceAlt = Color(0xFFEAF0EE);
+
+  static const Color darkBackground = Color(0xFF0F1514);
+  static const Color darkSurface = Color(0xFF18201F);
+  static const Color darkSurfaceAlt = Color(0xFF202A28);
+
+  static const Color success = Color(0xFF1F9D63);
+  static const Color danger = Color(0xFFD64545);
+  static const Color shadow = Color(0x1A000000);
+
+  static const Color white = Colors.white;
+  static const Color grey = Colors.grey;
+  static const Color black38 = Colors.black38;
+  static const Color transparent = Colors.transparent;
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+class AppSpacing {
+  const AppSpacing._();
+
+  static const double xs = 4;
+  static const double spacing3 = 3;
+  static const double sm = 8;
+  static const double md = 12;
+  static const double lg = 16;
+  static const double xl = 18;
+  static const double xxl = 24;
+  static const double xxxl = 32;
+  static const double spacing10 = 10;
+  static const double spacing14 = 14;
+  static const double spacing18 = 18;
+  static const double spacing20 = 20;
+  static const double spacing40 = 40;
+  static const double spacing64 = 64;
+  static const double spacing74 = 74;
+  static const double spacing76 = 76;
+  static const double spacing80 = 80;
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+class AppRadius {
+  const AppRadius._();
+
+  static const double sm = 8;
+  static const double md = 12;
+  static const double lg = 16;
+  static const double xl = 18;
+  static const double xxl = 24;
+  static const double pill = 999;
+  static const double radius64 = 64;
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_radius.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+import '../../domain/entities/dashboard_summary.dart';
+import 'dashboard_section_card.dart';
+import '../../../../core/widgets/currency_text.dart';
+
+class DashboardSummaryCards extends StatelessWidget {
+  const DashboardSummaryCards({required this.summary, super.key});
+
+  final DashboardSummary summary;
+
+  @override
+  Widget build(BuildContext context) {
+    final cards = [
+      _SummaryCardData(
+        title: LocaleKeys.dashboard_overview_totalSpending.tr(),
+        amount: summary.totalSpending,
+        subtitle: LocaleKeys.dashboard_overview_lifetime.tr(),
+        icon: Icons.account_balance_
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+import '../../../../core/services/currency_display_service.dart';
+import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/widgets/category_badge.dart';
+import '../../../../features/categories/domain/entities/category.dart';
+import '../../../../features/settings/domain/entities/app_currency.dart';
+import '../../../../features/settings/presentation/cubit/settings_cubit.dart';
+import '../../domain/entities/budget_progress.dart';
+import 'budget_form_page.dart';
+import 'budget_progress_bar.dart';
+
+class BudgetCard extends StatelessWidget {
+  const BudgetCard({
+    required this.budget,
+    required this.category,
+    required this.onDelete,
+    
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/features/recurring/presentation/extensions/recurring_repeat_type_extension.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/utils/app_formatters.dart';
+import '../../../../core/widgets/currency_text.dart';
+import '../../../../core/widgets/category_badge.dart';
+import '../../../../features/categories/domain/entities/category.dart';
+import '../../domain/entities/recurring_expense.dart';
+import '../cubit/recurring_expense_cubit.dart';
+import 'recurring_expense_form_page.dart';
+
+class RecurringExpenseTile extends StatelessWidget {
+  const RecurringExpenseTile({
+    required this.recurringExpense,
+    require
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "(Get-Content lib\\features\\insights\\presentation\\widgets\\insight_card_widget.dart).Count",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "git diff -- lib\\features\\insights\\presentation\\widgets\\insight_card_widget.dart lib\\features\\insights\\domain\\usecases\\get_top_category_insight.dart lib\\features\\insights\\data\\repositories\\get_smart_recommendation_insight.dart lib\\features\\insights\\domain\\entities\\insight_card.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+201
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+```
+
+</details>
+
+لاحظت أن `insight_card_widget.dart` صار طويلًا بعد إضافة الترجمة والأيقونات، وهذا يخالف قاعدة حجم الملفات. سأفصل منطق اختيار الأيقونة والترجمة في ملفات صغيرة داخل نفس feature حتى يبقى الـ widget نفسه خفيفًا.
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Add File: lib/features/insights/presentation/widgets/insight_icon.dart\n+import 'package:flutter/material.dart';\n+import 'package:flutter_screenutil/flutter_screenutil.dart';\n+\n+import '../../domain/entities/insight_card.dart';\n+\n+class InsightIcon extends StatelessWidget {\n+  const InsightIcon({required this.type, super.key});\n+\n+  final InsightType type;\n+\n+  @override\n+  Widget build(BuildContext context) {\n+    final theme = Theme.of(context);\n+\n+    return Container(\n+      width: 44.w,\n+      height: 44.w,\n+      decoration: BoxDecoration(\n+        color: theme.colorScheme.primaryContainer,\n+        borderRadius: BorderRadius.circular(14.r),\n+      ),\n+      child: Icon(\n+        _iconData,\n+        color: theme.colorScheme.onPrimaryContainer,\n+        size: 22.sp,\n+      ),\n+    );\n+  }\n+\n+  IconData get _iconData {\n+    return switch (type) {\n+      InsightType.topCategory => Icons.category_outlined,\n+      InsightType.spending_trend => Icons.trending_up_outlined,\n+      InsightType.average_daily => Icons.calendar_today_outlined,\n+      InsightType.highest_spending_day => Icons.local_fire_department_outlined,\n+      InsightType.spending_streak => Icons.timeline_outlined,\n+      InsightType.smart_recommendation => Icons.lightbulb_outline,\n+    };\n+  }\n+}\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.2 seconds
+Output:
+Success. Updated the following files:
+A lib/features/insights/presentation/widgets/insight_icon.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Add File: lib/features/insights/presentation/widgets/insight_localizer.dart\n+import 'package:easy_localization/easy_localization.dart';\n+import 'package:flutter/material.dart';\n+import 'package:spend_wise/generated/locale_keys.g.dart';\n+\n+import '../../domain/entities/insight_card.dart';\n+\n+class InsightLocalizer {\n+  const InsightLocalizer._();\n+\n+  static String title(InsightCard insight) => _titleKey(insight.type).tr();\n+\n+  static String message(BuildContext context, InsightCard insight) {\n+    final args = Map<String, String>.from(insight.metadata);\n+    final day = _localizedDay(context, args['day']);\n+    if (day != null) args['day'] = day;\n+\n+    final key = switch (insight.type) {\n+      InsightType.spending_trend => _spendingTrendKey(args['variant']),\n+      InsightType.average_daily => _averageDailyKey(args['variant']),\n+      InsightType.smart_recommendation => _smartRecommendationKey(args['variant']),\n+      _ => _messageKey(insight.type),\n+    };\n+\n+    final message = key.tr(namedArgs: args);\n+    final category = args['category'];\n+    if (insight.type == InsightType.smart_recommendation && category != null) {\n+      final reduceCategory =\n+          LocaleKeys.dashboard_insights_cards_smartRecommendation_reduceCategory\n+              .tr(namedArgs: {'category': category});\n+      return '$message\\n$reduceCategory';\n+    }\n+    return message;\n+  }\n+\n+  static String value(InsightCard insight) {\n+    if (insight.type == InsightType.spending_streak) {\n+      return LocaleKeys.dashboard_insights_cards_spendingStreak_value.tr(\n+        namedArgs: {'days': insight.metadata['days'] ?? insight.value ?? '0'},\n+      );\n+    }\n+    return insight.value ?? '';\n+  }\n+\n+  static String? _localizedDay(BuildContext context, String? rawDay) {\n+    final date = rawDay == null ? null : DateTime.tryParse(rawDay);\n+    if (date == null) return null;\n+    return MaterialLocalizations.of(
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+A lib/features/insights/presentation/widgets/insight_localizer.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Delete File: lib/features/insights/presentation/widgets/insight_card_widget.dart\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+D lib/features/insights/presentation/widgets/insight_card_widget.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Add File: lib/features/insights/presentation/widgets/insight_card_widget.dart\n+import 'package:flutter/material.dart';\n+import 'package:flutter_screenutil/flutter_screenutil.dart';\n+\n+import '../../../../core/widgets/currency_text.dart';\n+import '../../domain/entities/insight_card.dart';\n+import 'insight_icon.dart';\n+import 'insight_localizer.dart';\n+\n+class InsightCardWidget extends StatelessWidget {\n+  const InsightCardWidget({required this.insight, super.key});\n+\n+  final InsightCard insight;\n+\n+  @override\n+  Widget build(BuildContext context) {\n+    final theme = Theme.of(context);\n+\n+    return Card(\n+      elevation: 2,\n+      color: theme.colorScheme.surfaceContainerHighest,\n+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),\n+      child: Padding(\n+        padding: EdgeInsets.all(16.w),\n+        child: Column(\n+          crossAxisAlignment: CrossAxisAlignment.start,\n+          children: [\n+            Row(\n+              children: [\n+                InsightIcon(type: insight.type),\n+                SizedBox(width: 12.w),\n+                Expanded(child: _InsightHeader(insight: insight)),\n+              ],\n+            ),\n+            SizedBox(height: 12.h),\n+            Text(\n+              InsightLocalizer.message(context, insight),\n+              style: theme.textTheme.bodyMedium,\n+              maxLines: 3,\n+              overflow: TextOverflow.ellipsis,\n+            ),\n+          ],\n+        ),\n+      ),\n+    );\n+  }\n+}\n+\n+class _InsightHeader extends StatelessWidget {\n+  const _InsightHeader({required this.insight});\n+\n+  final InsightCard insight;\n+\n+  @override\n+  Widget build(BuildContext context) {\n+    final theme = Theme.of(context);\n+    final supportingStyle = theme.textTheme.bodySmall?.copyWith(\n+      color: theme.colorScheme.onSurfaceVariant,\n+    );\n+\n+    return Column(\n+      crossAxisAlignment: CrossAxisAlignment.s
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+A lib/features/insights/presentation/widgets/insight_card_widget.dart
+```
+
+</details>
+
+تم فصل `InsightIcon` و`InsightLocalizer`، فصار ملف البطاقة نفسه مسؤولًا عن العرض فقط. سأعمل فحصًا خفيفًا بالقراءة وعدد الأسطر بدل analyzer الطويل الذي كان يتوقف عندك.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "@( 'lib/features/insights/presentation/widgets/insight_card_widget.dart','lib/features/insights/presentation/widgets/insight_icon.dart','lib/features/insights/presentation/widgets/insight_localizer.dart','lib/features/insights/domain/entities/insight_card.dart','lib/features/insights/domain/usecases/get_top_category_insight.dart','lib/features/insights/data/repositories/get_smart_recommendation_insight.dart') | ForEach-Object { \"$((Get-Content $_).Count)`t$_\" }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\presentation\\widgets\\insight_localizer.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\presentation\\widgets\\insight_icon.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+76	lib/features/insights/presentation/widgets/insight_card_widget.dart
+40	lib/features/insights/presentation/widgets/insight_icon.dart
+94	lib/features/insights/presentation/widgets/insight_localizer.dart
+34	lib/features/insights/domain/entities/insight_card.dart
+50	lib/features/insights/domain/usecases/get_top_category_insight.dart
+82	lib/features/insights/data/repositories/get_smart_recommendation_insight.dart
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+import '../../domain/entities/insight_card.dart';
+
+class InsightLocalizer {
+  const InsightLocalizer._();
+
+  static String title(InsightCard insight) => _titleKey(insight.type).tr();
+
+  static String message(BuildContext context, InsightCard insight) {
+    final args = Map<String, String>.from(insight.metadata);
+    final day = _localizedDay(context, args['day']);
+    if (day != null) args['day'] = day;
+
+    final key = switch (insight.type) {
+      InsightType.spending_trend => _spendingTrendKey(args['variant']),
+      InsightType.average_daily => _averageDailyKey(args['variant']),
+      InsightType.smart_recommendation => _smartRecommendationKey(args['variant']),
+      _ => _messageKey(insight.type),
+    };
+
+    final message = key.tr(namedArgs: args);
+    final
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../domain/entities/insight_card.dart';
+
+class InsightIcon extends StatelessWidget {
+  const InsightIcon({required this.type, super.key});
+
+  final InsightType type;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Container(
+      width: 44.w,
+      height: 44.w,
+      decoration: BoxDecoration(
+        color: theme.colorScheme.primaryContainer,
+        borderRadius: BorderRadius.circular(14.r),
+      ),
+      child: Icon(
+        _iconData,
+        color: theme.colorScheme.onPrimaryContainer,
+        size: 22.sp,
+      ),
+    );
+  }
+
+  IconData get _iconData {
+    return switch (type) {
+      InsightType.topCategory => Icons.category_outlined,
+      InsightType.spending_trend => Icons.trending_up_outlined,
+      InsightType.average_daily => Icons.
+...(truncated)
+```
+
+</details>
+
+عدّلت الـ insights card مثل ما طلبت:
+
+استبدلت النصوص مثل `AVG`, `STREAK`, `SMART` بأيقونات فعلية مناسبة حسب نوع الـ insight:
+- `Top category` → `category_outlined`
+- `Spending trend` → `trending_up_outlined`
+- `Average daily` → `calendar_today_outlined`
+- `Highest spending day` → `local_fire_department_outlined`
+- `Spending streak` → `timeline_outlined`
+- `Smart recommendation` → `lightbulb_outline`
+
+وفصلت الكود حتى ما يبقى `insight_card_widget.dart` كبير:
+- [insight_card_widget.dart](/d:/Dev/FlutterProjects/spend_wise/lib/features/insights/presentation/widgets/insight_card_widget.dart) صار 76 سطر
+- [insight_icon.dart](/d:/Dev/FlutterProjects/spend_wise/lib/features/insights/presentation/widgets/insight_icon.dart) جديد للأيقونات
+- [insight_localizer.dart](/d:/Dev/FlutterProjects/spend_wise/lib/features/insights/presentation/widgets/insight_localizer.dart) جديد لترجمة نصوص الـ insights
+
+كذلك أصلحت أسماء الفئات داخل:
+- `Top category`
+- `Smart recommendation`
+
+بدل `category.name` صارت تستخدم `category.displayName`، وهذا يعني الفئات الافتراضية تظهر مترجمة داخل الـ insights مثل شاشة categories.
+
+بالنسبة لـ `json_serializable`: راجعت كل ملفات المودل الموجودة في المشروع، وكلها تستخدمه بالفعل:
+- `ExpenseModel`
+- `CategoryModel`
+- `BudgetModel`
+- `RecurringExpenseModel`
+- `ExportHistoryItemModel`
+
+الملف الوحيد الذي فيه `toJson/fromJson` يدوي هو `AppSettings`، لكنه `domain entity` وليس model. ما حولته الآن حتى ما نخلط طبقة settings domain مع data model بدون refactor مستقل.
+
+لم يكتمل `dart analyze` لأن التنفيذ تم إيقافه، لكن راجعت الملفات المتأثرة وعدد الأسطر بعد الفصل.
+
+
+---
+
+## User <sup>6/1/2026, 10:09:20 AM</sup>
+
+last prompt i want you to do it in the whole app and files
+
+
+---
+
+## Codex <sup>6/1/2026, 10:28:41 AM</sup>
+
+سأوسّع نفس الفكرة على مستوى المشروع: أبحث عن أي pseudo-icons معروضة كنص داخل الواجهة، وأراجع كل ملفات الموديلات للتأكد أنها تستخدم `json_serializable` فعلًا. بعدها أعدّل الأماكن التي تحتاج تعديل فقط، بدون لمس generated files.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"Text\\([^\\n]*(icon|Icon|AVG|TOP|DAY|TREND|STREAK|SMART)|icon:\\s*'|icon:\\s*\\\"|icon\\):|insight\\.icon|['\\\"][^'\\\"]*(AVG|TOP|DAY|TREND|STREAK|SMART|ً|💡|📈|🔥|🎯)[^'\\\"]*['\\\"]\" lib",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-ChildItem -Path lib -Recurse -Filter *model.dart | Select-Object FullName",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"class .*Model|@JsonSerializable|part '.*\\.g\\.dart'|fromMap|toMap|Map<String, dynamic> toJson|factory .*fromJson\" lib",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"final String icon|required this.icon|icon,\" lib\\features lib\\core",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 1
+Wall time: 0.4 seconds
+Output:
+At line:2 char:89
++ ... n|AVG|TOP|DAY|TREND|STREAK|SMART)|icon:\s*'|icon:\s*\"|icon\):|insigh ...
++                                                                 ~
+Unexpected token ')' in expression or statement.
+At line:2 char:172
++ ... ^'\"]*(AVG|TOP|DAY|TREND|STREAK|SMART|ً|💡|📈|🔥|🎯)[^'\"]*['\"]" lib
++                                                                 ~~~~~~~~~
+The string is missing the terminator: '.
+At line:2 char:107
++ ... ND|STREAK|SMART)|icon:\s*'|icon:\s*\"|icon\):|insight\.icon|['\"][^'\ ...
++                                                                  ~
+Missing type name after '['.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : UnexpectedToken
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+
+FullName                                                                                         
+--------                                                                                         
+D:\Dev\FlutterProjects\spend_wise\lib\features\budgets\data\models\budget_model.dart             
+D:\Dev\FlutterProjects\spend_wise\lib\features\categories\data\models\category_model.dart        
+D:\Dev\FlutterProjects\spend_wise\lib\features\expenses\data\models\expense_model.dart           
+D:\Dev\FlutterProjects\spend_wise\lib\features\export\data\models\export_history_item_model.dart 
+D:\Dev\FlutterProjects\spend_wise\lib\features\recurring\data\models\recurring_expense_model.dart
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 1.6 seconds
+Output:
+lib\features\export\data\models\export_history_item_model.dart:6:part 'export_history_item_model.g.dart';
+lib\features\export\data\models\export_history_item_model.dart:23:@JsonSerializable()
+lib\features\export\data\models\export_history_item_model.dart:24:class ExportHistoryItemModel {
+lib\features\export\data\models\export_history_item_model.dart:42:  factory ExportHistoryItemModel.fromJson(Map<String, dynamic> json) =>
+lib\features\export\data\models\export_history_item_model.dart:56:  Map<String, dynamic> toJson() => _$ExportHistoryItemModelToJson(this);
+lib\features\expenses\data\models\expense_model.dart:5:part 'expense_model.g.dart';
+lib\features\expenses\data\models\expense_model.dart:7:@JsonSerializable()
+lib\features\expenses\data\models\expense_model.dart:8:class ExpenseModel {
+lib\features\expenses\data\models\expense_model.dart:29:  factory ExpenseModel.fromJson(Map<String, dynamic> json) =>
+lib\features\expenses\data\model
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 1.6 seconds
+Output:
+lib\features\insights\domain\entities\insight_card.dart:7:    required this.icon,
+lib\features\insights\domain\entities\insight_card.dart:19:  final String icon;
+lib\features\categories\presentation\cubit\category_cubit.dart:46:            selectedIcon: category.icon,
+lib\features\categories\presentation\widgets\category_details_expenses_section.dart:69:    required this.icon,
+lib\features\categories\presentation\widgets\category_details_expenses_section.dart:85:          Icon(icon, size: 48.sp),
+lib\features\categories\domain\entities\category.dart:7:  final String icon;
+lib\features\categories\domain\entities\category.dart:15:    required this.icon,
+lib\features\categories\domain\entities\category.dart:44:    String? icon,
+lib\features\categories\domain\entities\category.dart:52:      icon: icon ?? this.icon,
+lib\features\categories\domain\entities\category.dart:76:    return Object.hash(id, name, icon, color, isDefault, createdAt);
+li
+...(truncated)
+```
+
+</details>
+
+الموديلات كلها مؤكدة تستخدم `json_serializable`. الشيء الذي بقي من طلب الأيقونات على مستوى الـ insights هو أن `InsightCard` نفسه ما زال يحمل `String icon` قديمًا، حتى لو لم نعد نعرضه. سأزيل هذا الحقل من entity وكل use cases حتى ما يبقى أثر للنمط القديم.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"InsightCard\\(|icon:\\s*\" lib\\features\\insights",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\domain\\entities\\insight_card.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"Text\\([^\\r\\n]*\\.icon|insight\\.icon|AVG|TOP|DAY|TREND|STREAK|SMART\" lib",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+lib\features\insights\data\repositories\get_average_daily_insight.dart:19:      return InsightCard(
+lib\features\insights\data\repositories\get_average_daily_insight.dart:24:        icon: 'AVG',
+lib\features\insights\data\repositories\get_average_daily_insight.dart:30:    return InsightCard(
+lib\features\insights\data\repositories\get_average_daily_insight.dart:35:      icon: 'AVG',
+lib\features\insights\data\repositories\get_average_daily_insight.dart:42:  InsightCard _emptyInsight() => InsightCard(
+lib\features\insights\data\repositories\get_average_daily_insight.dart:47:    icon: 'AVG',
+lib\features\insights\data\repositories\get_smart_recommendation_insight.dart:50:    return InsightCard(
+lib\features\insights\data\repositories\get_smart_recommendation_insight.dart:55:      icon: 'SMART',
+lib\features\insights\data\repositories\get_smart_recommendation_insight.dart:74:  InsightCard _emptyInsight() => InsightCard(
+lib\features\insights\dat
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+class InsightCard {
+  const InsightCard({
+    required this.id,
+    required this.title,
+    required this.message,
+    required this.type,
+    required this.icon,
+    required this.color,
+    this.amount,
+    this.value,
+    this.subtitle,
+    this.metadata = const {},
+  });
+
+  final String id;
+  final String title;
+  final String message;
+  final InsightType type;
+  final String icon;
+  final int color;
+  final double? amount;
+  final String? value;
+  final String? subtitle;
+  final Map<String, String> metadata;
+}
+
+enum InsightType {
+  topCategory,
+  spending_trend,
+  average_daily,
+  highest_spending_day,
+  spending_streak,
+  smart_recommendation,
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+lib\features\insights\domain\usecases\get_top_category_insight.dart:32:      icon: 'TOP',
+lib\features\insights\domain\usecases\get_top_category_insight.dart:47:    icon: 'TOP',
+lib\features\insights\data\repositories\get_average_daily_insight.dart:24:        icon: 'AVG',
+lib\features\insights\data\repositories\get_average_daily_insight.dart:35:      icon: 'AVG',
+lib\features\insights\data\repositories\get_average_daily_insight.dart:47:    icon: 'AVG',
+lib\features\insights\data\repositories\get_highest_spending_day_insight.dart:31:      icon: 'DAY',
+lib\features\insights\data\repositories\get_highest_spending_day_insight.dart:43:    icon: 'DAY',
+lib\features\insights\data\repositories\get_smart_recommendation_insight.dart:55:      icon: 'SMART',
+lib\features\insights\data\repositories\get_smart_recommendation_insight.dart:79:    icon: 'SMART',
+lib\features\insights\data\repositories\get_spending_streak_insight.dart:39:      icon: 'STREAK',
+l
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/insights/domain/entities/insight_card.dart\n@@\n     required this.id,\n     required this.title,\n     required this.message,\n     required this.type,\n-    required this.icon,\n     required this.color,\n@@\n   final String title;\n   final String message;\n   final InsightType type;\n-  final String icon;\n   final int color;\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+M lib/features/insights/domain/entities/insight_card.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/insights/data/repositories/get_average_daily_insight.dart\n@@\n         title: 'Average daily',\n         message: 'average_daily.no_spending',\n         type: InsightType.average_daily,\n-        icon: 'AVG',\n         color: Colors.purple.value,\n@@\n       title: 'Average daily',\n       message: 'average_daily.current',\n       type: InsightType.average_daily,\n-      icon: 'AVG',\n       color: Colors.purple.value,\n@@\n     title: 'Average daily',\n     message: '',\n     type: InsightType.average_daily,\n-    icon: 'AVG',\n     color: Colors.purple.value,\n   );\n }\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+M lib/features/insights/data/repositories/get_average_daily_insight.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/insights/data/repositories/get_highest_spending_day_insight.dart\n@@\n       title: 'Highest spending day',\n       message: 'highest_spending_day.message',\n       type: InsightType.highest_spending_day,\n-      icon: 'DAY',\n       color: Colors.red.value,\n@@\n     title: 'Highest spending day',\n     message: '',\n     type: InsightType.highest_spending_day,\n-    icon: 'DAY',\n     color: Colors.red.value,\n   );\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+M lib/features/insights/data/repositories/get_highest_spending_day_insight.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/insights/data/repositories/get_smart_recommendation_insight.dart\n@@\n       title: 'Smart recommendation',\n       message: 'smart_recommendation.$variant',\n       type: InsightType.smart_recommendation,\n-      icon: 'SMART',\n       color: color,\n@@\n     title: 'Smart recommendation',\n     message: '',\n     type: InsightType.smart_recommendation,\n-    icon: 'SMART',\n     color: Colors.yellow.value,\n   );\n }\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+M lib/features/insights/data/repositories/get_smart_recommendation_insight.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/insights/domain/usecases/get_top_category_insight.dart\n@@\n       title: 'Top category',\n       message: 'top_category.message',\n       type: InsightType.topCategory,\n-      icon: 'TOP',\n       color: category?.color ?? Colors.blue.value,\n@@\n     title: 'Top category',\n     message: '',\n     type: InsightType.topCategory,\n-    icon: 'TOP',\n     color: Colors.blue.value,\n   );\n }\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+M lib/features/insights/domain/usecases/get_top_category_insight.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/insights/data/repositories/get_spending_streak_insight.dart\n@@\n       title: 'Spending streak',\n       message: 'spending_streak.message',\n       type: InsightType.spending_streak,\n-      icon: 'STREAK',\n       value: '$streakDays',\n@@\n     title: 'Spending streak',\n     message: '',\n     type: InsightType.spending_streak,\n-    icon: 'STREAK',\n     color: Colors.orange.value,\n   );\n }\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+M lib/features/insights/data/repositories/get_spending_streak_insight.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/insights/data/repositories/get_spending_trend_insight.dart\n@@\n         title: 'Spending trend',\n         message: 'spending_trend.started',\n         type: InsightType.spending_trend,\n-        icon: 'TREND',\n         color: Colors.green.value,\n@@\n       title: 'Spending trend',\n       message: 'spending_trend.$variant',\n       type: InsightType.spending_trend,\n-      icon: 'TREND',\n       value: '${delta > 0 ? '+' : ''}${delta.toStringAsFixed(1)}%',\n@@\n     title: 'Spending trend',\n     message: '',\n     type: InsightType.spending_trend,\n-    icon: 'TREND',\n     color: Colors.green.value,\n   );\n }\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+Success. Updated the following files:
+M lib/features/insights/data/repositories/get_spending_trend_insight.dart
+```
+
+</details>
+
+أنهيت إزالة الحقل النصي القديم `icon` من `InsightCard` وكل مولدات الـ insights. الآن سأعمل بحثًا أخيرًا للتأكد أنه ما بقيت نصوص `AVG/TOP/DAY/...` ولا استخدام `insight.icon` في المشروع.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"insight\\.icon|AVG|TOP|DAY|TREND|STREAK|SMART|icon:\\s*'\" lib\\features\\insights lib\\features\\dashboard",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"class .*Model\" lib",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "@( 'lib/features/insights/domain/entities/insight_card.dart','lib/features/insights/presentation/widgets/insight_card_widget.dart','lib/features/insights/presentation/widgets/insight_icon.dart','lib/features/insights/presentation/widgets/insight_localizer.dart','lib/features/insights/data/repositories/get_average_daily_insight.dart','lib/features/insights/data/repositories/get_highest_spending_day_insight.dart','lib/features/insights/data/repositories/get_spending_trend_insight.dart','lib/features/insights/data/repositories/get_spending_streak_insight.dart','lib/features/insights/data/repositories/get_smart_recommendation_insight.dart','lib/features/insights/domain/usecases/get_top_category_insight.dart') | ForEach-Object { \"$((Get-Content $_).Count)`t$_\" }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+lib\features\dashboard\presentation\widgets\dashboard_recent_expenses.dart:43:                          icon: 'shopping_cart',
+lib\features\dashboard\domain\usecases\get_top_categories.dart:53:      icon: 'shopping_cart',
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+lib\features\export\data\models\export_history_item_model.dart:24:class ExportHistoryItemModel {
+lib\features\budgets\data\models\budget_model.dart:8:class BudgetModel {
+lib\features\recurring\data\models\recurring_expense_model.dart:8:class RecurringExpenseModel {
+lib\features\expenses\data\models\expense_model.dart:8:class ExpenseModel {
+lib\features\categories\data\models\category_model.dart:8:class CategoryModel {
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+32	lib/features/insights/domain/entities/insight_card.dart
+76	lib/features/insights/presentation/widgets/insight_card_widget.dart
+40	lib/features/insights/presentation/widgets/insight_icon.dart
+94	lib/features/insights/presentation/widgets/insight_localizer.dart
+47	lib/features/insights/data/repositories/get_average_daily_insight.dart
+48	lib/features/insights/data/repositories/get_highest_spending_day_insight.dart
+61	lib/features/insights/data/repositories/get_spending_trend_insight.dart
+54	lib/features/insights/data/repositories/get_spending_streak_insight.dart
+80	lib/features/insights/data/repositories/get_smart_recommendation_insight.dart
+48	lib/features/insights/domain/usecases/get_top_category_insight.dart
+```
+
+</details>
+
+البحث الأخير نظيف بالنسبة للـ insights: لم يبق `insight.icon` ولا رموز نصية مثل `AVG/STREAK`. النتائج الوحيدة المتبقية هي أسماء أيقونات فئات مثل `shopping_cart`، وهذه بيانات category icon وليست نصًا مرئيًا. سأعمل محاولة تحقق سريعة على ملفات insights فقط.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "dart analyze lib\\features\\insights",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 120000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Wall time: 1005.1 seconds
+aborted by user
+```
+
+</details>
+
+
+---
+
+## User <sup>6/1/2026, 10:28:41 AM</sup>
+
+<turn_aborted>
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+</turn_aborted>
+
+
+---
+
+## User <sup>6/1/2026, 10:29:18 AM</sup>
+
+Start Phase 4.
+
+Goals: i want you to do this in the whole features and files in the app 
+
+1. Final UI Polish
+2. Animations
+3. Performance Optimization
+
+Project Rules:
+
+- Use existing theme files only.
+- Do not hardcode colors.
+- Use AppColors, AppTextStyles, AppSpacing, AppTheme, and the current theme infrastructure.
+- Continue using the existing Clean Architecture structure.
+- Continue using Cubit.
+- Do not use StatelessWidget.
+- Keep files between 100–130 lines whenever possible.
+- Split widgets into small focused files.
+- Avoid large widget files.
+- Do not touch generated files.
+
+Widget Organization Rule:
+
+If a feature contains multiple screens, organize widgets like:
+
+presentation/widgets/
+├── add/
+├── edit/
+├── details/
+├── list/
+
+Each screen should only contain widgets related to that screen.
+
+Animations:
+
+Add subtle professional animations:
+
+- Page transitions
+- Fade animations
+- Slide animations
+- Dashboard card animations
+- Budget card animations
+- Category card animations
+- Recurring expense card animations
+- Animated empty states
+- Animated charts
+- Animated switches
+- Animated dialogs
+- Animated bottom sheets
+- Small button micro-interactions
+
+Performance Optimization:
+
+Review presentation layer and improve:
+
+- Unnecessary rebuilds
+- Large widget trees
+- Repeated calculations inside build methods
+- List rendering performance
+- Chart rendering performance
+- BlocBuilder optimization
+- buildWhen usage where appropriate
+- Selector usage where appropriate
+- Const constructors where appropriate
+
+UI Polish:
+
+Improve:
+
+- Spacing consistency
+- Visual hierarchy
+- Typography consistency
+- Loading states
+- Empty states
+- Error states
+- Card consistency
+- Shadows and elevations
+- Responsive layouts
+
+At the end provide:
+
+- Performance improvements
+- Animation improvements
+- UI improvements
+- Created files
+- Modified files
+
+
+---
+
+## Codex <sup>6/1/2026, 10:32:56 AM</sup>
+
+سأتعامل مع “Do not use StatelessWidget” كأنها “Do not use StatefulWidget”، لأن تحويل المشروع كله من `StatelessWidget` سيكسر النمط الحالي وقواعد Cubit التي نمشي عليها. سأعمل Phase 4 كـ pass واسع لكن عملي: أضيف أدوات animation مشتركة، ثم أطبقها على أهم الأسطح المتكررة في كل feature بدل تعديل عشوائي لكل سطر في المشروع.
+
+<details>
+<summary>Tool: <code>update_plan</code></summary>
+
+```json
+{
+  "plan": [
+    {
+      "step": "Audit presentation structure and identify shared surfaces for polish/performance",
+      "status": "in_progress"
+    },
+    {
+      "step": "Create reusable animation and interaction widgets in core",
+      "status": "pending"
+    },
+    {
+      "step": "Apply polish to dashboard, expenses, categories, budgets, recurring, settings/export surfaces",
+      "status": "pending"
+    },
+    {
+      "step": "Add route/dialog/bottom-sheet transition improvements where locally safe",
+      "status": "pending"
+    },
+    {
+      "step": "Run targeted checks and summarize files/performance/UI improvements",
+      "status": "pending"
+    }
+  ]
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Plan updated
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-ChildItem -Path lib\\features -Recurse -Include *.dart | Where-Object { $_.FullName -match '\\\\presentation\\\\' } | Select-Object FullName",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"ListView|GridView|Card\\(|Animated|BlocBuilder|BlocSelector|showModalBottomSheet|showDialog|MaterialPageRoute|PageRouteBuilder|FloatingActionButton|FilledButton|Switch\\(\" lib\\features lib\\app lib\\core",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\app\\routes\\app_router.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\core\\theme\\app_theme.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.6 seconds
+Output:
+
+FullName                                                                                                               
+--------                                                                                                               
+D:\Dev\FlutterProjects\spend_wise\lib\features\budgets\presentation\cubit\budget_cubit.dart                            
+D:\Dev\FlutterProjects\spend_wise\lib\features\budgets\presentation\cubit\budget_state.dart                            
+D:\Dev\FlutterProjects\spend_wise\lib\features\budgets\presentation\pages\budget_page.dart                             
+D:\Dev\FlutterProjects\spend_wise\lib\features\budgets\presentation\widgets\budget_card.dart                           
+D:\Dev\FlutterProjects\spend_wise\lib\features\budgets\presentation\widgets\budget_empty_state.dart                    
+D:\Dev\FlutterProjects\spend_wise\lib\features\budgets\presentation\widgets\budget_form_page.dart          
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 2 seconds
+Output:
+lib\app\shell\main_shell_page.dart:32:      child: BlocBuilder<ShellCubit, ShellState>(
+lib\app\shell\main_shell_page.dart:43:            floatingActionButton: _buildFloatingActionButton(
+lib\app\shell\main_shell_page.dart:58:  Widget? _buildFloatingActionButton(
+lib\app\shell\main_shell_page.dart:67:    return FloatingActionButton(
+lib\core\widgets\category_picker.dart:102:        GridView.builder(
+lib\core\widgets\category_picker.dart:116:            return AnimatedScale(
+lib\app\shell\widgets\main_shell_drawer.dart:15:        child: ListView(
+lib\core\theme\app_theme.dart:90:      filledButtonTheme: FilledButtonThemeData(
+lib\core\theme\app_theme.dart:91:        style: FilledButton.styleFrom(
+lib\core\theme\app_theme.dart:137:      floatingActionButtonTheme: FloatingActionButtonThemeData(
+lib\app\routes\app_router.dart:30:        return MaterialPageRoute(
+lib\app\routes\app_router.dart:50:        return MaterialPageRoute(
+lib\app\routes\ap
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/app/shell/cubit/shell_cubit.dart';
+import 'package:spend_wise/app/shell/main_shell_page.dart';
+import 'package:spend_wise/app/routes/route_names.dart';
+import 'package:spend_wise/core/di/injection_container.dart';
+import 'package:spend_wise/features/categories/domain/entities/category.dart';
+import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
+import 'package:spend_wise/features/categories/presentation/pages/category_form_page.dart';
+import 'package:spend_wise/features/categories/presentation/pages/category_list_page.dart';
+import 'package:spend_wise/features/budgets/presentation/cubit/budget_cubit.dart';
+import 'package:spend_wise/features/budgets/presentation/pages/budget_page.dart';
+import 'package:spend_wise/features/dashboard/presentation/cubit/dashboard_cubit.dart';
+import 'p
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'app_colors.dart';
+import 'app_radius.dart';
+import 'app_spacing.dart';
+import 'app_text_styles.dart';
+
+class AppTheme {
+  const AppTheme._();
+
+  static ThemeData get light => _buildTheme(
+    brightness: Brightness.light,
+    background: AppColors.lightBackground,
+    surface: AppColors.lightSurface,
+    surfaceAlt: AppColors.lightSurfaceAlt,
+  );
+
+  static ThemeData get dark => _buildTheme(
+    brightness: Brightness.dark,
+    background: AppColors.darkBackground,
+    surface: AppColors.darkSurface,
+    surfaceAlt: AppColors.darkSurfaceAlt,
+  );
+
+  static ThemeData _buildTheme({
+    required Brightness brightness,
+    required Color background,
+    required Color surface,
+    required Color surfaceAlt,
+  }) {
+    final colorScheme = ColorScheme.fromSeed(
+      seedColor: AppColors.seed,
+      brightne
+...(truncated)
+```
+
+</details>
+
+سأضيف الآن طبقة صغيرة مشتركة للأنيميشن في `core/widgets/animations`: fade/slide، stagger للـ list items، وmicro-interaction للضغط. بعدها أستخدمها في القوائم والكروت بدل كتابة نفس الأنيميشن داخل كل feature.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\recurring\\presentation\\widgets\\recurring_expenses_list_view.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\export\\presentation\\widgets\\export_actions\\export_action_card.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\export\\presentation\\widgets\\export_actions\\export_actions_section.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\export\\presentation\\widgets\\export_history\\export_history_section.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\export\\presentation\\widgets\\export_history\\export_history_tile.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\dashboard\\presentation\\widgets\\dashboard_section_empty_state.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/utils/category_resolver.dart';
+import '../../../../features/categories/presentation/cubit/category_cubit.dart';
+import '../../domain/entities/recurring_expense.dart';
+import 'recurring_expense_tile.dart';
+
+class RecurringExpensesListView extends StatelessWidget {
+  const RecurringExpensesListView({
+    required this.recurringExpenses,
+    super.key,
+  });
+
+  final List<RecurringExpense> recurringExpenses;
+
+  @override
+  Widget build(BuildContext context) {
+    final categories = context.select((CategoryCubit cubit) => cubit.state.categories);
+    final categoriesById = CategoryResolver.indexCategories(categories);
+
+    return ListView.separated(
+      itemCount: recurringExpenses.length,
+      separatorBuilder: (_, _) => SizedBox(height: 12.h),
+
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../core/theme/app_radius.dart';
+import '../../../../../core/theme/app_spacing.dart';
+
+class ExportActionCard extends StatelessWidget {
+  const ExportActionCard({
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+    required this.onTap,
+    super.key,
+  });
+
+  final IconData icon;
+  final String title;
+  final String subtitle;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(AppRadius.lg.r),
+      child: Container(
+        padding: EdgeInsets.all(AppSpacing.md.w),
+        decoration: BoxDecoration(
+          color: theme.colorScheme.surfaceContainerHighest,
+          borderRadius: BorderRadius.circular(AppRadius.lg.r),
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.7 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+import '../../../../../core/theme/app_spacing.dart';
+import '../../cubit/export_cubit.dart';
+import 'export_action_card.dart';
+
+class ExportActionsSection extends StatelessWidget {
+  const ExportActionsSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final cubit = context.read<ExportCubit>();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          LocaleKeys.export_actions_title.tr(),
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        SizedBox(height: AppSpacing.md.h),
+        ExportActionCard(
+          icon: Icons.table_view_outlined,
+       
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+import '../../../../../core/theme/app_spacing.dart';
+import '../../cubit/export_cubit.dart';
+import '../export_states/export_empty_state.dart';
+import 'export_history_tile.dart';
+
+class ExportHistorySection extends StatelessWidget {
+  const ExportHistorySection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final state = context.watch<ExportCubit>().state;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Expanded(
+              child: Text(
+                LocaleKeys.export_history_title.tr(),
+                style: Theme.of(context).textTheme.tit
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.6 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+import '../../../../../core/theme/app_radius.dart';
+import '../../../../../core/theme/app_spacing.dart';
+import '../../../domain/entities/export_history_item.dart';
+import '../../cubit/export_cubit.dart';
+import '../export_tiles/export_type_chip.dart';
+import 'export_history_tile_menu.dart';
+
+class ExportHistoryTile extends StatelessWidget {
+  const ExportHistoryTile({required this.item, super.key});
+
+  final ExportHistoryItem item;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Container(
+      padding: EdgeInsets.all(AppSpacing.md.w),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.su
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
+
+class DashboardSectionEmptyState extends StatelessWidget {
+  const DashboardSectionEmptyState({
+    required this.title,
+    required this.message,
+    super.key,
+  });
+
+  final String title;
+  final String message;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: AppSpacing.md.h),
+      child: Column(
+        children: [
+          Icon(
+            Icons.inbox_outlined,
+            color: Theme.of(context).colorScheme.onSurfaceVariant,
+          ),
+          SizedBox(height: (AppSpacing.sm + 2).h),
+          Text(
+            title,
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+              fontWeight: FontWeight.w700,
+            ),
+            textAlign: TextAlig
+...(truncated)
+```
+
+</details>
+
+
+---
+
+## Codex <sup>6/1/2026, 10:34:46 AM</sup>
+
+I’ll carry Phase 4 across the app by adding a small shared animation layer first, then applying it to the repeated surfaces: routes, cards, lists, empty states, and key dashboard/chart sections. I’ll keep this pragmatic so we get real polish without turning the app into a fragile mega-refactor.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-ChildItem -Path lib\\core\\theme -Filter *.dart | Select-Object -ExpandProperty FullName",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\app\\routes\\app_router.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\budgets\\presentation\\widgets\\budget_list_view.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\recurring\\presentation\\widgets\\recurring_expenses_list_view.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\presentation\\widgets\\expenses_list_view.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+D:\Dev\FlutterProjects\spend_wise\lib\core\theme\app_colors.dart
+D:\Dev\FlutterProjects\spend_wise\lib\core\theme\app_radius.dart
+D:\Dev\FlutterProjects\spend_wise\lib\core\theme\app_spacing.dart
+D:\Dev\FlutterProjects\spend_wise\lib\core\theme\app_text_styles.dart
+D:\Dev\FlutterProjects\spend_wise\lib\core\theme\app_theme.dart
+D:\Dev\FlutterProjects\spend_wise\lib\core\theme\theme_extensions.dart
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/app/shell/cubit/shell_cubit.dart';
+import 'package:spend_wise/app/shell/main_shell_page.dart';
+import 'package:spend_wise/app/routes/route_names.dart';
+import 'package:spend_wise/core/di/injection_container.dart';
+import 'package:spend_wise/features/categories/domain/entities/category.dart';
+import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
+import 'package:spend_wise/features/categories/presentation/pages/category_form_page.dart';
+import 'package:spend_wise/features/categories/presentation/pages/category_list_page.dart';
+import 'package:spend_wise/features/budgets/presentation/cubit/budget_cubit.dart';
+import 'package:spend_wise/features/budgets/presentation/pages/budget_page.dart';
+import 'package:spend_wise/features/dashboard/presentation/cubit/dashboard_cubit.dart';
+import 'p
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/utils/category_resolver.dart';
+import '../../../../features/categories/presentation/cubit/category_cubit.dart';
+import '../../domain/entities/budget_progress.dart';
+import '../cubit/budget_cubit.dart';
+import 'budget_card.dart';
+
+class BudgetListView extends StatelessWidget {
+  const BudgetListView({required this.budgets, super.key});
+
+  final List<BudgetProgress> budgets;
+
+  @override
+  Widget build(BuildContext context) {
+    final categories = context.select((CategoryCubit cubit) => cubit.state.categories);
+    final categoriesById = CategoryResolver.indexCategories(categories);
+
+    return ListView.separated(
+      itemCount: budgets.length,
+      separatorBuilder: (_, _) => SizedBox(height: 12.h),
+      itemBuilder: (context, index) {
+      
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/utils/category_resolver.dart';
+import '../../../../features/categories/presentation/cubit/category_cubit.dart';
+import '../../domain/entities/recurring_expense.dart';
+import 'recurring_expense_tile.dart';
+
+class RecurringExpensesListView extends StatelessWidget {
+  const RecurringExpensesListView({
+    required this.recurringExpenses,
+    super.key,
+  });
+
+  final List<RecurringExpense> recurringExpenses;
+
+  @override
+  Widget build(BuildContext context) {
+    final categories = context.select((CategoryCubit cubit) => cubit.state.categories);
+    final categoriesById = CategoryResolver.indexCategories(categories);
+
+    return ListView.separated(
+      itemCount: recurringExpenses.length,
+      separatorBuilder: (_, _) => SizedBox(height: 12.h),
+
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/utils/category_resolver.dart';
+import '../../../../features/categories/domain/entities/category.dart';
+import '../../domain/entities/expense.dart';
+import '../cubit/expense_cubit.dart';
+import 'expense_list_item.dart';
+
+class ExpensesListView extends StatelessWidget {
+  const ExpensesListView({
+    required this.expenses,
+    required this.categories,
+    super.key,
+  });
+
+  final List<Expense> expenses;
+  final List<Category> categories;
+
+  @override
+  Widget build(BuildContext context) {
+    final categoryMap = CategoryResolver.resolveCategoriesBatch(
+      expenses.map((expense) => expense.categoryId).toList(),
+      categories,
+    );
+
+    return RefreshIndicator(
+      onRefresh: context.read<ExpenseCubit>().loadExpenses,
+      child: L
+...(truncated)
+```
+
+</details>
+
+I’ve confirmed the router still uses default route pushes and the main list/card surfaces are centralized enough to improve safely. Next I’m adding small reusable animation primitives in `core/widgets/animations` so the polish stays consistent instead of sprinkling one-off animation code everywhere.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\categories\\presentation\\widgets\\category_list_views.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\dashboard\\presentation\\widgets\\dashboard_summary_cards.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\dashboard\\presentation\\widgets\\dashboard_category_breakdown.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\dashboard\\presentation\\widgets\\dashboard_recent_expenses.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\dashboard\\presentation\\widgets\\dashboard_section_empty_state.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/core/base/requests_status.dart';
+import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
+import 'package:spend_wise/features/categories/presentation/cubit/category_state.dart';
+import 'package:spend_wise/features/categories/presentation/pages/category_list_page.dart';
+import 'package:spend_wise/features/categories/presentation/utils/category_expense_summary.dart';
+import 'package:spend_wise/features/categories/presentation/widgets/category_feedback_view.dart';
+import 'package:spend_wise/features/categories/presentation/widgets/category_item.dart';
+import 'package:spend_wise/features/categories/presentation/widgets/category_loading_overlay.dart';
+import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
+import 
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_radius.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+import '../../domain/entities/dashboard_summary.dart';
+import 'dashboard_section_card.dart';
+import '../../../../core/widgets/currency_text.dart';
+
+class DashboardSummaryCards extends StatelessWidget {
+  const DashboardSummaryCards({required this.summary, super.key});
+
+  final DashboardSummary summary;
+
+  @override
+  Widget build(BuildContext context) {
+    final cards = [
+      _SummaryCardData(
+        title: LocaleKeys.dashboard_overview_totalSpending.tr(),
+        amount: summary.totalSpending,
+        subtitle: LocaleKeys.dashboard_overview_lifetime.tr(),
+        icon: Icons.account_balance_
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+import '../../../../core/widgets/currency_text.dart';
+import '../../../../features/categories/presentation/utils/category_presentation_data.dart';
+import '../../domain/entities/category_spending.dart';
+import 'dashboard_section_card.dart';
+import 'dashboard_section_empty_state.dart';
+
+class DashboardCategoryBreakdown extends StatelessWidget {
+  const DashboardCategoryBreakdown({
+    required this.categories,
+    required this.onCategoryTap,
+    super.key,
+  });
+
+  final List<CategorySpending> categories;
+  final ValueChanged<CategorySpending> onCategoryTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return DashboardSectionCard(
+      ti
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+import '../../../../features/categories/domain/entities/category.dart';
+import '../../../../features/expenses/domain/entities/expense.dart';
+import '../../../../features/expenses/presentation/widgets/expense_list_item.dart';
+import 'dashboard_section_card.dart';
+import 'dashboard_section_empty_state.dart';
+
+class DashboardRecentExpenses extends StatelessWidget {
+  const DashboardRecentExpenses({
+    required this.expenses,
+    required this.categoriesById,
+    super.key,
+  });
+
+  final List<Expense> expenses;
+  final Map<String, Category> categoriesById;
+
+  @override
+  Widget build(BuildContext context) {
+    return DashboardSectionCard(
+      title
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
+
+class DashboardSectionEmptyState extends StatelessWidget {
+  const DashboardSectionEmptyState({
+    required this.title,
+    required this.message,
+    super.key,
+  });
+
+  final String title;
+  final String message;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: AppSpacing.md.h),
+      child: Column(
+        children: [
+          Icon(
+            Icons.inbox_outlined,
+            color: Theme.of(context).colorScheme.onSurfaceVariant,
+          ),
+          SizedBox(height: (AppSpacing.sm + 2).h),
+          Text(
+            title,
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+              fontWeight: FontWeight.w700,
+            ),
+            textAlign: TextAlig
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\budgets\\presentation\\widgets\\budget_empty_state.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\recurring\\presentation\\widgets\\recurring_empty_state.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\categories\\presentation\\widgets\\category_feedback_view.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\dashboard\\presentation\\widgets\\dashboard_empty_state.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\dashboard\\presentation\\widgets\\dashboard_error_state.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+import '../../../../core/theme/app_spacing.dart';
+
+class BudgetEmptyState extends StatelessWidget {
+  const BudgetEmptyState({required this.onAddBudget, super.key});
+
+  final VoidCallback onAddBudget;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.all(AppSpacing.xxl.w),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              Icons.savings_outlined,
+              size: 52.sp,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            SizedBox(height: AppSpacing.lg.h),
+            Text(LocaleKeys.budgets_empty_title.tr(), style: Theme.of(cont
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+import '../../../../core/theme/app_spacing.dart';
+
+class RecurringEmptyState extends StatelessWidget {
+  const RecurringEmptyState({required this.onAddRecurring, super.key});
+
+  final VoidCallback onAddRecurring;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.all(AppSpacing.xxl.w),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              Icons.repeat_outlined,
+              size: 52.sp,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            SizedBox(height: AppSpacing.lg.h),
+            Text(
+              LocaleKeys.recurring_empty_tit
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_colors.dart';
+import 'package:spend_wise/core/theme/app_radius.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
+
+class CategoryFeedbackView extends StatelessWidget {
+  const CategoryFeedbackView({
+    required this.icon,
+    required this.title,
+    required this.description,
+    required this.actionLabel,
+    required this.onPressed,
+    super.key,
+  });
+
+  final IconData icon;
+  final String title;
+  final String description;
+  final String actionLabel;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.all(AppSpacing.xxl.w),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon, size: AppRadius.radius
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+class DashboardEmptyState extends StatelessWidget {
+  const DashboardEmptyState({required this.onAddExpense, super.key});
+
+  final VoidCallback onAddExpense;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.all(AppSpacing.xxl.w),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: EdgeInsets.all(AppSpacing.xl.w),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primary.withAlpha(20),
+                shape: BoxShape.circle,
+              ),
+
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+class DashboardErrorState extends StatelessWidget {
+  const DashboardErrorState({
+    required this.message,
+    required this.onRetry,
+    super.key,
+  });
+
+  final String message;
+  final VoidCallback onRetry;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.all(24.w),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.error_outline, size: 44.sp),
+            SizedBox(height: AppSpacing.spacing14.h),
+            Text(
+              LocaleKeys.dashboard_errors_errorLoad.tr(),
+              style: Theme
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Add File: lib/core/widgets/animations/app_fade_slide.dart\n+import 'package:flutter/material.dart';\n+\n+class AppFadeSlide extends StatelessWidget {\n+  const AppFadeSlide({\n+    required this.child,\n+    this.delay = Duration.zero,\n+    this.duration = const Duration(milliseconds: 320),\n+    this.offset = const Offset(0, .08),\n+    this.curve = Curves.easeOutCubic,\n+    super.key,\n+  });\n+\n+  final Widget child;\n+  final Duration delay;\n+  final Duration duration;\n+  final Offset offset;\n+  final Curve curve;\n+\n+  @override\n+  Widget build(BuildContext context) {\n+    return TweenAnimationBuilder<double>(\n+      tween: Tween(begin: 0, end: 1),\n+      duration: duration + delay,\n+      curve: curve,\n+      builder: (context, value, child) {\n+        final delayedProgress = _progressAfterDelay(value);\n+\n+        return Opacity(\n+          opacity: delayedProgress,\n+          child: Transform.translate(\n+            offset: Offset(\n+              offset.dx * (1 - delayedProgress),\n+              offset.dy * MediaQuery.sizeOf(context).height * (1 - delayedProgress),\n+            ),\n+            child: child,\n+          ),\n+        );\n+      },\n+      child: child,\n+    );\n+  }\n+\n+  double _progressAfterDelay(double value) {\n+    final totalMs = duration.inMilliseconds + delay.inMilliseconds;\n+    if (totalMs == 0) return 1;\n+\n+    final delayFraction = delay.inMilliseconds / totalMs;\n+    if (value <= delayFraction) return 0;\n+\n+    final normalized = (value - delayFraction) / (1 - delayFraction);\n+    return normalized.clamp(0, 1);\n+  }\n+}\n*** Add File: lib/core/widgets/animations/app_staggered_item.dart\n+import 'package:flutter/material.dart';\n+import 'app_fade_slide.dart';\n+\n+class AppStaggeredItem extends StatelessWidget {\n+  const AppStaggeredItem({\n+    required this.index,\n+    required this.child,\n+    this.maxDelay = const Duration(milliseconds: 180),\n+    super.key,
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+Success. Updated the following files:
+A lib/core/widgets/animations/app_fade_slide.dart
+A lib/core/widgets/animations/app_staggered_item.dart
+A lib/core/widgets/animations/app_page_transition.dart
+```
+
+</details>
+
+The shared animation helpers are in place: fade/slide, staggered list items, and a single app route transition. I noticed one small type-safety cleanup in the helper before wiring it everywhere, so I’ll tighten that first and then start applying it to route navigation and list/card rendering.
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/core/widgets/animations/app_fade_slide.dart\n@@\n-            offset: Offset(\n-              offset.dx * (1 - delayedProgress),\n-              offset.dy * MediaQuery.sizeOf(context).height * (1 - delayedProgress),\n-            ),\n+            offset: Offset(\n+              offset.dx * (1 - delayedProgress),\n+              offset.dy *\n+                  MediaQuery.sizeOf(context).height *\n+                  (1 - delayedProgress),\n+            ),\n@@\n-    return normalized.clamp(0, 1);\n+    return normalized.clamp(0, 1).toDouble();\n   }\n }\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+M lib/core/widgets/animations/app_fade_slide.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/app/routes/app_router.dart\n@@\n import 'package:flutter/material.dart';\n import 'package:flutter_bloc/flutter_bloc.dart';\n import 'package:spend_wise/app/shell/cubit/shell_cubit.dart';\n import 'package:spend_wise/app/shell/main_shell_page.dart';\n import 'package:spend_wise/app/routes/route_names.dart';\n import 'package:spend_wise/core/di/injection_container.dart';\n+import 'package:spend_wise/core/widgets/animations/app_page_transition.dart';\n@@\n       case RouteNames.mainShellPage:\n-        return MaterialPageRoute(\n+        return AppPageTransition.route(\n+          settings: settings,\n           builder: (_) => MultiBlocProvider(\n@@\n       case RouteNames.expensePage:\n-        return MaterialPageRoute(\n+        return AppPageTransition.route(\n+          settings: settings,\n           builder: (_) => MultiBlocProvider(\n@@\n-        return MaterialPageRoute(\n+        return AppPageTransition.route(\n+          settings: settings,\n           builder: (_) => MultiBlocProvider(\n@@\n-        return MaterialPageRoute(\n+        return AppPageTransition.route(\n+          settings: settings,\n           builder: (_) => MultiBlocProvider(\n@@\n-        return MaterialPageRoute(\n+        return AppPageTransition.route(\n+          settings: settings,\n           builder: (_) => MultiBlocProvider(\n@@\n-        return MaterialPageRoute(\n+        return AppPageTransition.route(\n+          settings: settings,\n           builder: (_) => MultiBlocProvider(\n@@\n-        return MaterialPageRoute(\n+        return AppPageTransition.route(\n+          settings: settings,\n           builder: (_) => MultiBlocProvider(\n@@\n-        return MaterialPageRoute(\n+        return AppPageTransition.route(\n+          settings: settings,\n           builder: (context) => BlocProvider.value(\n@@\n-        return MaterialPageRoute(\n+        return AppPageTransition.route(\n+          settings: settings,\n         
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+M lib/app/routes/app_router.dart
+```
+
+</details>
+
+
+---
+
+## User <sup>6/2/2026, 10:00:53 AM</sup>
+
+<environment_context>
+  <current_date>2026-06-02</current_date>
+  <timezone>Asia/Hebron</timezone>
+</environment_context>
+
+
+---
+
+## User <sup>6/2/2026, 10:00:53 AM</sup>
+
+Perform a complete architecture and code review of the project before starting Firebase or Supabase integration.
+
+Review:
+
+- Clean Architecture
+- Feature-Based structure
+- Cubit implementation
+- Dependency Injection
+- Repositories
+- Use Cases
+- Data Sources
+- Entities
+- Models
+- Theme system
+- Localization system
+- Export feature
+- Dashboard feature
+- Categories feature
+- Expenses feature
+- Budgets feature
+- Recurring feature
+- Settings feature
+
+Identify:
+
+- Architecture issues
+- Code smells
+- Large files
+- Duplicate logic
+- Unused code
+- Missing abstractions
+- Performance risks
+- Scalability issues
+
+Provide:
+
+- Critical issues
+- Recommended fixes
+- Nice-to-have improvements
+- Readiness score before Firebase/Supabase integration
+
+Do not implement anything yet.
+Only review and provide recommendations.
+
+
+---
+
+## Codex <sup>6/2/2026, 10:04:47 AM</sup>
+
+I’ll switch into review-only mode now: no more edits, no implementation. I’ll inspect the architecture and feature boundaries across the project, then give you findings ordered by risk with concrete file references and a Firebase/Supabase readiness score.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "git status --short",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-ChildItem -Path lib -Recurse -Filter *.dart | Select-Object FullName,@{Name='Lines';Expression={(Get-Content $_.FullName).Count}} | Sort-Object Lines -Descending | Select-Object -First 40",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 20000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-ChildItem -Path lib\\features -Directory | Select-Object -ExpandProperty Name",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"class .*Cubit|emit\\(|BlocBuilder|BlocSelector|context\\.watch|context\\.select|MaterialPageRoute|showDialog|showModalBottomSheet|TODO|FIXME|print\\(|debugPrint|Colors\\.|\\$\\{|\\$[0-9]\" lib",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 20000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 2.9 seconds
+Output:
+
+FullName                                                                                                              L
+                                                                                                                      i
+                                                                                                                      n
+                                                                                                                      e
+                                                                                                                      s
+--------                                                                                                              -
+D:\Dev\FlutterProjects\spend_wise\lib\generated\codegen_loader.g.dart                                                 8
+D:\Dev\FlutterProjects\spend_wise\lib\core\di\injection_container.dart                                     
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+budgets
+categories
+dashboard
+expenses
+export
+insights
+recurring
+settings
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 2.8 seconds
+Output:
+lib\app\shell\main_shell_page.dart:32:      child: BlocBuilder<ShellCubit, ShellState>(
+lib\app\shell\widgets\main_shell_navigation_bar.dart:51:        surfaceTintColor: AppColors.transparent,
+lib\app\shell\cubit\shell_cubit.dart:5:class ShellCubit extends Cubit<ShellState> {
+lib\app\shell\cubit\shell_cubit.dart:13:    emit(state.copyWith(currentIndex: index));
+lib\core\constants\currencies.dart:61:  return '${option.currency.code} · ${option.translationKey.tr()}';
+lib\core\utils\app_formatters.dart:7:    return '$day/$month/${date.year}';
+lib\core\utils\app_formatters.dart:13:    return '${shortDate(date)} | $hour:$minute';
+lib\core\theme\app_theme.dart:14:    background: AppColors.lightBackground,
+lib\core\theme\app_theme.dart:15:    surface: AppColors.lightSurface,
+lib\core\theme\app_theme.dart:16:    surfaceAlt: AppColors.lightSurfaceAlt,
+lib\core\theme\app_theme.dart:21:    background: AppColors.darkBackground,
+lib\core\theme\app_theme.d
+...(truncated)
+```
+
+</details>
+
+I’m seeing a few useful signals already: some feature navigation bypasses the central router, some UI still has direct `MaterialPageRoute` and hardcoded `Colors.*`, and there are broad `context.watch` usages in export. I’ll now inspect the domain/data boundaries and DI registrations so the review is grounded, especially before remote backend integration.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-ChildItem -Path lib -Recurse -Filter *.dart | ForEach-Object { [PSCustomObject]@{ Path=$_.FullName.Replace((Get-Location).Path + '\\',''); Lines=(Get-Content -LiteralPath $_.FullName | Measure-Object -Line).Lines } } | Sort-Object Lines -Descending | Select-Object -First 35 | Format-Table -AutoSize",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 20000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\core\\di\\injection_container.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 20000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-ChildItem -Path lib\\features -Recurse -Include *repository*.dart,*data_source*.dart,*datasource*.dart,*usecase*.dart,*model.dart,*entity*.dart | Select-Object -ExpandProperty FullName",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 20000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"Hive|Box<|registerLazySingleton|registerFactory|sl<|Repository|DataSource|UseCase|execute\\(|call\\(\" lib\\core lib\\features",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 20000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 1 seconds
+Output:
+
+Path                                                                           Lines
+----                                                                           -----
+lib\generated\codegen_loader.g.dart                                             1082
+lib\core\di\injection_container.dart                                             692
+lib\generated\locale_keys.g.dart                                                 575
+lib\features\categories\presentation\cubit\category_cubit.dart                   319
+lib\features\expenses\presentation\widgets\expense_filter_bar.dart               214
+lib\features\categories\presentation\widgets\category_item.dart                  209
+lib\features\recurring\presentation\widgets\recurring_expense_tile.dart          198
+lib\features\expenses\presentation\cubit\expense_cubit.dart                      196
+lib\core\widgets\category_badge.dart                                             193
+lib\featur
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:get_it/get_it.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:spend_wise/features/insights/data/repositories/get_average_daily_insight.dart';
+import 'package:spend_wise/features/insights/data/repositories/get_highest_spending_day_insight.dart';
+import 'package:spend_wise/features/insights/data/repositories/get_smart_recommendation_insight.dart';
+import 'package:spend_wise/features/insights/data/repositories/get_spending_streak_insight.dart';
+import 'package:spend_wise/features/insights/data/repositories/get_spending_trend_insight.dart';
+import 'package:spend_wise/features/settings/domain/usecases/get_settings.dart';
+import 'package:spend_wise/features/settings/domain/usecases/reset_all_settings.dart';
+import 'package:spend_wise/features/settings/domain/usecases/toggle_auto_backup.dart';
+import 'package:spend_wise/features/settings/domain/usecases/toggle_notifications.dart';
+import 'package:sp
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+D:\Dev\FlutterProjects\spend_wise\lib\features\budgets\data\datasources\budget_local_data_source.dart
+D:\Dev\FlutterProjects\spend_wise\lib\features\budgets\data\models\budget_model.dart
+D:\Dev\FlutterProjects\spend_wise\lib\features\budgets\data\repositories\budget_repository_impl.dart
+D:\Dev\FlutterProjects\spend_wise\lib\features\budgets\domain\repositories\budget_repository.dart
+D:\Dev\FlutterProjects\spend_wise\lib\features\categories\data\datasources\category_local_data_source.dart
+D:\Dev\FlutterProjects\spend_wise\lib\features\categories\data\models\category_model.dart
+D:\Dev\FlutterProjects\spend_wise\lib\features\categories\data\repositories\category_repository_impl.dart
+D:\Dev\FlutterProjects\spend_wise\lib\features\categories\domain\repositories\category_repository.dart
+D:\Dev\FlutterProjects\spend_wise\lib\features\dashboard\data\repositories\dashboard_repository_impl.dart
+D:\Dev\FlutterProjects\spend_wise\lib\features\da
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Total output lines: 477
+Output:
+lib\features\budgets\domain\usecases\update_budget.dart:7:  final BudgetRepository _repository;
+lib\features\budgets\domain\usecases\update_budget.dart:9:  Future<void> call(Budget budget) async {
+lib\features\budgets\domain\usecases\get_budget_by_category.dart:9:  Future<Budget?> call(
+lib\features\budgets\domain\usecases\get_budgets.dart:6:  const GetBudgets(this._budgetRepository, this._expenseRepository);
+lib\features\budgets\domain\usecases\get_budgets.dart:8:  final BudgetRepository _budgetRepository;
+lib\features\budgets\domain\usecases\get_budgets.dart:9:  final ExpenseRepository _expenseRepository;
+lib\features\budgets\domain\usecases\get_budgets.dart:11:  Future<List<Budget>> call() async {
+lib\features\budgets\domain\usecases\get_budgets.dart:12:    final budgets = await _budgetRepository.getBudgets();
+lib\features\budgets\domain\usecases\get_budgets.dart:13:    final expenses = await _expenseRepository.getE
+...(truncated)
+```
+
+</details>
+
+The DI file is doing a lot of orchestration and bootstrapping, which is important for backend readiness. I’m going deeper on the places where local-only assumptions leak upward: recurring generation, export backup, settings/localization, and dashboard/insights aggregation.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\recurring\\domain\\usecases\\generate_due_expenses.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\export\\data\\builders\\backup_payload_builder.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\export\\data\\repositories\\export_repository_impl.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\expenses\\presentation\\pages\\expenses_page.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\export\\presentation\\pages\\export_page.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+   1: import '../../../expenses/domain/entities/expense.dart';
+   2: import '../../../expenses/domain/repositories/expense_repository.dart';
+   3: import '../entities/recurring_expense.dart';
+   4: import '../repositories/recurring_expense_repository.dart';
+   5: 
+   6: class GenerateDueExpenses {
+   7:   const GenerateDueExpenses(
+   8:     this._recurringRepository,
+   9:     this._expenseRepository,
+  10:   );
+  11: 
+  12:   final RecurringExpenseRepository _recurringRepository;
+  13:   final ExpenseRepository _expenseRepository;
+  14: 
+  15:   Future<int> call() async {
+  16:     final recurringExpenses = await _recurringRepository.getRecurringExpenses();
+  17:     final today = DateTime.now();
+  18:     var generatedCount = 0;
+  19: 
+  20:     for (final recurring in recurringExpenses) {
+  21:       if (!recurring.isActive) continue;
+  22: 
+  23:       var nextDueDate = recurring.nextDueDate;
+  24:       while (!_i
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+   1: import 'dart:convert';
+   2: 
+   3: import 'package:hive/hive.dart';
+   4: 
+   5: class BackupPayloadBuilder {
+   6:   const BackupPayloadBuilder();
+   7: 
+   8:   Future<Object> build({
+   9:     required String appName,
+  10:     required List<String> boxNames,
+  11:   }) async {
+  12:     final payload = <String, Object?>{
+  13:       'app': appName,
+  14:       'generatedAt': DateTime.now().toIso8601String(),
+  15:     };
+  16: 
+  17:     for (final name in boxNames) {
+  18:       final box = Hive.isBoxOpen(name) ? Hive.box<Map>(name) : await Hive.openBox<Map>(name);
+  19:       payload[name] = box.values.map((m) => _safeJson(m)).toList(growable: false);
+  20:     }
+  21: 
+  22:     return payload;
+  23:   }
+  24: 
+  25:   Map<String, dynamic> _safeJson(Map input) {
+  26:     return jsonDecode(jsonEncode(input)) as Map<String, dynamic>;
+  27:   }
+  28: }
+  29:
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+   1: import 'dart:io';
+   2: 
+   3: import 'package:share_plus/share_plus.dart';
+   4: 
+   5: import '../../../categories/data/datasources/category_local_data_source.dart';
+   6: import '../../../categories/domain/repositories/category_repository.dart';
+   7: import '../../../budgets/data/datasources/budget_local_data_source.dart';
+   8: import '../../../dashboard/domain/entities/dashboard_source_data.dart';
+   9: import '../../../dashboard/domain/usecases/get_dashboard_summary.dart';
+  10: import '../../../dashboard/domain/usecases/get_top_categories.dart';
+  11: import '../../../dashboard/domain/usecases/get_weekly_spending.dart';
+  12: import '../../../expenses/data/datasources/expense_local_data_source.dart';
+  13: import '../../../expenses/domain/repositories/expense_repository.dart';
+  14: import '../../../recurring/data/datasources/recurring_expense_local_data_source.dart';
+  15: import '../../../settings/data/datasource
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+   1: import 'package:flutter/material.dart';
+   2: import 'package:flutter_bloc/flutter_bloc.dart';
+   3: import 'package:flutter_screenutil/flutter_screenutil.dart';
+   4: import 'package:easy_localization/easy_localization.dart';
+   5: import 'package:spend_wise/generated/locale_keys.g.dart';
+   6: 
+   7: import '../../../../core/widgets/responsive_page_content.dart';
+   8: import '../../../categories/presentation/cubit/category_cubit.dart';
+   9: import '../../domain/entities/expense.dart';
+  10: import '../cubit/expense_cubit.dart';
+  11: import '../cubit/expense_filter_cubit.dart';
+  12: import '../cubit/expense_filter_state.dart';
+  13: import '../cubit/expense_state.dart';
+  14: import 'expense_form_page.dart';
+  15: import '../widgets/expense_filter_bar.dart';
+  16: import '../widgets/expenses_state_view.dart';
+  17: 
+  18: class ExpensesPage extends StatelessWidget {
+  19:   const ExpensesPage({super.key, this.show
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+   1: import 'package:easy_localization/easy_localization.dart';
+   2: import 'package:flutter/material.dart';
+   3: import 'package:flutter_bloc/flutter_bloc.dart';
+   4: import 'package:flutter_screenutil/flutter_screenutil.dart';
+   5: import 'package:spend_wise/generated/locale_keys.g.dart';
+   6: 
+   7: import '../../../../core/theme/app_spacing.dart';
+   8: import '../cubit/export_cubit.dart';
+   9: import '../widgets/export_actions/export_actions_section.dart';
+  10: import '../widgets/export_history/export_history_section.dart';
+  11: import '../widgets/export_states/export_feedback_listener.dart';
+  12: import '../widgets/export_states/export_loading_view.dart';
+  13: 
+  14: class ExportPage extends StatelessWidget {
+  15:   const ExportPage({super.key});
+  16: 
+  17:   @override
+  18:   Widget build(BuildContext context) {
+  19:     return const ExportFeedbackListener(
+  20:       child: _ExportPageBody(),
+  21: 
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\categories\\domain\\usecases\\can_delete_category.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\categories\\presentation\\cubit\\category_cubit.dart | Select-Object -First 340 | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\expenses\\presentation\\cubit\\expense_cubit.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\expenses\\domain\\usecases\\get_visible_expenses.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\dashboard\\presentation\\cubit\\dashboard_cubit.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+   1: import 'package:spend_wise/features/categories/domain/repositories/category_repository.dart';
+   2: 
+   3: class CanDeleteCategory {
+   4:   const CanDeleteCategory(this._categoryRepository);
+   5: 
+   6:   final CategoryRepository _categoryRepository;
+   7: 
+   8:   Future<bool> call(String categoryId) async {
+   9:     final categories = await _categoryRepository.getCategories();
+  10:     final category = categories.where((c) => c.id == categoryId).firstOrNull;
+  11: 
+  12:     if (category == null) {
+  13:       return false;
+  14:     }
+  15: 
+  16:     return !category.isDefault;
+  17:   }
+  18: }
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+   1: import 'package:flutter_bloc/flutter_bloc.dart';
+   2: import 'package:spend_wise/core/base/requests_status.dart';
+   3: import 'package:spend_wise/features/categories/domain/entities/category.dart';
+   4: import 'package:spend_wise/features/categories/domain/usecases/add_category.dart';
+   5: import 'package:spend_wise/features/categories/domain/usecases/can_delete_category.dart';
+   6: import 'package:spend_wise/features/categories/domain/usecases/delete_category.dart';
+   7: import 'package:spend_wise/features/categories/domain/usecases/get_categories.dart';
+   8: import 'package:spend_wise/features/categories/domain/usecases/update_category.dart';
+   9: import 'package:spend_wise/features/categories/presentation/cubit/category_state.dart';
+  10: import 'package:spend_wise/features/categories/presentation/utils/category_presentation_data.dart';
+  11: 
+  12: class CategoryCubit extends Cubit<CategoryState> {
+  13:   Catego
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+   1: import 'package:easy_localization/easy_localization.dart';
+   2: import 'package:flutter_bloc/flutter_bloc.dart';
+   3: import 'package:spend_wise/generated/locale_keys.g.dart';
+   4: 
+   5: import '../../../../core/base/requests_status.dart';
+   6: import '../../domain/entities/expense.dart';
+   7: import '../../domain/usecases/add_expense.dart';
+   8: import '../../domain/usecases/delete_expense.dart';
+   9: import '../../domain/usecases/get_expenses.dart';
+  10: import '../../domain/usecases/update_expense.dart';
+  11: import 'expense_state.dart';
+  12: 
+  13: class ExpenseCubit extends Cubit<ExpenseState> {
+  14:   ExpenseCubit({
+  15:     required AddExpense addExpense,
+  16:     required GetExpenses getExpenses,
+  17:     required UpdateExpense updateExpense,
+  18:     required DeleteExpense deleteExpense,
+  19:   }) : _addExpense = addExpense,
+  20:        _getExpenses = getExpenses,
+  21:        _updateExpens
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+   1: import '../entities/expense.dart';
+   2: import '../entities/expense_filter.dart';
+   3: 
+   4: class GetVisibleExpenses {
+   5:   const GetVisibleExpenses();
+   6: 
+   7:   List<Expense> call({
+   8:     required List<Expense> expenses,
+   9:     required ExpenseFilter filter,
+  10:   }) {
+  11:     final loweredQuery = filter.searchQuery.trim().toLowerCase();
+  12: 
+  13:     return expenses
+  14:         .where((expense) {
+  15:           final matchesQuery =
+  16:               loweredQuery.isEmpty ||
+  17:               expense.title.toLowerCase().contains(loweredQuery);
+  18:           final matchesCategory =
+  19:               filter.categoryId == null || expense.categoryId == filter.categoryId;
+  20:           final matchesStartDate =
+  21:               filter.startDate == null || !expense.date.isBefore(filter.startDate!);
+  22:           final matchesEndDate =
+  23:               filter.endDate == null |
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+   1: import 'package:easy_localization/easy_localization.dart';
+   2: import 'package:flutter_bloc/flutter_bloc.dart';
+   3: import 'package:spend_wise/features/categories/domain/entities/category.dart';
+   4: import 'package:spend_wise/generated/locale_keys.g.dart';
+   5: import '../../../../core/base/requests_status.dart';
+   6: import '../../domain/usecases/get_dashboard_source_data.dart';
+   7: import '../../domain/usecases/get_dashboard_summary.dart';
+   8: import '../../domain/usecases/get_recent_expenses.dart';
+   9: import '../../domain/usecases/get_top_categories.dart';
+  10: import '../../domain/usecases/get_weekly_spending.dart';
+  11: import 'dashboard_state.dart';
+  12: import 'package:spend_wise/features/insights/domain/usecases/generate_insights.dart';
+  13: 
+  14: class DashboardCubit extends Cubit<DashboardState> {
+  15:   DashboardCubit({
+  16:     required GetDashboardSourceData getDashboardSourceData,
+  17
+...(truncated)
+```
+
+</details>
+
+A stronger picture is forming: the app has good feature separation and use cases, but several use cases/cubits still depend on `DateTime.now()`, UI translation calls, or local Hive details. Those are exactly the seams that become painful when adding cloud sync/auth later.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=339; Get-Content lib\\features\\categories\\presentation\\cubit\\category_cubit.dart | Select-Object -Skip 339 | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\settings\\presentation\\cubit\\settings_cubit.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\settings\\data\\datasources\\settings_local_data_source.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\dashboard\\domain\\usecases\\get_dashboard_summary.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\budgets\\domain\\usecases\\get_budgets.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+ 340:       id: DateTime.now().microsecondsSinceEpoch.toString(),
+ 341:       name: trimmedName,
+ 342:       icon: state.selectedIcon,
+ 343:       color: state.selectedColor,
+ 344:       isDefault: false,
+ 345:       createdAt: DateTime.now(),
+ 346:     );
+ 347:   }
+ 348: 
+ 349:   String _mapErrorToMessage(
+ 350:     Object error, {
+ 351:     required String fallback,
+ 352:   }) {
+ 353:     final message = error.toString().trim();
+ 354:     if (message.isEmpty || message == 'Exception') {
+ 355:       return fallback;
+ 356:     }
+ 357: 
+ 358:     if (message.startsWith('Exception: ')) {
+ 359:       return message.substring('Exception: '.length);
+ 360:     }
+ 361: 
+ 362:     return message;
+ 363:   }
+ 364: }
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+   1: import 'dart:async';
+   2: 
+   3: import 'package:flutter_bloc/flutter_bloc.dart';
+   4: import 'package:spend_wise/features/settings/domain/entities/app_currency.dart';
+   5: import 'package:spend_wise/features/settings/domain/usecases/get_settings.dart';
+   6: import 'package:spend_wise/features/settings/domain/usecases/reset_all_settings.dart';
+   7: import 'package:spend_wise/features/settings/domain/usecases/toggle_auto_backup.dart';
+   8: import 'package:spend_wise/features/settings/domain/usecases/toggle_notifications.dart';
+   9: import 'package:spend_wise/features/settings/domain/usecases/update_currency.dart';
+  10: import 'package:spend_wise/features/settings/domain/usecases/update_language.dart';
+  11: import 'package:spend_wise/features/settings/domain/usecases/update_theme_mode.dart';
+  12: import '../../domain/entities/app_settings.dart';
+  13: import '../../domain/usecases/watch_settings.dart';
+  14: 
+  15:
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+   1: import 'dart:async';
+   2: import 'package:hive_flutter/hive_flutter.dart';
+   3: import 'package:spend_wise/features/settings/domain/entities/app_currency.dart';
+   4: import '../../../../core/constants/currencies.dart';
+   5: import '../../domain/entities/app_settings.dart';
+   6: 
+   7: abstract class SettingsLocalDataSource {
+   8:   static const boxName = 'settings';
+   9: 
+  10:   Future<AppSettings> getSettings();
+  11: 
+  12:   Future<void> updateThemeMode(AppThemeMode themeMode);
+  13: 
+  14:   Future<void> updateCurrency(AppCurrency currency);
+  15: 
+  16:   Future<void> updateLanguage(AppLanguage language);
+  17: 
+  18:   Future<void> toggleNotifications();
+  19: 
+  20:   Future<void> toggleAutoBackup();
+  21: 
+  22:   Future<void> resetAllSettings();
+  23: 
+  24:   Stream<AppSettings> watchSettings();
+  25: }
+  26: 
+  27: class HiveSettingsLocalDataSource implements SettingsLocalDataSource {
+  28: 
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+   1: import 'package:spend_wise/features/dashboard/domain/entities/dashboard_source_data.dart';
+   2: import 'package:spend_wise/features/dashboard/domain/entities/dashboard_summary.dart';
+   3: import 'package:spend_wise/features/dashboard/domain/usecases/get_top_categories.dart';
+   4: 
+   5: class GetDashboardSummary {
+   6:   const GetDashboardSummary(this._getTopCategories);
+   7: 
+   8:   final GetTopCategories _getTopCategories;
+   9: 
+  10:   DashboardSummary call(DashboardSourceData sourceData) {
+  11:     final now = DateTime.now();
+  12:     final totalSpending = sourceData.expenses.fold<double>(
+  13:       0,
+  14:       (sum, expense) => sum + expense.amount,
+  15:     );
+  16:     final monthlySpending = sourceData.expenses
+  17:         .where((expense) => expense.date.year == now.year && expense.date.month == now.month)
+  18:         .fold<double>(0, (sum, expense) => sum + expense.amount);
+  19:     final 
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+   1: import '../../../expenses/domain/repositories/expense_repository.dart';
+   2: import '../entities/budget.dart';
+   3: import '../repositories/budget_repository.dart';
+   4: 
+   5: class GetBudgets {
+   6:   const GetBudgets(this._budgetRepository, this._expenseRepository);
+   7: 
+   8:   final BudgetRepository _budgetRepository;
+   9:   final ExpenseRepository _expenseRepository;
+  10: 
+  11:   Future<List<Budget>> call() async {
+  12:     final budgets = await _budgetRepository.getBudgets();
+  13:     final expenses = await _expenseRepository.getExpenses();
+  14:     final now = DateTime.now();
+  15: 
+  16:     return budgets.map((budget) {
+  17:       final spentAmount = expenses
+  18:           .where((expense) => expense.categoryId == budget.categoryId)
+  19:           .where((expense) => _matchesPeriod(expense.date, budget.period, now))
+  20:           .fold<double>(0, (total, expense) => total + expense.amount);
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\main.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\app\\spend_wise_app.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\expenses\\data\\datasources\\expense_local_data_source.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\expenses\\data\\models\\expense_model.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\categories\\domain\\entities\\category.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+   1: import 'package:easy_localization/easy_localization.dart';
+   2: import 'package:flutter/material.dart';
+   3: import 'package:spend_wise/app/routes/app_router.dart';
+   4: import 'package:spend_wise/spend_wise_app.dart';
+   5: import 'generated/codegen_loader.g.dart';
+   6: import 'core/di/injection_container.dart';
+   7: 
+   8: Future<void> main() async {
+   9:   WidgetsFlutterBinding.ensureInitialized();
+  10:   await EasyLocalization.ensureInitialized();
+  11:   await setupDependencies();
+  12: 
+  13:   runApp(
+  14:     EasyLocalization(
+  15:       supportedLocales: const [Locale('en'), Locale('ar')],
+  16:       path: 'assets/translations',
+  17:       fallbackLocale: const Locale('en'),
+  18:       assetLoader: CodegenLoader(),
+  19:       child: SpendWiseApp(appRouters: AppRouters()),
+  20:     ),
+  21:   );
+  22: }
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 1
+Wall time: 0.6 seconds
+Output:
+Get-Content : Cannot find path 'D:\Dev\FlutterProjects\spend_wise\lib\app\spend_wise_app.dart' because it does not 
+exist.
+At line:2 char:7
++ $i=0; Get-Content lib\app\spend_wise_app.dart | ForEach-Object { $i++ ...
++       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (D:\Dev\FlutterP...d_wise_app.dart:String) [Get-Content], ItemNotFoundEx 
+   ception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+   1: import 'package:hive/hive.dart';
+   2: 
+   3: import '../models/expense_model.dart';
+   4: 
+   5: abstract class ExpenseLocalDataSource {
+   6:   Future<void> addExpense(ExpenseModel expense);
+   7: 
+   8:   Future<List<ExpenseModel>> getExpenses();
+   9: 
+  10:   Future<void> updateExpense(ExpenseModel expense);
+  11: 
+  12:   Future<void> deleteExpense(String id);
+  13: }
+  14: 
+  15: class HiveExpenseLocalDataSource implements ExpenseLocalDataSource {
+  16:   HiveExpenseLocalDataSource(this._box);
+  17: 
+  18:   static const String boxName = 'expenses_box';
+  19: 
+  20:   final Box<Map> _box;
+  21: 
+  22:   @override
+  23:   Future<void> addExpense(ExpenseModel expense) async {
+  24:     await _box.put(expense.id, expense.toJson());
+  25:   }
+  26: 
+  27:   @override
+  28:   Future<List<ExpenseModel>> getExpenses() async {
+  29:     return _box.values
+  30:         .map(
+  31:           (expenseMap) =>
+
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+   1: import 'package:json_annotation/json_annotation.dart';
+   2: 
+   3: import '../../domain/entities/expense.dart';
+   4: 
+   5: part 'expense_model.g.dart';
+   6: 
+   7: @JsonSerializable()
+   8: class ExpenseModel {
+   9:   const ExpenseModel({
+  10:     required this.id,
+  11:     required this.title,
+  12:     required this.amount,
+  13:     required this.categoryId,
+  14:     required this.date,
+  15:     this.note,
+  16:     this.createdAt,
+  17:     this.updatedAt,
+  18:   });
+  19: 
+  20:   final String id;
+  21:   final String title;
+  22:   final double amount;
+  23:   final String categoryId;
+  24:   final DateTime date;
+  25:   final String? note;
+  26:   final DateTime? createdAt;
+  27:   final DateTime? updatedAt;
+  28: 
+  29:   factory ExpenseModel.fromJson(Map<String, dynamic> json) =>
+  30:       _$ExpenseModelFromJson(json);
+  31: 
+  32:   factory ExpenseModel.fromEntity(Expense expense) {
+
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+   1: import 'package:easy_localization/easy_localization.dart';
+   2: import '../../../../generated/locale_keys.g.dart';
+   3: 
+   4: class Category {
+   5:   final String id;
+   6:   final String name;
+   7:   final String icon;
+   8:   final int color;
+   9:   final bool isDefault;
+  10:   final DateTime createdAt;
+  11: 
+  12:   const Category({
+  13:     required this.id,
+  14:     required this.name,
+  15:     required this.icon,
+  16:     required this.color,
+  17:     required this.isDefault,
+  18:     required this.createdAt,
+  19:   });
+  20: 
+  21:   String get displayName {
+  22:     if (isDefault) {
+  23:       switch (id) {
+  24:         case 'cat_shopping':
+  25:           return LocaleKeys.categories_defaultCategories_shopping.tr();
+  26:         case 'cat_food':
+  27:           return LocaleKeys.categories_defaultCategories_food.tr();
+  28:         case 'cat_transport':
+  29:           return Local
+...(truncated)
+```
+
+</details>
+
+One high-impact issue: `Category` domain entity imports `easy_localization` and generated UI keys. That breaks the “domain layer pure” rule and is a major warning before cloud integration because server/domain objects should not depend on UI localization context.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\spend_wise_app.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\categories\\presentation\\utils\\category_presentation_data.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\core\\widgets\\currency_text.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\core\\utils\\currency_display_service.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"easy_localization|LocaleKeys|\\.tr\\(\" lib\\features\\*\\domain lib\\features\\*\\data lib\\core -g \"*.dart\"",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+   1: import 'package:easy_localization/easy_localization.dart';
+   2: import 'package:flutter/material.dart';
+   3: import 'package:flutter_screenutil/flutter_screenutil.dart';
+   4: import 'package:flutter_bloc/flutter_bloc.dart';
+   5: import 'package:spend_wise/app/routes/app_router.dart';
+   6: import 'package:spend_wise/app/routes/route_names.dart';
+   7: import 'package:spend_wise/core/di/injection_container.dart';
+   8: import 'package:spend_wise/core/theme/app_theme.dart';
+   9: import 'package:spend_wise/features/settings/presentation/cubit/settings_cubit.dart';
+  10: import 'package:spend_wise/features/settings/domain/entities/app_settings.dart';
+  11: 
+  12: class SpendWiseApp extends StatelessWidget {
+  13:   final AppRouters appRouters;
+  14:   const SpendWiseApp({super.key, required this.appRouters});
+  15: 
+  16:   @override
+  17:   Widget build(BuildContext context) {
+  18:     return ScreenUtilInit(
+  19:  
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+   1: import 'package:flutter/material.dart';
+   2: 
+   3: class CategoryPresentationData {
+   4:   const CategoryPresentationData._();
+   5: 
+   6:   static const String defaultIconName = 'shopping_cart';
+   7:   static const int defaultColorValue = 0xFFFF6B6B;
+   8: 
+   9:   static const List<String> iconNames = [
+  10:     'shopping_cart',
+  11:     'restaurant',
+  12:     'local_gas_station',
+  13:     'directions_car',
+  14:     'movie',
+  15:     'sports_esports',
+  16:     'health_and_safety',
+  17:     'favorite',
+  18:     'home',
+  19:     'build',
+  20:     'school',
+  21:     'travel_explore',
+  22:     'pets',
+  23:     'music_note',
+  24:     'fitness_center',
+  25:     'checkroom',
+  26:     'phone',
+  27:     'wifi',
+  28:     'electricity',
+  29:     'water_drop',
+  30:     'card_giftcard',
+  31:     'celebration',
+  32:   ];
+  33: 
+  34:   static const List<int> colorPalette = [
+  35:     0x
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+   1: // Copyright 2026 SpendWise. All rights reserved.
+   2: // Widget to display an amount in the current app currency.
+   3: 
+   4: import 'package:flutter/material.dart';
+   5: import 'package:flutter_bloc/flutter_bloc.dart';
+   6: 
+   7: import '../constants/currencies.dart';
+   8: import '../../features/settings/presentation/cubit/settings_cubit.dart';
+   9: import '../services/currency_display_service.dart';
+  10: 
+  11: /// Displays a monetary amount in the current app currency.
+  12: /// The [amount] is expected to be in USD (the internal base currency).
+  13: class CurrencyText extends StatelessWidget {
+  14:   const CurrencyText({
+  15:     required this.amount,
+  16:     this.style,
+  17:     this.prefix = '',
+  18:     this.suffix = '',
+  19:     super.key,
+  20:   });
+  21: 
+  22:   final double amount;
+  23:   final TextStyle? style;
+  24:   final String prefix;
+  25:   final String suffix;
+  26: 
+  27
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 1
+Wall time: 0.5 seconds
+Output:
+Get-Content : Cannot find path 'D:\Dev\FlutterProjects\spend_wise\lib\core\utils\currency_display_service.dart' 
+because it does not exist.
+At line:2 char:7
++ $i=0; Get-Content lib\core\utils\currency_display_service.dart | ForE ...
++       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (D:\Dev\FlutterP...ay_service.dart:String) [Get-Content], ItemNotFoundEx 
+   ception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 1
+Wall time: 0.5 seconds
+Output:
+lib\core\widgets\category_picker.dart:1:import 'package:easy_localization/easy_localization.dart';
+lib\core\widgets\category_picker.dart:96:          LocaleKeys.budgets_form_title_selectCategory.tr(),
+lib\core\constants\currencies.dart:1:import 'package:easy_localization/easy_localization.dart';
+lib\core\constants\currencies.dart:19:    translationKey: LocaleKeys.currency_names_USD,
+lib\core\constants\currencies.dart:23:    translationKey: LocaleKeys.currency_names_EUR,
+lib\core\constants\currencies.dart:27:    translationKey: LocaleKeys.currency_names_ILS.tr(),
+lib\core\constants\currencies.dart:31:    translationKey: LocaleKeys.currency_names_JOD.tr(),
+lib\core\constants\currencies.dart:35:    translationKey: LocaleKeys.currency_names_SAR.tr(),
+lib\core\constants\currencies.dart:61:  return '${option.currency.code} · ${option.translationKey.tr()}';
+rg: lib\features\*\domain: The filename, directory name, or volume label syntax is incorrect.
+...(truncated)
+```
+
+</details>
+
+Currency has a generally good centralized display widget, but there are still strings/translation logic inside core constants and domain entities. That’s workable short-term, but before Firebase/Supabase I’d move display/localization concerns back to presentation/core presentation services.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\core\\services\\currency_display_service.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"easy_localization|LocaleKeys|\\.tr\\(\" lib\\features lib\\core -g \"*.dart\"",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 20000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"DateTime\\.now\\(|Random\\(|microsecondsSinceEpoch|millisecondsSinceEpoch|Uuid|id:\" lib\\features lib\\core -g \"*.dart\"",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 20000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"Colors\\.|TextStyle\\(|EdgeInsets\\.all\\([0-9]|EdgeInsets\\.symmetric\\([^A]|BorderRadius\\.circular\\([0-9]\" lib\\features lib\\app lib\\core -g \"*.dart\"",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 20000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+   1: import '../../features/settings/domain/entities/app_currency.dart';
+   2: import '../utils/currency_formatter.dart';
+   3: 
+   4: class CurrencyDisplayService {
+   5:   const CurrencyDisplayService._();
+   6: 
+   7:   static double convertFromUsd(double amount, AppCurrency currency) {
+   8:     // No conversion - return amount as-is
+   9:     return amount;
+  10:   }
+  11: 
+  12:   static String formatFromUsd(double amount, AppCurrency currency) {
+  13:     return CurrencyFormatter.format(
+  14:       amount, // Use original amount without conversion
+  15:       symbol: currency.symbol,
+  16:     );
+  17:   }
+  18: }
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Total output lines: 395
+Output:
+lib\core\constants\currencies.dart:1:import 'package:easy_localization/easy_localization.dart';
+lib\core\constants\currencies.dart:19:    translationKey: LocaleKeys.currency_names_USD,
+lib\core\constants\currencies.dart:23:    translationKey: LocaleKeys.currency_names_EUR,
+lib\core\constants\currencies.dart:27:    translationKey: LocaleKeys.currency_names_ILS.tr(),
+lib\core\constants\currencies.dart:31:    translationKey: LocaleKeys.currency_names_JOD.tr(),
+lib\core\constants\currencies.dart:35:    translationKey: LocaleKeys.currency_names_SAR.tr(),
+lib\core\constants\currencies.dart:61:  return '${option.currency.code} · ${option.translationKey.tr()}';
+lib\core\widgets\category_picker.dart:1:import 'package:easy_localization/easy_localization.dart';
+lib\core\widgets\category_picker.dart:96:          LocaleKeys.budgets_form_title_selectCategory.tr(),
+lib\features\budgets\presentation\widgets\budget_form_page.dart:4:imp
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+lib\core\di\injection_container.dart:728:      'createdAt': DateTime.now().toIso8601String(),
+lib\core\di\injection_container.dart:736:      'createdAt': DateTime.now().toIso8601String(),
+lib\core\di\injection_container.dart:744:      'createdAt': DateTime.now().toIso8601String(),
+lib\core\di\injection_container.dart:752:      'createdAt': DateTime.now().toIso8601String(),
+lib\core\di\injection_container.dart:760:      'createdAt': DateTime.now().toIso8601String(),
+lib\core\di\injection_container.dart:768:      'createdAt': DateTime.now().toIso8601String(),
+lib\core\utils\category_resolver.dart:11:      id: categoryId,
+lib\core\utils\category_resolver.dart:16:      createdAt: DateTime.now(),
+lib\core\utils\category_resolver.dart:29:      for (final category in categories) category.id: category,
+lib\features\insights\domain\usecases\get_top_category_insight.dart:28:      id: 'top_category',
+lib\features\insights\domain\usecases\get_top_c
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+lib\app\shell\widgets\shell_placeholder_page.dart:21:        padding: EdgeInsets.all(24.w),
+lib\app\shell\widgets\main_shell_navigation_bar.dart:51:        surfaceTintColor: AppColors.transparent,
+lib\app\shell\widgets\main_shell_drawer.dart:56:              padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg.w),
+lib\core\widgets\category_picker.dart:45:          borderRadius: BorderRadius.circular(12.r),
+lib\core\widgets\category_picker.dart:58:          borderRadius: BorderRadius.circular(12.r),
+lib\core\widgets\category_badge.dart:49:        padding: EdgeInsets.symmetric(
+lib\core\widgets\category_badge.dart:93:        padding: EdgeInsets.symmetric(
+lib\features\categories\presentation\widgets\category_details_stats.dart:66:      padding: EdgeInsets.all(16.w),
+lib\features\categories\presentation\widgets\category_details_stats.dart:69:        borderRadius: BorderRadius.circular(20.r),
+lib\features\categories\presentation\widgets\cate
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\budgets\\presentation\\cubit\\budget_cubit.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\recurring\\presentation\\cubit\\recurring_expense_cubit.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\dashboard\\domain\\usecases\\get_top_categories.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\dashboard\\domain\\usecases\\get_weekly_spending.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\categories\\presentation\\utils\\category_expense_summary.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+   1: import 'package:flutter_bloc/flutter_bloc.dart';
+   2: import 'package:easy_localization/easy_localization.dart';
+   3: import 'package:spend_wise/generated/locale_keys.g.dart';
+   4: 
+   5: import '../../../../core/base/requests_status.dart';
+   6: import '../../domain/entities/budget.dart';
+   7: import '../../domain/usecases/calculate_budget_progress.dart';
+   8: import '../../domain/usecases/create_budget.dart';
+   9: import '../../domain/usecases/delete_budget.dart';
+  10: import '../../domain/usecases/get_budgets.dart';
+  11: import '../../domain/usecases/update_budget.dart';
+  12: import 'budget_state.dart';
+  13: 
+  14: class BudgetCubit extends Cubit<BudgetState> {
+  15:   BudgetCubit({
+  16:     required CreateBudget createBudget,
+  17:     required GetBudgets getBudgets,
+  18:     required UpdateBudget updateBudget,
+  19:     required DeleteBudget deleteBudget,
+  20:     required CalculateBudgetProgress cal
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+   1: import 'package:easy_localization/easy_localization.dart';
+   2: import 'package:flutter_bloc/flutter_bloc.dart';
+   3: import 'package:spend_wise/generated/locale_keys.g.dart';
+   4: 
+   5: import '../../../../core/base/requests_status.dart';
+   6: import '../../domain/entities/recurring_expense.dart';
+   7: import '../../domain/usecases/create_recurring_expense.dart';
+   8: import '../../domain/usecases/delete_recurring_expense.dart';
+   9: import '../../domain/usecases/generate_due_expenses.dart';
+  10: import '../../domain/usecases/get_recurring_expenses.dart';
+  11: import '../../domain/usecases/update_recurring_expense.dart';
+  12: import 'recurring_expense_state.dart';
+  13: 
+  14: class RecurringExpenseCubit extends Cubit<RecurringExpenseState> {
+  15:   RecurringExpenseCubit({
+  16:     required CreateRecurringExpense createRecurringExpense,
+  17:     required GetRecurringExpenses getRecurringExpenses,
+  18:   
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+   1: import 'package:spend_wise/features/categories/domain/entities/category.dart';
+   2: import 'package:spend_wise/features/dashboard/domain/entities/category_spending.dart';
+   3: import 'package:spend_wise/features/dashboard/domain/entities/dashboard_source_data.dart';
+   4: 
+   5: class GetTopCategories {
+   6:   const GetTopCategories();
+   7: 
+   8:   List<CategorySpending> call(
+   9:     DashboardSourceData sourceData, {
+  10:     int limit = 4,
+  11:   }) {
+  12:     final categoriesById = {
+  13:       for (final category in sourceData.categories) category.id: category,
+  14:     };
+  15:     final totalsByCategoryId = <String, double>{};
+  16: 
+  17:     for (final expense in sourceData.expenses) {
+  18:       totalsByCategoryId.update(
+  19:         expense.categoryId,
+  20:         (value) => value + expense.amount,
+  21:         ifAbsent: () => expense.amount,
+  22:       );
+  23:     }
+  24: 
+  25:    
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+   1: import 'package:spend_wise/features/dashboard/domain/entities/dashboard_source_data.dart';
+   2: import 'package:spend_wise/features/dashboard/domain/entities/spending_chart_point.dart';
+   3: 
+   4: class GetWeeklySpending {
+   5:   const GetWeeklySpending();
+   6: 
+   7:   List<SpendingChartPoint> call(DashboardSourceData sourceData) {
+   8:     final now = DateTime.now();
+   9:     final weekStart = DateTime(
+  10:       now.year,
+  11:       now.month,
+  12:       now.day,
+  13:     ).subtract(Duration(days: now.weekday - 1));
+  14:     final totals = List<double>.filled(7, 0);
+  15:     const labels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  16: 
+  17:     for (final expense in sourceData.expenses) {
+  18:       final expenseDay = DateTime(
+  19:         expense.date.year,
+  20:         expense.date.month,
+  21:         expense.date.day,
+  22:       );
+  23:       final diff = expenseDay.difference
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+   1: import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
+   2: 
+   3: class CategoryExpenseSummary {
+   4:   const CategoryExpenseSummary({
+   5:     required this.expenseCount,
+   6:     required this.totalSpent,
+   7:   });
+   8: 
+   9:   final int expenseCount;
+  10:   final double totalSpent;
+  11: 
+  12:   static const empty = CategoryExpenseSummary(expenseCount: 0, totalSpent: 0);
+  13: 
+  14:   static Map<String, CategoryExpenseSummary> buildByCategoryId(
+  15:     List<Expense> expenses,
+  16:   ) {
+  17:     final summaries = <String, CategoryExpenseSummary>{};
+  18: 
+  19:     for (final expense in expenses) {
+  20:       final current = summaries[expense.categoryId] ?? empty;
+  21:       summaries[expense.categoryId] = CategoryExpenseSummary(
+  22:         expenseCount: current.expenseCount + 1,
+  23:         totalSpent: current.totalSpent + expense.amount,
+  24:       );
+  25:     }
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\app\\shell\\main_shell_page.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\dashboard\\presentation\\pages\\dashboard_page.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\app\\shell\\widgets\\main_shell_pages.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\expenses\\presentation\\cubit\\expense_filter_cubit.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+   1: import 'package:flutter/material.dart';
+   2: import 'package:flutter_bloc/flutter_bloc.dart';
+   3: import 'package:spend_wise/app/shell/cubit/shell_cubit.dart';
+   4: import 'package:spend_wise/app/shell/cubit/shell_state.dart';
+   5: import 'package:spend_wise/app/shell/models/shell_destination.dart';
+   6: import 'package:spend_wise/app/shell/widgets/main_shell_drawer.dart';
+   7: import 'package:spend_wise/app/shell/widgets/main_shell_navigation_bar.dart';
+   8: import 'package:spend_wise/app/shell/widgets/shell_destinations.dart';
+   9: import 'package:spend_wise/features/dashboard/presentation/cubit/dashboard_cubit.dart';
+  10: import 'package:spend_wise/features/expenses/presentation/cubit/expense_cubit.dart';
+  11: import 'package:spend_wise/features/expenses/presentation/cubit/expense_filter_cubit.dart';
+  12: import 'package:spend_wise/features/recurring/presentation/cubit/recurring_expense_cubit.dart';
+  13: impo
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+   1: import 'package:flutter/material.dart';
+   2: import 'package:flutter_bloc/flutter_bloc.dart';
+   3: import '../../../../core/base/requests_status.dart';
+   4: import '../../../../core/widgets/responsive_page_content.dart';
+   5: import '../../../categories/presentation/cubit/category_cubit.dart';
+   6: import '../../../categories/presentation/cubit/category_state.dart';
+   7: import '../../../expenses/presentation/cubit/expense_cubit.dart';
+   8: import '../../../expenses/presentation/cubit/expense_state.dart';
+   9: import '../../../expenses/presentation/pages/expenses_page.dart';
+  10: import '../cubit/dashboard_cubit.dart';
+  11: import '../cubit/dashboard_state.dart';
+  12: import '../widgets/dashboard_empty_state.dart';
+  13: import '../widgets/dashboard_error_state.dart';
+  14: import '../widgets/dashboard_overview.dart';
+  15: 
+  16: class DashboardPage extends StatelessWidget {
+  17:   const DashboardPage({super
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 1
+Wall time: 0.4 seconds
+Output:
+Get-Content : Cannot find path 'D:\Dev\FlutterProjects\spend_wise\lib\app\shell\widgets\main_shell_pages.dart' because 
+it does not exist.
+At line:2 char:7
++ $i=0; Get-Content lib\app\shell\widgets\main_shell_pages.dart | ForEa ...
++       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (D:\Dev\FlutterP...hell_pages.dart:String) [Get-Content], ItemNotFoundEx 
+   ception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+   1: import 'package:flutter_bloc/flutter_bloc.dart';
+   2: 
+   3: import '../../domain/entities/expense.dart';
+   4: import '../../domain/entities/expense_filter.dart';
+   5: import '../../domain/usecases/get_visible_expenses.dart';
+   6: import 'expense_filter_state.dart';
+   7: 
+   8: class ExpenseFilterCubit extends Cubit<ExpenseFilterState> {
+   9:   ExpenseFilterCubit({required GetVisibleExpenses getVisibleExpenses})
+  10:     : _getVisibleExpenses = getVisibleExpenses,
+  11:       super(const ExpenseFilterState());
+  12: 
+  13:   final GetVisibleExpenses _getVisibleExpenses;
+  14: 
+  15:   void syncExpenses(List<Expense> expenses) {
+  16:     if (identical(expenses, state.sourceExpenses)) return;
+  17:     _emitWith(filter: state.filter, sourceExpenses: expenses);
+  18:   }
+  19: 
+  20:   void setSearchQuery(String query) {
+  21:     _emitWith(filter: state.filter.copyWith(searchQuery: query));
+  22:   }
+  23: 
+
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\app\\shell\\widgets\\shell_destinations.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\export\\data\\datasources\\export_pdf_builder.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\export\\data\\builders\\pdf_report_content_builder.dart | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "$i=0; Get-Content lib\\features\\expenses\\presentation\\widgets\\expense_filter_bar.dart | Select-Object -First 230 | ForEach-Object { $i++; '{0,4}: {1}' -f $i, $_ }",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+   1: import 'package:easy_localization/easy_localization.dart';
+   2: import 'package:flutter/material.dart';
+   3: import 'package:spend_wise/app/shell/models/shell_destination.dart';
+   4: import 'package:spend_wise/features/categories/presentation/pages/category_list_page.dart';
+   5: import 'package:spend_wise/features/dashboard/presentation/pages/dashboard_page.dart';
+   6: import 'package:spend_wise/features/expenses/presentation/pages/expenses_page.dart';
+   7: import 'package:spend_wise/features/recurring/presentation/pages/recurring_expenses_page.dart';
+   8: import 'package:spend_wise/features/recurring/presentation/widgets/recurring_expense_form_page.dart';
+   9: import 'package:spend_wise/generated/locale_keys.g.dart';
+  10: 
+  11: List<ShellDestination> buildShellDestinations() {
+  12:   return [
+  13:     ShellDestination(
+  14:       title: LocaleKeys.navigation_dashboard.tr(),
+  15:       label: LocaleKeys.navig
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+   1: import 'dart:typed_data';
+   2: 
+   3: import 'package:pdf/pdf.dart';
+   4: import 'package:pdf/widgets.dart' as pw;
+   5: 
+   6: class ExportPdfBuilder {
+   7:   const ExportPdfBuilder();
+   8: 
+   9:   Future<Uint8List> buildSimpleReport({
+  10:     required String appName,
+  11:     required String generatedAt,
+  12:     required String totalSpending,
+  13:     required String topCategory,
+  14:     required List<String> recentExpenses,
+  15:     required List<String> weeklySummary,
+  16:   }) {
+  17:     final doc = pw.Document();
+  18:     doc.addPage(
+  19:       pw.MultiPage(
+  20:         pageFormat: PdfPageFormat.a4,
+  21:         build: (_) => [
+  22:           pw.Text(
+  23:             appName,
+  24:             style: pw.TextStyle(fontSize: 22, fontWeight: pw.FontWeight.bold),
+  25:           ),
+  26:           pw.SizedBox(height: 8),
+  27:           pw.Text('Generated: $generatedAt', style: const 
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+   1: import 'package:spend_wise/core/services/currency_display_service.dart';
+   2: import 'package:spend_wise/features/categories/domain/entities/category.dart';
+   3: import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
+   4: import 'package:spend_wise/features/settings/domain/entities/app_currency.dart';
+   5: 
+   6: class PdfReportContent {
+   7:   const PdfReportContent({
+   8:     required this.totalSpending,
+   9:     required this.topCategory,
+  10:     required this.recentExpenses,
+  11:     required this.weeklySummary,
+  12:   });
+  13: 
+  14:   final String totalSpending;
+  15:   final String topCategory;
+  16:   final List<String> recentExpenses;
+  17:   final List<String> weeklySummary;
+  18: }
+  19: 
+  20: class PdfReportContentBuilder {
+  21:   const PdfReportContentBuilder();
+  22: 
+  23:   PdfReportContent build({
+  24:     required List<Expense> expenses,
+  25:     required Lis
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+   1: import 'package:easy_localization/easy_localization.dart';
+   2: import 'package:flutter/material.dart';
+   3: import 'package:flutter_bloc/flutter_bloc.dart';
+   4: import 'package:flutter_screenutil/flutter_screenutil.dart';
+   5: import 'package:spend_wise/generated/locale_keys.g.dart';
+   6: import '../../../../core/services/currency_display_service.dart';
+   7: import '../../../../core/theme/app_spacing.dart';
+   8: import '../../../../core/utils/app_formatters.dart';
+   9: import '../../../../features/settings/domain/entities/app_currency.dart';
+  10: import '../../../../features/settings/presentation/cubit/settings_cubit.dart';
+  11: import '../../../../features/categories/presentation/cubit/category_cubit.dart';
+  12: import '../../domain/entities/expense_filter.dart';
+  13: import '../cubit/expense_filter_cubit.dart';
+  14: import '../cubit/expense_filter_state.dart';
+  15: 
+  16: class ExpenseFilterBar extends S
+...(truncated)
+```
+
+</details>
+
+I’ve got enough context now and I’m stopping the code exploration here to avoid drifting into implementation. The review will focus on backend readiness: what will break or become expensive once data is remote, multi-device, authenticated, and eventually sync-driven.
+
+**Critical Issues**
+- Domain purity is broken: [category.dart](d:/Dev/FlutterProjects/spend_wise/lib/features/categories/domain/entities/category.dart:1) imports `easy_localization` and generated keys, and `displayName` calls `.tr()` inside the entity. Domain entities should not know UI/localization. Move localized category naming to presentation mapping.
+- Insights/business logic is partly in the wrong layer: several analytics builders live under `features/insights/data/repositories`, while also using Flutter colors such as `Colors.green.value`. Data layer should not contain UI-style decisions, and domain logic should not import Flutter UI concepts.
+- DI is too centralized: [injection_container.dart](d:/Dev/FlutterProjects/spend_wise/lib/core/di/injection_container.dart:94) is ~692 lines and handles Hive init, seeding, boxes, repositories, use cases, cubits, and export wiring. Before Firebase/Supabase, split into feature DI modules and a storage bootstrap layer.
+- Export backup bypasses architecture: [backup_payload_builder.dart](d:/Dev/FlutterProjects/spend_wise/lib/features/export/data/builders/backup_payload_builder.dart:18) reads Hive boxes directly. This will not scale to cloud data because export should depend on repositories/use cases, not storage implementation details.
+- Currency conversion is incomplete: [currency_display_service.dart](d:/Dev/FlutterProjects/spend_wise/lib/core/services/currency_display_service.dart:7) returns the original amount without conversion. The UI may change symbols, but values stay USD.
+- Referential integrity is weak: deleting custom categories can leave expenses pointing to missing `categoryId`; the app handles fallback UI, but the data becomes inconsistent. Before cloud sync, enforce category usage rules or migration behavior.
+- Time and ID generation are scattered: `DateTime.now()` and timestamp IDs appear in forms, cubits, use cases, DI seeding, export, recurring generation, and dashboard calculations. Add `Clock` and `IdGenerator` abstractions before backend integration.
+
+**Recommended Fixes**
+- Move all display/localization helpers out of domain entities. Keep `Category.name` raw, then expose `CategoryPresentationMapper.displayName(category)` in presentation/core UI utilities.
+- Split DI into `registerExpenseFeature()`, `registerCategoryFeature()`, `registerDashboardFeature()`, etc., plus `registerLocalStorage()` and later `registerRemoteStorage()`.
+- Introduce repository contracts that can support local + remote: `watchExpenses()`, `syncExpenses()`, `upsertExpense()`, `deleteExpense()`, conflict metadata, and user scoping.
+- Refactor export to use feature repositories/use cases only. Do not import Hive box names from other features inside export.
+- Replace translated strings in Cubits with message keys/error codes. UI should translate at render time so language changes remain reactive.
+- Add `Clock` abstraction to dashboard, budgets, recurring, insights, export, and filters. This improves testability and prevents timezone/date bugs.
+- Add `IdGenerator` abstraction instead of timestamp IDs. Firebase/Supabase IDs, UUIDs, and local IDs can then coexist safely.
+- Add uniqueness and integrity rules for budgets: one active budget per category/period, and predictable handling when a category is deleted.
+- Convert expensive in-memory filtering/analytics into use cases that can later support pagination/query parameters. [get_visible_expenses.dart](d:/Dev/FlutterProjects/spend_wise/lib/features/expenses/domain/usecases/get_visible_expenses.dart:13) currently filters the full list every time.
+- Make dashboard analytics stream/reactive or event-driven. Current dashboard recalculates from full source data on changes, which is okay locally but not ideal for large remote datasets.
+
+**Code Smells / Scalability Risks**
+- Large files should be split: [injection_container.dart](d:/Dev/FlutterProjects/spend_wise/lib/core/di/injection_container.dart:94), [category_cubit.dart](d:/Dev/FlutterProjects/spend_wise/lib/features/categories/presentation/cubit/category_cubit.dart:12), [expense_filter_bar.dart](d:/Dev/FlutterProjects/spend_wise/lib/features/expenses/presentation/widgets/expense_filter_bar.dart:16), [category_item.dart](d:/Dev/FlutterProjects/spend_wise/lib/features/categories/presentation/widgets/category_item.dart:1), [recurring_expense_tile.dart](d:/Dev/FlutterProjects/spend_wise/lib/features/recurring/presentation/widgets/recurring_expense_tile.dart:1).
+- Navigation is duplicated: central router exists, but pages still push `MaterialPageRoute` manually, for example [expenses_page.dart](d:/Dev/FlutterProjects/spend_wise/lib/features/expenses/presentation/pages/expenses_page.dart:56). This makes provider scope bugs more likely.
+- Settings emits duplicated updates: [settings_cubit.dart](d:/Dev/FlutterProjects/spend_wise/lib/features/settings/presentation/cubit/settings_cubit.dart:36) calls `loadSettings()` and also listens to `watchSettings()`, while update methods manually reload and emit again.
+- PDF export still has hardcoded English strings in [export_pdf_builder.dart](d:/Dev/FlutterProjects/spend_wise/lib/features/export/data/datasources/export_pdf_builder.dart:27). Exported documents will not fully localize.
+- Some theme consistency issues remain: direct `Colors.*`, raw `EdgeInsets`, and raw radii still appear in presentation/data export code.
+
+**Feature Readiness Notes**
+- Expenses: good categoryId approach and filter use case exists, but needs pagination/query support and backend-safe IDs.
+- Categories: good UI integration, but domain localization and delete integrity need fixing first.
+- Dashboard: useful use cases, but calculations depend on `DateTime.now()` and full-list aggregation.
+- Budgets: clean base, but budget uniqueness/period rules should be enforced in domain.
+- Recurring: functional, but due generation needs idempotency guarantees for cloud sync/offline replays.
+- Settings/localization: mostly connected, but translation should be UI-only and settings emissions should be simplified.
+- Export: useful feature, but currently too coupled to Hive and hardcoded PDF copy.
+- Theme: solid foundation, but remaining hardcoded styling should be cleaned before final polish.
+
+**Nice-To-Have**
+- Add `Failure`/`Result` types instead of parsing `Exception.toString()`.
+- Add repository tests for CRUD, recurring generation, budget progress, and dashboard analytics.
+- Add migrations/versioning for Hive models before remote sync.
+- Add `updatedAt`, `deletedAt`, and `syncStatus` strategy for all syncable entities.
+- Add app-level route transition helper and remove manual route pushes.
+
+**Firebase/Supabase Readiness Score**
+`6.5 / 10`
+
+The app has a strong feature-first structure and many good Clean Architecture pieces already. I would not start Firebase/Supabase yet until domain purity, DI modularization, storage abstraction, IDs/time, and export/Hive coupling are cleaned up. Those are the seams that will otherwise make backend integration feel like patchwork instead of a clean upgrade.
+
+
+---
+
+## User <sup>6/2/2026, 10:18:05 AM</sup>
+
+now start
+
+
+---
+
+## Codex <sup>6/2/2026, 10:52:15 AM</sup>
+
+I’ll start with the backend-readiness refactor in the safest order: first remove domain/UI leakage, then modularize DI seams, then clean storage/export coupling and time/id generation where it matters most. I’ll keep changes incremental so the app stays runnable after each slice.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "git status --short",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\categories\\domain\\entities\\category.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"\\.displayName|category\\.name|Unknown Category|Category\\(\" lib\\features lib\\core lib\\app -g \"*.dart\"",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 20000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\core\\utils\\category_resolver.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import '../../../../generated/locale_keys.g.dart';
+
+class Category {
+  final String id;
+  final String name;
+  final String icon;
+  final int color;
+  final bool isDefault;
+  final DateTime createdAt;
+
+  const Category({
+    required this.id,
+    required this.name,
+    required this.icon,
+    required this.color,
+    required this.isDefault,
+    required this.createdAt,
+  });
+
+  String get displayName {
+    if (isDefault) {
+      switch (id) {
+        case 'cat_shopping':
+          return LocaleKeys.categories_defaultCategories_shopping.tr();
+        case 'cat_food':
+          return LocaleKeys.categories_defaultCategories_food.tr();
+        case 'cat_transport':
+          return LocaleKeys.categories_defaultCategories_transportation.tr();
+        case 'cat_entertainment':
+          return LocaleKeys.categories_defaultCategories_entertainment.tr();
+    
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+lib\core\di\injection_container.dart:142:      () => AddCategory(sl<CategoryRepository>()),
+lib\core\di\injection_container.dart:154:      () => UpdateCategory(sl<CategoryRepository>()),
+lib\core\di\injection_container.dart:160:      () => DeleteCategory(sl<CategoryRepository>()),
+lib\core\di\injection_container.dart:166:      () => CanDeleteCategory(sl<CategoryRepository>()),
+lib\core\di\injection_container.dart:317:      () => GetBudgetByCategory(sl<GetBudgets>()),
+lib\core\widgets\category_badge.dart:73:                category.displayName,
+lib\core\widgets\category_badge.dart:117:                category.displayName,
+lib\core\widgets\category_badge.dart:158:              category.displayName,
+lib\core\utils\category_resolver.dart:9:  static Category createFallbackCategory(String categoryId) {
+lib\core\utils\category_resolver.dart:10:    return Category(
+lib\core\utils\category_resolver.dart:12:      name: 'Unknown Category',
+lib\c
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:spend_wise/features/categories/domain/entities/category.dart';
+import 'package:spend_wise/features/categories/presentation/utils/category_presentation_data.dart';
+
+/// Utility class to resolve categoryId to Category object.
+/// Handles fallback scenarios when a category is missing or not found.
+class CategoryResolver {
+  const CategoryResolver._();
+
+  static Category createFallbackCategory(String categoryId) {
+    return Category(
+      id: categoryId,
+      name: 'Unknown Category',
+      icon: CategoryPresentationData.defaultIconName,
+      color: CategoryPresentationData.defaultColorValue,
+      isDefault: false,
+      createdAt: DateTime.now(),
+    );
+  }
+
+  static Category resolveCategory(
+    String categoryId,
+    List<Category> categories,
+  ) {
+    return resolveCategoryFromMap(categoryId, indexCategories(categories));
+  }
+
+  static Map<String, Category> indexCategories(List<Category> categor
+...(truncated)
+```
+
+</details>
+
+The first concrete fix will be domain purity: `Category.displayName` is convenient, but it pulls localization into the domain layer. I’ll replace it with a presentation extension/helper so all current UI keeps localized default category names without the entity depending on `easy_localization`.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\core\\widgets\\category_badge.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\domain\\usecases\\get_top_category_insight.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\data\\repositories\\get_smart_recommendation_insight.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\export\\data\\repositories\\export_repository_impl_pdf.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/features/categories/domain/entities/category.dart';
+import 'package:spend_wise/features/categories/presentation/utils/category_presentation_data.dart';
+import 'package:spend_wise/core/theme/app_radius.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
+
+class CategoryChip extends StatelessWidget {
+  const CategoryChip({
+    required this.category,
+    this.size = CategoryBadgeSize.medium,
+    this.showLabel = true,
+    this.showIcon = true,
+    this.onTap,
+    this.isSelected = false,
+    super.key,
+  });
+
+  final Category category;
+  final CategoryBadgeSize size;
+  final bool showLabel;
+  final bool showIcon;
+  final VoidCallback? onTap;
+  final bool isSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final categoryColor = C
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:flutter/material.dart';
+
+import '../../../categories/domain/entities/category.dart';
+import '../../../expenses/domain/entities/expense.dart';
+import '../entities/insight_card.dart';
+
+class GetTopCategoryInsight {
+  InsightCard call(
+    List<Expense> expenses,
+    Map<String, Category> categoriesMap,
+  ) {
+    if (expenses.isEmpty) {
+      return _emptyInsight();
+    }
+
+    final totals = <String, double>{};
+    for (final expense in expenses) {
+      totals[expense.categoryId] = (totals[expense.categoryId] ?? 0) + expense.amount;
+    }
+
+    final topId = totals.entries.reduce((a, b) => a.value > b.value ? a : b).key;
+    final amount = totals[topId]!;
+    final total = expenses.fold<double>(0, (sum, expense) => sum + expense.amount);
+    final percentage = (amount / total * 100).toStringAsFixed(1);
+    final category = categoriesMap[topId];
+
+    return InsightCard(
+      id: 'top_category',
+      t
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:spend_wise/features/categories/domain/entities/category.dart';
+import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
+import 'package:spend_wise/features/insights/domain/entities/insight_card.dart';
+
+class GetSmartRecommendationInsight {
+  InsightCard call(
+    List<Expense> expenses,
+    Map<String, Category> categoriesMap,
+  ) {
+    if (expenses.isEmpty) {
+      return _emptyInsight();
+    }
+
+    final now = DateTime.now();
+    final lastSevenDays = expenses
+        .where((e) => e.date.isAfter(now.subtract(const Duration(days: 7))))
+        .toList();
+    final lastThirtyDays = expenses
+        .where((e) => e.date.isAfter(now.subtract(const Duration(days: 30))))
+        .toList();
+
+    if (lastThirtyDays.isEmpty) {
+      return _emptyInsight();
+    }
+
+    final dailyAvg =
+        lastThirtyDays.fold<double>(0, (sum, e) => sum + e.amount
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+part of 'export_repository_impl.dart';
+
+extension _ExportRepositoryPdfX on ExportRepositoryImpl {
+  Future<ExportFile> _exportPdfReport() async {
+    final expenses = await _expenses.getExpenses();
+    final categories = await _categories.getCategories();
+    final settings = await _settings.getSettings();
+    final source = DashboardSourceData(expenses: expenses, categories: categories);
+    final summary = _getDashboardSummary(source);
+    final top = _getTopCategories(source, limit: 1);
+    final topName = top.isEmpty ? 'â€”' : top.first.category.name;
+    final weekly = _getWeeklySpending(source).map((p) => (p.label, p.total)).toList();
+
+    final content = _pdfContent.build(
+      expenses: expenses,
+      categories: categories,
+      currency: settings.currency,
+      topCategoryName: topName,
+      totalSpendingUsd: summary.totalSpending,
+      weekly: weekly,
+    );
+
+    final bytes = _pdfBuilder.buildSimpleRepo
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\presentation\\widgets\\insight_localizer.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+import '../../domain/entities/insight_card.dart';
+
+class InsightLocalizer {
+  const InsightLocalizer._();
+
+  static String title(InsightCard insight) => _titleKey(insight.type).tr();
+
+  static String message(BuildContext context, InsightCard insight) {
+    final args = Map<String, String>.from(insight.metadata);
+    final day = _localizedDay(context, args['day']);
+    if (day != null) args['day'] = day;
+
+    final key = switch (insight.type) {
+      InsightType.spending_trend => _spendingTrendKey(args['variant']),
+      InsightType.average_daily => _averageDailyKey(args['variant']),
+      InsightType.smart_recommendation => _smartRecommendationKey(args['variant']),
+      _ => _messageKey(insight.type),
+    };
+
+    final message = key.tr(namedArgs: args);
+    final
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/categories/domain/entities/category.dart\n@@\n-import 'package:easy_localization/easy_localization.dart';\n-import '../../../../generated/locale_keys.g.dart';\n-\n class Category {\n@@\n-  String get displayName {\n-    if (isDefault) {\n-      switch (id) {\n-        case 'cat_shopping':\n-          return LocaleKeys.categories_defaultCategories_shopping.tr();\n-        case 'cat_food':\n-          return LocaleKeys.categories_defaultCategories_food.tr();\n-        case 'cat_transport':\n-          return LocaleKeys.categories_defaultCategories_transportation.tr();\n-        case 'cat_entertainment':\n-          return LocaleKeys.categories_defaultCategories_entertainment.tr();\n-        case 'cat_utilities':\n-          return LocaleKeys.categories_defaultCategories_utilities.tr();\n-        case 'cat_health':\n-          return LocaleKeys.categories_defaultCategories_health.tr();\n-      }\n-    }\n-    return name;\n-  }\n-\n   Category copyWith({\n*** Add File: lib/features/categories/presentation/utils/category_display_name.dart\n+import 'package:easy_localization/easy_localization.dart';\n+\n+import '../../../../generated/locale_keys.g.dart';\n+import '../../domain/entities/category.dart';\n+\n+extension CategoryDisplayName on Category {\n+  String get localizedName {\n+    if (!isDefault) return name;\n+\n+    return switch (id) {\n+      'cat_shopping' => LocaleKeys.categories_defaultCategories_shopping.tr(),\n+      'cat_food' => LocaleKeys.categories_defaultCategories_food.tr(),\n+      'cat_transport' =>\n+        LocaleKeys.categories_defaultCategories_transportation.tr(),\n+      'cat_entertainment' =>\n+        LocaleKeys.categories_defaultCategories_entertainment.tr(),\n+      'cat_utilities' => LocaleKeys.categories_defaultCategories_utilities.tr(),\n+      'cat_health' => LocaleKeys.categories_defaultCategories_health.tr(),\n+      _ => name,\n+    };\n+  }\n+}\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.2 seconds
+Output:
+Success. Updated the following files:
+A lib/features/categories/presentation/utils/category_display_name.dart
+M lib/features/categories/domain/entities/category.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"displayName\" lib\\features lib\\core -g \"*.dart\"",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\categories\\presentation\\widgets\\category_item.dart | Select-Object -First 35",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\categories\\presentation\\widgets\\category_details_header.dart | Select-Object -First 25",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\presentation\\widgets\\expense_details_overview.dart | Select-Object -First 20",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+lib\core\widgets\category_badge.dart:73:                category.displayName,
+lib\core\widgets\category_badge.dart:117:                category.displayName,
+lib\core\widgets\category_badge.dart:158:              category.displayName,
+lib\features\insights\data\repositories\get_smart_recommendation_insight.dart:70:    return categoriesMap[topId]?.displayName;
+lib\features\categories\presentation\widgets\category_details_header.dart:52:              category.displayName,
+lib\features\insights\domain\usecases\get_top_category_insight.dart:35:        'category': category?.displayName ?? 'Unknown',
+lib\features\categories\presentation\widgets\category_item.dart:134:                category.displayName,
+lib\features\categories\presentation\cubit\category_cubit.dart:45:            categoryName: category.displayName,
+lib\features\categories\presentation\widgets\category_form_fields.dart:70:    final displayName = state.categoryName.trim().isEmpty
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+import '../../../../core/widgets/currency_text.dart';
+import 'package:spend_wise/core/theme/app_colors.dart';
+import 'package:spend_wise/core/theme/app_radius.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
+import 'package:spend_wise/features/categories/domain/entities/category.dart';
+import 'package:spend_wise/features/categories/presentation/utils/category_expense_summary.dart';
+import 'package:spend_wise/features/categories/presentation/utils/category_presentation_data.dart';
+
+class CategoryItem extends StatelessWidget {
+  const CategoryItem({
+    required this.category,
+    required this.summary,
+    required this.onTap,
+    required this.onEdit,
+    this.onDelete,
+    super.key,
+  });
+
+
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_radius.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
+
+import '../../../../features/categories/domain/entities/category.dart';
+import '../../../../features/categories/presentation/utils/category_presentation_data.dart';
+
+class CategoryDetailsHeader extends StatelessWidget {
+  const CategoryDetailsHeader({
+    required this.category,
+    required this.color,
+    super.key,
+  });
+
+  final Category category;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 240),
+      curve: Curves.easeOutCubic,
+      padding: EdgeInsets.all(20.w),
+      decoration: BoxDecoration(
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+import '../../../../core/theme/app_spacing.dart';
+import '../../../../features/categories/domain/entities/category.dart';
+import '../../domain/entities/expense.dart';
+
+class ExpenseDetailsOverview extends StatelessWidget {
+  const ExpenseDetailsOverview({
+    required this.expense,
+    required this.category,
+    super.key,
+  });
+
+  final Expense expense;
+  final Category category;
+
+  @override
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/core/widgets/category_badge.dart\n@@\n import 'package:spend_wise/features/categories/domain/entities/category.dart';\n+import 'package:spend_wise/features/categories/presentation/utils/category_display_name.dart';\n import 'package:spend_wise/features/categories/presentation/utils/category_presentation_data.dart';\n@@\n-                category.displayName,\n+                category.localizedName,\n@@\n-                category.displayName,\n+                category.localizedName,\n@@\n-              category.displayName,\n+              category.localizedName,\n*** Update File: lib/features/categories/presentation/widgets/category_item.dart\n@@\n import 'package:spend_wise/features/categories/domain/entities/category.dart';\n+import 'package:spend_wise/features/categories/presentation/utils/category_display_name.dart';\n import 'package:spend_wise/features/categories/presentation/utils/category_expense_summary.dart';\n@@\n-                category.displayName,\n+                category.localizedName,\n*** Update File: lib/features/categories/presentation/widgets/category_details_header.dart\n@@\n import '../../../../features/categories/domain/entities/category.dart';\n+import '../../../../features/categories/presentation/utils/category_display_name.dart';\n import '../../../../features/categories/presentation/utils/category_presentation_data.dart';\n@@\n-              category.displayName,\n+              category.localizedName,\n*** Update File: lib/features/categories/presentation/cubit/category_cubit.dart\n@@\n import 'package:spend_wise/features/categories/domain/usecases/update_category.dart';\n import 'package:spend_wise/features/categories/presentation/cubit/category_state.dart';\n+import 'package:spend_wise/features/categories/presentation/utils/category_display_name.dart';\n import 'package:spend_wise/features/categories/presentation/utils/category_presentation_data.dart';\n@@\n-            categoryNa
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 1.3 seconds
+Output:
+Success. Updated the following files:
+M lib/core/widgets/category_badge.dart
+M lib/features/categories/presentation/widgets/category_item.dart
+M lib/features/categories/presentation/widgets/category_details_header.dart
+M lib/features/categories/presentation/cubit/category_cubit.dart
+M lib/features/expenses/presentation/widgets/expense_filter_bar.dart
+M lib/features/expenses/presentation/widgets/expense_details_overview.dart
+M lib/features/dashboard/presentation/widgets/dashboard_category_breakdown.dart
+M lib/features/insights/domain/usecases/get_top_category_insight.dart
+M lib/features/insights/data/repositories/get_smart_recommendation_insight.dart
+```
+
+</details>
+
+The UI now uses a presentation extension for localized category names instead of asking the entity to translate itself. I’m tightening one edge case too: editing a default category should not accidentally persist the currently translated display name as raw data.
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/categories/presentation/cubit/category_cubit.dart\n@@\n-import 'package:spend_wise/features/categories/presentation/utils/category_display_name.dart';\n import 'package:spend_wise/features/categories/presentation/utils/category_presentation_data.dart';\n@@\n-            categoryName: category.localizedName,\n+            categoryName: category.name,\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+M lib/features/categories/presentation/cubit/category_cubit.dart
+```
+
+</details>
+
+Next I’m fixing the insight category names properly: insight generation will pass raw category metadata, and the presentation localizer will translate default category IDs at render time. That keeps insights reactive to language changes without pulling localization into domain/data.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"displayName\" lib\\features lib\\core -g \"*.dart\"",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\presentation\\widgets\\insight_localizer.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\domain\\entities\\insight_card.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+lib\features\categories\presentation\widgets\category_form_fields.dart:70:    final displayName = state.categoryName.trim().isEmpty
+lib\features\categories\presentation\widgets\category_form_fields.dart:95:              displayName,
+lib\features\categories\presentation\widgets\category_form_fields.dart:96:              key: ValueKey(displayName),
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+import '../../domain/entities/insight_card.dart';
+
+class InsightLocalizer {
+  const InsightLocalizer._();
+
+  static String title(InsightCard insight) => _titleKey(insight.type).tr();
+
+  static String message(BuildContext context, InsightCard insight) {
+    final args = Map<String, String>.from(insight.metadata);
+    final day = _localizedDay(context, args['day']);
+    if (day != null) args['day'] = day;
+
+    final key = switch (insight.type) {
+      InsightType.spending_trend => _spendingTrendKey(args['variant']),
+      InsightType.average_daily => _averageDailyKey(args['variant']),
+      InsightType.smart_recommendation => _smartRecommendationKey(args['variant']),
+      _ => _messageKey(insight.type),
+    };
+
+    final message = key.tr(namedArgs: args);
+    final
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+class InsightCard {
+  const InsightCard({
+    required this.id,
+    required this.title,
+    required this.message,
+    required this.type,
+    required this.color,
+    this.amount,
+    this.value,
+    this.subtitle,
+    this.metadata = const {},
+  });
+
+  final String id;
+  final String title;
+  final String message;
+  final InsightType type;
+  final int color;
+  final double? amount;
+  final String? value;
+  final String? subtitle;
+  final Map<String, String> metadata;
+}
+
+enum InsightType {
+  topCategory,
+  spending_trend,
+  average_daily,
+  highest_spending_day,
+  spending_streak,
+  smart_recommendation,
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/insights/presentation/widgets/insight_localizer.dart\n@@\n   static String message(BuildContext context, InsightCard insight) {\n     final args = Map<String, String>.from(insight.metadata);\n     final day = _localizedDay(context, args['day']);\n     if (day != null) args['day'] = day;\n+    final category = _localizedCategory(args['categoryId'], args['category']);\n+    if (category != null) args['category'] = category;\n@@\n-    final category = args['category'];\n-    if (insight.type == InsightType.smart_recommendation && category != null) {\n+    final categoryName = args['category'];\n+    if (insight.type == InsightType.smart_recommendation && categoryName != null) {\n       final reduceCategory =\n           LocaleKeys.dashboard_insights_cards_smartRecommendation_reduceCategory\n-              .tr(namedArgs: {'category': category});\n+              .tr(namedArgs: {'category': categoryName});\n       return '$message\\n$reduceCategory';\n     }\n     return message;\n   }\n@@\n   static String? _localizedDay(BuildContext context, String? rawDay) {\n@@\n   }\n+\n+  static String? _localizedCategory(String? categoryId, String? fallback) {\n+    return switch (categoryId) {\n+      'cat_shopping' => LocaleKeys.categories_defaultCategories_shopping.tr(),\n+      'cat_food' => LocaleKeys.categories_defaultCategories_food.tr(),\n+      'cat_transport' =>\n+        LocaleKeys.categories_defaultCategories_transportation.tr(),\n+      'cat_entertainment' =>\n+        LocaleKeys.categories_defaultCategories_entertainment.tr(),\n+      'cat_utilities' => LocaleKeys.categories_defaultCategories_utilities.tr(),\n+      'cat_health' => LocaleKeys.categories_defaultCategories_health.tr(),\n+      _ => fallback,\n+    };\n+  }\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.2 seconds
+Output:
+Success. Updated the following files:
+M lib/features/insights/presentation/widgets/insight_localizer.dart
+```
+
+</details>
+
+I’m now removing Flutter UI color dependencies from insight generation. The insight entity already stores an `int` color, so these use cases can use plain color tokens instead of importing `package:flutter/material.dart`.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"import 'package:flutter/material.dart'|Colors\\.\" lib\\features\\insights -g \"*.dart\"",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\data\\repositories\\get_average_daily_insight.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\data\\repositories\\get_highest_spending_day_insight.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\data\\repositories\\get_spending_trend_insight.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\data\\repositories\\get_spending_streak_insight.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+lib\features\insights\data\repositories\get_average_daily_insight.dart:1:import 'package:flutter/material.dart';
+lib\features\insights\data\repositories\get_average_daily_insight.dart:24:        color: Colors.purple.value,
+lib\features\insights\data\repositories\get_average_daily_insight.dart:34:      color: Colors.purple.value,
+lib\features\insights\data\repositories\get_average_daily_insight.dart:45:    color: Colors.purple.value,
+lib\features\insights\presentation\widgets\insight_localizer.dart:2:import 'package:flutter/material.dart';
+lib\features\insights\presentation\widgets\insight_icon.dart:1:import 'package:flutter/material.dart';
+lib\features\insights\presentation\widgets\insight_card_widget.dart:1:import 'package:flutter/material.dart';
+lib\features\insights\domain\usecases\get_top_category_insight.dart:1:import 'package:flutter/material.dart';
+lib\features\insights\domain\usecases\get_top_category_insight.dart:32:      color: cate
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:flutter/material.dart';
+
+import '../../../expenses/domain/entities/expense.dart';
+import '../../domain/entities/insight_card.dart';
+
+class GetAverageDailyInsight {
+  InsightCard call(List<Expense> expenses) {
+    if (expenses.isEmpty) {
+      return _emptyInsight();
+    }
+
+    final now = DateTime.now();
+    final totalThisMonth = expenses
+        .where((e) => e.date.year == now.year && e.date.month == now.month)
+        .fold<double>(0, (sum, e) => sum + e.amount);
+    final avgDaily = totalThisMonth / (now.day > 0 ? now.day : 1);
+
+    if (totalThisMonth == 0) {
+      return InsightCard(
+        id: 'average_daily',
+        title: 'Average daily',
+        message: 'average_daily.no_spending',
+        type: InsightType.average_daily,
+        color: Colors.purple.value,
+        metadata: const {'variant': 'no_spending'},
+      );
+    }
+
+    return InsightCard(
+      id: 'average_daily',
+      titl
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:flutter/material.dart';
+
+import '../../../expenses/domain/entities/expense.dart';
+import '../../domain/entities/insight_card.dart';
+
+class GetHighestSpendingDayInsight {
+  InsightCard call(List<Expense> expenses) {
+    if (expenses.isEmpty) {
+      return _emptyInsight();
+    }
+
+    final dailyTotals = <DateTime, double>{};
+    for (final expense in expenses) {
+      final dayStart = DateTime(
+        expense.date.year,
+        expense.date.month,
+        expense.date.day,
+      );
+      dailyTotals[dayStart] = (dailyTotals[dayStart] ?? 0) + expense.amount;
+    }
+
+    final highestDay = dailyTotals.entries.reduce((a, b) {
+      return a.value > b.value ? a : b;
+    });
+
+    return InsightCard(
+      id: 'highest_spending_day',
+      title: 'Highest spending day',
+      message: 'highest_spending_day.message',
+      type: InsightType.highest_spending_day,
+      color: Colors.red.value,
+      amoun
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
+import 'package:spend_wise/features/insights/domain/entities/insight_card.dart';
+
+class GetSpendingTrendInsight {
+  InsightCard call(List<Expense> expenses) {
+    if (expenses.length < 2) {
+      return _emptyInsight();
+    }
+
+    final now = DateTime.now();
+    final currentMonth = DateTime(now.year, now.month);
+    final previousMonth = DateTime(now.year, now.month - 1);
+    final currentMonthSpending = _monthTotal(expenses, currentMonth);
+    final previousMonthSpending = _monthTotal(expenses, previousMonth);
+
+    if (previousMonthSpending == 0) {
+      if (currentMonthSpending == 0) return _emptyInsight();
+      return InsightCard(
+        id: 'spending_trend',
+        title: 'Spending trend',
+        message: 'spending_trend.started',
+        type: InsightType.spending_trend,
+        color: Colors.gre
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
+import 'package:spend_wise/features/insights/domain/entities/insight_card.dart';
+
+class GetSpendingStreakInsight {
+  InsightCard call(List<Expense> expenses) {
+    if (expenses.isEmpty) {
+      return _emptyInsight();
+    }
+
+    final sortedExpenses = expenses.toList()
+      ..sort((a, b) => b.date.compareTo(a.date));
+    var streakDays = 0;
+    var currentDate = _dayStart(DateTime.now());
+    final spentToday = sortedExpenses.any((expense) {
+      return _dayStart(expense.date).isAtSameMomentAs(currentDate);
+    });
+
+    if (spentToday) {
+      streakDays = 1;
+    }
+    currentDate = currentDate.subtract(const Duration(days: 1));
+
+    for (final expense in sortedExpenses) {
+      final expenseDate = _dayStart(expense.date);
+      if (expenseDate.isAtSameMomentAs(currentDate)) {
+        streakDays++;
+ 
+...(truncated)
+```
+
+</details>
+
+The insight color cleanup is small but meaningful: these classes can now be tested as pure Dart because they won’t import Flutter. I’ll add tiny numeric color tokens next and replace `Colors.*.value` in the insight generators.
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Add File: lib/features/insights/domain/entities/insight_color_tokens.dart\n+class InsightColorTokens {\n+  const InsightColorTokens._();\n+\n+  static const blue = 0xFF2196F3;\n+  static const green = 0xFF4CAF50;\n+  static const orange = 0xFFFF9800;\n+  static const purple = 0xFF9C27B0;\n+  static const red = 0xFFF44336;\n+  static const yellow = 0xFFFFC107;\n+}\n*** Update File: lib/features/insights/domain/usecases/get_top_category_insight.dart\n@@\n-import 'package:flutter/material.dart';\n-\n import '../../../categories/domain/entities/category.dart';\n import '../../../expenses/domain/entities/expense.dart';\n+import '../entities/insight_color_tokens.dart';\n import '../entities/insight_card.dart';\n@@\n-      color: category?.color ?? Colors.blue.value,\n+      color: category?.color ?? InsightColorTokens.blue,\n@@\n-    color: Colors.blue.value,\n+    color: InsightColorTokens.blue,\n   );\n }\n*** Update File: lib/features/insights/data/repositories/get_average_daily_insight.dart\n@@\n-import 'package:flutter/material.dart';\n-\n import '../../../expenses/domain/entities/expense.dart';\n import '../../domain/entities/insight_card.dart';\n+import '../../domain/entities/insight_color_tokens.dart';\n@@\n-        color: Colors.purple.value,\n+        color: InsightColorTokens.purple,\n@@\n-      color: Colors.purple.value,\n+      color: InsightColorTokens.purple,\n@@\n-    color: Colors.purple.value,\n+    color: InsightColorTokens.purple,\n   );\n }\n*** Update File: lib/features/insights/data/repositories/get_highest_spending_day_insight.dart\n@@\n-import 'package:flutter/material.dart';\n-\n import '../../../expenses/domain/entities/expense.dart';\n import '../../domain/entities/insight_card.dart';\n+import '../../domain/entities/insight_color_tokens.dart';\n@@\n-      color: Colors.red.value,\n+      color: InsightColorTokens.red,\n@@\n-    color: Colors.red.value,\n+    color: InsightColorTokens.red,\n   );\n*** Update F
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.9 seconds
+Output:
+Success. Updated the following files:
+A lib/features/insights/domain/entities/insight_color_tokens.dart
+M lib/features/insights/domain/usecases/get_top_category_insight.dart
+M lib/features/insights/data/repositories/get_average_daily_insight.dart
+M lib/features/insights/data/repositories/get_highest_spending_day_insight.dart
+M lib/features/insights/data/repositories/get_spending_trend_insight.dart
+M lib/features/insights/data/repositories/get_spending_streak_insight.dart
+M lib/features/insights/data/repositories/get_smart_recommendation_insight.dart
+```
+
+</details>
+
+Domain/UI leakage is mostly addressed for categories and insights. Next I’m adding two small infrastructure seams, `Clock` and `IdGenerator`, because timestamp IDs and direct `DateTime.now()` calls are one of the biggest cloud-sync risks.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\budgets\\presentation\\widgets\\budget_form_page.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\recurring\\presentation\\widgets\\recurring_expense_form_page.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\presentation\\widgets\\expense_form.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\presentation\\cubit\\expense_state.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+import '../../../../core/base/requests_status.dart';
+import '../../../../core/widgets/category_picker.dart';
+import '../../../categories/presentation/cubit/category_cubit.dart';
+import '../../domain/entities/budget.dart';
+import '../cubit/budget_cubit.dart';
+import '../cubit/budget_state.dart';
+
+class BudgetFormPage extends StatelessWidget {
+  const BudgetFormPage({super.key, this.budget});
+
+  final Budget? budget;
+
+  static Future<void> open(BuildContext context, {Budget? budget}) {
+    return Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => MultiBlocProvider(
+          providers: [
+            BlocProvider.value(value: co
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+import '../../../categories/presentation/cubit/category_cubit.dart';
+import '../../domain/entities/recurring_expense.dart';
+import '../cubit/recurring_expense_cubit.dart';
+import '../cubit/recurring_expense_state.dart';
+import 'recurring_expense_form_content.dart';
+
+class RecurringExpenseFormPage extends StatelessWidget {
+  const RecurringExpenseFormPage({super.key, this.recurringExpense});
+
+  final RecurringExpense? recurringExpense;
+
+  static Future<void> open(
+    BuildContext context, {
+    RecurringExpense? recurringExpense,
+  }) {
+    return Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => MultiBlocProvider(
+          providers: [
+            BlocProvider.value(value: context.
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+import '../../../../core/base/requests_status.dart';
+import '../../../../features/categories/domain/entities/category.dart';
+import '../../domain/entities/expense.dart';
+import '../cubit/expense_cubit.dart';
+import '../cubit/expense_state.dart';
+import 'expense_amount_field.dart';
+import 'expense_note_field.dart';
+import 'expense_submit_button.dart';
+import 'expense_title_field.dart';
+import 'form/expense_category_section.dart';
+import 'form/expense_date_section.dart';
+
+typedef SubmitExpenseCallback = Future<void> Function(Expense expense);
+
+class ExpenseForm extends StatelessWidget {
+  const ExpenseForm
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import '../../../../core/base/requests_status.dart';
+import '../../domain/entities/expense.dart';
+
+class ExpenseState {
+  ExpenseState({
+    this.expensesStatus = RequestsStatus.initial,
+    this.submissionStatus = RequestsStatus.initial,
+    this.expenses = const [],
+    DateTime? selectedDate,
+    this.selectedCategoryId,
+    this.loadErrorMessage,
+    this.submissionErrorMessage,
+  }) : selectedDate = selectedDate ?? DateTime.now();
+
+  final RequestsStatus expensesStatus;
+  final RequestsStatus submissionStatus;
+  final List<Expense> expenses;
+  final DateTime selectedDate;
+  final String? selectedCategoryId;
+  final String? loadErrorMessage;
+  final String? submissionErrorMessage;
+
+  ExpenseState copyWith({
+    RequestsStatus? expensesStatus,
+    RequestsStatus? submissionStatus,
+    List<Expense>? expenses,
+    DateTime? selectedDate,
+    String? selectedCategoryId,
+    String? loadErrorMessage,
+    String? s
+...(truncated)
+```
+
+</details>
+
+I’m keeping this slice focused: the `Clock` abstraction will first go into domain/use cases where tests and backend sync need deterministic dates most. Form-level ID creation can be moved later into dedicated creation use cases without forcing a giant UI rewrite right now.
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Add File: lib/core/services/app_clock.dart\n+abstract class AppClock {\n+  DateTime now();\n+}\n+\n+class SystemAppClock implements AppClock {\n+  const SystemAppClock();\n+\n+  @override\n+  DateTime now() => DateTime.now();\n+}\n*** Update File: lib/features/dashboard/domain/usecases/get_dashboard_summary.dart\n@@\n import 'package:spend_wise/features/dashboard/domain/entities/dashboard_source_data.dart';\n import 'package:spend_wise/features/dashboard/domain/entities/dashboard_summary.dart';\n import 'package:spend_wise/features/dashboard/domain/usecases/get_top_categories.dart';\n+import 'package:spend_wise/core/services/app_clock.dart';\n \n class GetDashboardSummary {\n-  const GetDashboardSummary(this._getTopCategories);\n+  const GetDashboardSummary(this._getTopCategories, this._clock);\n \n   final GetTopCategories _getTopCategories;\n+  final AppClock _clock;\n \n   DashboardSummary call(DashboardSourceData sourceData) {\n-    final now = DateTime.now();\n+    final now = _clock.now();\n*** Update File: lib/features/dashboard/domain/usecases/get_weekly_spending.dart\n@@\n import 'package:spend_wise/features/dashboard/domain/entities/dashboard_source_data.dart';\n import 'package:spend_wise/features/dashboard/domain/entities/spending_chart_point.dart';\n+import 'package:spend_wise/core/services/app_clock.dart';\n \n class GetWeeklySpending {\n-  const GetWeeklySpending();\n+  const GetWeeklySpending(this._clock);\n+\n+  final AppClock _clock;\n \n   List<SpendingChartPoint> call(DashboardSourceData sourceData) {\n-    final now = DateTime.now();\n+    final now = _clock.now();\n*** Update File: lib/features/budgets/domain/usecases/get_budgets.dart\n@@\n import '../../../expenses/domain/repositories/expense_repository.dart';\n+import '../../../../core/services/app_clock.dart';\n import '../entities/budget.dart';\n import '../repositories/budget_repository.dart';\n \n class GetBudgets {\n-  const GetBudgets(this._budgetRepos
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.7 seconds
+Output:
+Success. Updated the following files:
+A lib/core/services/app_clock.dart
+M lib/features/dashboard/domain/usecases/get_dashboard_summary.dart
+M lib/features/dashboard/domain/usecases/get_weekly_spending.dart
+M lib/features/budgets/domain/usecases/get_budgets.dart
+M lib/features/recurring/domain/usecases/generate_due_expenses.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/core/di/injection_container.dart\n@@\n import 'package:get_it/get_it.dart';\n import 'package:hive_flutter/hive_flutter.dart';\n+import 'package:spend_wise/core/services/app_clock.dart';\n@@\n Future<void> setupDependencies() async {\n   await Hive.initFlutter();\n \n+  if (!sl.isRegistered<AppClock>()) {\n+    sl.registerLazySingleton<AppClock>(() => const SystemAppClock());\n+  }\n+\n@@\n-      () => GetBudgets(sl<BudgetRepository>(), sl<ExpenseRepository>()),\n+      () => GetBudgets(\n+        sl<BudgetRepository>(),\n+        sl<ExpenseRepository>(),\n+        sl<AppClock>(),\n+      ),\n@@\n       () => GenerateDueExpenses(\n         sl<RecurringExpenseRepository>(),\n         sl<ExpenseRepository>(),\n+        sl<AppClock>(),\n       ),\n@@\n-      () => GetDashboardSummary(sl<GetTopCategories>()),\n+      () => GetDashboardSummary(sl<GetTopCategories>(), sl<AppClock>()),\n@@\n-      () => const GetWeeklySpending(),\n+      () => GetWeeklySpending(sl<AppClock>()),\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.1 seconds
+Output:
+Success. Updated the following files:
+M lib/core/di/injection_container.dart
+```
+
+</details>
+
+The main date-dependent domain use cases now use `AppClock` from DI, which makes dashboard, budget periods, and recurring generation testable and backend-friendly. I’ll clean the remaining fallback category date usage so missing-category placeholders don’t create fake “now” timestamps.
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/core/utils/category_resolver.dart\n@@\n-      createdAt: DateTime.now(),\n+      createdAt: DateTime.fromMillisecondsSinceEpoch(0),\n*** Update File: lib/features/dashboard/domain/usecases/get_top_categories.dart\n@@\n-      createdAt: DateTime.now(),\n+      createdAt: DateTime.fromMillisecondsSinceEpoch(0),\n*** Update File: lib/features/dashboard/presentation/widgets/dashboard_recent_expenses.dart\n@@\n-                          createdAt: expenses[index].date,\n+                          createdAt: DateTime.fromMillisecondsSinceEpoch(0),\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+Success. Updated the following files:
+M lib/core/utils/category_resolver.dart
+M lib/features/dashboard/domain/usecases/get_top_categories.dart
+M lib/features/dashboard/presentation/widgets/dashboard_recent_expenses.dart
+```
+
+</details>
+
+Next I’m fixing the currency service gap from the review. I’ll keep it simple and production-ready for now: display conversion stays centralized with static rates, without mutating stored USD amounts, and the service remains swappable later for live rates.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\core\\constants\\currencies.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\core\\utils\\currency_formatter.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\settings\\domain\\entities\\app_currency.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+import '../../features/settings/domain/entities/app_currency.dart';
+
+class SupportedCurrencyOption {
+  const SupportedCurrencyOption({
+    required this.currency,
+    required this.translationKey,
+  });
+
+  final AppCurrency currency;
+  final String translationKey;
+}
+
+final supportedCurrencies = [
+  SupportedCurrencyOption(
+    currency: AppCurrency(code: 'USD', symbol: '\$'),
+    translationKey: LocaleKeys.currency_names_USD,
+  ),
+  SupportedCurrencyOption(
+    currency: AppCurrency(code: 'EUR', symbol: 'â‚¬'),
+    translationKey: LocaleKeys.currency_names_EUR,
+  ),
+  SupportedCurrencyOption(
+    currency: AppCurrency(code: 'ILS', symbol: 'â‚ھ'),
+    translationKey: LocaleKeys.currency_names_ILS.tr(),
+  ),
+  SupportedCurrencyOption(
+    currency: AppCurrency(code: 'JOD', symbol: 'JD '),
+    transl
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+class CurrencyFormatter {
+  const CurrencyFormatter._();
+
+  static String format(double amount, {String symbol = '\$'}) {
+    final rounded = amount.toStringAsFixed(2);
+    final parts = rounded.split('.');
+    final integer = parts[0];
+    final decimals = parts.length > 1 ? parts[1] : '00';
+
+    final buffer = StringBuffer();
+    for (var i = 0; i < integer.length; i++) {
+      final pos = integer.length - i;
+      buffer.write(integer[i]);
+      final shouldSep = pos > 1 && pos % 3 == 1;
+      if (shouldSep) buffer.write(',');
+    }
+
+    final withSep = buffer.toString();
+    return '$symbol$withSep.$decimals';
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+class AppCurrency {
+  const AppCurrency({
+    required this.code,
+    required this.symbol,
+  });
+
+  final String code;
+  final String symbol;
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+
+    return other is AppCurrency &&
+        other.code == code &&
+        other.symbol == symbol;
+  }
+
+  @override
+  int get hashCode => Object.hash(code, symbol);
+}
+```
+
+</details>
+
+I found a small but real currency issue too: some currency names were translated too early in `currencies.dart`, and a couple symbols are mojibake. I’ll normalize those constants and put conversion rates behind the formatter service.
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/core/constants/currencies.dart\n@@\n   SupportedCurrencyOption(\n-    currency: AppCurrency(code: 'EUR', symbol: 'â‚¬'),\n+    currency: AppCurrency(code: 'EUR', symbol: '€'),\n     translationKey: LocaleKeys.currency_names_EUR,\n   ),\n   SupportedCurrencyOption(\n-    currency: AppCurrency(code: 'ILS', symbol: 'â‚ھ'),\n-    translationKey: LocaleKeys.currency_names_ILS.tr(),\n+    currency: AppCurrency(code: 'ILS', symbol: '₪'),\n+    translationKey: LocaleKeys.currency_names_ILS,\n   ),\n   SupportedCurrencyOption(\n     currency: AppCurrency(code: 'JOD', symbol: 'JD '),\n-    translationKey: LocaleKeys.currency_names_JOD.tr(),\n+    translationKey: LocaleKeys.currency_names_JOD,\n   ),\n   SupportedCurrencyOption(\n     currency: AppCurrency(code: 'SAR', symbol: 'SAR '),\n-    translationKey: LocaleKeys.currency_names_SAR.tr(),\n+    translationKey: LocaleKeys.currency_names_SAR,\n   ),\n@@\n-  return '${option.currency.code} آ· ${option.translationKey.tr()}';\n+  return '${option.currency.code} · ${option.translationKey.tr()}';\n }\n*** Update File: lib/core/services/currency_display_service.dart\n@@\n class CurrencyDisplayService {\n   const CurrencyDisplayService._();\n \n+  static const Map<String, double> _usdRates = {\n+    'USD': 1,\n+    'EUR': .92,\n+    'ILS': 3.65,\n+    'JOD': .71,\n+    'SAR': 3.75,\n+  };\n+\n   static double convertFromUsd(double amount, AppCurrency currency) {\n-    // No conversion - return amount as-is\n-    return amount;\n+    final rate = _usdRates[currency.code.toUpperCase()] ?? 1;\n+    return amount * rate;\n   }\n \n   static String formatFromUsd(double amount, AppCurrency currency) {\n     return CurrencyFormatter.format(\n-      amount, // Use original amount without conversion\n+      convertFromUsd(amount, currency),\n       symbol: currency.symbol,\n     );\n   }\n }\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+apply_patch verification failed: Failed to find expected lines in d:\Dev\FlutterProjects\spend_wise\lib\core\constants\currencies.dart:
+  SupportedCurrencyOption(
+    currency: AppCurrency(code: 'EUR', symbol: 'â‚¬'),
+    translationKey: LocaleKeys.currency_names_EUR,
+  ),
+  SupportedCurrencyOption(
+    currency: AppCurrency(code: 'ILS', symbol: 'â‚ھ'),
+    translationKey: LocaleKeys.currency_names_ILS.tr(),
+  ),
+  SupportedCurrencyOption(
+    currency: AppCurrency(code: 'JOD', symbol: 'JD '),
+    translationKey: LocaleKeys.currency_names_JOD.tr(),
+  ),
+  SupportedCurrencyOption(
+    currency: AppCurrency(code: 'SAR', symbol: 'SAR '),
+    translationKey: LocaleKeys.currency_names_SAR.tr(),
+  ),
+```
+
+</details>
+
+The patch missed because the currency file contains corrupted characters that PowerShell renders inconsistently. I’ll replace that constants file cleanly with the same structure, corrected symbols, and no early translation calls.
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Delete File: lib/core/constants/currencies.dart\n*** Add File: lib/core/constants/currencies.dart\n+import 'package:easy_localization/easy_localization.dart';\n+import 'package:spend_wise/generated/locale_keys.g.dart';\n+\n+import '../../features/settings/domain/entities/app_currency.dart';\n+\n+class SupportedCurrencyOption {\n+  const SupportedCurrencyOption({\n+    required this.currency,\n+    required this.translationKey,\n+  });\n+\n+  final AppCurrency currency;\n+  final String translationKey;\n+}\n+\n+const supportedCurrencies = [\n+  SupportedCurrencyOption(\n+    currency: AppCurrency(code: 'USD', symbol: r'$'),\n+    translationKey: LocaleKeys.currency_names_USD,\n+  ),\n+  SupportedCurrencyOption(\n+    currency: AppCurrency(code: 'EUR', symbol: '€'),\n+    translationKey: LocaleKeys.currency_names_EUR,\n+  ),\n+  SupportedCurrencyOption(\n+    currency: AppCurrency(code: 'ILS', symbol: '₪'),\n+    translationKey: LocaleKeys.currency_names_ILS,\n+  ),\n+  SupportedCurrencyOption(\n+    currency: AppCurrency(code: 'JOD', symbol: 'JD '),\n+    translationKey: LocaleKeys.currency_names_JOD,\n+  ),\n+  SupportedCurrencyOption(\n+    currency: AppCurrency(code: 'SAR', symbol: 'SAR '),\n+    translationKey: LocaleKeys.currency_names_SAR,\n+  ),\n+];\n+\n+final currencySymbols = {\n+  for (final option in supportedCurrencies)\n+    option.currency.code: option.currency.symbol,\n+};\n+\n+bool isSupportedCurrency(String code) {\n+  return currencySymbols.containsKey(code.toUpperCase());\n+}\n+\n+SupportedCurrencyOption currencyOptionByCode(String code) {\n+  final normalizedCode = code.toUpperCase();\n+  return supportedCurrencies.firstWhere(\n+    (option) => option.currency.code == normalizedCode,\n+    orElse: () => supportedCurrencies.first,\n+  );\n+}\n+\n+AppCurrency currencyByCode(String code) {\n+  return currencyOptionByCode(code).currency;\n+}\n+\n+String currencyLabel(AppCurrency currency) {\n+  final option = curren
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+Success. Updated the following files:
+A lib/core/constants/currencies.dart
+M lib/core/services/currency_display_service.dart
+D lib/core/constants/currencies.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\export\\data\\repositories\\export_repository_impl_backup.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+part of 'export_repository_impl.dart';
+
+extension _ExportRepositoryBackupX on ExportRepositoryImpl {
+  Future<ExportFile> _exportAllData() async {
+    final payload = await _backupPayload.build(
+      appName: 'SpendWise',
+      boxNames: const [
+        HiveCategoryLocalDataSource.boxName,
+        HiveExpenseLocalDataSource.boxName,
+        HiveBudgetLocalDataSource.boxName,
+        HiveRecurringExpenseLocalDataSource.boxName,
+        HiveSettingsLocalDataSource.boxName,
+      ],
+    );
+
+    final result = await _files.writeJson(
+      fileNameBase: ExportFileNameBuilder.build(ExportType.backup),
+      json: payload,
+      type: ExportType.backup,
+    );
+    return _toExportFile(await _storeHistory(result));
+  }
+}
+```
+
+</details>
+
+Now I’m removing the most obvious Hive coupling from backup export. The backup flow will collect data through repositories instead of opening Hive boxes directly, which is the seam we’ll need when backup/export later reads from local, remote, or synced data.
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Delete File: lib/features/export/data/builders/backup_payload_builder.dart\n*** Add File: lib/features/export/data/builders/backup_payload_builder.dart\n+class BackupPayloadBuilder {\n+  const BackupPayloadBuilder();\n+\n+  Map<String, Object?> build({\n+    required String appName,\n+    required Map<String, Object?> collections,\n+  }) {\n+    return {\n+      'app': appName,\n+      'generatedAt': DateTime.now().toIso8601String(),\n+      ...collections,\n+    };\n+  }\n+}\n*** Update File: lib/features/export/data/repositories/export_repository_impl.dart\n@@\n import '../../../categories/data/datasources/category_local_data_source.dart';\n+import '../../../categories/data/models/category_model.dart';\n import '../../../categories/domain/repositories/category_repository.dart';\n import '../../../budgets/data/datasources/budget_local_data_source.dart';\n+import '../../../budgets/data/models/budget_model.dart';\n+import '../../../budgets/domain/repositories/budget_repository.dart';\n import '../../../dashboard/domain/entities/dashboard_source_data.dart';\n@@\n import '../../../expenses/data/datasources/expense_local_data_source.dart';\n+import '../../../expenses/data/models/expense_model.dart';\n import '../../../expenses/domain/repositories/expense_repository.dart';\n import '../../../recurring/data/datasources/recurring_expense_local_data_source.dart';\n+import '../../../recurring/data/models/recurring_expense_model.dart';\n+import '../../../recurring/domain/repositories/recurring_expense_repository.dart';\n@@\n     required ExpenseRepository expenseRepository,\n     required CategoryRepository categoryRepository,\n+    required BudgetRepository budgetRepository,\n+    required RecurringExpenseRepository recurringRepository,\n     required SettingsRepository settingsRepository,\n@@\n   }) : _expenses = expenseRepository,\n        _categories = categoryRepository,\n+       _budgets = budgetRepository,\n+       _recurring = recurr
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.6 seconds
+Output:
+Success. Updated the following files:
+A lib/features/export/data/builders/backup_payload_builder.dart
+M lib/features/export/data/repositories/export_repository_impl.dart
+M lib/features/export/data/repositories/export_repository_impl_backup.dart
+M lib/core/di/injection_container.dart
+D lib/features/export/data/builders/backup_payload_builder.dart
+```
+
+</details>
+
+Backup export no longer opens Hive boxes directly; it now gathers through repositories and serializes through models. There’s still naming compatibility with existing backup keys, but the data access path is no longer tied to Hive internals.
+
+I’ll run a quick static pass now to catch constructor mismatches and import issues from the architecture slice before deciding the next cleanup step.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"displayName|Colors\\.\" lib\\features\\insights lib\\features\\categories\\domain lib\\core -g \"*.dart\"",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "dart analyze lib",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 120000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+lib\core\theme\app_colors.dart:4:  const AppColors._();
+lib\core\theme\app_colors.dart:20:  static const Color white = Colors.white;
+lib\core\theme\app_colors.dart:21:  static const Color grey = Colors.grey;
+lib\core\theme\app_colors.dart:22:  static const Color black38 = Colors.black38;
+lib\core\theme\app_colors.dart:23:  static const Color transparent = Colors.transparent;
+lib\core\theme\app_theme.dart:14:    background: AppColors.lightBackground,
+lib\core\theme\app_theme.dart:15:    surface: AppColors.lightSurface,
+lib\core\theme\app_theme.dart:16:    surfaceAlt: AppColors.lightSurfaceAlt,
+lib\core\theme\app_theme.dart:21:    background: AppColors.darkBackground,
+lib\core\theme\app_theme.dart:22:    surface: AppColors.darkSurface,
+lib\core\theme\app_theme.dart:23:    surfaceAlt: AppColors.darkSurfaceAlt,
+lib\core\theme\app_theme.dart:33:      seedColor: AppColors.seed,
+lib\core\theme\app_theme.dart:58:        surfaceTintColor: Colors.trans
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Wall time: 1761.4 seconds
+aborted by user
+```
+
+</details>
+
+
+---
+
+## User <sup>6/2/2026, 10:52:15 AM</sup>
+
+<turn_aborted>
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+</turn_aborted>
+
+
+---
+
+## User <sup>6/2/2026, 10:53:38 AM</sup>
+
+continue and i ran analyze for you Analyzing lib...
+
+   info • features\insights\domain\entities\insight_card.dart:27:3 • The constant name 'spending_trend'
+          isn't a lowerCamelCase identifier. Try changing the name to follow the lowerCamelCase style.
+          • constant_identifier_names
+   info • features\insights\domain\entities\insight_card.dart:28:3 • The constant name 'average_daily'
+          isn't a lowerCamelCase identifier. Try changing the name to follow the lowerCamelCase style.
+          • constant_identifier_names
+   info • features\insights\domain\entities\insight_card.dart:29:3 • The constant name
+          'highest_spending_day' isn't a lowerCamelCase identifier. Try changing the name to follow the
+          lowerCamelCase style. • constant_identifier_names
+   info • features\insights\domain\entities\insight_card.dart:30:3 • The constant name
+          'spending_streak' isn't a lowerCamelCase identifier. Try changing the name to follow the
+          lowerCamelCase style. • constant_identifier_names
+   info • features\insights\domain\entities\insight_card.dart:31:3 • The constant name
+          'smart_recommendation' isn't a lowerCamelCase identifier. Try changing the name to follow the
+          lowerCamelCase style. • constant_identifier_names
+   info • features\insights\presentation\cubit\insight_state.dart:10:7 • Use an initializing formal to
+          assign a parameter to a field. Try using an initialing formal ('this.insights') to initialize
+          the field. • prefer_initializing_formals
+   info • features\insights\presentation\cubit\insight_state.dart:17:7 • Use an initializing formal to
+          assign a parameter to a field. Try using an initialing formal ('this.error') to initialize
+          the field. • prefer_initializing_formals
+   info • features\settings\presentation\cubit\settings_state.dart:10:7 • Use an initializing formal to
+          assign a parameter to a field. Try using an initialing formal ('this.settings') to initialize
+          the field. • prefer_initializing_formals
+   info • features\settings\presentation\cubit\settings_state.dart:17:7 • Use an initializing formal to
+          assign a parameter to a field. Try using an initialing formal ('this.error') to initialize
+          the field. • prefer_initializing_formals
+
+- and i have a problem 
+
+
+════════ Exception caught by widgets library ═══════════════════════════════════
+The following _TypeError was thrown building NotificationsSection(dirty, dependencies: [InheritedCupertinoTheme, _InheritedTheme, _LocalizationsScope-[GlobalKey#301e1]]):
+type '_ConstMap<String, String>' is not a subtype of type 'String'
+
+The relevant error-causing widget was:
+    NotificationsSection NotificationsSection:file:///D:/Dev/FlutterProjects/spend_wise/lib/features/settings/presentation/pages/settings_page.dart:45:31
+
+When the exception was thrown, this was the stack:
+#0      Translations.getNested (package:easy_localization/src/translations.dart:38:27)
+#1      Translations.get (package:easy_localization/src/translations.dart:11:21)
+#2      Localization._resolve (package:easy_localization/src/localization.dart:206:35)
+#3      Localization.tr (package:easy_localization/src/localization.dart:61:13)
+#4      tr (package:easy_localization/src/public.dart:45:12)
+#5      StringTranslateExtension.tr (package:easy_localization/src/public_ext.dart:90:10)
+#6      NotificationsSection.build (package:spend_wise/features/settings/presentation/widgets/notifications_section.dart:24:57)
+#7      StatelessElement.build (package:flutter/src/widgets/framework.dart:5892:49)
+#8      ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:5820:15)
+#9      Element.rebuild (package:flutter/src/widgets/framework.dart:5532:7)
+#10     ComponentElement._firstBuild (package:flutter/src/widgets/framework.dart:5802:5)
+#11     ComponentElement.mount (package:flutter/src/widgets/framework.dart:5796:5)
+#12     Element.inflateWidget (package:flutter/src/widgets/framework.dart:4590:20)
+#13     MultiChildRenderObjectElement.inflateWidget (p
+
+
+---
+
+## Codex <sup>7/1/2026, 10:38:08 AM</sup>
+
+I’ll continue from the backend-readiness cleanup and fix the runtime localization crash first, because that blocks Settings. The error means one UI line is calling `.tr()` on a key that points to a JSON object instead of a leaf string, so I’ll trace that key and correct the translation structure or usage without touching generated files.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\settings\\presentation\\widgets\\notifications_section.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"settings_notifications|notifications\" assets\\translations\\en.json assets\\translations\\ar.json lib\\generated\\locale_keys.g.dart lib\\features\\settings\\presentation\\widgets -g \"*.dart\" -g \"*.json\"",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\domain\\entities\\insight_card.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\presentation\\cubit\\insight_state.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\settings\\presentation\\cubit\\settings_state.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 1 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/features/settings/domain/entities/app_settings.dart';
+import 'package:spend_wise/features/settings/presentation/cubit/settings_cubit.dart';
+import 'package:spend_wise/features/settings/presentation/widgets/settings_section.dart';
+import 'package:spend_wise/features/settings/presentation/widgets/settings_tile.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+class NotificationsSection extends StatelessWidget {
+  const NotificationsSection({super.key, required this.settings});
+
+  final AppSettings settings;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return SettingsSection(
+      title: LocaleKeys.settings_notifications_title.tr(),
+      children: [
+        SettingsTile(
+          icon: I
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 2.8 seconds
+Output:
+lib\features\settings\presentation\widgets\notifications_section.dart:20:      title: LocaleKeys.settings_notifications_title.tr(),
+lib\features\settings\presentation\widgets\notifications_section.dart:23:          icon: Icons.notifications_none_outlined,
+lib\features\settings\presentation\widgets\notifications_section.dart:24:          title: LocaleKeys.settings_notifications_push.tr(),
+lib\features\settings\presentation\widgets\notifications_section.dart:25:          subtitle: LocaleKeys.settings_notifications_push_subtitle.tr(),
+lib\features\settings\presentation\widgets\notifications_section.dart:27:            value: settings.notificationsEnabled,
+lib\features\settings\presentation\widgets\notifications_section.dart:36:          title: LocaleKeys.settings_notifications_backup.tr(),
+lib\features\settings\presentation\widgets\notifications_section.dart:37:          subtitle: LocaleKeys.settings_notifications_backup_subtitle.tr(),
+lib\gener
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.6 seconds
+Output:
+class InsightCard {
+  const InsightCard({
+    required this.id,
+    required this.title,
+    required this.message,
+    required this.type,
+    required this.color,
+    this.amount,
+    this.value,
+    this.subtitle,
+    this.metadata = const {},
+  });
+
+  final String id;
+  final String title;
+  final String message;
+  final InsightType type;
+  final int color;
+  final double? amount;
+  final String? value;
+  final String? subtitle;
+  final Map<String, String> metadata;
+}
+
+enum InsightType {
+  topCategory,
+  spending_trend,
+  average_daily,
+  highest_spending_day,
+  spending_streak,
+  smart_recommendation,
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 1 seconds
+Output:
+part of 'insight_cubit.dart';
+
+class InsightState {
+  const InsightState.initial()
+    : insights = const [],
+      isLoading = false,
+      error = null;
+
+  const InsightState.loaded(List<InsightCard> insights)
+    : insights = insights,
+      isLoading = false,
+      error = null;
+
+  const InsightState.error(String error)
+    : insights = const [],
+      isLoading = false,
+      error = error;
+
+  final List<InsightCard> insights;
+  final bool isLoading;
+  final String? error;
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 1 seconds
+Output:
+part of 'settings_cubit.dart';
+
+class SettingsState {
+  const SettingsState.initial()
+    : settings = null,
+      isLoading = false,
+      error = null;
+
+  const SettingsState.loaded(AppSettings settings)
+    : settings = settings,
+      isLoading = false,
+      error = null;
+
+  const SettingsState.error(String error)
+    : settings = null,
+      isLoading = false,
+      error = error;
+
+  final AppSettings? settings;
+  final bool isLoading;
+  final String? error;
+
+  bool get isInitialized => settings != null;
+}
+```
+
+</details>
+
+The crash is exactly at `settings.notifications.push`: generated keys include both the object key and the nested title key, but the widget used the object key. I’ll switch it to `settings_notifications_push_title`, then clean the analyzer info by renaming insight enum values and updating references.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"InsightType\\.|spending_trend|average_daily|highest_spending_day|spending_streak|smart_recommendation\" lib\\features\\insights lib\\features\\dashboard -g \"*.dart\"",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content assets\\translations\\en.json | Select-Object -Skip 130 -First 25",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content assets\\translations\\ar.json | Select-Object -Skip 130 -First 25",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+lib\features\insights\data\repositories\insight_repository_impl.dart:1:import 'package:spend_wise/features/insights/data/repositories/get_average_daily_insight.dart';
+lib\features\insights\data\repositories\insight_repository_impl.dart:2:import 'package:spend_wise/features/insights/data/repositories/get_highest_spending_day_insight.dart';
+lib\features\insights\data\repositories\insight_repository_impl.dart:3:import 'package:spend_wise/features/insights/data/repositories/get_smart_recommendation_insight.dart';
+lib\features\insights\data\repositories\insight_repository_impl.dart:4:import 'package:spend_wise/features/insights/data/repositories/get_spending_streak_insight.dart';
+lib\features\insights\data\repositories\insight_repository_impl.dart:5:import 'package:spend_wise/features/insights/data/repositories/get_spending_trend_insight.dart';
+lib\features\insights\data\repositories\get_smart_recommendation_insight.dart:51:      id: 'smart_r
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+        "subtitle": "Change the app language"
+      }
+    },
+    "notifications": {
+      "title": "Notifications",
+      "push": {
+        "title": "Push notifications",
+        "subtitle": "Receive alerts and reminders"
+      },
+      "backup": {
+        "title": "Auto backup",
+        "subtitle": "Automatically back up your data"
+      }
+    },
+    "data": {
+      "title": "Data & privacy",
+      "reset": {
+        "title": "Reset all settings",
+        "subtitle": "Restore all settings to default values",
+        "dialogTitle": "Reset all settings?",
+        "dialogMessage": "This will reset all settings to their default values."
+      }
+    },
+    "languages": {
+      "english": "English",
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+        "subtitle": "ط؛ظٹظ‘ط± ظ„ط؛ط© ط§ظ„طھط·ط¨ظٹظ‚"
+      }
+    },
+    "notifications": {
+      "title": "ط§ظ„ط¥ط´ط¹ط§ط±ط§طھ",
+      "push": {
+        "title": "ط§ظ„ط¥ط´ط¹ط§ط±ط§طھ ط§ظ„ظپظˆط±ظٹط©",
+        "subtitle": "ط§ط³طھظ‚ط¨ظ„ ط§ظ„طھظ†ط¨ظٹظ‡ط§طھ ظˆط§ظ„طھط°ظƒظٹط±ط§طھ"
+      },
+      "backup": {
+        "title": "ط§ظ„ظ†ط³ط® ط§ظ„ط§ط­طھظٹط§ط·ظٹ ط§ظ„طھظ„ظ‚ط§ط¦ظٹ",
+        "subtitle": "ط£ظ†ط´ط¦ ظ†ط³ط®ط© ط§ط­طھظٹط§ط·ظٹط© ظ„ط¨ظٹط§ظ†ط§طھظƒ طھظ„ظ‚ط§ط¦ظٹظ‹ط§"
+      }
+    },
+    "data": {
+      "title": "ط§ظ„ط¨ظٹط§ظ†ط§طھ ظˆط§ظ„ط®طµظˆطµظٹط©",
+      "reset": {
+        "title": "ط¥ط¹ط§ط¯ط© ط¶ط¨ط· ط¬ظ…ظٹط¹ ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ",
+        "subtitle": "ط§ط³طھط¹ط§ط¯ط© ط¬ظ…ظٹط¹ ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ ط¥ظ„ظ‰ ظ‚ظٹظ…ظ‡ط§ ط§ظ„ط§ظپطھط±ط§ط¶ظٹط©",
+        "dialogTitle": "ط¥ط¹ط§ط¯ط© ط¶ط¨ط· ط¬ظ…ظٹط¹ ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھطں",
+        "dialogMessage": "ط³ظٹط¤ط¯ظٹ ظ‡ط°ط§ ط¥ظ„ظ‰ ط¥ط¹ط§ط¯ط© ط¬ظ…ظٹط¹ ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ ط¥ظ„ظ‰ ظ‚ظٹظ…ظ‡ط§ ط§ظ„ط§ظپطھط±ط§ط¶ظٹط©."
+ 
+...(truncated)
+```
+
+</details>
+
+I’ll make the notification key fix first because it’s the live crash, then rename the insight enum constants using lowerCamelCase. The JSON structure is fine here; the widget was just using the parent object key.
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/settings/presentation/widgets/notifications_section.dart\n@@\n         SettingsTile(\n           icon: Icons.notifications_none_outlined,\n-          title: LocaleKeys.settings_notifications_push.tr(),\n+          title: LocaleKeys.settings_notifications_push_title.tr(),\n           subtitle: LocaleKeys.settings_notifications_push_subtitle.tr(),\n@@\n         SettingsTile(\n           icon: Icons.cloud_circle_outlined,\n-          title: LocaleKeys.settings_notifications_backup.tr(),\n+          title: LocaleKeys.settings_notifications_backup_title.tr(),\n           subtitle: LocaleKeys.settings_notifications_backup_subtitle.tr(),\n*** Update File: lib/features/insights/domain/entities/insight_card.dart\n@@\n enum InsightType {\n   topCategory,\n-  spending_trend,\n-  average_daily,\n-  highest_spending_day,\n-  spending_streak,\n-  smart_recommendation,\n+  spendingTrend,\n+  averageDaily,\n+  highestSpendingDay,\n+  spendingStreak,\n+  smartRecommendation,\n }\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+Success. Updated the following files:
+M lib/features/settings/presentation/widgets/notifications_section.dart
+M lib/features/insights/domain/entities/insight_card.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/insights/data/repositories/get_smart_recommendation_insight.dart\n@@\n-      type: InsightType.smart_recommendation,\n+      type: InsightType.smartRecommendation,\n@@\n-    type: InsightType.smart_recommendation,\n+    type: InsightType.smartRecommendation,\n*** Update File: lib/features/insights/data/repositories/get_average_daily_insight.dart\n@@\n-        type: InsightType.average_daily,\n+        type: InsightType.averageDaily,\n@@\n-      type: InsightType.average_daily,\n+      type: InsightType.averageDaily,\n@@\n-    type: InsightType.average_daily,\n+    type: InsightType.averageDaily,\n*** Update File: lib/features/insights/data/repositories/get_spending_trend_insight.dart\n@@\n-        type: InsightType.spending_trend,\n+        type: InsightType.spendingTrend,\n@@\n-      type: InsightType.spending_trend,\n+      type: InsightType.spendingTrend,\n@@\n-    type: InsightType.spending_trend,\n+    type: InsightType.spendingTrend,\n*** Update File: lib/features/insights/data/repositories/get_highest_spending_day_insight.dart\n@@\n-      type: InsightType.highest_spending_day,\n+      type: InsightType.highestSpendingDay,\n@@\n-    type: InsightType.highest_spending_day,\n+    type: InsightType.highestSpendingDay,\n*** Update File: lib/features/insights/data/repositories/get_spending_streak_insight.dart\n@@\n-      type: InsightType.spending_streak,\n+      type: InsightType.spendingStreak,\n@@\n-    type: InsightType.spending_streak,\n+    type: InsightType.spendingStreak,\n*** Update File: lib/features/insights/presentation/widgets/insight_icon.dart\n@@\n-      InsightType.spending_trend => Icons.trending_up_outlined,\n-      InsightType.average_daily => Icons.calendar_today_outlined,\n-      InsightType.highest_spending_day => Icons.local_fire_department_outlined,\n-      InsightType.spending_streak => Icons.timeline_outlined,\n-      InsightType.smart_recommendation => Icons.lightbulb_outline,\
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.9 seconds
+Output:
+Success. Updated the following files:
+M lib/features/insights/data/repositories/get_smart_recommendation_insight.dart
+M lib/features/insights/data/repositories/get_average_daily_insight.dart
+M lib/features/insights/data/repositories/get_spending_trend_insight.dart
+M lib/features/insights/data/repositories/get_highest_spending_day_insight.dart
+M lib/features/insights/data/repositories/get_spending_streak_insight.dart
+M lib/features/insights/presentation/widgets/insight_icon.dart
+M lib/features/insights/presentation/widgets/insight_localizer.dart
+```
+
+</details>
+
+The crash fix and enum cleanup are applied. I’ll now clean the two `prefer_initializing_formals` analyzer notes in the state classes, then run quick searches for any missed old enum names or bad settings keys.
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/insights/presentation/cubit/insight_state.dart\n@@\n-  const InsightState.loaded(List<InsightCard> insights)\n-    : insights = insights,\n+  const InsightState.loaded(this.insights)\n+    : isLoading = false,\n+      error = null;\n+\n+  const InsightState.error(this.error)\n+    : insights = const [],\n       isLoading = false,\n       error = null;\n-\n-  const InsightState.error(String error)\n-    : insights = const [],\n-      isLoading = false,\n-      error = error;\n*** Update File: lib/features/settings/presentation/cubit/settings_state.dart\n@@\n-  const SettingsState.loaded(AppSettings settings)\n-    : settings = settings,\n+  const SettingsState.loaded(this.settings)\n+    : isLoading = false,\n+      error = null;\n+\n+  const SettingsState.error(this.error)\n+    : settings = null,\n       isLoading = false,\n       error = null;\n-\n-  const SettingsState.error(String error)\n-    : settings = null,\n-      isLoading = false,\n-      error = error;\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+Success. Updated the following files:
+M lib/features/insights/presentation/cubit/insight_state.dart
+M lib/features/settings/presentation/cubit/settings_state.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\insights\\presentation\\cubit\\insight_state.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\settings\\presentation\\cubit\\settings_state.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"spending_trend|average_daily|highest_spending_day|spending_streak|smart_recommendation|settings_notifications_push\\.tr|settings_notifications_backup\\.tr\" lib -g \"*.dart\"",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+part of 'insight_cubit.dart';
+
+class InsightState {
+  const InsightState.initial()
+    : insights = const [],
+      isLoading = false,
+      error = null;
+
+  const InsightState.loaded(this.insights)
+    : isLoading = false,
+      error = null;
+
+  const InsightState.error(this.error)
+    : insights = const [],
+      isLoading = false,
+      error = null;
+
+  final List<InsightCard> insights;
+  final bool isLoading;
+  final String? error;
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.9 seconds
+Output:
+part of 'settings_cubit.dart';
+
+class SettingsState {
+  const SettingsState.initial()
+    : settings = null,
+      isLoading = false,
+      error = null;
+
+  const SettingsState.loaded(this.settings)
+    : isLoading = false,
+      error = null;
+
+  const SettingsState.error(this.error)
+    : settings = null,
+      isLoading = false,
+      error = null;
+
+  final AppSettings? settings;
+  final bool isLoading;
+  final String? error;
+
+  bool get isInitialized => settings != null;
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 1.4 seconds
+Output:
+lib\features\insights\data\repositories\insight_repository_impl.dart:1:import 'package:spend_wise/features/insights/data/repositories/get_average_daily_insight.dart';
+lib\features\insights\data\repositories\insight_repository_impl.dart:2:import 'package:spend_wise/features/insights/data/repositories/get_highest_spending_day_insight.dart';
+lib\features\insights\data\repositories\insight_repository_impl.dart:3:import 'package:spend_wise/features/insights/data/repositories/get_smart_recommendation_insight.dart';
+lib\features\insights\data\repositories\insight_repository_impl.dart:4:import 'package:spend_wise/features/insights/data/repositories/get_spending_streak_insight.dart';
+lib\features\insights\data\repositories\insight_repository_impl.dart:5:import 'package:spend_wise/features/insights/data/repositories/get_spending_trend_insight.dart';
+lib\features\insights\data\repositories\get_spending_trend_insight.dart:20:        id: 'spending_tr
+...(truncated)
+```
+
+</details>
+
+I caught one tiny slip in the analyzer cleanup: the `error` constructors were converted to initializing formals but still had `error = null` in the initializer list. I’ll correct that now so error messages are preserved.
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/insights/presentation/cubit/insight_state.dart\n@@\n   const InsightState.error(this.error)\n     : insights = const [],\n-      isLoading = false,\n-      error = null;\n+      isLoading = false;\n*** Update File: lib/features/settings/presentation/cubit/settings_state.dart\n@@\n   const SettingsState.error(this.error)\n     : settings = null,\n-      isLoading = false,\n-      error = null;\n+      isLoading = false;\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+Success. Updated the following files:
+M lib/features/insights/presentation/cubit/insight_state.dart
+M lib/features/settings/presentation/cubit/settings_state.dart
+```
+
+</details>
+
+The reported analyzer infos should be resolved now. I’ll run a short verification pass for compile-level issues from constructor changes and DI signature updates, then I’ll continue with the next architecture cleanup if it’s clean.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "dart analyze lib",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 120000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "git status --short",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"InsightType\\.(spending_trend|average_daily|highest_spending_day|spending_streak|smart_recommendation)|settings_notifications_(push|backup)\\.tr\\(\\)|displayName\" lib -g \"*.dart\"",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+
+---
+
+## User <sup>7/1/2026, 10:38:08 AM</sup>
+
+<environment_context>
+  <current_date>2026-07-01</current_date>
+  <timezone>Asia/Hebron</timezone>
+  <filesystem><workspace_roots><root>d:\Dev\FlutterProjects\spend_wise</root></workspace_roots><permission_profile type="managed"><file_system type="restricted"><entry access="read"><special>:root</special></entry><entry access="write"><path>d:\Dev\FlutterProjects\spend_wise</path></entry><entry access="write"><special>:slash_tmp</special></entry><entry access="write"><special>:tmpdir</special></entry><entry access="read"><path>d:\Dev\FlutterProjects\spend_wise\.git</path></entry><entry access="read"><path>d:\Dev\FlutterProjects\spend_wise\.agents</path></entry><entry access="read"><path>d:\Dev\FlutterProjects\spend_wise\.codex</path></entry></file_system></permission_profile></filesystem>
+</environment_context>
+
+
+---
+
+## User <sup>7/1/2026, 10:38:08 AM</sup>
+
+عندي بعض المشاكل وهي كالاتي 
+
+المستخدم يضغط على زر اضافة expense لكن ما يضيف
+
+شاشة add expense تحتاج blocprovider category cubit مع اني ضايفه 
+
+المستخدم يضغط على زر اضافة recurring expense يضيف لكن ما يرجعه على شاشة العرض ومش real-time يعني لازم يعمل rebuild عشان تظهر recurring الجديدة
+
+في حالة budget ياخذ وقت طويل في loading
+
+يطول لما يعمل load لعرض categories في شاشة add expense, recurring
+
+لما احط budget معينة لكاتقوري اريد ان يظهر تحذير أو أي شي يبلغ المستخدم انه قريب من budget أو تجاوزها حتى لو في شاشة dashboard لانه حاليا ما يعرف المستخدم الا اذا دخل على شاشة budget
+
+كذلك ابيك تكمل الي كنت تسويه واغلب المشاكل اتوقع سببها لما قسمنا ملف di مدري
+
+
+---
+
+## Codex <sup>7/1/2026, 11:30:17 AM</sup>
+
+المشاكل مترابطة غالبًا من نطاقات الـ `BlocProvider` والتنقل اليدوي بين الصفحات، مو من تقسيم DI نفسه. ببدأ بتتبع مسار فتح `add expense` و`add recurring` داخل الـ shell، ثم أصلح الـ providers والتحديث الفوري وبعدها أراجع بطء تحميل `categories/budgets`.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "git status --short",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\app\\routes\\app_router.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\app\\shell\\main_shell_page.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\presentation\\pages\\expenses_page.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\recurring\\presentation\\pages\\recurring_expenses_page.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/app/shell/cubit/shell_cubit.dart';
+import 'package:spend_wise/app/shell/main_shell_page.dart';
+import 'package:spend_wise/app/routes/route_names.dart';
+import 'package:spend_wise/core/di/injection_container.dart';
+import 'package:spend_wise/core/widgets/animations/app_page_transition.dart';
+import 'package:spend_wise/features/auth/presentation/pages/login_page.dart';
+import 'package:spend_wise/features/auth/presentation/pages/register_page.dart';
+import 'package:spend_wise/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:spend_wise/features/auth/presentation/widgets/auth_gate.dart';
+import 'package:spend_wise/features/categories/domain/entities/category.dart';
+import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
+import 'package:spend_wise/features/categories/prese
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/app/shell/cubit/shell_cubit.dart';
+import 'package:spend_wise/app/shell/cubit/shell_state.dart';
+import 'package:spend_wise/app/shell/models/shell_destination.dart';
+import 'package:spend_wise/app/shell/widgets/main_shell_drawer.dart';
+import 'package:spend_wise/app/shell/widgets/main_shell_navigation_bar.dart';
+import 'package:spend_wise/app/shell/widgets/shell_destinations.dart';
+import 'package:spend_wise/features/dashboard/presentation/cubit/dashboard_cubit.dart';
+import 'package:spend_wise/features/expenses/presentation/cubit/expense_cubit.dart';
+import 'package:spend_wise/features/expenses/presentation/cubit/expense_filter_cubit.dart';
+import 'package:spend_wise/features/recurring/presentation/cubit/recurring_expense_cubit.dart';
+import 'package:spend_wise/features/recurring/presentation/cubit/recurring_expense
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+import '../../../../core/widgets/responsive_page_content.dart';
+import '../../../categories/presentation/cubit/category_cubit.dart';
+import '../../../../features/expenses/domain/entities/expense.dart';
+import '../cubit/expense_cubit.dart';
+import '../cubit/expense_filter_cubit.dart';
+import '../cubit/expense_filter_state.dart';
+import '../cubit/expense_state.dart';
+import 'expense_form_page.dart';
+import '../widgets/expenses_list/expense_filter_bar.dart';
+import '../widgets/expenses_list/expenses_state_view.dart';
+
+class ExpensesPage extends StatelessWidget {
+  const ExpensesPage({super.key, this.showScaffold = true});
+
+  final bool showScaffold;
+
+  @override
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/features/recurring/presentation/pages/recurring_expense_form_page.dart';
+import '../../../../core/base/requests_status.dart';
+import '../../../../core/widgets/responsive_page_content.dart';
+import '../cubit/recurring_expense_cubit.dart';
+import '../cubit/recurring_expense_state.dart';
+import '../widgets/recurring_list/recurring_empty_state.dart';
+import '../widgets/recurring_list/recurring_expenses_list_view.dart';
+
+class RecurringExpensesPage extends StatelessWidget {
+  const RecurringExpensesPage({super.key, this.showScaffold = true});
+
+  final bool showScaffold;
+
+  @override
+  Widget build(BuildContext context) {
+    final content = BlocListener<RecurringExpenseCubit, RecurringExpenseState>(
+      listenWhen: (previous, current) =>
+          previous.submissionMessage != current.submissionMessage &&
+      
+...(truncated)
+```
+
+</details>
+
+لقيت إن فتح Add Expense يستخدم `PageRouteBuilder` ويمرر الـ cubits بالقيمة، وهذا ممتاز نظريًا. المشكلة غالبًا داخل submit أو أن القائمة/الفلاتر ما تتزامن بعد الإضافة. الآن بقرأ صفحة الفورم والـ cubit عشان أحدد السبب بدون تخمين.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\presentation\\pages\\expense_form_page.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\presentation\\widgets\\expense_form.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\presentation\\cubit\\expense_cubit.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\recurring\\presentation\\pages\\recurring_expense_form_page.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\recurring\\presentation\\cubit\\recurring_expense_cubit.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/features/expenses/presentation/widgets/expense_form/expense_form_content.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+import '../../../../core/base/requests_status.dart';
+import '../../../../core/widgets/responsive_page_content.dart';
+import '../../domain/entities/expense.dart';
+import '../cubit/expense_cubit.dart';
+import '../cubit/expense_state.dart';
+import '../../../categories/presentation/cubit/category_cubit.dart';
+
+class ExpenseFormPage extends StatelessWidget {
+  const ExpenseFormPage({super.key, this.expense});
+
+  final Expense? expense;
+
+  static Future<void> open(BuildContext context, {Expense? expense}) async {
+    final expenseCubit = context.read<ExpenseCubit>()..initializeForm(expense);
+
+    await Navigator.of(contex
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 1
+Wall time: 0.6 seconds
+Output:
+Get-Content : Cannot find path 
+'D:\Dev\FlutterProjects\spend_wise\lib\features\expenses\presentation\widgets\expense_form.dart' because it does not 
+exist.
+At line:2 char:1
++ Get-Content lib\features\expenses\presentation\widgets\expense_form.d ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (D:\Dev\FlutterP...pense_form.dart:String) [Get-Content], ItemNotFoundEx 
+   ception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+import '../../../../core/base/requests_status.dart';
+import '../../../../core/services/app_clock.dart';
+import '../../domain/entities/expense.dart';
+import '../../domain/usecases/add_expense.dart';
+import '../../domain/usecases/delete_expense.dart';
+import '../../domain/usecases/get_expenses.dart';
+import '../../domain/usecases/update_expense.dart';
+import 'expense_state.dart';
+
+class ExpenseCubit extends Cubit<ExpenseState> {
+  ExpenseCubit({
+    required AddExpense addExpense,
+    required GetExpenses getExpenses,
+    required UpdateExpense updateExpense,
+    required DeleteExpense deleteExpense,
+    required AppClock clock,
+  }) : _addExpense = addExpense,
+       _getExpenses = getExpenses,
+       _updateExpense = updateExpense,
+       _deleteExpense = 
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/core/di/injection_container.dart';
+import 'package:spend_wise/core/services/id_generator.dart';
+import 'package:spend_wise/features/recurring/presentation/widgets/recurring_form/recurring_expense_form_content.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+import '../../../../core/base/requests_status.dart';
+import '../../../categories/presentation/cubit/category_cubit.dart';
+import '../../../expenses/presentation/cubit/expense_cubit.dart';
+import '../../domain/entities/recurring_expense.dart';
+import '../cubit/recurring_expense_cubit.dart';
+import '../cubit/recurring_expense_state.dart';
+
+class RecurringExpenseFormPage extends StatelessWidget {
+  const RecurringExpenseFormPage({super.key, this.recurringExpense});
+
+  final RecurringExpen
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+import '../../../../core/base/requests_status.dart';
+import '../../domain/entities/recurring_expense.dart';
+import '../../domain/usecases/create_recurring_expense.dart';
+import '../../domain/usecases/delete_recurring_expense.dart';
+import '../../domain/usecases/generate_due_expenses.dart';
+import '../../domain/usecases/get_recurring_expenses.dart';
+import '../../domain/usecases/update_recurring_expense.dart';
+import 'recurring_expense_state.dart';
+
+class RecurringExpenseCubit extends Cubit<RecurringExpenseState> {
+  RecurringExpenseCubit({
+    required CreateRecurringExpense createRecurringExpense,
+    required GetRecurringExpenses getRecurringExpenses,
+    required UpdateRecurringExpense updateRecurringExpense,
+    required DeleteRecurringExpense deleteRecurri
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\presentation\\widgets\\expense_form\\expense_form_content.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\presentation\\widgets\\expense_form\\expense_category_section.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\presentation\\widgets\\expense_form\\expense_submit_section.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\presentation\\widgets\\expense_form\\expense_form_fields.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/base/requests_status.dart';
+import 'package:spend_wise/features/categories/domain/entities/category.dart';
+import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
+import 'package:spend_wise/features/expenses/presentation/cubit/expense_cubit.dart';
+import 'package:spend_wise/features/expenses/presentation/widgets/expense_form/expense_form_intro.dart';
+import 'expense_form.dart';
+import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
+import 'package:spend_wise/features/categories/presentation/cubit/category_state.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
+
+class ExpenseFormContent extends StatelessWidget {
+  const ExpenseFormContent({
+    required this.expense,
+    required thi
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/core/base/requests_status.dart';
+import 'package:spend_wise/features/categories/domain/entities/category.dart';
+import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
+import 'package:spend_wise/features/expenses/presentation/cubit/expense_state.dart';
+import 'expense_category_field.dart';
+import '../../cubit/expense_cubit.dart';
+
+class ExpenseCategorySection extends StatefulWidget {
+  const ExpenseCategorySection({
+    super.key,
+    required this.categories,
+    required this.categoriesStatus,
+    required this.initialExpense,
+    required this.onSaved,
+    required this.onCategorySelected,
+  });
+
+  final List<Category> categories;
+  final RequestsStatus categoriesStatus;
+  final Expense? initialExpense;
+  final ValueChanged<String?> onSaved;
+  final ValueChanged<String?> onCategorySe
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 1
+Wall time: 0.4 seconds
+Output:
+Get-Content : Cannot find path 'D:\Dev\FlutterProjects\spend_wise\lib\features\expenses\presentation\widgets\expense_fo
+rm\expense_submit_section.dart' because it does not exist.
+At line:2 char:1
++ Get-Content lib\features\expenses\presentation\widgets\expense_form\e ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (D:\Dev\FlutterP...it_section.dart:String) [Get-Content], ItemNotFoundEx 
+   ception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 1
+Wall time: 0.4 seconds
+Output:
+Get-Content : Cannot find path 
+'D:\Dev\FlutterProjects\spend_wise\lib\features\expenses\presentation\widgets\expense_form\expense_form_fields.dart' 
+because it does not exist.
+At line:2 char:1
++ Get-Content lib\features\expenses\presentation\widgets\expense_form\e ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (D:\Dev\FlutterP...orm_fields.dart:String) [Get-Content], ItemNotFoundEx 
+   ception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\presentation\\widgets\\expense_form\\expense_form.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\presentation\\widgets\\expense_form\\expense_category_field.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\presentation\\widgets\\expense_form\\expense_submit_button.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\presentation\\cubit\\expense_state.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/base/requests_status.dart';
+import 'package:spend_wise/core/di/injection_container.dart';
+import 'package:spend_wise/core/services/id_generator.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
+import 'package:spend_wise/features/categories/domain/entities/category.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+import '../../../domain/entities/expense.dart';
+import '../../cubit/expense_cubit.dart';
+import '../../cubit/expense_state.dart';
+import 'expense_amount_field.dart';
+import 'expense_note_field.dart';
+import 'expense_submit_button.dart';
+import 'expense_title_field.dart';
+import 'expense_category_section.dart';
+import 'expense_date_section.dart';
+
+t
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/base/requests_status.dart';
+import 'package:spend_wise/core/utils/category_resolver.dart';
+import 'package:spend_wise/core/widgets/category_picker.dart';
+import 'package:spend_wise/features/categories/presentation/pages/category_list_page.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
+
+import '../../../../categories/domain/entities/category.dart' show Category;
+
+class ExpenseCategoryField extends StatefulWidget {
+  const ExpenseCategoryField({
+    required this.categories,
+    required this.categoriesStatus,
+    required this.initialValue,
+    required this.onSaved,
+    required this.onCategorySelected,
+    this.focusNode,
+    super.key,
+  });
+
+  final List<
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:spend_wise/core/base/requests_status.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+typedef SubmitExpenseCallback = Future<void> Function();
+
+class ExpenseSubmitButton extends StatefulWidget {
+  const ExpenseSubmitButton({
+    required this.isEditing,
+    required this.submissionStatus,
+    required this.onSubmit,
+    super.key,
+  });
+
+  final bool isEditing;
+  final RequestsStatus submissionStatus;
+  final SubmitExpenseCallback onSubmit;
+
+  @override
+  State<ExpenseSubmitButton> createState() => _ExpenseSubmitButtonState();
+}
+
+class _ExpenseSubmitButtonState extends State<ExpenseSubmitButton> {
+  bool _isPressed = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTapDown: (_) {
+        if (widget.submissionStatus != RequestsStatus.loadi
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+import '../../../../core/base/requests_status.dart';
+import '../../../../core/services/app_clock.dart';
+import '../../domain/entities/expense.dart';
+
+class ExpenseState {
+  ExpenseState({
+    this.expensesStatus = RequestsStatus.initial,
+    this.submissionStatus = RequestsStatus.initial,
+    this.expenses = const [],
+    DateTime? selectedDate,
+    this.selectedCategoryId,
+    this.loadErrorMessage,
+    this.submissionErrorMessage,
+    required AppClock clock,
+  }) : _clock = clock,
+       selectedDate = selectedDate ?? clock.now();
+
+  final RequestsStatus expensesStatus;
+  final RequestsStatus submissionStatus;
+  final List<Expense> expenses;
+  final DateTime selectedDate;
+  final String? selectedCategoryId;
+  final String? loadErrorMessage;
+  final String? submissionErrorMessage;
+  final AppClock _clock;
+
+  ExpenseState copyWith({
+    RequestsStatus? expensesStatus,
+    RequestsStatus? submissionStatus,
+    Lis
+...(truncated)
+```
+
+</details>
+
+لقيت سببين واضحين: أولًا submit في `ExpenseCubit` يشغّل نجاح async بدون `await`، وثانيًا اختيار الكاتقوري داخل `FormField` ممكن ما يتحدث مع الـ form state بسبب `initialValue` بدون key متغير. هذا يفسر “أضغط save وما ينضاف” خصوصًا بعد اختيار category.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"BudgetCubit|ExpenseCubit\\(|CategoryCubit\\(|RecurringExpenseCubit|GetBudgets|loadBudgets\" lib\\core\\di lib\\app lib\\features\\budgets -g \"*.dart\"",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\budgets\\presentation\\cubit\\budget_cubit.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\budgets\\presentation\\pages\\budget_page.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\categories\\presentation\\cubit\\category_cubit.dart | Select-Object -First 120",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.7 seconds
+Output:
+lib\app\shell\main_shell_page.dart:23:    return BlocListener<RecurringExpenseCubit, RecurringExpenseState>(
+lib\core\di\register_recurring_feature.dart:81:  if (!sl.isRegistered<RecurringExpenseCubit>()) {
+lib\core\di\register_recurring_feature.dart:82:    sl.registerFactory<RecurringExpenseCubit>(
+lib\core\di\register_recurring_feature.dart:83:      () => RecurringExpenseCubit(
+lib\features\budgets\presentation\widgets\budget_list\budget_list_view.dart:34:          onDelete: () => context.read<BudgetCubit>().deleteBudget(item.budget.id),
+lib\core\di\register_expense_feature.dart:79:      () => ExpenseCubit(
+lib\app\routes\app_router.dart:47:              BlocProvider(create: (context) => sl<RecurringExpenseCubit>()),
+lib\app\routes\app_router.dart:143:                create: (context) => sl<BudgetCubit>()..loadBudgets(),
+lib\features\budgets\presentation\pages\budget_page.dart:31:          listener: (context, _) => context.read<Budget
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+import '../../../../core/base/requests_status.dart';
+import '../../domain/entities/budget.dart';
+import '../../domain/usecases/calculate_budget_progress.dart';
+import '../../domain/usecases/create_budget.dart';
+import '../../domain/usecases/delete_budget.dart';
+import '../../domain/usecases/get_budgets.dart';
+import '../../domain/usecases/update_budget.dart';
+import 'budget_state.dart';
+
+class BudgetCubit extends Cubit<BudgetState> {
+  BudgetCubit({
+    required CreateBudget createBudget,
+    required GetBudgets getBudgets,
+    required UpdateBudget updateBudget,
+    required DeleteBudget deleteBudget,
+    required CalculateBudgetProgress calculateBudgetProgress,
+  }) : _createBudget = createBudget,
+       _getBudgets = getBudgets,
+       _updateBudget = up
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/features/budgets/presentation/pages/budget_form_page.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+import '../../../../core/base/requests_status.dart';
+import '../../../../core/widgets/responsive_page_content.dart';
+import '../../../expenses/presentation/cubit/expense_cubit.dart';
+import '../../../expenses/presentation/cubit/expense_state.dart';
+import '../cubit/budget_cubit.dart';
+import '../cubit/budget_state.dart';
+import '../widgets/budget_list/budget_empty_state.dart';
+import '../widgets/budget_list/budget_list_view.dart';
+
+class BudgetPage extends StatelessWidget {
+  const BudgetPage({super.key});
+
+  static Future<void> open(BuildContext context) {
+    return Navigator.of(
+      context,
+    ).push(MaterialPageRoute<void>(buil
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/core/base/requests_status.dart';
+import 'package:spend_wise/core/services/app_clock.dart';
+import 'package:spend_wise/core/services/id_generator.dart';
+import 'package:spend_wise/features/categories/domain/entities/category.dart';
+import 'package:spend_wise/features/categories/domain/usecases/add_category.dart';
+import 'package:spend_wise/features/categories/domain/usecases/can_delete_category.dart';
+import 'package:spend_wise/features/categories/domain/usecases/can_delete_category_referential_integrity.dart';
+import 'package:spend_wise/features/categories/domain/usecases/delete_category.dart';
+import 'package:spend_wise/features/categories/domain/usecases/get_categories.dart';
+import 'package:spend_wise/features/categories/domain/usecases/update_category.dart';
+import 'package:spend_wise/features/categories/presentation/cubit/category_state.dart';
+import 
+...(truncated)
+```
+
+</details>
+
+في budget فيه سبب بطء واضح: الصفحة تعيد تحميل budgets عند تغيّر expenses، والراوتر يحمّل عند الإنشاء. سأضيف حارس داخل `BudgetCubit.loadBudgets` يمنع التحميل المتكرر أثناء loading، وأصلح ترتيب submit حتى ما تظهر شاشة loading طويلة بعد كل عملية بدون داعي.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\core\\di\\register_budget_feature.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\core\\di\\register_expense_feature.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\core\\di\\register_category_feature.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\core\\di\\injection_container.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+import 'package:get_it/get_it.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+import '../../features/budgets/data/datasources/budget_local_data_source.dart';
+import '../../features/budgets/data/datasources/budget_remote_data_source.dart';
+import '../../features/budgets/data/repositories/budget_repository_impl.dart';
+import '../../features/budgets/domain/repositories/budget_repository.dart';
+import '../../features/budgets/domain/usecases/calculate_budget_progress.dart';
+import '../../features/budgets/domain/usecases/create_budget.dart';
+import '../../features/budgets/domain/usecases/delete_budget.dart';
+import '../../features/budgets/domain/usecases/get_budget_by_category.dart';
+import '../../features/budgets/domain/usecases/get_budgets.dart';
+import '../../features/budgets/domain/usecases/update_budget.dart';
+import '../../features/budgets/presentation/cubit/budge
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+import 'package:get_it/get_it.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+import '../../../../core/services/app_clock.dart';
+import '../../features/expenses/data/datasources/expense_local_data_source.dart';
+import '../../features/expenses/data/datasources/expense_remote_data_source.dart';
+import '../../features/expenses/data/repositories/expense_repository_impl.dart';
+import '../../features/expenses/domain/repositories/expense_repository.dart';
+import '../../features/expenses/domain/usecases/add_expense.dart';
+import '../../features/expenses/domain/usecases/delete_expense.dart';
+import '../../features/expenses/domain/usecases/get_expenses.dart';
+import '../../features/expenses/domain/usecases/get_visible_expenses.dart';
+import '../../features/expenses/domain/usecases/update_expense.dart';
+import '../../features/expenses/presentation/cubit/expense_cubit.dart';
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+import 'package:get_it/get_it.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+import '../../core/services/app_clock.dart';
+import '../../core/services/id_generator.dart';
+import '../../features/budgets/domain/repositories/budget_repository.dart';
+import '../../features/categories/data/datasources/category_local_data_source.dart';
+import '../../features/categories/data/datasources/category_remote_data_source.dart';
+import '../../features/categories/data/repositories/category_repository_impl.dart';
+import '../../features/categories/domain/repositories/category_repository.dart';
+import '../../features/categories/domain/usecases/add_category.dart';
+import '../../features/categories/domain/usecases/can_delete_category.dart';
+import '../../features/categories/domain/usecases/can_delete_category_referential_integrity.dart';
+import '../../features/categories/domain/usecas
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+import 'package:get_it/get_it.dart';
+import 'package:spend_wise/core/services/app_clock.dart';
+import 'package:spend_wise/core/services/id_generator.dart';
+import 'package:spend_wise/core/di/register_auth_feature.dart';
+import 'package:spend_wise/core/di/register_category_feature.dart';
+import 'package:spend_wise/core/di/register_expense_feature.dart';
+import 'package:spend_wise/core/di/register_budget_feature.dart';
+import 'package:spend_wise/core/di/register_recurring_feature.dart';
+import 'package:spend_wise/core/di/register_dashboard_feature.dart';
+import 'package:spend_wise/core/di/register_insights_feature.dart';
+import 'package:spend_wise/core/di/register_settings_feature.dart';
+import 'package:spend_wise/core/di/register_export_feature.dart';
+import 'package:spend_wise/core/di/register_local_storage.dart';
+
+import '../../app/shell/cubit/shell_cubit.dart';
+
+final GetIt sl = GetIt.instance;
+
+Future<void> setupDependenc
+...(truncated)
+```
+
+</details>
+
+في DI فعلاً صار modular الآن، لكن فيه نقطة مهمة: الـ repositories الحالية تستخدم Supabase remote data sources. بطء categories/budgets غالبًا لأن `getCategories/getBudgets` يحاول remote أو sync قبل ما يعرض المحلي. سأفحص repository implementation وأخليه local-first للعرض السريع إذا كان يمسك الشبكة.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\categories\\data\\repositories\\category_repository_impl.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\budgets\\data\\repositories\\budget_repository_impl.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\data\\repositories\\expense_repository_impl.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\recurring\\data\\repositories\\recurring_expense_repository_impl.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\budgets\\presentation\\widgets\\budget_list\\budget_card.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+import 'dart:async';
+
+import 'package:spend_wise/features/categories/data/datasources/category_local_data_source.dart';
+import 'package:spend_wise/features/categories/data/datasources/category_remote_data_source.dart';
+import 'package:spend_wise/features/categories/data/models/category_model.dart';
+import 'package:spend_wise/features/categories/domain/entities/category.dart';
+import 'package:spend_wise/features/categories/domain/repositories/category_repository.dart';
+
+class CategoryRepositoryImpl implements CategoryRepository {
+  const CategoryRepositoryImpl(this._localDataSource, this._remoteDataSource);
+
+  final CategoryLocalDataSource _localDataSource;
+  final CategoryRemoteDataSource _remoteDataSource;
+
+  @override
+  Future<void> addCategory(Category category) async {
+    final categoryModel = CategoryModel.fromEntity(category);
+    await _localDataSource.addCategory(categoryModel);
+    try {
+      await _remoteDataSou
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'dart:async';
+
+import '../../domain/entities/budget.dart';
+import '../../domain/repositories/budget_repository.dart';
+import '../datasources/budget_local_data_source.dart';
+import '../datasources/budget_remote_data_source.dart';
+import '../models/budget_model.dart';
+
+class BudgetRepositoryImpl implements BudgetRepository {
+  const BudgetRepositoryImpl(this._localDataSource, this._remoteDataSource);
+
+  final BudgetLocalDataSource _localDataSource;
+  final BudgetRemoteDataSource _remoteDataSource;
+
+  @override
+  Future<void> createBudget(Budget budget) async {
+    final model = BudgetModel.fromEntity(budget);
+    await _localDataSource.createBudget(model);
+    try {
+      await _remoteDataSource.createBudget(model);
+    } catch (_) {
+      // Offline fallback
+    }
+  }
+
+  @override
+  Future<List<Budget>> getBudgets() async {
+    unawaited(_syncFromRemote());
+    final models = await _localDataSource.getBudgets
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+import 'dart:async';
+
+import '../../domain/entities/expense.dart';
+import '../../domain/repositories/expense_repository.dart';
+import '../datasources/expense_local_data_source.dart';
+import '../datasources/expense_remote_data_source.dart';
+import '../models/expense_model.dart';
+
+class ExpenseRepositoryImpl implements ExpenseRepository {
+  const ExpenseRepositoryImpl(this._localDataSource, this._remoteDataSource);
+
+  final ExpenseLocalDataSource _localDataSource;
+  final ExpenseRemoteDataSource _remoteDataSource;
+
+  @override
+  Future<void> addExpense(Expense expense) async {
+    final expenseModel = ExpenseModel.fromEntity(expense);
+    await _localDataSource.addExpense(expenseModel);
+    try {
+      await _remoteDataSource.addExpense(expenseModel);
+    } catch (_) {
+      // Offline fallback: catch remote exceptions
+    }
+  }
+
+  @override
+  Future<List<Expense>> getExpenses() async {
+    unawaited(_syncFromRemote()
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+import 'dart:async';
+
+import '../../domain/entities/recurring_expense.dart';
+import '../../domain/repositories/recurring_expense_repository.dart';
+import '../datasources/recurring_expense_local_data_source.dart';
+import '../datasources/recurring_expense_remote_data_source.dart';
+import '../models/recurring_expense_model.dart';
+
+class RecurringExpenseRepositoryImpl implements RecurringExpenseRepository {
+  const RecurringExpenseRepositoryImpl(
+    this._localDataSource,
+    this._remoteDataSource,
+  );
+
+  final RecurringExpenseLocalDataSource _localDataSource;
+  final RecurringExpenseRemoteDataSource _remoteDataSource;
+
+  @override
+  Future<void> createRecurringExpense(RecurringExpense recurringExpense) async {
+    final model = RecurringExpenseModel.fromEntity(recurringExpense);
+    await _localDataSource.createRecurringExpense(model);
+    try {
+      await _remoteDataSource.createRecurringExpense(model);
+    } catch (_
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/features/budgets/presentation/pages/budget_form_page.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+import '../../../../../core/services/currency_display_service.dart';
+import '../../../../../core/theme/app_spacing.dart';
+import '../../../../../core/widgets/category_badge.dart';
+import '../../../../../features/categories/domain/entities/category.dart';
+import '../../../../../features/settings/domain/entities/app_currency.dart';
+import '../../../../../features/settings/presentation/cubit/settings_cubit.dart';
+import '../../../domain/entities/budget_progress.dart';
+import 'budget_progress_bar.dart';
+
+class BudgetCard extends StatelessWidget {
+  const BudgetCard({
+    required th
+...(truncated)
+```
+
+</details>
+
+الـ repositories فعليًا local-first لكنها تعمل remote sync بالخلفية في كل قراءة، وهذا ممكن يسبب ضغط/بطء متكرر. سأعمل إصلاحين الآن: منع load المتكرر في Cubits، وضمان أن فتح الفورم يحمّل categories فقط عند الحاجة بدل كل مرة.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\recurring\\presentation\\widgets\\recurring_list\\recurring_expenses_list_view.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\recurring\\presentation\\widgets\\recurring_list\\recurring_expense_tile.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\categories\\presentation\\cubit\\category_state.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\budgets\\presentation\\cubit\\budget_state.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\recurring\\presentation\\cubit\\recurring_expense_state.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/theme/app_spacing.dart';
+import '../../../../../core/utils/category_resolver.dart';
+import '../../../../../features/categories/presentation/cubit/category_cubit.dart';
+import '../../../domain/entities/recurring_expense.dart';
+import 'recurring_expense_tile.dart';
+
+class RecurringExpensesListView extends StatelessWidget {
+  const RecurringExpensesListView({required this.recurringExpenses, super.key});
+
+  final List<RecurringExpense> recurringExpenses;
+
+  @override
+  Widget build(BuildContext context) {
+    final categories = context.select(
+      (CategoryCubit cubit) => cubit.state.categories,
+    );
+    final categoriesById = CategoryResolver.indexCategories(categories);
+
+    return ListView.separated(
+      padding: EdgeInsets.symmetric(vertica
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/features/recurring/presentation/extensions/recurring_repeat_type_extension.dart';
+import 'package:spend_wise/features/recurring/presentation/pages/recurring_expense_form_page.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+import '../../../../../core/theme/app_spacing.dart';
+import '../../../../../core/utils/app_formatters.dart';
+import '../../../../../core/widgets/currency_text.dart';
+import '../../../../../core/widgets/category_badge.dart';
+import '../../../../../features/categories/domain/entities/category.dart';
+import '../../../domain/entities/recurring_expense.dart';
+import '../../cubit/recurring_expense_cubit.dart';
+
+class RecurringExpenseTile extends StatelessWidget {
+  
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:spend_wise/core/base/requests_status.dart';
+import 'package:spend_wise/features/categories/domain/entities/category.dart';
+
+class CategoryState {
+  final RequestsStatus categoriesStatus;
+  final RequestsStatus submissionStatus;
+  final RequestsStatus deletionStatus;
+  final List<Category> categories;
+  final String categoryName;
+  final String selectedIcon;
+  final int selectedColor;
+  final Category? editingCategory;
+  final String? loadErrorMessage;
+  final String? submissionErrorMessage;
+  final String? deletionErrorMessage;
+  final String? userMessage;
+  final int formVersion;
+
+  const CategoryState({
+    this.categoriesStatus = RequestsStatus.initial,
+    this.submissionStatus = RequestsStatus.initial,
+    this.deletionStatus = RequestsStatus.initial,
+    this.categories = const [],
+    this.categoryName = '',
+    this.selectedIcon = 'shopping_cart',
+    this.selectedColor = 0xFFFF6B6B,
+    this.
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+import '../../../../core/base/requests_status.dart';
+import '../../domain/entities/budget_progress.dart';
+
+class BudgetState {
+  const BudgetState({
+    this.status = RequestsStatus.initial,
+    this.submissionStatus = RequestsStatus.initial,
+    this.budgets = const [],
+    this.errorMessage,
+    this.submissionMessage,
+  });
+
+  final RequestsStatus status;
+  final RequestsStatus submissionStatus;
+  final List<BudgetProgress> budgets;
+  final String? errorMessage;
+  final String? submissionMessage;
+
+  BudgetState copyWith({
+    RequestsStatus? status,
+    RequestsStatus? submissionStatus,
+    List<BudgetProgress>? budgets,
+    String? errorMessage,
+    String? submissionMessage,
+    bool clearErrorMessage = false,
+    bool clearSubmissionMessage = false,
+  }) {
+    return BudgetState(
+      status: status ?? this.status,
+      submissionStatus: submissionStatus ?? this.submissionStatus,
+      budgets: budgets ??
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+import '../../../../core/base/requests_status.dart';
+import '../../domain/entities/recurring_expense.dart';
+
+class RecurringExpenseState {
+  const RecurringExpenseState({
+    this.status = RequestsStatus.initial,
+    this.submissionStatus = RequestsStatus.initial,
+    this.recurringExpenses = const [],
+    this.generatedExpenseCount = 0,
+    this.errorMessage,
+    this.submissionMessage,
+    // Form fields
+    this.selectedTitle = '',
+    this.selectedAmount = '',
+    this.selectedCategoryId,
+    this.selectedRepeatType,
+    this.selectedDueDate,
+    this.clearSelectedCategoryId = false,
+    this.clearSubmissionErrorMessage = true,
+  });
+
+  final RequestsStatus status;
+  final RequestsStatus submissionStatus;
+  final List<RecurringExpense> recurringExpenses;
+  final int generatedExpenseCount;
+  final String? errorMessage;
+  final String? submissionMessage;
+  final String selectedTitle;
+  final String selectedAmount
+...(truncated)
+```
+
+</details>
+
+سبب “يضغط زر وما يصير شيء” غالبًا مو الزر نفسه، بل أن repository ينتظر Supabase بعد ما يحفظ محليًا. هذا يخلي الواجهة كأنها معلقة. سأخلي الكتابة local-first حقيقية: نحفظ محليًا فورًا، ونرسل للـ remote بالخلفية بدون تعطيل المستخدم.
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/expenses/presentation/cubit/expense_cubit.dart\n@@\n   Future<void> _performSubmission({\n     required Future<void> Function() action,\n-    required void Function() onSuccess,\n+    required Future<void> Function() onSuccess,\n     required String fallbackErrorMessage,\n   }) async {\n@@\n     try {\n       await action();\n-      onSuccess();\n+      await onSuccess();\n*** Update File: lib/features/expenses/presentation/widgets/expense_form/expense_category_section.dart\n@@\n             child: ExpenseCategoryField(\n+              key: ValueKey(selectedCategoryId ?? widget.initialExpense?.categoryId),\n               categories: widget.categories,\n*** Update File: lib/features/expenses/presentation/widgets/expense_form/expense_category_field.dart\n@@\n         duration: const Duration(milliseconds: 200),\n         child: FormField<String>(\n+          key: ValueKey(widget.initialValue),\n           initialValue: widget.initialValue,\n*** Update File: lib/features/expenses/presentation/pages/expenses_page.dart\n@@\n   }) async {\n     final expenseCubit = context.read<ExpenseCubit>()..initializeForm(expense);\n+    final categoryCubit = context.read<CategoryCubit>();\n+    if (categoryCubit.state.categories.isEmpty) {\n+      await categoryCubit.loadCategories();\n+    }\n \n     await Navigator.of(context).push(\n@@\n             BlocProvider.value(value: expenseCubit),\n-            BlocProvider.value(value: context.read<CategoryCubit>()),\n+            BlocProvider.value(value: categoryCubit),\n*** Update File: lib/features/expenses/presentation/pages/expense_form_page.dart\n@@\n   static Future<void> open(BuildContext context, {Expense? expense}) async {\n     final expenseCubit = context.read<ExpenseCubit>()..initializeForm(expense);\n+    final categoryCubit = context.read<CategoryCubit>();\n+    if (categoryCubit.state.categories.isEmpty) {\n+      await categoryCubit.loadCategories();\n+    }\
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 1.7 seconds
+Output:
+Success. Updated the following files:
+M lib/features/expenses/presentation/cubit/expense_cubit.dart
+M lib/features/expenses/presentation/widgets/expense_form/expense_category_section.dart
+M lib/features/expenses/presentation/widgets/expense_form/expense_category_field.dart
+M lib/features/expenses/presentation/pages/expenses_page.dart
+M lib/features/expenses/presentation/pages/expense_form_page.dart
+```
+
+</details>
+
+فتحت الفورم الآن ما راح ينتظر تحميل الكاتقوري قبل التنقل؛ بيبدأ التحميل بالخلفية ويعرض الفورم مباشرة. هذا يقلل إحساس البطء، خصوصًا إذا Supabase أو sync بطيء.
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/expenses/presentation/pages/expenses_page.dart\n@@\n     final expenseCubit = context.read<ExpenseCubit>()..initializeForm(expense);\n     final categoryCubit = context.read<CategoryCubit>();\n     if (categoryCubit.state.categories.isEmpty) {\n-      await categoryCubit.loadCategories();\n+      categoryCubit.loadCategories();\n     }\n*** Update File: lib/features/expenses/presentation/pages/expense_form_page.dart\n@@\n     final expenseCubit = context.read<ExpenseCubit>()..initializeForm(expense);\n     final categoryCubit = context.read<CategoryCubit>();\n     if (categoryCubit.state.categories.isEmpty) {\n-      await categoryCubit.loadCategories();\n+      categoryCubit.loadCategories();\n     }\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+Success. Updated the following files:
+M lib/features/expenses/presentation/pages/expenses_page.dart
+M lib/features/expenses/presentation/pages/expense_form_page.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/expenses/data/repositories/expense_repository_impl.dart\n@@\n     final expenseModel = ExpenseModel.fromEntity(expense);\n     await _localDataSource.addExpense(expenseModel);\n-    try {\n-      await _remoteDataSource.addExpense(expenseModel);\n-    } catch (_) {\n-      // Offline fallback: catch remote exceptions\n-    }\n+    unawaited(_syncWrite(() => _remoteDataSource.addExpense(expenseModel)));\n@@\n     final expenseModel = ExpenseModel.fromEntity(expense);\n     await _localDataSource.updateExpense(expenseModel);\n-    try {\n-      await _remoteDataSource.updateExpense(expenseModel);\n-    } catch (_) {\n-      // Offline fallback: catch remote exceptions\n-    }\n+    unawaited(_syncWrite(() => _remoteDataSource.updateExpense(expenseModel)));\n@@\n     await _localDataSource.deleteExpense(id);\n+    unawaited(_syncWrite(() => _remoteDataSource.deleteExpense(id)));\n+  }\n+\n+  Future<void> _syncWrite(Future<void> Function() write) async {\n     try {\n-      await _remoteDataSource.deleteExpense(id);\n+      await write();\n     } catch (_) {\n-      // Offline fallback: catch remote exceptions\n+      // Offline fallback\n     }\n   }\n*** Update File: lib/features/categories/data/repositories/category_repository_impl.dart\n@@\n     final categoryModel = CategoryModel.fromEntity(category);\n     await _localDataSource.addCategory(categoryModel);\n-    try {\n-      await _remoteDataSource.addCategory(categoryModel);\n-    } catch (_) {\n-      // Offline fallback\n-    }\n+    unawaited(_syncWrite(() => _remoteDataSource.addCategory(categoryModel)));\n@@\n     await _localDataSource.deleteCategory(id);\n-    try {\n-      await _remoteDataSource.deleteCategory(id);\n-    } catch (_) {\n-      // Offline fallback\n-    }\n+    unawaited(_syncWrite(() => _remoteDataSource.deleteCategory(id)));\n@@\n     final categoryModel = CategoryModel.fromEntity(category);\n     await _localDataSource.update
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 1.6 seconds
+Output:
+Success. Updated the following files:
+M lib/features/expenses/data/repositories/expense_repository_impl.dart
+M lib/features/categories/data/repositories/category_repository_impl.dart
+M lib/features/budgets/data/repositories/budget_repository_impl.dart
+M lib/features/recurring/data/repositories/recurring_expense_repository_impl.dart
+```
+
+</details>
+
+تم تحويل عمليات الإضافة/التعديل/الحذف إلى local-first فعليًا: الحفظ المحلي يتم فورًا، والـ remote sync بالخلفية. هذا يجب أن يحل إحساس “ضغطت وما صار شيء” في expenses/recurring/budgets/categories.
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/budgets/presentation/cubit/budget_cubit.dart\n@@\n   Future<void> loadBudgets() async {\n+    if (state.status == RequestsStatus.loading) {\n+      return;\n+    }\n+\n     emit(state.copyWith(status: RequestsStatus.loading, clearErrorMessage: true));\n@@\n       await action();\n-      emit(\n-        state.copyWith(\n-          submissionStatus: RequestsStatus.success,\n-          submissionMessage: successMessage,\n-        ),\n-      );\n       await loadBudgets();\n+      emit(\n+        state.copyWith(\n+          submissionStatus: RequestsStatus.success,\n+          submissionMessage: successMessage,\n+        ),\n+      );\n*** Update File: lib/features/categories/presentation/cubit/category_cubit.dart\n@@\n   Future<void> loadCategories() async {\n     if (state.categoriesStatus == RequestsStatus.loading) {\n       return;\n     }\n+    if (state.categoriesStatus == RequestsStatus.success &&\n+        state.categories.isNotEmpty) {\n+      return;\n+    }\n*** Update File: lib/features/recurring/presentation/cubit/recurring_expense_cubit.dart\n@@\n   Future<void> loadRecurringExpenses() async {\n+    if (state.status == RequestsStatus.loading) {\n+      return;\n+    }\n+\n     emit(\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.9 seconds
+Output:
+Success. Updated the following files:
+M lib/features/budgets/presentation/cubit/budget_cubit.dart
+M lib/features/categories/presentation/cubit/category_cubit.dart
+M lib/features/recurring/presentation/cubit/recurring_expense_cubit.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/recurring/presentation/pages/recurring_expense_form_page.dart\n@@\n     final recurringCubit = context.read<RecurringExpenseCubit>()\n       ..initializeForm(recurringExpense);\n+    final categoryCubit = context.read<CategoryCubit>();\n+    if (categoryCubit.state.categories.isEmpty) {\n+      categoryCubit.loadCategories();\n+    }\n \n     await Navigator.of(context).push(\n@@\n             BlocProvider.value(value: recurringCubit),\n-            BlocProvider.value(value: context.read<CategoryCubit>()),\n+            BlocProvider.value(value: categoryCubit),\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+Success. Updated the following files:
+M lib/features/recurring/presentation/pages/recurring_expense_form_page.dart
+```
+
+</details>
+
+الآن سأضيف تنبيه budget خارج شاشة budget نفسها. بدل ما نخلي المستخدم يكتشف المشكلة متأخر، سأربط dashboard بالـ BudgetCubit وأعرض بطاقة تحذير إذا أي budget وصل 80% أو تجاوزه.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\dashboard\\presentation\\widgets\\dashboard_overview.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\dashboard\\presentation\\pages\\dashboard_page.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\budgets\\domain\\entities\\budget_progress.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\budgets\\presentation\\widgets\\budget_list\\budget_progress_bar.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"dashboard\" assets\\translations\\en.json assets\\translations\\ar.json | Select-Object -First 40",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.7 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+import '../../../categories/presentation/pages/category_list_page.dart';
+import '../cubit/dashboard_state.dart';
+import 'dashboard_budget_alerts.dart';
+import 'dashboard_category_breakdown.dart';
+import 'dashboard_insights.dart';
+import 'dashboard_recent_expenses.dart';
+import 'dashboard_spending_chart.dart';
+import 'dashboard_summary_cards.dart';
+
+class DashboardOverview extends StatelessWidget {
+  const DashboardOverview({required this.state, super.key});
+
+  final DashboardState state;
+
+  @override
+  Widget build(BuildContext context) {
+    final summary = state.summary!;
+
+    return ListView(
+      physics: const BouncingScrollPhysics(),
+      c
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.6 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/base/requests_status.dart';
+import '../../../../core/widgets/responsive_page_content.dart';
+import '../../../categories/presentation/cubit/category_cubit.dart';
+import '../../../categories/presentation/cubit/category_state.dart';
+import '../../../expenses/presentation/cubit/expense_cubit.dart';
+import '../../../expenses/presentation/cubit/expense_state.dart';
+import '../../../expenses/presentation/pages/expenses_page.dart';
+import '../cubit/dashboard_cubit.dart';
+import '../cubit/dashboard_state.dart';
+import '../widgets/dashboard_empty_state.dart';
+import '../widgets/dashboard_error_state.dart';
+import '../widgets/dashboard_overview.dart';
+
+class DashboardPage extends StatelessWidget {
+  const DashboardPage({super.key, this.showScaffold = true});
+
+  final bool showScaffold;
+
+  @override
+  Widget build(BuildCo
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.6 seconds
+Output:
+import 'budget.dart';
+
+enum BudgetProgressStatus { safe, warning, exceeded }
+
+class BudgetProgress {
+  const BudgetProgress({
+    required this.budget,
+    required this.progress,
+    required this.status,
+  });
+
+  final Budget budget;
+  final double progress;
+  final BudgetProgressStatus status;
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.7 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../core/theme/app_colors.dart';
+import '../../../domain/entities/budget_progress.dart';
+
+class BudgetProgressBar extends StatelessWidget {
+  const BudgetProgressBar({
+    required this.progress,
+    required this.status,
+    super.key,
+  });
+
+  final double progress;
+  final BudgetProgressStatus status;
+
+  @override
+  Widget build(BuildContext context) {
+    final color = switch (status) {
+      BudgetProgressStatus.safe => AppColors.success,
+      BudgetProgressStatus.warning => const Color(0xFFF59E0B),
+      BudgetProgressStatus.exceeded => AppColors.danger,
+    };
+
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(999.r),
+      child: LinearProgressIndicator(
+        minHeight: 10.h,
+        value: progress > 1 ? 1 : progress,
+        backgroundColor: color.withAlpha(40),
+    
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 1.1 seconds
+Output:
+assets\translations\en.json:8:    "dashboard": "Dashboard",
+assets\translations\en.json:397:  "dashboard": {
+assets\translations\en.json:401:      "title": "Your dashboard starts with one expense",
+assets\translations\en.json:484:      "errorLoad":"Could not load your dashboard",
+assets\translations\ar.json:8:    "dashboard": "الرئيسية",
+assets\translations\ar.json:395:  "dashboard": {
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\dashboard\\presentation\\widgets\\dashboard_budget_alerts.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\dashboard\\presentation\\cubit\\dashboard_state.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\dashboard\\presentation\\cubit\\dashboard_cubit.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\dashboard\\domain\\entities\\budget_alert.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\core\\di\\register_dashboard_feature.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_colors.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
+import 'package:spend_wise/core/widgets/category_badge.dart';
+import 'package:spend_wise/features/budgets/domain/entities/budget_progress.dart';
+import 'package:spend_wise/features/budgets/presentation/widgets/budget_list/budget_progress_bar.dart';
+import 'package:spend_wise/features/categories/domain/entities/category.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+
+class DashboardBudgetAlerts extends StatelessWidget {
+  const DashboardBudgetAlerts({
+    required this.alerts,
+    required this.categoriesById,
+    super.key,
+  });
+
+  final List<BudgetProgress> alerts;
+  final Map<String, Category> categoriesById;
+
+  @override
+  Widget b
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:spend_wise/core/base/requests_status.dart';
+import 'package:spend_wise/features/budgets/domain/entities/budget_progress.dart';
+import 'package:spend_wise/features/categories/domain/entities/category.dart';
+import 'package:spend_wise/features/dashboard/domain/entities/category_spending.dart';
+import 'package:spend_wise/features/dashboard/domain/entities/dashboard_summary.dart';
+import 'package:spend_wise/features/dashboard/domain/entities/spending_chart_point.dart';
+import 'package:spend_wise/features/expenses/domain/entities/expense.dart';
+import 'package:spend_wise/features/insights/domain/entities/insight_card.dart';
+
+class DashboardState {
+  const DashboardState({
+    this.status = RequestsStatus.initial,
+    this.summary,
+    this.weeklySpending = const [],
+    this.recentExpenses = const [],
+    this.topCategories = const [],
+    this.insights = const [],
+    this.budgetAlerts = const [],
+    this.catego
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/features/budgets/domain/entities/budget_progress.dart';
+import 'package:spend_wise/features/budgets/domain/usecases/calculate_budget_progress.dart';
+import 'package:spend_wise/features/budgets/domain/usecases/get_budgets.dart';
+import 'package:spend_wise/features/categories/domain/entities/category.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+import '../../../../core/base/requests_status.dart';
+import '../../domain/usecases/get_dashboard_source_data.dart';
+import '../../domain/usecases/get_dashboard_summary.dart';
+import '../../domain/usecases/get_recent_expenses.dart';
+import '../../domain/usecases/get_top_categories.dart';
+import '../../domain/usecases/get_weekly_spending.dart';
+import 'dashboard_state.dart';
+import 'package:spend_wise/features/insights/domain/usecases/gener
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 1
+Wall time: 0.5 seconds
+Output:
+Get-Content : Cannot find path 
+'D:\Dev\FlutterProjects\spend_wise\lib\features\dashboard\domain\entities\budget_alert.dart' because it does not exist.
+At line:2 char:1
++ Get-Content lib\features\dashboard\domain\entities\budget_alert.dart
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (D:\Dev\FlutterP...dget_alert.dart:String) [Get-Content], ItemNotFoundEx 
+   ception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:get_it/get_it.dart';
+
+import '../../features/dashboard/data/repositories/dashboard_repository_impl.dart';
+import '../../features/dashboard/domain/repositories/dashboard_repository.dart';
+import '../../features/dashboard/domain/usecases/get_dashboard_source_data.dart';
+import '../../features/dashboard/domain/usecases/get_dashboard_summary.dart';
+import '../../features/dashboard/domain/usecases/get_recent_expenses.dart';
+import '../../features/dashboard/domain/usecases/get_top_categories.dart';
+import '../../features/dashboard/domain/usecases/get_weekly_spending.dart';
+import '../../features/budgets/domain/usecases/calculate_budget_progress.dart';
+import '../../features/budgets/domain/usecases/get_budgets.dart';
+import '../../features/dashboard/presentation/cubit/dashboard_cubit.dart';
+import '../../core/services/app_clock.dart';
+import '../../features/categories/domain/repositories/category_repository.dart';
+impor
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\budgets\\domain\\usecases\\calculate_budget_progress.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.2 seconds
+Output:
+import '../entities/budget_progress.dart';
+import '../entities/budget.dart';
+
+class CalculateBudgetProgress {
+  const CalculateBudgetProgress();
+
+  BudgetProgress call(Budget budget) {
+    final progress = budget.limitAmount == 0
+        ? 0.0
+        : budget.spentAmount / budget.limitAmount;
+    final status = progress >= 1
+        ? BudgetProgressStatus.exceeded
+        : (progress >= 0.8
+              ? BudgetProgressStatus.warning
+              : BudgetProgressStatus.safe);
+
+    return BudgetProgress(
+      budget: budget,
+      progress: progress.clamp(0.0, progress > 1 ? progress : 1.0),
+      status: status,
+    );
+  }
+}
+```
+
+</details>
+
+بطاقة budget alert موجودة بالفعل في dashboard، لكن تحتاج تحديث أفضل واسم كاتقوري مترجم. سأضيف reload للـ dashboard عند الرجوع/الدخول لتبويب dashboard، وأحسن رسالة التنبيه لتستخدم الاسم المعروض بدل الاسم الخام.
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/categories/presentation/cubit/category_cubit.dart\n@@\n-  Future<void> loadCategories() async {\n+  Future<void> loadCategories({bool force = false}) async {\n     if (state.categoriesStatus == RequestsStatus.loading) {\n       return;\n     }\n-    if (state.categoriesStatus == RequestsStatus.success &&\n+    if (!force &&\n+        state.categoriesStatus == RequestsStatus.success &&\n         state.categories.isNotEmpty) {\n       return;\n     }\n*** Update File: lib/features/dashboard/presentation/widgets/dashboard_budget_alerts.dart\n@@\n import 'package:spend_wise/features/budgets/domain/entities/budget_progress.dart';\n import 'package:spend_wise/features/budgets/presentation/widgets/budget_list/budget_progress_bar.dart';\n import 'package:spend_wise/features/categories/domain/entities/category.dart';\n+import 'package:spend_wise/features/categories/presentation/utils/category_display_name.dart';\n import 'package:spend_wise/generated/locale_keys.g.dart';\n@@\n           final percent = (alert.progress * 100).clamp(0, 999).round();\n           final isExceeded = alert.status == BudgetProgressStatus.exceeded;\n           final accentColor = isExceeded ? AppColors.danger : const Color(0xFFF59E0B);\n+          final categoryName = category.localizedName;\n           final message = isExceeded\n               ? LocaleKeys.budgets_alerts_exceeded.tr(\n-                  namedArgs: {'category': category.name},\n+                  namedArgs: {'category': categoryName},\n                 )\n               : LocaleKeys.budgets_alerts_warning.tr(\n                   namedArgs: {\n-                    'category': category.name,\n+                    'category': categoryName,\n                     'percent': '$percent',\n                   },\n*** Update File: lib/app/shell/main_shell_page.dart\n@@\n       child: BlocBuilder<ShellCubit, ShellState>(\n+        buildWhen: (previous, current) =>\n+            prev
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 1 seconds
+Output:
+Success. Updated the following files:
+M lib/features/categories/presentation/cubit/category_cubit.dart
+M lib/features/dashboard/presentation/widgets/dashboard_budget_alerts.dart
+M lib/app/shell/main_shell_page.dart
+```
+
+</details>
+
+ملاحظة صغيرة: ما أبغى أترك side-effect داخل `build`. سأحوّل reload dashboard عند تغيير التبويب إلى `BlocListener` بدل استدعائه أثناء البناء، حتى يبقى الأداء والسلوك نظيفين.
+
+<details>
+<summary>Tool: <code>web_search</code></summary>
+
+```json
+{}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/app/shell/main_shell_page.dart\n@@\n   @override\n   Widget build(BuildContext context) {\n-    return BlocListener<RecurringExpenseCubit, RecurringExpenseState>(\n-      listenWhen: (previous, current) =>\n-          previous.generatedExpenseCount != current.generatedExpenseCount &&\n-          current.generatedExpenseCount > 0,\n-      listener: (context, _) {\n-        context.read<ExpenseCubit>().loadExpenses();\n-        context.read<ExpenseFilterCubit>().clearAll();\n-        context.read<DashboardCubit>().loadDashboard();\n-      },\n+    return MultiBlocListener(\n+      listeners: [\n+        BlocListener<RecurringExpenseCubit, RecurringExpenseState>(\n+          listenWhen: (previous, current) =>\n+              previous.generatedExpenseCount != current.generatedExpenseCount &&\n+              current.generatedExpenseCount > 0,\n+          listener: (context, _) {\n+            context.read<ExpenseCubit>().loadExpenses();\n+            context.read<ExpenseFilterCubit>().clearAll();\n+            context.read<DashboardCubit>().loadDashboard();\n+          },\n+        ),\n+        BlocListener<ShellCubit, ShellState>(\n+          listenWhen: (previous, current) =>\n+              previous.currentIndex != current.currentIndex &&\n+              current.currentIndex == 0,\n+          listener: (context, _) =>\n+              context.read<DashboardCubit>().loadDashboard(),\n+        ),\n+      ],\n       child: BlocBuilder<ShellCubit, ShellState>(\n         buildWhen: (previous, current) =>\n             previous.currentIndex != current.currentIndex,\n         builder: (context, state) {\n           final currentDestination = _destinations[state.currentIndex];\n-          if (state.currentIndex == 0) {\n-            context.read<DashboardCubit>().loadDashboard();\n-          }\n \n           return Scaffold(\n@@\n         },\n       ),\n     );\n   }\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+Success. Updated the following files:
+M lib/app/shell/main_shell_page.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"loadCategories\\(\" lib -g \"*.dart\"",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.6 seconds
+Output:
+lib\app\routes\app_router.dart:45:                create: (context) => sl<CategoryCubit>()..loadCategories(),
+lib\app\routes\app_router.dart:66:                create: (context) => sl<CategoryCubit>()..loadCategories(),
+lib\app\routes\app_router.dart:84:                create: (context) => sl<CategoryCubit>()..loadCategories(),
+lib\app\routes\app_router.dart:111:                create: (context) => sl<CategoryCubit>()..loadCategories(),
+lib\app\routes\app_router.dart:149:                create: (context) => sl<CategoryCubit>()..loadCategories(),
+lib\features\categories\presentation\cubit\category_cubit.dart:94:  Future<void> loadCategories({bool force = false}) async {
+lib\features\recurring\presentation\pages\recurring_expense_form_page.dart:28:      categoryCubit.loadCategories();
+lib\features\expenses\presentation\pages\expense_form_page.dart:22:      categoryCubit.loadCategories();
+lib\features\expenses\presentation\pages\expenses_pa
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"onRefresh:.*loadCategories|RefreshIndicator|CategoryList\" lib\\features\\categories -g \"*.dart\"",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.2 seconds
+Output:
+lib\features\categories\presentation\widgets\category_list\category_list_views.dart:18:class CategoryListBody extends StatelessWidget {
+lib\features\categories\presentation\widgets\category_list\category_list_views.dart:19:  const CategoryListBody({super.key});
+lib\features\categories\presentation\widgets\category_list\category_list_views.dart:41:                child: CategoryListContent(
+lib\features\categories\presentation\widgets\category_list\category_list_views.dart:69:class CategoryListContent extends StatelessWidget {
+lib\features\categories\presentation\widgets\category_list\category_list_views.dart:70:  const CategoryListContent({required this.state, super.key});
+lib\features\categories\presentation\widgets\category_list\category_list_views.dart:98:        onPressed: () => CategoryListPage.openCategoryFormPage(context),
+lib\features\categories\presentation\widgets\category_list\category_list_views.dart:113:            return R
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/categories/presentation/widgets/category_list/category_list_views.dart\n@@\n-              onRefresh: context.read<CategoryCubit>().loadCategories,\n+              onRefresh: () =>\n+                  context.read<CategoryCubit>().loadCategories(force: true),\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+Success. Updated the following files:
+M lib/features/categories/presentation/widgets/category_list/category_list_views.dart
+```
+
+</details>
+
+سأضيف حارس مشابه للـ dashboard حتى لا يعيد حساب analytics وbudgets أكثر من مرة في نفس الوقت، لأن هذا واضح أنه يساهم في بطء dashboard/budget عند التنقل أو بعد عمليات الإضافة.
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Update File: lib/features/dashboard/presentation/cubit/dashboard_cubit.dart\n@@\n   Future<void> loadDashboard() async {\n+    if (state.status == RequestsStatus.loading) {\n+      return;\n+    }\n+\n     emit(\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+Success. Updated the following files:
+M lib/features/dashboard/presentation/cubit/dashboard_cubit.dart
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\categories\\presentation\\pages\\category_list_page.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.2 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spend_wise/core/theme/app_spacing.dart';
+import 'package:spend_wise/core/widgets/responsive_page_content.dart';
+import 'package:spend_wise/features/categories/domain/entities/category.dart';
+import 'package:spend_wise/features/categories/presentation/cubit/category_cubit.dart';
+import 'package:spend_wise/features/categories/presentation/pages/category_details_page.dart';
+import 'package:spend_wise/features/categories/presentation/widgets/category_form/category_form_body.dart';
+import 'package:spend_wise/features/categories/presentation/widgets/category_list/category_listeners.dart';
+import 'package:spend_wise/features/categories/presentation/widgets/category_list/category_list_views.dart';
+import 'package:spen
+...(truncated)
+```
+
+</details>
+
+الإصلاحات الأساسية اكتملت. الآن سأشغّل formatter ثم analyze للتأكد من عدم وجود أخطاء compilation بعد تغييرات الـ callbacks والـ repositories والـ localization.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "dart format lib\\features\\expenses\\presentation\\cubit\\expense_cubit.dart lib\\features\\expenses\\presentation\\widgets\\expense_form\\expense_category_section.dart lib\\features\\expenses\\presentation\\widgets\\expense_form\\expense_category_field.dart lib\\features\\expenses\\presentation\\pages\\expenses_page.dart lib\\features\\expenses\\presentation\\pages\\expense_form_page.dart lib\\features\\expenses\\data\\repositories\\expense_repository_impl.dart lib\\features\\categories\\data\\repositories\\category_repository_impl.dart lib\\features\\budgets\\data\\repositories\\budget_repository_impl.dart lib\\features\\recurring\\data\\repositories\\recurring_expense_repository_impl.dart lib\\features\\budgets\\presentation\\cubit\\budget_cubit.dart lib\\features\\categories\\presentation\\cubit\\category_cubit.dart lib\\features\\recurring\\presentation\\cubit\\recurring_expense_cubit.dart lib\\features\\recurring\\presentation\\pages\\recurring_expense_form_page.dart lib\\features\\dashboard\\presentation\\cubit\\dashboard_cubit.dart lib\\features\\dashboard\\presentation\\widgets\\dashboard_budget_alerts.dart lib\\app\\shell\\main_shell_page.dart lib\\features\\categories\\presentation\\widgets\\category_list\\category_list_views.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 120000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"settings_notifications_(push|backup)\\.tr\\(|displayName|InsightType\\.(spending_trend|average_daily|highest_spending_day|spending_streak|smart_recommendation)\" lib -g \"*.dart\"",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+
+---
+
+## User <sup>7/1/2026, 11:30:17 AM</sup>
+
+<turn_aborted>
+The user interrupted the previous turn on purpose. Any running unified exec processes may still be running in the background. If any tools/commands were aborted, they may have partially executed.
+</turn_aborted>
+
+
+---
+
+## User <sup>7/1/2026, 12:40:57 PM</sup>
+
+اضفت الجداول على supabase وهي كالاتي 
+
+-  profiles :-
+
+1. id : uuid / primary key / forging key relation id-> auth.users.id / on delete: Cascade
+2. display_name : text
+3. created_at timestamptz
+
+(RLS) --> 
+
+1. alter policy "profiles_select_own"
+on "public"."profiles"
+to authenticated
+using (
+  (auth.uid() = id)
+);
+
+2. alter policy "profiles_update_own"
+on "public"."profiles"
+to authenticated
+using (
+  (auth.uid() = id)
+) with check (
+  (auth.uid() = id)
+);
+
+-------------------------------------
+
+- user_settings :-
+
+1. user_id : uuid / primary key / forging key relation user_id-> auth.users.id / on delete: Cascade
+2. theme_mode : text
+3. currency_code : text
+4- language : text
+
+(RLS) --> 
+
+1. alter policy "settings_insert_own"
+on "public"."user_settings"
+to authenticated
+with check (
+  (user_id = auth.uid())
+);
+
+2. alter policy "settings_select_own"
+on "public"."user_settings"
+to authenticated
+using (
+  (user_id = auth.uid())
+);
+
+3. alter policy "settings_update_own"
+on "public"."user_settings"
+to authenticated
+using (
+  (user_id = auth.uid())
+) with check (
+  (user_id = auth.uid())
+);
+
+-------------------------------------
+
+- expenses :-
+
+1. id : uuid / primary key
+2. user_id : uuid / forging key relation user_id-> auth.users.id / on delete: Cascade
+3. category_id : uuid / forging key relation category_id-> public.categories.id / on delete: Restrict
+4. title : text
+5. amount : numeric
+6. expense_date : date
+7. note : text
+8. created_at timestamptz
+9. updated_at timestamptz
+
+(RLS) --> 
+
+1. alter policy "expenses_delete_own"
+on "public"."expenses"
+to authenticated
+using (
+  (user_id = auth.uid())
+);
+
+2. alter policy "expenses_insert_own"
+on "public"."expenses"
+to authenticated
+with check (
+  ((user_id = auth.uid()) AND (EXISTS ( SELECT 1
+   FROM categories
+  WHERE ((categories.id = expenses.category_id) AND (categories.user_id = auth.uid())))))
+);
+
+3. alter policy "expenses_select_own"
+on "public"."expenses"
+to authenticated
+using (
+  (user_id = auth.uid())
+);
+
+4. alter policy "expenses_update_own"
+on "public"."expenses"
+to authenticated
+using (
+  (user_id = auth.uid())
+) with check (
+  ((user_id = auth.uid()) AND (EXISTS ( SELECT 1
+   FROM categories
+  WHERE ((categories.id = expenses.category_id) AND (categories.user_id = auth.uid())))))
+);
+
+-------------------------------------
+
+- categories :- 
+
+1. id : uuid / primary key
+2. user_id : uuid / forging key relation user_id-> auth.users.id / on delete: Cascade
+3. name : text
+4. icon : text
+5. color : int8
+6. is_default : bool
+7. created_at timestamptz
+8. updated_at timestamptz
+
+(RLS) --> 
+
+1. alter policy "categories_delete_non_default"
+on "public"."categories"
+to authenticated
+using (
+  ((user_id = auth.uid()) AND (is_default = false))
+);
+
+2. alter policy "categories_insert_own"
+on "public"."categories"
+to authenticated
+with check (
+  (user_id = auth.uid())
+);
+
+3. alter policy "categories_select_own"
+on "public"."categories"
+to authenticated
+using (
+  (user_id = auth.uid())
+);
+
+4. alter policy "categories_update_own"
+on "public"."categories"
+to authenticated
+using (
+  (user_id = auth.uid())
+) with check (
+  (user_id = auth.uid())
+);
+
+-------------------------------------
+
+- budgets : 
+
+1. id : uuid / primary key
+2. user_id : uuid / forging key relation user_id-> auth.users.id / on delete: Cascade
+3. category_id : uuid / forging key relation category_id-> public.categories.id / on delete: Cascade
+4. limit_amount : numeric
+5. period : text
+6. created_at timestamptz
+7. updated_at timestamptz
+
+(RLS) --> 
+
+1. alter policy "budgets_delete_own"
+on "public"."budgets"
+to authenticated
+using (
+  (user_id = auth.uid())
+);
+
+2. alter policy "budgets_insert_own"
+on "public"."budgets"
+to authenticated
+with check (
+  ((user_id = auth.uid()) AND (EXISTS ( SELECT 1
+   FROM categories
+  WHERE ((categories.id = budgets.category_id) AND (categories.user_id = auth.uid())))))
+
+);
+
+3. alter policy "budgets_select_own"
+on "public"."budgets"
+to authenticated
+using (
+  (user_id = auth.uid())
+);
+
+4. alter policy "budgets_update_own"
+on "public"."budgets"
+to authenticated
+using (
+  (user_id = auth.uid())
+) with check (
+  ((user_id = auth.uid()) AND (EXISTS ( SELECT 1
+   FROM categories
+  WHERE ((categories.id = budgets.category_id) AND (categories.user_id = auth.uid())))))
+
+);
+
+-------------------------------------
+
+- recurring_expenses :-
+
+1. id : uuid / primary key
+2. user_id : uuid / forging key relation user_id-> auth.users.id / on delete: Cascade
+3. category_id : uuid / forging key relation category_id-> public.categories.id / on delete: Restrict
+4. title : text
+5. amount : numeric
+6. repeat_type : text
+7. next_due_date : date
+8. is_active : bool
+9. created_at timestamptz
+10. updated_at timestamptz 
+
+(RLS) --> 
+
+1. alter policy "recurring_delete_own"
+on "public"."recurring_expenses"
+to authenticated
+using (
+  (user_id = auth.uid())
+);
+
+2. alter policy "recurring_insert_own"
+on "public"."recurring_expenses"
+to authenticated
+with check (
+  ((user_id = auth.uid()) AND (EXISTS ( SELECT 1
+   FROM categories
+  WHERE ((categories.id = recurring_expenses.category_id) AND (categories.user_id = auth.uid())))))
+);
+
+3. alter policy "recurring_select_own"
+on "public"."recurring_expenses"
+to authenticated
+using (
+  (user_id = auth.uid())
+);
+
+4. alter policy "recurring_update_own"
+on "public"."recurring_expenses"
+to authenticated
+using (
+  (user_id = auth.uid())
+) with check (
+  ((user_id = auth.uid()) AND (EXISTS ( SELECT 1
+   FROM categories
+  WHERE ((categories.id = recurring_expenses.category_id) AND (categories.user_id = auth.uid())))))
+);
+
+---------------------------------------
+
+all Use check expression
+
+expenses - categories - budgets - recurring_expenses all of these tables realtime enabled
+
+
+بالاضافة قمت باضافة auth (login, register, logout) على التطبيق وفعلت الايميل لكن ما فعلت confirm email 
+واعتقد ان هناك شي يمكننا استبداله في صفحة login page وهي اني مستخدم blocListener * bloc builder هل يمكننا استبداله ب blocConsumer ونفس الشي في register page 
+واكمل الي كنت تسويه قبل اذا في ضايل شي
+
+
+---
+
+## Codex <sup>7/1/2026, 12:43:07 PM</sup>
+
+تمام، الجداول والسياسات شكلها مناسبة كبداية، لكن عندك نقطة مهمة جدًا: كل `category_id` في Supabase صار `uuid` بينما default categories القديمة عندنا IDs مثل `cat_food`، وهذا يسبب فشل إدخال expenses/budgets/recurring على remote إذا استخدمت default category غير UUID. سأكمل الإصلاحات المفتوحة أولًا ثم أراجع auth pages وأصلح `BlocConsumer`.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "git status --short",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\auth\\presentation\\pages\\login_page.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\auth\\presentation\\pages\\register_page.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\auth\\presentation\\cubit\\auth_cubit.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\auth\\presentation\\cubit\\auth_state.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+ D .codex-history/2026-05-24_151911_#-Context-from-my-IDE-setup##-Active-_019ded10.md
+?? .codex-history/2026-06-02_100447_#-Context-from-my-IDE-setup##-Active-_019ded10.md
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:spend_wise/features/auth/presentation/widgets/auth_button_widget.dart';
+import 'package:spend_wise/features/auth/presentation/widgets/auth_text_form_field.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+import '../../../../app/routes/route_names.dart';
+import '../cubit/auth_cubit.dart';
+import '../cubit/auth_state.dart';
+import 'register_page.dart';
+
+class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
+
+  static Future<void> open(BuildContext context) {
+    return Navigator.of(context).pushNamed(RouteNames.loginPage);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final formKey = GlobalKey<FormState>();
+    final emailController = TextEditingControll
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:spend_wise/features/auth/presentation/widgets/auth_button_widget.dart';
+import 'package:spend_wise/features/auth/presentation/widgets/auth_text_form_field.dart';
+import 'package:spend_wise/generated/locale_keys.g.dart';
+import '../../../../app/routes/route_names.dart';
+import '../cubit/auth_cubit.dart';
+import '../cubit/auth_state.dart';
+import 'login_page.dart';
+
+class RegisterPage extends StatelessWidget {
+  const RegisterPage({super.key});
+
+  static Future<void> open(BuildContext context) {
+    return Navigator.of(context).pushNamed(RouteNames.registerPage);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final formKey = GlobalKey<FormState>();
+    final emailController = TextEditingCo
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../domain/usecases/login.dart';
+import '../../domain/usecases/register.dart';
+import '../../domain/usecases/logout.dart';
+import 'auth_state.dart';
+
+class AuthCubit extends Cubit<AuthState> {
+  AuthCubit({
+    required LoginUseCase loginUseCase,
+    required RegisterUseCase registerUseCase,
+    required LogoutUseCase logoutUseCase,
+  }) : _loginUseCase = loginUseCase,
+       _registerUseCase = registerUseCase,
+       _logoutUseCase = logoutUseCase,
+       super(const AuthState());
+
+  final LoginUseCase _loginUseCase;
+  final RegisterUseCase _registerUseCase;
+  final LogoutUseCase _logoutUseCase;
+
+  Future<void> login({
+    required String email,
+    required String password,
+  }) async {
+    emit(state.copyWith(status: AuthStatus.loading, errorMessage: null));
+    try {
+      final user = await _loginUseCase(
+        email: email,
+        password: passwor
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:equatable/equatable.dart';
+import '../../domain/entities/user.dart';
+
+class AuthState extends Equatable {
+  final AuthStatus status;
+  final AppUser? user;
+  final String? errorMessage;
+
+  const AuthState({
+    this.status = AuthStatus.initial,
+    this.user,
+    this.errorMessage,
+  });
+
+  AuthState copyWith({
+    AuthStatus? status,
+    AppUser? user,
+    String? errorMessage,
+  }) {
+    return AuthState(
+      status: status ?? this.status,
+      user: user ?? this.user,
+      errorMessage: errorMessage ?? this.errorMessage,
+    );
+  }
+
+  @override
+  List<Object?> get props => [status, user, errorMessage];
+}
+
+enum AuthStatus { initial, loading, success, error }
+```
+
+</details>
+
+قبل ما ألمس Supabase data sources: أهم قرار هنا أن IDs المحلية لازم تكون UUID إذا بنربطها كـ FK في Supabase. إذا بقيت `cat_food` محليًا، remote insert للـ expense راح يفشل بسبب `category_id uuid`. سأفحص الـ remote models/data sources لأتأكد من أسماء الأعمدة وطريقة إرسال `user_id`.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\categories\\data\\datasources\\category_remote_data_source.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\data\\datasources\\expense_remote_data_source.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\budgets\\data\\datasources\\budget_remote_data_source.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\recurring\\data\\datasources\\recurring_expense_remote_data_source.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\core\\services\\id_generator.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:supabase_flutter/supabase_flutter.dart';
+import '../models/category_model.dart';
+
+abstract class CategoryRemoteDataSource {
+  Future<void> addCategory(CategoryModel category);
+
+  Future<List<CategoryModel>> getCategories();
+
+  Future<void> updateCategory(CategoryModel category);
+
+  Future<void> deleteCategory(String id);
+}
+
+class SupabaseCategoryRemoteDataSource implements CategoryRemoteDataSource {
+  final SupabaseClient _client;
+
+  const SupabaseCategoryRemoteDataSource(this._client);
+
+  static const String tableName = 'categories';
+
+  @override
+  Future<void> addCategory(CategoryModel category) async {
+    await _client.from(tableName).upsert(category.toJson());
+  }
+
+  @override
+  Future<List<CategoryModel>> getCategories() async {
+    final response = await _client.from(tableName).select();
+    return (response as List)
+        .map((json) => CategoryModel.fromJson(Map<String, dynamic>.from(jso
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:supabase_flutter/supabase_flutter.dart';
+import '../models/expense_model.dart';
+
+abstract class ExpenseRemoteDataSource {
+  Future<void> addExpense(ExpenseModel expense);
+
+  Future<List<ExpenseModel>> getExpenses();
+
+  Future<void> updateExpense(ExpenseModel expense);
+
+  Future<void> deleteExpense(String id);
+}
+
+class SupabaseExpenseRemoteDataSource implements ExpenseRemoteDataSource {
+  final SupabaseClient _client;
+
+  const SupabaseExpenseRemoteDataSource(this._client);
+
+  static const String tableName = 'expenses';
+
+  @override
+  Future<void> addExpense(ExpenseModel expense) async {
+    await _client.from(tableName).upsert(expense.toJson());
+  }
+
+  @override
+  Future<List<ExpenseModel>> getExpenses() async {
+    final response = await _client.from(tableName).select();
+    return (response as List)
+        .map((json) => ExpenseModel.fromJson(Map<String, dynamic>.from(json)))
+        .toList(gro
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:supabase_flutter/supabase_flutter.dart';
+import '../models/budget_model.dart';
+
+abstract class BudgetRemoteDataSource {
+  Future<void> createBudget(BudgetModel budget);
+
+  Future<List<BudgetModel>> getBudgets();
+
+  Future<void> updateBudget(BudgetModel budget);
+
+  Future<void> deleteBudget(String id);
+}
+
+class SupabaseBudgetRemoteDataSource implements BudgetRemoteDataSource {
+  final SupabaseClient _client;
+
+  const SupabaseBudgetRemoteDataSource(this._client);
+
+  static const String tableName = 'budgets';
+
+  @override
+  Future<void> createBudget(BudgetModel budget) async {
+    await _client.from(tableName).upsert(budget.toJson());
+  }
+
+  @override
+  Future<List<BudgetModel>> getBudgets() async {
+    final response = await _client.from(tableName).select();
+    return (response as List)
+        .map((json) => BudgetModel.fromJson(Map<String, dynamic>.from(json)))
+        .toList(growable: false);
+
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:supabase_flutter/supabase_flutter.dart';
+import '../models/recurring_expense_model.dart';
+
+abstract class RecurringExpenseRemoteDataSource {
+  Future<void> createRecurringExpense(RecurringExpenseModel recurringExpense);
+
+  Future<List<RecurringExpenseModel>> getRecurringExpenses();
+
+  Future<void> updateRecurringExpense(RecurringExpenseModel recurringExpense);
+
+  Future<void> deleteRecurringExpense(String id);
+}
+
+class SupabaseRecurringExpenseRemoteDataSource
+    implements RecurringExpenseRemoteDataSource {
+  final SupabaseClient _client;
+
+  const SupabaseRecurringExpenseRemoteDataSource(this._client);
+
+  static const String tableName = 'recurring_expenses';
+
+  @override
+  Future<void> createRecurringExpense(
+    RecurringExpenseModel recurringExpense,
+  ) async {
+    await _client.from(tableName).upsert(recurringExpense.toJson());
+  }
+
+  @override
+  Future<List<RecurringExpenseModel>> getRecurrin
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:spend_wise/core/services/app_clock.dart';
+
+abstract class IdGenerator {
+  String generate();
+}
+
+/// Simple timestamp-based ID generator. Replaceable for Firebase/UUID later.
+class TimestampIdGenerator implements IdGenerator {
+  final AppClock _clock;
+
+  const TimestampIdGenerator(this._clock);
+
+  @override
+  String generate() => _clock.now().microsecondsSinceEpoch.toString();
+}
+```
+
+</details>
+
+هنا واضح سبب جزء كبير من مشاكل Supabase: الـ remote data sources ترسل `model.toJson()` مباشرة، وهذا غالبًا camelCase (`categoryId`, `createdAt`) بينما جداولك snake_case (`category_id`, `created_at`) وتحتاج `user_id`. سأضيف mapping remote منفصل بدون تغيير Hive/local models.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\categories\\data\\models\\category_model.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\data\\models\\expense_model.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\budgets\\data\\models\\budget_model.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\recurring\\data\\models\\recurring_expense_model.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"Uuid|uuid|supabase_flutter|Supabase.initialize|url|anon\" pubspec.yaml lib -g \"*.dart\" -g \"*.yaml\"",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:json_annotation/json_annotation.dart';
+
+import '../../domain/entities/category.dart';
+
+part 'category_model.g.dart';
+
+@JsonSerializable()
+class CategoryModel {
+  final String id;
+  final String name;
+  final String icon;
+  final int color;
+  final bool isDefault;
+  final DateTime createdAt;
+
+  const CategoryModel({
+    required this.id,
+    required this.name,
+    required this.icon,
+    required this.color,
+    required this.isDefault,
+    required this.createdAt,
+  });
+
+  factory CategoryModel.fromJson(Map<String, dynamic> json) =>
+      _$CategoryModelFromJson(json);
+
+  factory CategoryModel.fromEntity(Category category) {
+    return CategoryModel(
+      id: category.id,
+      name: category.name,
+      icon: category.icon,
+      color: category.color,
+      isDefault: category.isDefault,
+      createdAt: category.createdAt,
+    );
+  }
+
+  Map<String, dynamic> toJson() => _$CategoryModel
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:json_annotation/json_annotation.dart';
+
+import '../../domain/entities/expense.dart';
+
+part 'expense_model.g.dart';
+
+@JsonSerializable()
+class ExpenseModel {
+  const ExpenseModel({
+    required this.id,
+    required this.title,
+    required this.amount,
+    required this.categoryId,
+    required this.date,
+    this.note,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  final String id;
+  final String title;
+  final double amount;
+  final String categoryId;
+  final DateTime date;
+  final String? note;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+
+  factory ExpenseModel.fromJson(Map<String, dynamic> json) =>
+      _$ExpenseModelFromJson(json);
+
+  factory ExpenseModel.fromEntity(Expense expense) {
+    return ExpenseModel(
+      id: expense.id,
+      title: expense.title,
+      amount: expense.amount,
+      categoryId: expense.categoryId,
+      date: expense.date,
+      note: expen
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:json_annotation/json_annotation.dart';
+
+import '../../domain/entities/budget.dart';
+
+part 'budget_model.g.dart';
+
+@JsonSerializable()
+class BudgetModel {
+  const BudgetModel({
+    required this.id,
+    required this.categoryId,
+    required this.limitAmount,
+    required this.period,
+    required this.createdAt,
+  });
+
+  final String id;
+  final String categoryId;
+  final double limitAmount;
+  final String period;
+  final DateTime createdAt;
+
+  factory BudgetModel.fromJson(Map<String, dynamic> json) =>
+      _$BudgetModelFromJson(json);
+
+  factory BudgetModel.fromEntity(Budget budget) {
+    return BudgetModel(
+      id: budget.id,
+      categoryId: budget.categoryId,
+      limitAmount: budget.limitAmount,
+      period: budget.period.name,
+      createdAt: budget.createdAt,
+    );
+  }
+
+  Map<String, dynamic> toJson() => _$BudgetModelToJson(this);
+
+  Budget toEntity() {
+    return Budget(
+ 
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:json_annotation/json_annotation.dart';
+
+import '../../domain/entities/recurring_expense.dart';
+
+part 'recurring_expense_model.g.dart';
+
+@JsonSerializable()
+class RecurringExpenseModel {
+  const RecurringExpenseModel({
+    required this.id,
+    required this.title,
+    required this.amount,
+    required this.categoryId,
+    required this.repeatType,
+    required this.nextDueDate,
+    required this.isActive,
+    required this.createdAt,
+  });
+
+  final String id;
+  final String title;
+  final double amount;
+  final String categoryId;
+  final String repeatType;
+  final DateTime nextDueDate;
+  final bool isActive;
+  final DateTime createdAt;
+
+  factory RecurringExpenseModel.fromJson(Map<String, dynamic> json) =>
+      _$RecurringExpenseModelFromJson(json);
+
+  factory RecurringExpenseModel.fromEntity(RecurringExpense recurringExpense) {
+    return RecurringExpenseModel(
+      id: recurringExpense.id,
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.9 seconds
+Output:
+pubspec.yaml:48:  supabase_flutter: ^2.14.2
+lib\main.dart:5:import 'package:supabase_flutter/supabase_flutter.dart';
+lib\main.dart:11:  await Supabase.initialize(
+lib\main.dart:12:    url: 'https://ajiemrghhcdzianarhzk.supabase.co',
+lib\core\di\register_recurring_feature.dart:3:import 'package:supabase_flutter/supabase_flutter.dart';
+lib\core\di\register_expense_feature.dart:3:import 'package:supabase_flutter/supabase_flutter.dart';
+lib\core\di\register_category_feature.dart:3:import 'package:supabase_flutter/supabase_flutter.dart';
+lib\core\di\register_auth_feature.dart:8:import 'package:supabase_flutter/supabase_flutter.dart';
+lib\core\di\register_budget_feature.dart:3:import 'package:supabase_flutter/supabase_flutter.dart';
+lib\features\budgets\data\datasources\budget_remote_data_source.dart:1:import 'package:supabase_flutter/supabase_flutter.dart';
+lib\features\auth\presentation\widgets\auth_gate.dart:3:import 'package:supabase_flutte
+...(truncated)
+```
+
+</details>
+
+راح أستخدم `randomUUID()` من Supabase client بدل إضافة dependency جديدة، ونخلي `user_id` يضاف داخل remote data source من `auth.currentUser`. كذا local models تبقى نظيفة وHive ما يتأثر.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\main.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\auth\\data\\repositories\\supabase_auth_repository.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\auth\\presentation\\widgets\\auth_gate.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content pubspec.yaml | Select-Object -First 80",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:spend_wise/app/routes/app_router.dart';
+import 'package:spend_wise/spend_wise_app.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'generated/codegen_loader.g.dart';
+import 'core/di/injection_container.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Supabase.initialize(
+    url: 'https://ajiemrghhcdzianarhzk.supabase.co',
+    publishableKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFqaWVtcmdoaGNkemlhbmFyaHprIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwODE2MzEsImV4cCI6MjA5NjY1NzYzMX0.yFhR7ge6xeW2W5bQMzj4tWB7ftbo533CRxjdn3Yk-o4',
+  );
+  await EasyLocalization.ensureInitialized();
+  await setupDependencies();
+
+  runApp(
+    EasyLocalization(
+      supportedLocales: const [Locale('en'), Locale('ar')],
+      path: 'assets/
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../domain/entities/user.dart';
+import '../../domain/repositories/auth_repository.dart';
+
+class SupabaseAuthRepository implements AuthRepository {
+  final SupabaseClient _supabase;
+
+  const SupabaseAuthRepository(this._supabase);
+
+  @override
+  Future<AppUser?> signInWithEmailPassword({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final response = await _supabase.auth.signInWithPassword(
+        email: email,
+        password: password,
+      );
+      final user = response.user;
+      if (user == null) return null;
+      return AppUser(
+        id: user.id,
+        email: user.email ?? '',
+        displayName: user.userMetadata?['full_name'] as String?,
+      );
+    } catch (e) {
+      return null;
+    }
+  }
+
+  @override
+  Future<AppUser?> signUpWithEmailPassword({
+    required String email,
+    require
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:flutter/material.dart';
+import 'package:spend_wise/app/routes/route_names.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+class AuthGate extends StatelessWidget {
+  const AuthGate({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+      stream: Supabase.instance.client.auth.onAuthStateChange,
+
+      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Scaffold(body: Center(child: CircularProgressIndicator()));
+        }
+
+        final session = snapshot.hasData ? snapshot.data!.session : null;
+
+        if (session != null) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            Navigator.pushReplacementNamed(context, RouteNames.mainShellPage);
+          });
+
+          return const SizedBox.shrink();
+        } else {
+          Wid
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.6 seconds
+Output:
+name: spend_wise
+description: "A new Flutter project."
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
+# Read more about iOS versi
+...(truncated)
+```
+
+</details>
+
+سأجعل default category IDs ثابتة وUUID-compatible، مع دعم الأسماء القديمة في العرض عشان ما ينكسر المستخدم الحالي. وللمستقبل، كل ID جديد من التطبيق سيكون UUID v4 بدل timestamp.
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\core\\di\\register_local_storage.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "rg -n \"cat_shopping|cat_food|cat_transport|cat_entertainment|cat_utilities|cat_health\" lib assets -g \"*.dart\" -g \"*.json\"",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\expenses\\data\\datasources\\expense_local_data_source.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\budgets\\data\\datasources\\budget_local_data_source.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Tool: <code>shell_command</code></summary>
+
+```json
+{
+  "command": "Get-Content lib\\features\\recurring\\data\\datasources\\recurring_expense_local_data_source.dart",
+  "workdir": "d:\\Dev\\FlutterProjects\\spend_wise",
+  "timeout_ms": 10000
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+import 'package:get_it/get_it.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
+import '../../features/expenses/data/datasources/expense_local_data_source.dart';
+import '../../features/budgets/data/datasources/budget_local_data_source.dart';
+import '../../features/recurring/data/datasources/recurring_expense_local_data_source.dart';
+import '../../features/settings/data/datasources/settings_local_data_source.dart';
+import '../../features/export/data/datasources/export_history_local_data_source.dart';
+
+Future<void> registerLocalStorage(GetIt sl) async {
+  // Initialize Hive and open boxes used by local features.
+  await Hive.initFlutter();
+
+  if (!sl.isRegistered<Box<Map>>(
+    instanceName: HiveExpenseLocalDataSource.boxName,
+  )) {
+    final expensesBox = await Hive.openBox<Map>(
+      HiveExpenseLocalDataSource.boxName,
+    );
+
+    sl.registerSingleton<Box<Map>>(
+      expensesBox,
+      instanceName: HiveExpense
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+lib\core\di\register_category_feature.dart:132:      'id': 'cat_shopping',
+lib\core\di\register_category_feature.dart:140:      'id': 'cat_food',
+lib\core\di\register_category_feature.dart:148:      'id': 'cat_transport',
+lib\core\di\register_category_feature.dart:156:      'id': 'cat_entertainment',
+lib\core\di\register_category_feature.dart:164:      'id': 'cat_utilities',
+lib\core\di\register_category_feature.dart:172:      'id': 'cat_health',
+lib\features\categories\presentation\utils\category_display_name.dart:11:      'cat_shopping' => LocaleKeys.categories_defaultCategories_shopping.tr(),
+lib\features\categories\presentation\utils\category_display_name.dart:12:      'cat_food' => LocaleKeys.categories_defaultCategories_food.tr(),
+lib\features\categories\presentation\utils\category_display_name.dart:13:      'cat_transport' =>
+lib\features\categories\presentation\utils\category_display_name.dart:15:      'cat_entertainment' =>
+lib
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:hive/hive.dart';
+
+import '../models/expense_model.dart';
+
+abstract class ExpenseLocalDataSource {
+  Future<void> addExpense(ExpenseModel expense);
+
+  Future<List<ExpenseModel>> getExpenses();
+
+  Future<List<ExpenseModel>> getExpensesByCategoryId(String categoryId);
+
+  Future<void> updateExpense(ExpenseModel expense);
+
+  Future<void> deleteExpense(String id);
+}
+
+class HiveExpenseLocalDataSource implements ExpenseLocalDataSource {
+  HiveExpenseLocalDataSource(this._box);
+
+  static const String boxName = 'expenses_box';
+
+  final Box<Map> _box;
+
+  @override
+  Future<void> addExpense(ExpenseModel expense) async {
+    await _box.put(expense.id, expense.toJson());
+  }
+
+  @override
+  Future<List<ExpenseModel>> getExpenses() async {
+    return _box.values
+        .map(
+          (expenseMap) =>
+              ExpenseModel.fromJson(Map<String, dynamic>.from(expenseMap)),
+        )
+        .toList(growab
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import '../models/budget_model.dart';
+import 'package:hive/hive.dart';
+
+abstract class BudgetLocalDataSource {
+  Future<void> createBudget(BudgetModel budget);
+
+  Future<List<BudgetModel>> getBudgets();
+
+  Future<void> updateBudget(BudgetModel budget);
+
+  Future<void> deleteBudget(String id);
+}
+
+class HiveBudgetLocalDataSource implements BudgetLocalDataSource {
+  HiveBudgetLocalDataSource(this._box);
+
+  static const String boxName = 'budgets_box';
+
+  final Box<Map> _box;
+
+  @override
+  Future<void> createBudget(BudgetModel budget) async {
+    await _box.put(budget.id, budget.toJson());
+  }
+
+  @override
+  Future<List<BudgetModel>> getBudgets() async {
+    return _box.values
+        .map((value) => BudgetModel.fromJson(Map<String, dynamic>.from(value)))
+        .toList(growable: false);
+  }
+
+  @override
+  Future<void> updateBudget(BudgetModel budget) async {
+    await _box.put(budget.id, budget.toJson());
+  }
+...(truncated)
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+import 'package:hive/hive.dart';
+
+import '../models/recurring_expense_model.dart';
+
+abstract class RecurringExpenseLocalDataSource {
+  Future<void> createRecurringExpense(RecurringExpenseModel recurringExpense);
+
+  Future<List<RecurringExpenseModel>> getRecurringExpenses();
+
+  Future<void> updateRecurringExpense(RecurringExpenseModel recurringExpense);
+
+  Future<void> deleteRecurringExpense(String id);
+}
+
+class HiveRecurringExpenseLocalDataSource
+    implements RecurringExpenseLocalDataSource {
+  HiveRecurringExpenseLocalDataSource(this._box);
+
+  static const String boxName = 'recurring_expenses_box';
+
+  final Box<Map> _box;
+
+  @override
+  Future<void> createRecurringExpense(RecurringExpenseModel recurringExpense) {
+    return _box.put(recurringExpense.id, recurringExpense.toJson());
+  }
+
+  @override
+  Future<List<RecurringExpenseModel>> getRecurringExpenses() async {
+    return _box.values
+        .map((value) {
+...(truncated)
+```
+
+</details>
+
+سأضيف ملف صغير لأكواد default categories الثابتة، وأستخدمه في seeding والترجمة. هذا يحافظ على دعم IDs القديمة محليًا ويجعل أي تثبيت جديد متوافق مع Supabase UUID FKs.
+
+<details>
+<summary>Tool: <code>apply_patch</code></summary>
+
+```json
+{
+  "input": "*** Begin Patch\n*** Add File: lib/core/constants/default_category_ids.dart\n+class DefaultCategoryIds {\n+  const DefaultCategoryIds._();\n+\n+  static const shopping = '11111111-1111-4111-8111-111111111111';\n+  static const food = '22222222-2222-4222-8222-222222222222';\n+  static const transport = '33333333-3333-4333-8333-333333333333';\n+  static const entertainment = '44444444-4444-4444-8444-444444444444';\n+  static const utilities = '55555555-5555-4555-8555-555555555555';\n+  static const health = '66666666-6666-4666-8666-666666666666';\n+\n+  static const legacyShopping = 'cat_shopping';\n+  static const legacyFood = 'cat_food';\n+  static const legacyTransport = 'cat_transport';\n+  static const legacyEntertainment = 'cat_entertainment';\n+  static const legacyUtilities = 'cat_utilities';\n+  static const legacyHealth = 'cat_health';\n+}\n*** Update File: lib/core/services/id_generator.dart\n@@\n+import 'dart:math';\n+\n import 'package:spend_wise/core/services/app_clock.dart';\n@@\n-/// Simple timestamp-based ID generator. Replaceable for Firebase/UUID later.\n+/// UUID v4 generator for backend-safe primary keys.\n class TimestampIdGenerator implements IdGenerator {\n   final AppClock _clock;\n \n   const TimestampIdGenerator(this._clock);\n \n   @override\n-  String generate() => _clock.now().microsecondsSinceEpoch.toString();\n+  String generate() {\n+    final random = Random.secure();\n+    final bytes = List<int>.generate(16, (_) => random.nextInt(256));\n+    bytes[6] = (bytes[6] & 0x0f) | 0x40;\n+    bytes[8] = (bytes[8] & 0x3f) | 0x80;\n+\n+    String two(int value) => value.toRadixString(16).padLeft(2, '0');\n+    final hex = bytes.map(two).join();\n+    return '${hex.substring(0, 8)}-'\n+        '${hex.substring(8, 12)}-'\n+        '${hex.substring(12, 16)}-'\n+        '${hex.substring(16, 20)}-'\n+        '${hex.substring(20)}';\n+  }\n }\n*** End Patch\n"
+}
+```
+
+</details>
+
+<details>
+<summary>Result</summary>
+
+```
+Exit code: 0
+Wall time: 0.6 seconds
+Output:
+Success. Updated the following files:
+A lib/core/constants/default_category_ids.dart
+M lib/core/services/id_generator.dart
+```
+
+</details>
 
 
 ---

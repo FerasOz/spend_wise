@@ -18,29 +18,27 @@ class AuthCubit extends Cubit<AuthState> {
   final RegisterUseCase _registerUseCase;
   final LogoutUseCase _logoutUseCase;
 
-  Future<void> login({
-    required String email,
-    required String password,
-  }) async {
+  Future<void> login({required String email, required String password}) async {
     emit(state.copyWith(status: AuthStatus.loading, errorMessage: null));
     try {
-      final user = await _loginUseCase(
-        email: email,
-        password: password,
-      );
+      final user = await _loginUseCase(email: email, password: password);
       if (user != null) {
         emit(state.copyWith(status: AuthStatus.success, user: user));
       } else {
-        emit(state.copyWith(
-          status: AuthStatus.error,
-          errorMessage: 'Invalid email or password',
-        ));
+        emit(
+          state.copyWith(
+            status: AuthStatus.error,
+            errorMessage: 'Invalid email or password',
+          ),
+        );
       }
     } catch (e) {
-      emit(state.copyWith(
-        status: AuthStatus.error,
-        errorMessage: 'Login failed: ${e.toString()}',
-      ));
+      emit(
+        state.copyWith(
+          status: AuthStatus.error,
+          errorMessage: 'Login failed: ${e.toString()}',
+        ),
+      );
     }
   }
 
@@ -50,23 +48,35 @@ class AuthCubit extends Cubit<AuthState> {
   }) async {
     emit(state.copyWith(status: AuthStatus.loading, errorMessage: null));
     try {
-      final user = await _registerUseCase(
-        email: email,
-        password: password,
-      );
+      final user = await _registerUseCase(email: email, password: password);
       if (user != null) {
-        emit(state.copyWith(status: AuthStatus.success, user: user));
+        if (user.requiresEmailConfirmation) {
+          emit(
+            state.copyWith(
+              status: AuthStatus.emailVerificationRequired,
+              user: user,
+              errorMessage:
+                  'Registration successful. Please confirm your email before signing in.',
+            ),
+          );
+        } else {
+          emit(state.copyWith(status: AuthStatus.success, user: user));
+        }
       } else {
-        emit(state.copyWith(
-          status: AuthStatus.error,
-          errorMessage: 'Registration failed. Please try again.',
-        ));
+        emit(
+          state.copyWith(
+            status: AuthStatus.error,
+            errorMessage: 'Registration failed. Please try again.',
+          ),
+        );
       }
     } catch (e) {
-      emit(state.copyWith(
-        status: AuthStatus.error,
-        errorMessage: 'Registration failed: ${e.toString()}',
-      ));
+      emit(
+        state.copyWith(
+          status: AuthStatus.error,
+          errorMessage: 'Registration failed: ${e.toString()}',
+        ),
+      );
     }
   }
 
