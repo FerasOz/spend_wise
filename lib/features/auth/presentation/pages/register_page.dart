@@ -65,6 +65,9 @@ class RegisterPage extends StatelessWidget {
               );
             } else if (state.status == AuthStatus.emailVerificationRequired &&
                 state.errorMessage != null) {
+              Navigator.of(
+                context,
+              ).pushReplacementNamed(RouteNames.emailVerificationPage);
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(state.errorMessage!),

@@ -1,4 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spend_wise/features/profiles/domain/entities/profile.dart';
+import 'package:spend_wise/features/profiles/domain/repositories/profile_repository.dart';
+import 'package:spend_wise/features/settings/domain/repositories/settings_repository.dart';
+import '../../domain/entities/user.dart';
 import '../../domain/usecases/login.dart';
 import '../../domain/usecases/register.dart';
 import '../../domain/usecases/logout.dart';
@@ -9,20 +13,27 @@ class AuthCubit extends Cubit<AuthState> {
     required LoginUseCase loginUseCase,
     required RegisterUseCase registerUseCase,
     required LogoutUseCase logoutUseCase,
+    required ProfileRepository profileRepository,
+    required SettingsRepository settingsRepository,
   }) : _loginUseCase = loginUseCase,
        _registerUseCase = registerUseCase,
        _logoutUseCase = logoutUseCase,
+       _profileRepository = profileRepository,
+       _settingsRepository = settingsRepository,
        super(const AuthState());
 
   final LoginUseCase _loginUseCase;
   final RegisterUseCase _registerUseCase;
   final LogoutUseCase _logoutUseCase;
+  final ProfileRepository _profileRepository;
+  final SettingsRepository _settingsRepository;
 
   Future<void> login({required String email, required String password}) async {
     emit(state.copyWith(status: AuthStatus.loading, errorMessage: null));
     try {
       final user = await _loginUseCase(email: email, password: password);
       if (user != null) {
+        await _initializeAuthenticatedUserData(user);
         emit(state.copyWith(status: AuthStatus.success, user: user));
       } else {
         emit(
@@ -60,6 +71,7 @@ class AuthCubit extends Cubit<AuthState> {
             ),
           );
         } else {
+          await _initializeAuthenticatedUserData(user);
           emit(state.copyWith(status: AuthStatus.success, user: user));
         }
       } else {
@@ -83,5 +95,21 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> logout() async {
     await _logoutUseCase();
     emit(const AuthState(status: AuthStatus.initial));
+  }
+
+  Future<void> _initializeAuthenticatedUserData(AppUser user) async {
+    try {
+      final existingProfile = await _profileRepository.getProfile(user.id);
+      final profile = Profile(
+        id: user.id,
+        displayName:
+            existingProfile?.displayName ??
+            user.displayName ??
+            user.email.split('@').first,
+        createdAt: existingProfile?.createdAt ?? DateTime.now(),
+      );
+      await _profileRepository.createProfile(profile);
+      await _settingsRepository.getSettings();
+    } catch (_) {}
   }
 }

@@ -1,16 +1,12 @@
 import 'dart:math';
 
-import 'package:spend_wise/core/services/app_clock.dart';
-
 abstract class IdGenerator {
   String generate();
 }
 
 /// UUID v4 generator for backend-safe primary keys.
 class TimestampIdGenerator implements IdGenerator {
-  final AppClock _clock;
-
-  const TimestampIdGenerator(this._clock);
+  const TimestampIdGenerator();
 
   @override
   String generate() {

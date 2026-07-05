@@ -2,6 +2,8 @@ import 'package:get_it/get_it.dart';
 import 'package:spend_wise/features/auth/data/repositories/supabase_auth_repository.dart';
 import 'package:spend_wise/features/auth/domain/repositories/auth_repository.dart';
 import 'package:spend_wise/features/auth/domain/usecases/login.dart';
+import 'package:spend_wise/features/profiles/domain/repositories/profile_repository.dart';
+import 'package:spend_wise/features/settings/domain/repositories/settings_repository.dart';
 import 'package:spend_wise/features/auth/domain/usecases/logout.dart';
 import 'package:spend_wise/features/auth/domain/usecases/register.dart';
 import 'package:spend_wise/features/auth/presentation/cubit/auth_cubit.dart';
@@ -28,10 +30,14 @@ Future<void> registerAuthFeature(GetIt sl) async {
     sl.registerFactory<LoginUseCase>(() => LoginUseCase(sl<AuthRepository>()));
   }
   if (!sl.isRegistered<LogoutUseCase>()) {
-    sl.registerFactory<LogoutUseCase>(() => LogoutUseCase(sl<AuthRepository>()));
+    sl.registerFactory<LogoutUseCase>(
+      () => LogoutUseCase(sl<AuthRepository>()),
+    );
   }
   if (!sl.isRegistered<RegisterUseCase>()) {
-    sl.registerFactory<RegisterUseCase>(() => RegisterUseCase(sl<AuthRepository>()));
+    sl.registerFactory<RegisterUseCase>(
+      () => RegisterUseCase(sl<AuthRepository>()),
+    );
   }
 
   // Cubit/Bloc
@@ -41,6 +47,8 @@ Future<void> registerAuthFeature(GetIt sl) async {
         loginUseCase: sl<LoginUseCase>(),
         logoutUseCase: sl<LogoutUseCase>(),
         registerUseCase: sl<RegisterUseCase>(),
+        profileRepository: sl<ProfileRepository>(),
+        settingsRepository: sl<SettingsRepository>(),
       ),
     );
   }

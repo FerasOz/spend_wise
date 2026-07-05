@@ -1,7 +1,10 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import 'package:supabase_flutter/supabase_flutter.dart';
+
 import '../../features/settings/data/datasources/settings_local_data_source.dart';
+import '../../features/settings/data/datasources/settings_remote_data_source.dart';
 import '../../features/settings/data/repositories/settings_repository_impl.dart';
 import '../../features/settings/domain/repositories/settings_repository.dart';
 import '../../features/settings/domain/usecases/get_settings.dart';
@@ -24,10 +27,19 @@ Future<void> registerSettingsFeature(GetIt sl) async {
     );
   }
 
+  if (!sl.isRegistered<SettingsRemoteDataSource>()) {
+    sl.registerLazySingleton<SettingsRemoteDataSource>(
+      () => SupabaseSettingsRemoteDataSource(sl<SupabaseClient>()),
+    );
+  }
+
   // Settings Repository
   if (!sl.isRegistered<SettingsRepository>()) {
     sl.registerLazySingleton<SettingsRepository>(
-      () => SettingsRepositoryImpl(sl<SettingsLocalDataSource>()),
+      () => SettingsRepositoryImpl(
+        sl<SettingsLocalDataSource>(),
+        sl<SettingsRemoteDataSource>(),
+      ),
     );
   }
 
