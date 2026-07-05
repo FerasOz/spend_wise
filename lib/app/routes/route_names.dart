@@ -10,5 +10,7 @@ class RouteNames {
   static const String exportPage = '/exportPage';
   static const String loginPage = '/loginScreen';
   static const String registerPage = '/registerPage';
+  static const String emailVerificationPage = '/emailVerificationPage';
+  static const String completeProfilePage = '/completeProfilePage';
   static const String authGate = '/authGate';
 }

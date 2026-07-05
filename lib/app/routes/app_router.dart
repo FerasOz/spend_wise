@@ -5,6 +5,7 @@ import 'package:spend_wise/app/shell/main_shell_page.dart';
 import 'package:spend_wise/app/routes/route_names.dart';
 import 'package:spend_wise/core/di/injection_container.dart';
 import 'package:spend_wise/core/widgets/animations/app_page_transition.dart';
+import 'package:spend_wise/features/auth/presentation/pages/email_verification_page.dart';
 import 'package:spend_wise/features/auth/presentation/pages/login_page.dart';
 import 'package:spend_wise/features/auth/presentation/pages/register_page.dart';
 import 'package:spend_wise/features/auth/presentation/cubit/auth_cubit.dart';
@@ -27,6 +28,8 @@ import 'package:spend_wise/features/settings/presentation/cubit/settings_cubit.d
 import 'package:spend_wise/features/settings/presentation/pages/settings_page.dart';
 import 'package:spend_wise/features/export/presentation/cubit/export_cubit.dart';
 import 'package:spend_wise/features/export/presentation/pages/export_page.dart';
+import 'package:spend_wise/features/profiles/presentation/cubit/profile_cubit.dart';
+import 'package:spend_wise/features/profiles/presentation/pages/complete_profile_page.dart';
 
 class AppRouters {
   Route? onGenerateRoute(RouteSettings settings) {
@@ -188,6 +191,20 @@ class AppRouters {
           builder: (_) => BlocProvider(
             create: (_) => sl<AuthCubit>(),
             child: const RegisterPage(),
+          ),
+        );
+      case RouteNames.emailVerificationPage:
+        return AppPageTransition.route(
+          settings: settings,
+          builder: (_) => const EmailVerificationPage(),
+        );
+      case RouteNames.completeProfilePage:
+        final userId = settings.arguments as String?;
+        return AppPageTransition.route(
+          settings: settings,
+          builder: (_) => BlocProvider(
+            create: (_) => sl<ProfileCubit>(),
+            child: CompleteProfilePage(userId: userId),
           ),
         );
       default:
