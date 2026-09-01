@@ -1,3 +1,5 @@
+import 'package:spend_wise/features/auth/data/models/user_model.dart';
+
 import '../entities/user.dart';
 
 abstract class AuthRepository {
@@ -6,7 +8,8 @@ abstract class AuthRepository {
     required String password,
   });
 
-  Future<AppUser?> signUpWithEmailPassword({
+  Future<UserModel?> signUpWithEmailPassword({
+    required String name,
     required String email,
     required String password,
   });

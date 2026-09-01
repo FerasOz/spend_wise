@@ -7,10 +7,12 @@ class RegisterUseCase {
   const RegisterUseCase(this._authRepository);
 
   Future<AppUser?> call({
+    required String name,
     required String email,
     required String password,
   }) async {
     return await _authRepository.signUpWithEmailPassword(
+      name: name,
       email: email,
       password: password,
     );

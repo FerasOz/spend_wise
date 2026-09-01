@@ -20,6 +20,7 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
+    final nameController = TextEditingController();
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
     final confirmPasswordController = TextEditingController();
@@ -30,6 +31,7 @@ class RegisterPage extends StatelessWidget {
       }
       formKey.currentState?.save();
 
+      final name = nameController.text.trim();
       final email = emailController.text.trim();
       final password = passwordController.text;
       final confirmPassword = confirmPasswordController.text;
@@ -44,7 +46,11 @@ class RegisterPage extends StatelessWidget {
         return;
       }
 
-      context.read<AuthCubit>().register(email: email, password: password);
+      context.read<AuthCubit>().register(
+        name: name,
+        email: email,
+        password: password,
+      );
     }
 
     return Scaffold(
@@ -99,6 +105,21 @@ class RegisterPage extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(height: 32.h),
+                    AuthTextFormField(
+                      controller: nameController,
+                      label: LocaleKeys.auth_name.tr(),
+                      keyboardType: TextInputType.name,
+                      isPassword: false,
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return LocaleKeys.auth_validation_name_required.tr();
+                        }
+                        return null;
+                      },
+                      prefixIcon: const Icon(Icons.person_2_outlined),
+                      textInputAction: TextInputAction.next,
+                    ),
+                    SizedBox(height: 16.h),
                     AuthTextFormField(
                       controller: emailController,
                       label: LocaleKeys.auth_email.tr(),

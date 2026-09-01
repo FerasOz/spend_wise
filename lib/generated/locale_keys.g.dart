@@ -438,6 +438,7 @@ abstract class  LocaleKeys {
   static const auth_login_subtitle = 'auth.login_subtitle';
   static const auth_register_title = 'auth.register_title';
   static const auth_register_subtitle = 'auth.register_subtitle';
+  static const auth_name = 'auth.name';
   static const auth_email = 'auth.email';
   static const auth_password = 'auth.password';
   static const auth_confirm_password = 'auth.confirm_password';
@@ -445,6 +446,7 @@ abstract class  LocaleKeys {
   static const auth_register_button = 'auth.register_button';
   static const auth_dont_have_account = 'auth.dont_have_account';
   static const auth_already_have_account = 'auth.already_have_account';
+  static const auth_validation_name_required = 'auth.validation_name_required';
   static const auth_validation_email_required = 'auth.validation_email_required';
   static const auth_validation_invalid_email = 'auth.validation_invalid_email';
   static const auth_validation_password_required = 'auth.validation_password_required';

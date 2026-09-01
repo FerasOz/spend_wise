@@ -54,12 +54,17 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> register({
+    required String name,
     required String email,
     required String password,
   }) async {
     emit(state.copyWith(status: AuthStatus.loading, errorMessage: null));
     try {
-      final user = await _registerUseCase(email: email, password: password);
+      final user = await _registerUseCase(
+        name: name,
+        email: email,
+        password: password,
+      );
       if (user != null) {
         if (user.requiresEmailConfirmation) {
           emit(
@@ -99,9 +104,9 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> _initializeAuthenticatedUserData(AppUser user) async {
     try {
-      final existingProfile = await _profileRepository.getProfile(user.id);
+      final existingProfile = await _profileRepository.getProfile(user.uid);
       final profile = Profile(
-        id: user.id,
+        id: user.uid,
         displayName:
             existingProfile?.displayName ??
             user.displayName ??

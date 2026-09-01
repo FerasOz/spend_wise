@@ -1,3 +1,4 @@
+import 'package:spend_wise/features/auth/data/models/user_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/repositories/auth_repository.dart';
@@ -20,7 +21,7 @@ class SupabaseAuthRepository implements AuthRepository {
       final user = response.user;
       if (user == null) return null;
       return AppUser(
-        id: user.id,
+        uid: user.id,
         email: user.email ?? '',
         displayName: user.userMetadata?['full_name'] as String?,
       );
@@ -30,7 +31,8 @@ class SupabaseAuthRepository implements AuthRepository {
   }
 
   @override
-  Future<AppUser?> signUpWithEmailPassword({
+  Future<UserModel?> signUpWithEmailPassword({
+    required String name,
     required String email,
     required String password,
   }) async {
@@ -38,16 +40,15 @@ class SupabaseAuthRepository implements AuthRepository {
       final response = await _supabase.auth.signUp(
         email: email,
         password: password,
-        data: {
-          'full_name': email.split('@')[0], // default display name
-        },
+        data: {'full_name': name},
       );
       final user = response.user;
       if (user == null) return null;
-      return AppUser(
-        id: user.id,
+
+      return UserModel(
+        uid: user.id,
         email: user.email ?? '',
-        displayName: user.userMetadata?['full_name'] as String?,
+        displayName: name,
         requiresEmailConfirmation: response.session == null,
       );
     } catch (e) {
@@ -65,7 +66,7 @@ class SupabaseAuthRepository implements AuthRepository {
     final user = _supabase.auth.currentUser;
     if (user == null) return null;
     return AppUser(
-      id: user.id,
+      uid: user.id,
       email: user.email ?? '',
       displayName: user.userMetadata?['full_name'] as String?,
     );
