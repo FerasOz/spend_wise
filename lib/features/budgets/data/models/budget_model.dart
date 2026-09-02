@@ -23,6 +23,16 @@ class BudgetModel {
   factory BudgetModel.fromJson(Map<String, dynamic> json) =>
       _$BudgetModelFromJson(json);
 
+  factory BudgetModel.fromRemoteJson(Map<String, dynamic> json) {
+    return BudgetModel(
+      id: json['id'] as String,
+      categoryId: json['category_id'] as String,
+      limitAmount: (json['limit_amount'] as num).toDouble(),
+      period: json['period'] as String,
+      createdAt: DateTime.parse(json['created_at'] as String),
+    );
+  }
+
   factory BudgetModel.fromEntity(Budget budget) {
     return BudgetModel(
       id: budget.id,
@@ -34,6 +44,14 @@ class BudgetModel {
   }
 
   Map<String, dynamic> toJson() => _$BudgetModelToJson(this);
+
+  Map<String, dynamic> toRemoteJson(String userId) => {
+    'id': id,
+    'user_id': userId,
+    'category_id': categoryId,
+    'limit_amount': limitAmount,
+    'period': period,
+  };
 
   Budget toEntity() {
     return Budget(

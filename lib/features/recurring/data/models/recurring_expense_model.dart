@@ -29,6 +29,19 @@ class RecurringExpenseModel {
   factory RecurringExpenseModel.fromJson(Map<String, dynamic> json) =>
       _$RecurringExpenseModelFromJson(json);
 
+  factory RecurringExpenseModel.fromRemoteJson(Map<String, dynamic> json) {
+    return RecurringExpenseModel(
+      id: json['id'] as String,
+      title: json['title'] as String,
+      amount: (json['amount'] as num).toDouble(),
+      categoryId: json['category_id'] as String,
+      repeatType: json['repeat_type'] as String,
+      nextDueDate: DateTime.parse(json['next_due_date'] as String),
+      isActive: json['is_active'] as bool,
+      createdAt: DateTime.parse(json['created_at'] as String),
+    );
+  }
+
   factory RecurringExpenseModel.fromEntity(RecurringExpense recurringExpense) {
     return RecurringExpenseModel(
       id: recurringExpense.id,
@@ -43,6 +56,17 @@ class RecurringExpenseModel {
   }
 
   Map<String, dynamic> toJson() => _$RecurringExpenseModelToJson(this);
+
+  Map<String, dynamic> toRemoteJson(String userId) => {
+    'id': id,
+    'user_id': userId,
+    'category_id': categoryId,
+    'title': title,
+    'amount': amount,
+    'repeat_type': repeatType,
+    'next_due_date': nextDueDate.toIso8601String().substring(0, 10),
+    'is_active': isActive,
+  };
 
   RecurringExpense toEntity() {
     return RecurringExpense(

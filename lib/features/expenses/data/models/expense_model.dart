@@ -29,6 +29,23 @@ class ExpenseModel {
   factory ExpenseModel.fromJson(Map<String, dynamic> json) =>
       _$ExpenseModelFromJson(json);
 
+  factory ExpenseModel.fromRemoteJson(Map<String, dynamic> json) {
+    return ExpenseModel(
+      id: json['id'] as String,
+      title: json['title'] as String,
+      amount: (json['amount'] as num).toDouble(),
+      categoryId: json['category_id'] as String,
+      date: DateTime.parse(json['expense_date'] as String),
+      note: json['note'] as String?,
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
+      updatedAt: json['updated_at'] == null
+          ? null
+          : DateTime.parse(json['updated_at'] as String),
+    );
+  }
+
   factory ExpenseModel.fromEntity(Expense expense) {
     return ExpenseModel(
       id: expense.id,
@@ -43,6 +60,16 @@ class ExpenseModel {
   }
 
   Map<String, dynamic> toJson() => _$ExpenseModelToJson(this);
+
+  Map<String, dynamic> toRemoteJson(String userId) => {
+    'id': id,
+    'user_id': userId,
+    'category_id': categoryId,
+    'title': title,
+    'amount': amount,
+    'expense_date': date.toIso8601String().substring(0, 10),
+    'note': note,
+  };
 
   Expense toEntity() {
     return Expense(

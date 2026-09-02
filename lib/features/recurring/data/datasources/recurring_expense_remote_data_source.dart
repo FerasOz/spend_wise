@@ -23,7 +23,9 @@ class SupabaseRecurringExpenseRemoteDataSource
   Future<void> createRecurringExpense(
     RecurringExpenseModel recurringExpense,
   ) async {
-    await _client.from(tableName).upsert(recurringExpense.toJson());
+    await _client
+        .from(tableName)
+        .upsert(recurringExpense.toRemoteJson(_userId));
   }
 
   @override
@@ -31,8 +33,9 @@ class SupabaseRecurringExpenseRemoteDataSource
     final response = await _client.from(tableName).select();
     return (response as List)
         .map(
-          (json) =>
-              RecurringExpenseModel.fromJson(Map<String, dynamic>.from(json)),
+          (json) => RecurringExpenseModel.fromRemoteJson(
+            Map<String, dynamic>.from(json),
+          ),
         )
         .toList(growable: false);
   }
@@ -41,11 +44,17 @@ class SupabaseRecurringExpenseRemoteDataSource
   Future<void> updateRecurringExpense(
     RecurringExpenseModel recurringExpense,
   ) async {
-    await _client.from(tableName).upsert(recurringExpense.toJson());
+    await _client
+        .from(tableName)
+        .upsert(recurringExpense.toRemoteJson(_userId));
   }
 
   @override
   Future<void> deleteRecurringExpense(String id) async {
     await _client.from(tableName).delete().eq('id', id);
   }
+
+  String get _userId =>
+      _client.auth.currentUser?.id ??
+      (throw StateError('Cannot sync without an authenticated user.'));
 }

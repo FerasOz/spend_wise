@@ -1,6 +1,7 @@
 import '../../../expenses/domain/entities/expense.dart';
 import '../../../expenses/domain/repositories/expense_repository.dart';
 import '../../../../core/services/app_clock.dart';
+import '../../../../core/services/id_generator.dart';
 import '../entities/recurring_expense.dart';
 import '../repositories/recurring_expense_repository.dart';
 
@@ -9,11 +10,13 @@ class GenerateDueExpenses {
     this._recurringRepository,
     this._expenseRepository,
     this._clock,
+    this._idGenerator,
   );
 
   final RecurringExpenseRepository _recurringRepository;
   final ExpenseRepository _expenseRepository;
   final AppClock _clock;
+  final IdGenerator _idGenerator;
 
   Future<int> call() async {
     final recurringExpenses = await _recurringRepository.getRecurringExpenses();
@@ -27,7 +30,7 @@ class GenerateDueExpenses {
       while (!_isAfterDay(nextDueDate, today)) {
         await _expenseRepository.addExpense(
           Expense(
-            id: '${recurring.id}_${nextDueDate.millisecondsSinceEpoch}',
+            id: _idGenerator.generate(),
             title: recurring.title,
             amount: recurring.amount,
             categoryId: recurring.categoryId,

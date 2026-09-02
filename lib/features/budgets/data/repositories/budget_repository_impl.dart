@@ -21,7 +21,7 @@ class BudgetRepositoryImpl implements BudgetRepository {
 
   @override
   Future<List<Budget>> getBudgets() async {
-    unawaited(_syncFromRemote());
+    await _syncFromRemote();
     final models = await _localDataSource.getBudgets();
     return models.map((model) => model.toEntity()).toList(growable: false);
   }

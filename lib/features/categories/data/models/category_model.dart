@@ -25,6 +25,17 @@ class CategoryModel {
   factory CategoryModel.fromJson(Map<String, dynamic> json) =>
       _$CategoryModelFromJson(json);
 
+  factory CategoryModel.fromRemoteJson(Map<String, dynamic> json) {
+    return CategoryModel(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      icon: json['icon'] as String,
+      color: (json['color'] as num).toInt(),
+      isDefault: json['is_default'] as bool,
+      createdAt: DateTime.parse(json['created_at'] as String),
+    );
+  }
+
   factory CategoryModel.fromEntity(Category category) {
     return CategoryModel(
       id: category.id,
@@ -37,6 +48,15 @@ class CategoryModel {
   }
 
   Map<String, dynamic> toJson() => _$CategoryModelToJson(this);
+
+  Map<String, dynamic> toRemoteJson(String userId) => {
+    'id': id,
+    'user_id': userId,
+    'name': name,
+    'icon': icon,
+    'color': color,
+    'is_default': isDefault,
+  };
 
   Category toEntity() {
     return Category(

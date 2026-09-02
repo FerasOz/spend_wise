@@ -24,7 +24,7 @@ class RecurringExpenseRepositoryImpl implements RecurringExpenseRepository {
 
   @override
   Future<List<RecurringExpense>> getRecurringExpenses() async {
-    unawaited(_syncFromRemote());
+    await _syncFromRemote();
     final models = await _localDataSource.getRecurringExpenses();
     return models.map((model) => model.toEntity()).toList(growable: false);
   }

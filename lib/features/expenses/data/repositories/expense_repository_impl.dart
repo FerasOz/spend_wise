@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer' as developer;
 
 import '../../domain/entities/expense.dart';
 import '../../domain/repositories/expense_repository.dart';
@@ -21,7 +22,7 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
 
   @override
   Future<List<Expense>> getExpenses() async {
-    unawaited(_syncFromRemote());
+    await _syncFromRemote();
     return getLocalExpenses();
   }
 
@@ -35,7 +36,7 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
 
   @override
   Future<List<Expense>> getExpensesByCategoryId(String categoryId) async {
-    unawaited(_syncFromRemote());
+    await _syncFromRemote();
     final expenseModels = await _localDataSource.getExpensesByCategoryId(
       categoryId,
     );
@@ -60,19 +61,38 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
   Future<void> _syncWrite(Future<void> Function() write) async {
     try {
       await write();
-    } catch (_) {
-      // Offline fallback
+    } catch (error, stackTrace) {
+      developer.log(
+        'Expense write was saved locally but could not be synced to Supabase.',
+        name: 'SpendWise.Sync',
+        error: error,
+        stackTrace: stackTrace,
+      );
     }
   }
 
   Future<void> _syncFromRemote() async {
     try {
       final remoteExpenses = await _remoteDataSource.getExpenses();
+      final remoteExpenseIds = remoteExpenses.map((expense) => expense.id).toSet();
       for (final expense in remoteExpenses) {
         await _localDataSource.addExpense(expense);
       }
-    } catch (_) {
-      // Offline fallback
+
+      // Retry local records that were created while the app was offline.
+      final localExpenses = await _localDataSource.getExpenses();
+      for (final expense in localExpenses) {
+        if (!remoteExpenseIds.contains(expense.id)) {
+          await _remoteDataSource.addExpense(expense);
+        }
+      }
+    } catch (error, stackTrace) {
+      developer.log(
+        'Could not fetch expenses from Supabase; using local data.',
+        name: 'SpendWise.Sync',
+        error: error,
+        stackTrace: stackTrace,
+      );
     }
   }
 }

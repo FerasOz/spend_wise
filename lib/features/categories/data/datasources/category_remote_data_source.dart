@@ -20,24 +20,31 @@ class SupabaseCategoryRemoteDataSource implements CategoryRemoteDataSource {
 
   @override
   Future<void> addCategory(CategoryModel category) async {
-    await _client.from(tableName).upsert(category.toJson());
+    await _client.from(tableName).upsert(category.toRemoteJson(_userId));
   }
 
   @override
   Future<List<CategoryModel>> getCategories() async {
     final response = await _client.from(tableName).select();
     return (response as List)
-        .map((json) => CategoryModel.fromJson(Map<String, dynamic>.from(json)))
+        .map(
+          (json) =>
+              CategoryModel.fromRemoteJson(Map<String, dynamic>.from(json)),
+        )
         .toList(growable: false);
   }
 
   @override
   Future<void> updateCategory(CategoryModel category) async {
-    await _client.from(tableName).upsert(category.toJson());
+    await _client.from(tableName).upsert(category.toRemoteJson(_userId));
   }
 
   @override
   Future<void> deleteCategory(String id) async {
     await _client.from(tableName).delete().eq('id', id);
   }
+
+  String get _userId =>
+      _client.auth.currentUser?.id ??
+      (throw StateError('Cannot sync without an authenticated user.'));
 }
