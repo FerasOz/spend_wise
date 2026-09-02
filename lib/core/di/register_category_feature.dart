@@ -4,6 +4,8 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../core/services/app_clock.dart';
 import '../../core/services/id_generator.dart';
+import '../../core/constants/default_category_ids.dart';
+import '../../features/budgets/data/datasources/budget_local_data_source.dart';
 import '../../features/budgets/domain/repositories/budget_repository.dart';
 import '../../features/categories/data/datasources/category_local_data_source.dart';
 import '../../features/categories/data/datasources/category_remote_data_source.dart';
@@ -16,7 +18,9 @@ import '../../features/categories/domain/usecases/delete_category.dart';
 import '../../features/categories/domain/usecases/get_categories.dart';
 import '../../features/categories/domain/usecases/update_category.dart';
 import '../../features/expenses/domain/repositories/expense_repository.dart';
+import '../../features/expenses/data/datasources/expense_local_data_source.dart';
 import '../../features/recurring/domain/repositories/recurring_expense_repository.dart';
+import '../../features/recurring/data/datasources/recurring_expense_local_data_source.dart';
 import '../../features/categories/presentation/cubit/category_cubit.dart';
 
 Future<void> registerCategoryFeature(GetIt sl) async {
@@ -28,10 +32,12 @@ Future<void> registerCategoryFeature(GetIt sl) async {
       HiveCategoryLocalDataSource.boxName,
     );
 
-    // Initialize with default categories if box is empty
-    if (categoriesBox.isEmpty) {
-      await _initializeDefaultCategories(categoriesBox, sl<AppClock>());
-    }
+    await _migrateLegacyDefaultCategoryIds(
+      categoriesBox,
+      sl<Box<Map>>(instanceName: HiveExpenseLocalDataSource.boxName),
+      sl<Box<Map>>(instanceName: HiveBudgetLocalDataSource.boxName),
+      sl<Box<Map>>(instanceName: HiveRecurringExpenseLocalDataSource.boxName),
+    );
 
     sl.registerSingleton<Box<Map>>(
       categoriesBox,
@@ -125,60 +131,49 @@ Future<void> registerCategoryFeature(GetIt sl) async {
   }
 }
 
-/// Initialize the categories box with default categories
-Future<void> _initializeDefaultCategories(Box<Map> box, AppClock clock) async {
-  final defaultCategories = [
-    {
-      'id': 'cat_shopping',
-      'name': 'Shopping',
-      'icon': 'shopping_cart',
-      'color': 0xFFFF6B6B,
-      'isDefault': true,
-      'createdAt': clock.now().toIso8601String(),
-    },
-    {
-      'id': 'cat_food',
-      'name': 'Food & Dining',
-      'icon': 'restaurant',
-      'color': 0xFFFF922B,
-      'isDefault': true,
-      'createdAt': clock.now().toIso8601String(),
-    },
-    {
-      'id': 'cat_transport',
-      'name': 'Transport',
-      'icon': 'directions_car',
-      'color': 0xFF0C93E4,
-      'isDefault': true,
-      'createdAt': clock.now().toIso8601String(),
-    },
-    {
-      'id': 'cat_entertainment',
-      'name': 'Entertainment',
-      'icon': 'movie',
-      'color': 0xFF7950F2,
-      'isDefault': true,
-      'createdAt': clock.now().toIso8601String(),
-    },
-    {
-      'id': 'cat_utilities',
-      'name': 'Utilities',
-      'icon': 'electricity',
-      'color': 0xFF20C997,
-      'isDefault': true,
-      'createdAt': clock.now().toIso8601String(),
-    },
-    {
-      'id': 'cat_health',
-      'name': 'Health & Fitness',
-      'icon': 'health_and_safety',
-      'color': 0xFF69DB7C,
-      'isDefault': true,
-      'createdAt': clock.now().toIso8601String(),
-    },
-  ];
+Future<void> _migrateLegacyDefaultCategoryIds(
+  Box<Map> categoriesBox,
+  Box<Map> expensesBox,
+  Box<Map> budgetsBox,
+  Box<Map> recurringExpensesBox,
+) async {
+  const replacements = {
+    DefaultCategoryIds.legacyShopping: DefaultCategoryIds.shopping,
+    DefaultCategoryIds.legacyFood: DefaultCategoryIds.food,
+    DefaultCategoryIds.legacyTransport: DefaultCategoryIds.transport,
+    DefaultCategoryIds.legacyEntertainment: DefaultCategoryIds.entertainment,
+    DefaultCategoryIds.legacyUtilities: DefaultCategoryIds.utilities,
+    DefaultCategoryIds.legacyHealth: DefaultCategoryIds.health,
+  };
 
-  for (final category in defaultCategories) {
-    await box.put(category['id'], category);
+  for (final replacement in replacements.entries) {
+    final category = categoriesBox.get(replacement.key);
+    if (category == null) continue;
+
+    final updatedCategory = Map<String, dynamic>.from(category)
+      ..['id'] = replacement.value;
+    await categoriesBox.delete(replacement.key);
+    await categoriesBox.put(replacement.value, updatedCategory);
+
+    await _replaceCategoryId(expensesBox, replacement.key, replacement.value);
+    await _replaceCategoryId(budgetsBox, replacement.key, replacement.value);
+    await _replaceCategoryId(
+      recurringExpensesBox,
+      replacement.key,
+      replacement.value,
+    );
+  }
+}
+
+Future<void> _replaceCategoryId(
+  Box<Map> box,
+  String legacyId,
+  String uuid,
+) async {
+  for (final key in box.keys) {
+    final item = Map<String, dynamic>.from(box.get(key)!);
+    if (item['categoryId'] != legacyId) continue;
+    item['categoryId'] = uuid;
+    await box.put(key, item);
   }
 }

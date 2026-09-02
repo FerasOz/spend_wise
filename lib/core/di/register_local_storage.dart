@@ -6,6 +6,8 @@ import '../../features/budgets/data/datasources/budget_local_data_source.dart';
 import '../../features/recurring/data/datasources/recurring_expense_local_data_source.dart';
 import '../../features/settings/data/datasources/settings_local_data_source.dart';
 import '../../features/export/data/datasources/export_history_local_data_source.dart';
+import '../services/user_data_scope.dart';
+import '../../features/categories/data/datasources/category_local_data_source.dart';
 
 Future<void> registerLocalStorage(GetIt sl) async {
   // Initialize Hive and open boxes used by local features.
@@ -69,6 +71,37 @@ Future<void> registerLocalStorage(GetIt sl) async {
     sl.registerSingleton<Box<Map>>(
       historyBox,
       instanceName: HiveExportHistoryLocalDataSource.boxName,
+    );
+  }
+
+  if (!sl.isRegistered<Box<String>>(instanceName: UserDataScope.boxName)) {
+    final scopeBox = await Hive.openBox<String>(UserDataScope.boxName);
+    sl.registerSingleton<Box<String>>(
+      scopeBox,
+      instanceName: UserDataScope.boxName,
+    );
+  }
+
+  if (!sl.isRegistered<UserDataScope>()) {
+    final categoriesBox = await Hive.openBox<Map>(
+      HiveCategoryLocalDataSource.boxName,
+    );
+    sl.registerLazySingleton<UserDataScope>(
+      () => UserDataScope(
+        expensesBox: sl<Box<Map>>(
+          instanceName: HiveExpenseLocalDataSource.boxName,
+        ),
+        categoriesBox: categoriesBox,
+        budgetsBox: sl<Box<Map>>(instanceName: HiveBudgetLocalDataSource.boxName),
+        recurringExpensesBox: sl<Box<Map>>(
+          instanceName: HiveRecurringExpenseLocalDataSource.boxName,
+        ),
+        settingsBox: sl<Box<Map>>(instanceName: HiveSettingsLocalDataSource.boxName),
+        exportHistoryBox: sl<Box<Map>>(
+          instanceName: HiveExportHistoryLocalDataSource.boxName,
+        ),
+        scopeBox: sl<Box<String>>(instanceName: UserDataScope.boxName),
+      ),
     );
   }
 }

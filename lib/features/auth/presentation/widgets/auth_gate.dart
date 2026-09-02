@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spend_wise/app/routes/route_names.dart';
 import 'package:spend_wise/core/di/injection_container.dart';
 import 'package:spend_wise/features/profiles/presentation/cubit/profile_cubit.dart';
+import 'package:spend_wise/core/services/user_data_scope.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthGate extends StatelessWidget {
@@ -21,6 +22,7 @@ class AuthGate extends StatelessWidget {
 
         if (session != null) {
           WidgetsBinding.instance.addPostFrameCallback((_) async {
+            await sl<UserDataScope>().prepareForUser(session.user.id);
             final profileCubit = sl<ProfileCubit>();
             await profileCubit.loadProfile(session.user.id);
             if (!context.mounted) return;

@@ -8,6 +8,7 @@ import 'package:spend_wise/features/auth/domain/usecases/logout.dart';
 import 'package:spend_wise/features/auth/domain/usecases/register.dart';
 import 'package:spend_wise/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../services/user_data_scope.dart';
 
 Future<void> registerAuthFeature(GetIt sl) async {
   // External dependencies
@@ -49,6 +50,7 @@ Future<void> registerAuthFeature(GetIt sl) async {
         registerUseCase: sl<RegisterUseCase>(),
         profileRepository: sl<ProfileRepository>(),
         settingsRepository: sl<SettingsRepository>(),
+        userDataScope: sl<UserDataScope>(),
       ),
     );
   }

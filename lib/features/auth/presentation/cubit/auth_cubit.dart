@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spend_wise/features/profiles/domain/entities/profile.dart';
 import 'package:spend_wise/features/profiles/domain/repositories/profile_repository.dart';
 import 'package:spend_wise/features/settings/domain/repositories/settings_repository.dart';
+import 'package:spend_wise/core/services/user_data_scope.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/usecases/login.dart';
 import '../../domain/usecases/register.dart';
@@ -15,11 +16,13 @@ class AuthCubit extends Cubit<AuthState> {
     required LogoutUseCase logoutUseCase,
     required ProfileRepository profileRepository,
     required SettingsRepository settingsRepository,
+    required UserDataScope userDataScope,
   }) : _loginUseCase = loginUseCase,
        _registerUseCase = registerUseCase,
        _logoutUseCase = logoutUseCase,
        _profileRepository = profileRepository,
        _settingsRepository = settingsRepository,
+       _userDataScope = userDataScope,
        super(const AuthState());
 
   final LoginUseCase _loginUseCase;
@@ -27,6 +30,7 @@ class AuthCubit extends Cubit<AuthState> {
   final LogoutUseCase _logoutUseCase;
   final ProfileRepository _profileRepository;
   final SettingsRepository _settingsRepository;
+  final UserDataScope _userDataScope;
 
   Future<void> login({required String email, required String password}) async {
     emit(state.copyWith(status: AuthStatus.loading, errorMessage: null));
@@ -104,6 +108,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> _initializeAuthenticatedUserData(AppUser user) async {
     try {
+      await _userDataScope.prepareForUser(user.uid);
       final existingProfile = await _profileRepository.getProfile(user.uid);
       final profile = Profile(
         id: user.uid,

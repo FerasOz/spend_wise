@@ -13,6 +13,7 @@ import '../../features/recurring/domain/usecases/get_recurring_expenses.dart';
 import '../../features/recurring/domain/usecases/update_recurring_expense.dart';
 import '../../features/recurring/presentation/cubit/recurring_expense_cubit.dart';
 import '../../core/services/app_clock.dart';
+import '../../core/services/id_generator.dart';
 import '../../features/expenses/domain/repositories/expense_repository.dart';
 
 Future<void> registerRecurringFeature(GetIt sl) async {
@@ -73,6 +74,7 @@ Future<void> registerRecurringFeature(GetIt sl) async {
         sl<RecurringExpenseRepository>(),
         sl<ExpenseRepository>(),
         sl<AppClock>(),
+        sl<IdGenerator>(),
       ),
     );
   }
