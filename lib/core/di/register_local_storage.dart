@@ -7,6 +7,8 @@ import '../../features/recurring/data/datasources/recurring_expense_local_data_s
 import '../../features/settings/data/datasources/settings_local_data_source.dart';
 import '../../features/export/data/datasources/export_history_local_data_source.dart';
 import '../services/user_data_scope.dart';
+import '../services/sync_queue.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../features/categories/data/datasources/category_local_data_source.dart';
 
 Future<void> registerLocalStorage(GetIt sl) async {
@@ -101,6 +103,23 @@ Future<void> registerLocalStorage(GetIt sl) async {
           instanceName: HiveExportHistoryLocalDataSource.boxName,
         ),
         scopeBox: sl<Box<String>>(instanceName: UserDataScope.boxName),
+      ),
+    );
+  }
+
+  if (!sl.isRegistered<Box<Map>>(instanceName: SyncQueue.boxName)) {
+    final syncQueueBox = await Hive.openBox<Map>(SyncQueue.boxName);
+    sl.registerSingleton<Box<Map>>(
+      syncQueueBox,
+      instanceName: SyncQueue.boxName,
+    );
+  }
+
+  if (!sl.isRegistered<SyncQueue>()) {
+    sl.registerLazySingleton<SyncQueue>(
+      () => SyncQueue(
+        sl<Box<Map>>(instanceName: SyncQueue.boxName),
+        Supabase.instance.client,
       ),
     );
   }

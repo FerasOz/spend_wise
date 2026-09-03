@@ -6,18 +6,29 @@ import '../../domain/repositories/expense_repository.dart';
 import '../datasources/expense_local_data_source.dart';
 import '../datasources/expense_remote_data_source.dart';
 import '../models/expense_model.dart';
+import '../../../../core/services/sync_queue.dart';
 
 class ExpenseRepositoryImpl implements ExpenseRepository {
-  const ExpenseRepositoryImpl(this._localDataSource, this._remoteDataSource);
+  const ExpenseRepositoryImpl(
+    this._localDataSource,
+    this._remoteDataSource,
+    this._syncQueue,
+  );
 
   final ExpenseLocalDataSource _localDataSource;
   final ExpenseRemoteDataSource _remoteDataSource;
+  final SyncQueue _syncQueue;
 
   @override
   Future<void> addExpense(Expense expense) async {
     final expenseModel = ExpenseModel.fromEntity(expense);
     await _localDataSource.addExpense(expenseModel);
-    unawaited(_syncWrite(() => _remoteDataSource.addExpense(expenseModel)));
+    await _syncQueue.enqueueUpsert(
+      table: 'expenses',
+      entityId: expenseModel.id,
+      payloadBuilder: expenseModel.toRemoteJson,
+    );
+    unawaited(_syncQueue.sync());
   }
 
   @override
@@ -49,13 +60,19 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
   Future<void> updateExpense(Expense expense) async {
     final expenseModel = ExpenseModel.fromEntity(expense);
     await _localDataSource.updateExpense(expenseModel);
-    unawaited(_syncWrite(() => _remoteDataSource.updateExpense(expenseModel)));
+    await _syncQueue.enqueueUpsert(
+      table: 'expenses',
+      entityId: expenseModel.id,
+      payloadBuilder: expenseModel.toRemoteJson,
+    );
+    unawaited(_syncQueue.sync());
   }
 
   @override
   Future<void> deleteExpense(String id) async {
     await _localDataSource.deleteExpense(id);
-    unawaited(_syncWrite(() => _remoteDataSource.deleteExpense(id)));
+    await _syncQueue.enqueueDelete(table: 'expenses', entityId: id);
+    unawaited(_syncQueue.sync());
   }
 
   Future<void> _syncWrite(Future<void> Function() write) async {
@@ -73,19 +90,12 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
 
   Future<void> _syncFromRemote() async {
     try {
+      await _syncQueue.sync();
       final remoteExpenses = await _remoteDataSource.getExpenses();
-      final remoteExpenseIds = remoteExpenses.map((expense) => expense.id).toSet();
       for (final expense in remoteExpenses) {
         await _localDataSource.addExpense(expense);
       }
 
-      // Retry local records that were created while the app was offline.
-      final localExpenses = await _localDataSource.getExpenses();
-      for (final expense in localExpenses) {
-        if (!remoteExpenseIds.contains(expense.id)) {
-          await _remoteDataSource.addExpense(expense);
-        }
-      }
     } catch (error, stackTrace) {
       developer.log(
         'Could not fetch expenses from Supabase; using local data.',

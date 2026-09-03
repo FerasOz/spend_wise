@@ -14,6 +14,7 @@ import '../../features/expenses/domain/usecases/get_visible_expenses.dart';
 import '../../features/expenses/domain/usecases/update_expense.dart';
 import '../../features/expenses/presentation/cubit/expense_cubit.dart';
 import '../../features/expenses/presentation/cubit/expense_filter_cubit.dart';
+import '../services/sync_queue.dart';
 
 Future<void> registerExpenseFeature(GetIt sl) async {
   // Expense Local Data Source
@@ -38,6 +39,7 @@ Future<void> registerExpenseFeature(GetIt sl) async {
       () => ExpenseRepositoryImpl(
         sl<ExpenseLocalDataSource>(),
         sl<ExpenseRemoteDataSource>(),
+        sl<SyncQueue>(),
       ),
     );
   }

@@ -5,21 +5,29 @@ import '../../domain/repositories/recurring_expense_repository.dart';
 import '../datasources/recurring_expense_local_data_source.dart';
 import '../datasources/recurring_expense_remote_data_source.dart';
 import '../models/recurring_expense_model.dart';
+import '../../../../core/services/sync_queue.dart';
 
 class RecurringExpenseRepositoryImpl implements RecurringExpenseRepository {
   const RecurringExpenseRepositoryImpl(
     this._localDataSource,
     this._remoteDataSource,
+    this._syncQueue,
   );
 
   final RecurringExpenseLocalDataSource _localDataSource;
   final RecurringExpenseRemoteDataSource _remoteDataSource;
+  final SyncQueue _syncQueue;
 
   @override
   Future<void> createRecurringExpense(RecurringExpense recurringExpense) async {
     final model = RecurringExpenseModel.fromEntity(recurringExpense);
     await _localDataSource.createRecurringExpense(model);
-    unawaited(_syncWrite(() => _remoteDataSource.createRecurringExpense(model)));
+    await _syncQueue.enqueueUpsert(
+      table: 'recurring_expenses',
+      entityId: model.id,
+      payloadBuilder: model.toRemoteJson,
+    );
+    unawaited(_syncQueue.sync());
   }
 
   @override
@@ -43,17 +51,27 @@ class RecurringExpenseRepositoryImpl implements RecurringExpenseRepository {
   Future<void> updateRecurringExpense(RecurringExpense recurringExpense) async {
     final model = RecurringExpenseModel.fromEntity(recurringExpense);
     await _localDataSource.updateRecurringExpense(model);
-    unawaited(_syncWrite(() => _remoteDataSource.updateRecurringExpense(model)));
+    await _syncQueue.enqueueUpsert(
+      table: 'recurring_expenses',
+      entityId: model.id,
+      payloadBuilder: model.toRemoteJson,
+    );
+    unawaited(_syncQueue.sync());
   }
 
   @override
   Future<void> deleteRecurringExpense(String id) async {
     await _localDataSource.deleteRecurringExpense(id);
-    unawaited(_syncWrite(() => _remoteDataSource.deleteRecurringExpense(id)));
+    await _syncQueue.enqueueDelete(
+      table: 'recurring_expenses',
+      entityId: id,
+    );
+    unawaited(_syncQueue.sync());
   }
 
   Future<void> _syncFromRemote() async {
     try {
+      await _syncQueue.sync();
       final remoteRecurringExpenses = await _remoteDataSource
           .getRecurringExpenses();
       for (final item in remoteRecurringExpenses) {

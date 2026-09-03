@@ -22,6 +22,7 @@ import '../../features/expenses/data/datasources/expense_local_data_source.dart'
 import '../../features/recurring/domain/repositories/recurring_expense_repository.dart';
 import '../../features/recurring/data/datasources/recurring_expense_local_data_source.dart';
 import '../../features/categories/presentation/cubit/category_cubit.dart';
+import '../services/sync_queue.dart';
 
 Future<void> registerCategoryFeature(GetIt sl) async {
   // Hive Box for Categories
@@ -67,6 +68,7 @@ Future<void> registerCategoryFeature(GetIt sl) async {
       () => CategoryRepositoryImpl(
         sl<CategoryLocalDataSource>(),
         sl<CategoryRemoteDataSource>(),
+        sl<SyncQueue>(),
       ),
     );
   }

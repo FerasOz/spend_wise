@@ -15,6 +15,7 @@ import '../../features/recurring/presentation/cubit/recurring_expense_cubit.dart
 import '../../core/services/app_clock.dart';
 import '../../core/services/id_generator.dart';
 import '../../features/expenses/domain/repositories/expense_repository.dart';
+import '../services/sync_queue.dart';
 
 Future<void> registerRecurringFeature(GetIt sl) async {
   // Recurring Expense Local Data Source
@@ -39,6 +40,7 @@ Future<void> registerRecurringFeature(GetIt sl) async {
       () => RecurringExpenseRepositoryImpl(
         sl<RecurringExpenseLocalDataSource>(),
         sl<RecurringExpenseRemoteDataSource>(),
+        sl<SyncQueue>(),
       ),
     );
   }

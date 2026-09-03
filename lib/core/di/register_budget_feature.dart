@@ -15,6 +15,7 @@ import '../../features/budgets/domain/usecases/update_budget.dart';
 import '../../features/budgets/presentation/cubit/budget_cubit.dart';
 import '../../core/services/app_clock.dart';
 import '../../features/expenses/domain/repositories/expense_repository.dart';
+import '../services/sync_queue.dart';
 
 Future<void> registerBudgetFeature(GetIt sl) async {
   // Budget Local Data Source
@@ -39,6 +40,7 @@ Future<void> registerBudgetFeature(GetIt sl) async {
       () => BudgetRepositoryImpl(
         sl<BudgetLocalDataSource>(),
         sl<BudgetRemoteDataSource>(),
+        sl<SyncQueue>(),
       ),
     );
   }

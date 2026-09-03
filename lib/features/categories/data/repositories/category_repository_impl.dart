@@ -7,9 +7,14 @@ import 'package:spend_wise/features/categories/domain/entities/category.dart';
 import 'package:spend_wise/features/categories/domain/repositories/category_repository.dart';
 import 'package:spend_wise/core/services/id_generator.dart';
 import 'package:spend_wise/core/constants/default_category_ids.dart';
+import 'package:spend_wise/core/services/sync_queue.dart';
 
 class CategoryRepositoryImpl implements CategoryRepository {
-  CategoryRepositoryImpl(this._localDataSource, this._remoteDataSource);
+  CategoryRepositoryImpl(
+    this._localDataSource,
+    this._remoteDataSource,
+    this._syncQueue,
+  );
 
   static const _sharedDefaultIds = {
     DefaultCategoryIds.shopping,
@@ -22,19 +27,26 @@ class CategoryRepositoryImpl implements CategoryRepository {
 
   final CategoryLocalDataSource _localDataSource;
   final CategoryRemoteDataSource _remoteDataSource;
+  final SyncQueue _syncQueue;
   Future<void>? _activeSync;
 
   @override
   Future<void> addCategory(Category category) async {
     final categoryModel = CategoryModel.fromEntity(category);
     await _localDataSource.addCategory(categoryModel);
-    unawaited(_syncWrite(() => _remoteDataSource.addCategory(categoryModel)));
+    await _syncQueue.enqueueUpsert(
+      table: 'categories',
+      entityId: categoryModel.id,
+      payloadBuilder: categoryModel.toRemoteJson,
+    );
+    unawaited(_syncQueue.sync());
   }
 
   @override
   Future<void> deleteCategory(String id) async {
     await _localDataSource.deleteCategory(id);
-    unawaited(_syncWrite(() => _remoteDataSource.deleteCategory(id)));
+    await _syncQueue.enqueueDelete(table: 'categories', entityId: id);
+    unawaited(_syncQueue.sync());
   }
 
   @override
@@ -50,7 +62,12 @@ class CategoryRepositoryImpl implements CategoryRepository {
   Future<void> updateCategory(Category category) async {
     final categoryModel = CategoryModel.fromEntity(category);
     await _localDataSource.updateCategory(categoryModel);
-    unawaited(_syncWrite(() => _remoteDataSource.updateCategory(categoryModel)));
+    await _syncQueue.enqueueUpsert(
+      table: 'categories',
+      entityId: categoryModel.id,
+      payloadBuilder: categoryModel.toRemoteJson,
+    );
+    unawaited(_syncQueue.sync());
   }
 
   Future<void> _syncFromRemote() {
@@ -64,6 +81,7 @@ class CategoryRepositoryImpl implements CategoryRepository {
 
   Future<void> _performSync() async {
     try {
+      await _syncQueue.sync();
       final remoteCategories = await _remoteDataSource.getCategories();
       final remoteCategoryIds = remoteCategories
           .map((category) => category.id)
