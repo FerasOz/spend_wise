@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spend_wise/app/routes/route_names.dart';
+import 'package:spend_wise/app/shell/widgets/logout_bottom_sheet.dart';
+import 'package:spend_wise/core/di/injection_container.dart';
 import 'package:spend_wise/core/theme/app_spacing.dart';
 import 'package:spend_wise/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:spend_wise/generated/locale_keys.g.dart';
@@ -62,10 +64,20 @@ class MainShellDrawer extends StatelessWidget {
               leading: const Icon(Icons.logout_outlined),
               title: const Text("LogOut"),
               onTap: () {
-                context.read<AuthCubit>().logout();
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                  RouteNames.loginPage,
-                  (route) => false,
+                showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(25.0),
+                    ),
+                  ),
+                  builder: (context) {
+                    return BlocProvider(
+                      create: (context) => sl<AuthCubit>(),
+                      child: const LogoutBottomSheet(),
+                    );
+                  },
                 );
               },
             ),
