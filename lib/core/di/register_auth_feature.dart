@@ -2,7 +2,6 @@ import 'package:get_it/get_it.dart';
 import 'package:spend_wise/features/auth/data/repositories/supabase_auth_repository.dart';
 import 'package:spend_wise/features/auth/domain/repositories/auth_repository.dart';
 import 'package:spend_wise/features/auth/domain/usecases/login.dart';
-import 'package:spend_wise/features/profiles/domain/repositories/profile_repository.dart';
 import 'package:spend_wise/features/settings/domain/repositories/settings_repository.dart';
 import 'package:spend_wise/features/auth/domain/usecases/logout.dart';
 import 'package:spend_wise/features/auth/domain/usecases/register.dart';
@@ -48,7 +47,6 @@ Future<void> registerAuthFeature(GetIt sl) async {
         loginUseCase: sl<LoginUseCase>(),
         logoutUseCase: sl<LogoutUseCase>(),
         registerUseCase: sl<RegisterUseCase>(),
-        profileRepository: sl<ProfileRepository>(),
         settingsRepository: sl<SettingsRepository>(),
         userDataScope: sl<UserDataScope>(),
       ),

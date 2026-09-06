@@ -28,8 +28,6 @@ import 'package:spend_wise/features/settings/presentation/cubit/settings_cubit.d
 import 'package:spend_wise/features/settings/presentation/pages/settings_page.dart';
 import 'package:spend_wise/features/export/presentation/cubit/export_cubit.dart';
 import 'package:spend_wise/features/export/presentation/pages/export_page.dart';
-import 'package:spend_wise/features/profiles/presentation/cubit/profile_cubit.dart';
-import 'package:spend_wise/features/profiles/presentation/pages/complete_profile_page.dart';
 
 class AppRouters {
   Route? onGenerateRoute(RouteSettings settings) {
@@ -197,15 +195,6 @@ class AppRouters {
         return AppPageTransition.route(
           settings: settings,
           builder: (_) => const EmailVerificationPage(),
-        );
-      case RouteNames.completeProfilePage:
-        final userId = settings.arguments as String?;
-        return AppPageTransition.route(
-          settings: settings,
-          builder: (_) => BlocProvider(
-            create: (_) => sl<ProfileCubit>(),
-            child: CompleteProfilePage(userId: userId),
-          ),
         );
       default:
         return null;

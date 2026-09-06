@@ -9,7 +9,6 @@ import 'package:spend_wise/core/di/register_recurring_feature.dart';
 import 'package:spend_wise/core/di/register_dashboard_feature.dart';
 import 'package:spend_wise/core/di/register_insights_feature.dart';
 import 'package:spend_wise/core/di/register_settings_feature.dart';
-import 'package:spend_wise/core/di/register_profiles_feature.dart';
 import 'package:spend_wise/core/di/register_export_feature.dart';
 import 'package:spend_wise/core/di/register_local_storage.dart';
 
@@ -71,10 +70,6 @@ Future<void> setupDependencies() async {
   // SETTINGS FEATURE
   // ============================================================================
   await registerSettingsFeature(sl);
-
-  // PROFILES FEATURE
-  // ============================================================================
-  await registerProfilesFeature(sl);
 
   // ============================================================================
   // EXPORT FEATURE
