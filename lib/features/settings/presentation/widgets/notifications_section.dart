@@ -31,17 +31,6 @@ class NotificationsSection extends StatelessWidget {
             activeTrackColor: theme.colorScheme.primary.withAlpha(90),
           ),
         ),
-        SettingsTile(
-          icon: Icons.cloud_circle_outlined,
-          title: LocaleKeys.settings_notifications_backup_title.tr(),
-          subtitle: LocaleKeys.settings_notifications_backup_subtitle.tr(),
-          trailing: Switch.adaptive(
-            value: settings.autoBackupEnabled,
-            onChanged: (_) => context.read<SettingsCubit>().toggleAutoBackup(),
-            activeThumbColor: theme.colorScheme.primary,
-            activeTrackColor: theme.colorScheme.primary.withAlpha(90),
-          ),
-        ),
       ],
     );
   }
