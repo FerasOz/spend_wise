@@ -135,50 +135,6 @@ Most features are divided into `data`, `domain`, and `presentation` layers. Repo
 | Responsive layout | `flutter_screenutil` |
 | Testing and code generation | `flutter_test`, `build_runner` |
 
-## Local Setup
-
-### Requirements
-
-- Flutter SDK compatible with Dart `3.10.8`.
-- Android Studio or Xcode when targeting Android or iOS.
-- A Supabase project when authentication and cloud synchronization are required.
-
-### Install and Run
-
-```powershell
-flutter pub get
-dart run build_runner build --delete-conflicting-outputs
-flutter run
-```
-
-Run static analysis and tests with:
-
-```powershell
-flutter analyze
-flutter test
-```
-
-To run on a specific device:
-
-```powershell
-flutter devices
-flutter run -d <device-id>
-```
-
-## Supabase Setup
-
-The [`supabase/migrations`](supabase/migrations) directory currently contains migrations for profiles, user settings, profile creation during signup, and synchronization support through `updated_at` columns and indexes.
-
-Before deploying a new environment, verify the following:
-
-- The `expenses`, `categories`, `budgets`, and `recurring_expenses` tables exist.
-- Foreign keys and user relationships are correctly configured.
-- Row Level Security policies restrict every user to their own data.
-- Domain-table migrations and read/write policies have been applied, not only table grants.
-- Signup, email verification, and synchronization have been tested on a Supabase project separate from production.
-
-The Supabase URL and client key are currently initialized directly in [`lib/main.dart`](lib/main.dart). A publishable or anonymous client key is normally safe to include in a client application, but environment configuration or `--dart-define` values are recommended to make development, staging, and production environments easier to manage.
-
 ## Testing and Code Quality
 
 The repository currently includes tests for models, selected repositories, visible-expense filtering, and email verification, including:
