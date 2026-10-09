@@ -18,18 +18,20 @@ The project includes Flutter platform targets for Android, iOS, Windows, macOS, 
 
 The showcase above provides a quick overview. The screenshots below show selected areas of the application in more detail.
 
-### Dashboard
+### Budget & Dashboard
 
 <p align="center">
+  <img width="40%" alt="budgets" src="https://github.com/user-attachments/assets/b951e313-909b-4250-ae04-807fc1bfb6ab" />
   <img width="40%" alt="dashboard dark" src="https://github.com/user-attachments/assets/38fedcc2-d0ba-4373-b00b-c2767b06817b" />
   <img width="40%" alt="Dashboard-stats" src="https://github.com/user-attachments/assets/d3444c18-3089-46d9-b8f9-cf9d392a81b1" />
 </p>
 
-### Add Expenses & Categories
+### Add Expense, Category, and Budget
 
 <p align="center">
-  <img width="40%" alt="add expense" src="https://github.com/user-attachments/assets/c3855c64-1d4e-4c48-8d4e-62738e0b4a33" />
-  <img width="40%" alt="add category" src="https://github.com/user-attachments/assets/eb58f836-7e70-41ce-a9a0-f566bf3ee3fb" />
+  <img width="30%" alt="add expense" src="https://github.com/user-attachments/assets/c3855c64-1d4e-4c48-8d4e-62738e0b4a33" />
+  <img width="30%" alt="add category" src="https://github.com/user-attachments/assets/eb58f836-7e70-41ce-a9a0-f566bf3ee3fb" />
+  <img width="30%" alt="create budget" src="https://github.com/user-attachments/assets/92ddd2ae-119b-42f0-896c-fa4295565080" />
 </p>
 
 ### Recurring Expenses
@@ -37,13 +39,6 @@ The showcase above provides a quick overview. The screenshots below show selecte
 <p align="center">
   <img width="40%" alt="add recurring" src="https://github.com/user-attachments/assets/6ab5df82-fd42-4c8b-9260-9d688a9d34d7" />
   <img width="40%" alt="recurring" src="https://github.com/user-attachments/assets/12897562-6308-42b4-b33a-d5af4d2ff500" />
-</p>
-
-### Budgets
-
-<p align="center">
-  <img width="40%" alt="create budget" src="https://github.com/user-attachments/assets/92ddd2ae-119b-42f0-896c-fa4295565080" />
-  <img width="40%" alt="budgets" src="https://github.com/user-attachments/assets/b951e313-909b-4250-ae04-807fc1bfb6ab" />
 </p>
 
 ### Settings and Export
