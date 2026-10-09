@@ -21,9 +21,9 @@ The showcase above provides a quick overview. The screenshots below show selecte
 ### Budget & Dashboard
 
 <p align="center">
-  <img width="40%" alt="budgets" src="https://github.com/user-attachments/assets/b951e313-909b-4250-ae04-807fc1bfb6ab" />
-  <img width="40%" alt="dashboard dark" src="https://github.com/user-attachments/assets/38fedcc2-d0ba-4373-b00b-c2767b06817b" />
-  <img width="40%" alt="Dashboard-stats" src="https://github.com/user-attachments/assets/d3444c18-3089-46d9-b8f9-cf9d392a81b1" />
+  <img width="30%" alt="budgets" src="https://github.com/user-attachments/assets/b951e313-909b-4250-ae04-807fc1bfb6ab" />
+  <img width="30%" alt="dashboard dark" src="https://github.com/user-attachments/assets/38fedcc2-d0ba-4373-b00b-c2767b06817b" />
+  <img width="30%" alt="Dashboard-stats" src="https://github.com/user-attachments/assets/d3444c18-3089-46d9-b8f9-cf9d392a81b1" />
 </p>
 
 ### Add Expense, Category, and Budget
