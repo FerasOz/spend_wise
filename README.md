@@ -21,51 +21,36 @@ The showcase above provides a quick overview. The screenshots below show selecte
 ### Dashboard
 
 <p align="center">
-  <img width="30%" alt="dashboard dark" src="https://github.com/user-attachments/assets/38fedcc2-d0ba-4373-b00b-c2767b06817b" />
-  <img width="30%" alt="arabic dashboard" src="https://github.com/user-attachments/assets/4e89e09f-cd2a-4869-b7e5-56b909782c37" />
-  <img width="30%" alt="Dashboard-stats" src="https://github.com/user-attachments/assets/d3444c18-3089-46d9-b8f9-cf9d392a81b1" />
+  <img width="40%" alt="dashboard dark" src="https://github.com/user-attachments/assets/38fedcc2-d0ba-4373-b00b-c2767b06817b" />
+  <img width="40%" alt="Dashboard-stats" src="https://github.com/user-attachments/assets/d3444c18-3089-46d9-b8f9-cf9d392a81b1" />
 </p>
 
-### Expenses
+### Add Expenses & Categories
 
 <p align="center">
-  <img width="30%" alt="expneses" src="https://github.com/user-attachments/assets/d4b99e08-9a14-47b7-92b6-a26f52d2da75" />
-  <img width="30%" alt="add expense" src="https://github.com/user-attachments/assets/c3855c64-1d4e-4c48-8d4e-62738e0b4a33" />
-</p>
-
-### Categories
-
-<p align="center">
-  <img width="30%" alt="Categories" src="https://github.com/user-attachments/assets/ad9927cd-45af-4e51-b949-e31249b92b15" />
-  <img width="30%" alt="add category" src="https://github.com/user-attachments/assets/eb58f836-7e70-41ce-a9a0-f566bf3ee3fb" />
+  <img width="40%" alt="add expense" src="https://github.com/user-attachments/assets/c3855c64-1d4e-4c48-8d4e-62738e0b4a33" />
+  <img width="40%" alt="add category" src="https://github.com/user-attachments/assets/eb58f836-7e70-41ce-a9a0-f566bf3ee3fb" />
 </p>
 
 ### Recurring Expenses
 
 <p align="center">
-  <img width="30%" alt="add recurring" src="https://github.com/user-attachments/assets/6ab5df82-fd42-4c8b-9260-9d688a9d34d7" />
-  <img width="30%" alt="recurring" src="https://github.com/user-attachments/assets/12897562-6308-42b4-b33a-d5af4d2ff500" />
+  <img width="40%" alt="add recurring" src="https://github.com/user-attachments/assets/6ab5df82-fd42-4c8b-9260-9d688a9d34d7" />
+  <img width="40%" alt="recurring" src="https://github.com/user-attachments/assets/12897562-6308-42b4-b33a-d5af4d2ff500" />
 </p>
 
 ### Budgets
 
 <p align="center">
-  <img width="30%" alt="create budget" src="https://github.com/user-attachments/assets/92ddd2ae-119b-42f0-896c-fa4295565080" />
-  <img width="30%" alt="budgets" src="https://github.com/user-attachments/assets/b951e313-909b-4250-ae04-807fc1bfb6ab" />
+  <img width="40%" alt="create budget" src="https://github.com/user-attachments/assets/92ddd2ae-119b-42f0-896c-fa4295565080" />
+  <img width="40%" alt="budgets" src="https://github.com/user-attachments/assets/b951e313-909b-4250-ae04-807fc1bfb6ab" />
 </p>
 
-### Authentication
+### Settings and Export
 
 <p align="center">
-  <img width="30%" alt="create account dark" src="https://github.com/user-attachments/assets/aa2ee910-4c38-4a52-8e70-679b4ff2bf9a" />
-  <img width="30%" alt="login arabic" src="https://github.com/user-attachments/assets/ae2d0428-be00-4a7d-917d-a35968d8a337" />
-</p>
-
-### Settings and Exports
-
-<p align="center">
-  <img width="30%" alt="settings" src="https://github.com/user-attachments/assets/9d454de4-22b9-490c-823a-079db9a8ab55" />
-  <img width="30%" alt="export page" src="https://github.com/user-attachments/assets/1b5dc3f4-166b-44ab-9f6e-fbc23d3f00ad" />
+  <img width="40%" alt="settings" src="https://github.com/user-attachments/assets/9d454de4-22b9-490c-823a-079db9a8ab55" />
+  <img width="40%" alt="export page" src="https://github.com/user-attachments/assets/1b5dc3f4-166b-44ab-9f6e-fbc23d3f00ad" />
 </p>
 
 ## Key Features
