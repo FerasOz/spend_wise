@@ -16,7 +16,6 @@ The project includes Flutter platform targets for Android, iOS, Windows, macOS, 
 
 ## Screenshots
 
-The showcase above provides a quick overview. The screenshots below show selected areas of the application in more detail.
 
 ### Dashboard
 
