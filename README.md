@@ -36,8 +36,8 @@ The showcase above provides a quick overview. The screenshots below show selecte
 ### Settings and Export
 
 <p align="center">
-  <img width="40%" alt="settings" src="https://github.com/user-attachments/assets/9d454de4-22b9-490c-823a-079db9a8ab55" />
-  <img width="40%" alt="export page" src="https://github.com/user-attachments/assets/1b5dc3f4-166b-44ab-9f6e-fbc23d3f00ad" />
+  <img width="30%" alt="settings" src="https://github.com/user-attachments/assets/9d454de4-22b9-490c-823a-079db9a8ab55" />
+  <img width="30%" alt="export page" src="https://github.com/user-attachments/assets/1b5dc3f4-166b-44ab-9f6e-fbc23d3f00ad" />
 </p>
 
 ## Key Features
